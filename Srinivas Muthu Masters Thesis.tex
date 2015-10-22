@@ -1,0 +1,692 @@
+\documentclass[12pt]{uthesis-v12}  %---> DO NOT ALTER THIS COMMAND
+\usepackage{graphicx}
+\begin{document} %---> %---> %---> %---> DO NOT ALTER THIS COMMAND
+
+%--------+----------------------------------------------------------+
+%        |  \title{}                                    (REQUIRED)  |
+%        |  \author{}                                   (REQUIRED)  |
+%        |                                                          |
+%        |  See section 3.1 of "Read_Me_First_(v12).pdf"            |
+%        |                                                          |
+%        |  Also see section 2.2 of above "Read Me" file for the    |
+%        |  proper use of the invisible tilde ("~") character when  |
+%        |  entering a middle initial in the \author command.       |
+%        +----------------------------------------------------------+
+
+\title{Optimizing Android Memory Management
+       \protect\\ by Predicting User Behavior}
+       
+% Alternatively, A User-Centric Approach to Android Memory Management
+
+\author{Srinivas Muthu}
+
+%--------+----------------------------------------------------------+
+%        |  \copyrightpage{}                            (REQUIRED)  |
+%        |                                                          |
+%        |  See section 3.2 of "Read_Me_First_(v12).pdf"            |
+%        |                                                          |
+%        |  1) You must enter either "yes" or "no" in this          |
+%        |      command.  Inputting "yes" produces a copyright      |
+%        |      notification page as the second page and inputting  |
+%        |      "no" produces a blank second page.                  |
+%        |  2) Input to this command is case sensitive.             |
+%        |  3) Default: the "yes" option.                           |
+%        +----------------------------------------------------------+
+
+\copyrightpage{yes}
+
+%--------+----------------------------------------------------------+
+%        |  \mydocument{}                               (REQUIRED)  |
+%        |                                                          |
+%        |  See section 3.3 of "Read_Me_First_(v12).pdf"            |
+%        |                                                          |
+%        |  1) Input to this command is limited to the following    |
+%        |     three options: a) Dissertation                       |
+%        |                    b) Thesis                             |
+%        |                    c) Project                            |
+%        |  2) Input to this command is case-sensitive.             |
+%        +----------------------------------------------------------+
+
+\mydocument{Thesis}
+
+%--------+----------------------------------------------------------+
+%        |  \degree{}{}                                 (REQUIRED)  |
+%        |                                                          |
+%        |  See section 3.4 of "Read_Me_First_(v12).pdf"            |
+%        |                                                          |
+%        |  You need to provide two distinct inputs into this       |
+%        |  command:                                                |
+%        |     1) In the first set of braces you need to specify    |
+%        |        the *exact* degree you will receive. Some         |
+%        |        examples are: -) Masters of Arts                  |
+%        |                      -) Masters of Science               |
+%        |                      -) Doctor of Philosophy             |
+%        |     2) In the second set of braces you need to state the |
+%        |        *specific* discipline or area for that degree     |
+%        |        (e.g., Economics, Education, Engineering, etc.).  |
+%        |  Students should consult their advisor if they have any  |
+%        |  questions about this information.                       |
+%        +----------------------------------------------------------+
+
+\degree{Masters of Science}{Engineering}
+
+%--------+----------------------------------------------------------+
+%        |  \conferraldate{}{}                          (REQUIRED)  |
+%        |                                                          |
+%        |  See section 3.5 of "Read_Me_First_(v12).pdf"            |
+%        |                                                          |
+%        |  In the two set of braces enter the month and then the   |
+%        |  year your degree will be *conferred* by the university. |
+%        +----------------------------------------------------------+
+
+\conferraldate{December}{2015}
+
+%--------+----------------------------------------------------------+
+%        |  \advisor{}                                  (REQUIRED)  |
+%        |                                                          |
+%        |  See section 3.6.2 of "Read_Me_First_(v12).pdf"          |
+%        |                                                          |
+%        |  1) Also see section 2.2 of "Read_Me_First_(v12).pdf"    |
+%        |     for the proper use of the invisible tilde ("~")      |
+%        |     character when entering a middle initial or the      |
+%        |     abbreviation of an academic title (e.g., Dr.) in     |
+%        |     the \advisor{} command.                              |
+%        |  2) Also see section 3.6.1. for consistent presentation  |
+%        |     of title page signature lines.                       |
+%        +----------------------------------------------------------+
+
+\advisor{Dr.~Jackson Carvalho}
+
+%--------+----------------------------------------------------------+
+%        |  Committee Member Signature Commands         (OPTIONAL)  |
+%        |                                                          |
+%        |  See section 3.6.3 of "Read_Me_First_(v12).pdf"          |
+%        |                                                          |
+%        |  1) Use the commands below to provide signature lines    |
+%        |     for your "other" committee members;                  |
+%        |        --> you must list your other committee members    |
+%        |            in alphabetic order by last name              |
+%        |        --> to do this, use the commands below in the     |
+%        |            order presented below.                        |
+%        |  2) You can choose to include none, some, or all of the  |
+%        |     "XXXmember" commands below --- based on the number   |
+%        |     committee members you have; simply delete (or        |
+%        |     comment-out) any of the commands below that are not  |
+%        |     needed.                                              |
+%        |  3) Do not include the name of your committee chair or   |
+%        |     the Graduate Dean in the commands listed below.      |
+%        |     Their signature lines are generated by the           |
+%        |     \advisor{} and \graduatedean{}{} commands.           |
+%        |  4) You cannot use any of the commands below more than   |
+%        |     once. (For details on this issue, see section 3.6.3  |
+%        |     of "Read_Me_First_(v12).pdf".)                       |
+%        |  5) Also see section 2.2 of "Read_Me_First_(v12).pdf"    |
+%        |     for the proper use of the invisible tilde ("~")      |
+%        |     character when entering a middle initial or the      |
+%        |     abbreviation of an academic title (e.g., Dr.) in     |
+%        |     the commands below.                                  |
+%        |  6) See section 3.6.1. for consistent presentation of    |
+%        |     title page signature lines.                          |
+%        |                                                          |
+%        |  I know I shouldn't have to say this, but enough         |
+%        |  students over the years have made the same mistake      |
+%        |  that I'm forced to state:                               |
+%        |                                                          |
+%        |      THE NAMES USED IN THE FOLLOWING COMMANDS ARE        |
+%        |      SILLY NAMES I'VE USED AS EXAMPLES ONLY.  THEY       |
+%        |      ARE NOT THE ACTUAL NAMES OF YOUR COMMITTEE          |
+%        |      MEMBERS.  REPLACE THE SILLY NAMES BELOW WITH        |
+%        |      THE NAMES OF YOUR ACTUAL COMMITTEE MEMBERS.         |
+%        |                                                          |
+%        +----------------------------------------------------------+
+
+  \secondmember{Dr.~Mansoor Alam}
+   \thirdmember{Dr.~Henry Ledgard}
+
+%--------+----------------------------------------------------------+
+%        |  \graduatedean{}{}                           (REQUIRED)  |
+%        |                                                          |
+%        |  See section 3.6.4 of "Read_Me_First_(v12).pdf"          |
+%        |                                                          |
+%        |  1) THE NAME AND TITLE PROVIDED BELOW ARE THOSE OF THE   |
+%        |     ACTUAL GRADUATE DEAN AT THE TIME THIS DOCUMENT WAS   |
+%        |     CONSTRUCTED (January 2012). Contact the Graduate     |
+%        |     College to determine whether this information is     |
+%        |     correct at the time you submit your document.        |
+%        |  2) Section 2.2 of "Read_Me_First_(v12).pdf" describes   |
+%        |     the proper use of the invisible tilde ("~")          |
+%        |     character when entering a middle initial or the      |
+%        |     abbreviation of an academic title (e.g., Dr.) in     |
+%        |     the \graduatedean{} command.                         |
+%        |  3) See section 3.6.1. for consistent presentation of    |
+%        |     title page signature lines.                          |
+%        +----------------------------------------------------------+
+
+\graduatedean{Dr.~Patricia R.~Komuniecki}{Dean}
+
+%--------+----------------------------------------------------------+
+%        |  \maketitle                                  (REQUIRED)  |
+%        |                                                          |
+%        |  See section 3.7 of "Read_Me_First_(v12).pdf"            |
+%        |                                                          |
+%        |  This is a required LaTeX command; to be brief, bad      |
+%        |  things will happen if this command is not included      |
+%        |  in your document at this particular location.           |
+%        +----------------------------------------------------------+
+
+\maketitle  %---->  ----->  ---->  ---->   DO NOT ALTER THIS COMMAND
+
+%--------+----------------------------------------------------------+
+%        |  Abstract Page Environment                   (REQUIRED)  |
+%        |                                                          |
+%        |  See section 3.8 of "Read_Me_First_(v12).pdf"            |
+%        +----------------------------------------------------------+
+
+\begin{abstractpage}
+With the advent of increase in the amount of RAM available in Android smart-phones, there is a case to be made that this additional memory availability can be put to better use. By default, every Android application runs in its own Linux process. Android starts the process when any of the application's components need to be executed, then shuts down the process when it's no longer needed or when the system must recover memory for other applications. When a smart-phone that runs on the Android operating system is active (turned on), the RAM contains all the active processes and services (processes that run in the background). In addition to these processes and services, the RAM also contains cached background processes. These processes are kept in memory so that in the event the user clicks any of these applications, they can be loaded onto the screen quickly as they're already in memory and don't have to be fetched from the disk. If Android needs to reclaim memory for other processes, it eliminates cached background processes through an LRU scheme. Ideally we would like every application the user clicked to be present in memory but due to constraints in RAM availability, Android employs the LRU scheme to decide which processes to retain. I postulate that looking into user behavior could help us better determine which applications to cache in memory, as cached background processes. I parse the user's Calendar for contextual clues and gather information that could help me predict which application a user is about to use. I measure the cache efficiency (Cache hits and misses, CHR) for the default CRA Android employs (LRU), a pure prediction based CRA and finally a hybrid approach that combines the LRU approach with the prediction approach. I also demonstrate why the hybrid CRA is the most efficient one.
+
+
+\end{abstractpage}
+
+%--------+----------------------------------------------------------+
+%        |  Dedication Page Environment                 (OPTIONAL)  |
+%        |                                                          |
+%        |  See section 3.9 of "Read_Me_First_(v12).pdf"            |
+%        |                                                          |
+%        |  If both a dedication page and an acknowledgements page  |
+%        |  are included in the document, the dedication page must  |
+%        |  proceed the acknowledgements page.                      |
+%        +----------------------------------------------------------+
+
+\begin{dedication}
+\noindent To my parents who've always put my needs ahead of theirs.
+\end{dedication}
+
+%--------+----------------------------------------------------------+
+%        |  Acknowledgments Page Environment            (OPTIONAL)  |
+%        |                                                          |
+%        |  See section 3.10 of "Read_Me_First_(v12).pdf"           |
+%        |                                                          |
+%        |  If both a dedication page and an acknowledgements page  |
+%        |  are included in the document, the dedication page must  |
+%        |  proceed the acknowledgements page.                      |
+%        +----------------------------------------------------------+
+
+\begin{acknowledgments}
+\noindent First and foremost, I'd like to thank Dr.~Jackson Carvalho for mentoring me throughout my time here at UT. Without his guidance, I would'nt be half the student I am today. I'd like to thank Dr.~Mansoor Alam for believing in me and offering me tuition scholarship to pursue graduate studies, here at UT. I'd like to thank Dr.~Lawrence Thomas for being an exemplary professor and his words of wisdom have always guided me in tough times.\\\\I am grateful to Dr.~Henry Ledgard for taking the time to be on my committee and mentoring me during my freshman year. I'd like to thank Dr.~Donald White and his students for helping me with data collection, design and representation. It was nothing short of a privelege to work with Dr.~White and his students. I'd like to thank Dean Nagi G.~Naganathan for employing me and guiding me over the course of my time in graduate school.\\\\
+I'd like to thank all my friends and family for supporting me throughout my time here at UT but I'd like to especially mention Sandy Stewart for everything she's done for me. This page is'nt enough to expound on the details but it suffices to say I would'nt be here without her and she is like a second mother to me.  
+\end{acknowledgments}
+
+%--------+----------------------------------------------------------+
+%        |  \tableofcontents                            (REQUIRED)  |
+%        |  \listoftables                            (CONDITIONAL)  |
+%        |  \listoffigures                           (CONDITIONAL)  |
+%        |                                                          |
+%        |  See sections 3.11 & 3.12 of "Read_Me_First_(v12).pdf"   |
+%        |                                                          |
+%        |  1) You must include the \tableofcontents command in     |
+%        |     your document: the UT Manual requires every          |
+%        |     dissertation/thesis to have a detailed table of      |
+%        |     contents.                                            |
+%        |  2) Including the \listoftables and \listoffigures       |
+%        |     commands is "conditional."  See sections 3.12 of     |
+%        |     "Read_Me_First_(v12).pdf" for additional details.    |
+%        +----------------------------------------------------------+
+
+\tableofcontents  %----->  ----->  ---->  DO NOT ALTER THIS COMMAND
+\listoftables \listoffigures
+
+%--------+----------------------------------------------------------+
+%        |  \captionformat{}                            (REQUIRED)  |
+%        |                                                          |
+%        |  See section 3.12.2 of "Read_Me_First_(v12).pdf"         |
+%        |                                                          |
+%        |  1) You are required to choose between the "hang" or     |
+%        |     "align" option for this command.                     |
+%        |  2) Input to this command is case sensitive.             |
+%        |  3) Default: ``hang'' option.                            |
+%        +----------------------------------------------------------+
+
+\captionformat{hang}
+
+%--------+----------------------------------------------------------+
+%        |  List of Abbreviations Environment           (OPTIONAL)  |
+%        |                                                          |
+%        |  See section 3.13 of "Read_Me_First_(v12).pdf"           |
+%        |                                                          |
+%        |  1) This is an optional section; consult your advisor    |
+%        |     to determine whether you need/want to include this   |
+%        |     section in your document.                            |
+%        |  2) If you do not want a List of Abbreviations simply    |
+%        |     delete the material below (and these instructions).  |
+%        |  3) If you do want a List of Abbreviations simply        |
+%        |     replace the silly material below with the            |
+%        |     information relevant to your document.               |
+%        |     a. Within the "listofabbreviations" environment      |
+%        |        below you must use a separate \abbreviation{}{}   |
+%        |        command for each entry in your List of            |
+%        |        Abbreviations.                                    |
+%        |     b. As the examples below demonstrate, the            |
+%        |        information within the first set of braces is     |
+%        |        the abbreviation and the information in the       |
+%        |        second set of braces is the definition of that    |
+%        |        abbreviation.                                     |
+%        +----------------------------------------------------------+
+
+\begin{listofabbreviations}
+
+ \abbreviation{RAM}{Random Access Memory}
+ \abbreviation{LRU}{Least Recently Used}
+ \abbreviation{CHR}{Cache Hit Ratio}
+ \abbreviation{CRA}{Cache Replacement Algorithm}
+ \abbreviation{OS}{Operating System}
+ \abbreviation{AOSP}{Android Open Source Project}
+ \abbreviation{APK}{Android Package}
+ \abbreviation{IPC}{Inter Process Communication}
+ \abbreviation{IC}{Integrated Circuits}
+ \abbreviation{MB}{Mega-Byte} 
+ \abbreviation{GB}{Giga-Byte}
+ 
+%							Template for some symbol based abbreviations
+
+%    \abbreviation{GLE}{Gauss' law for electricity: $\nabla\cdot E
+%                       = \displaystyle\frac{\rho}{\varepsilon_0}
+%                       = 4\pi k \rho$}
+%    \abbreviation{HHS}{Department of Health and Human Services}
+%    \abbreviation{IaR}{I am root}
+
+\end{listofabbreviations}
+
+%--------+----------------------------------------------------------+
+%        |  List of Symbols Environment                 (OPTIONAL)  |
+%        |                                                          |
+%        |  See section 3.14 of "Read_Me_First_(v12).pdf"           |
+%        |                                                          |
+%        |  1) This is an optional section; consult your advisor    |
+%        |     to determine whether you need/want to include this   |
+%        |     section in your document.                            |
+%        |  2) If you do not want a List of Symbols simply delete   |
+%        |     the material below (and these instructions).         |
+%        |  3) If you do want a List of Symbols simply replace the  |
+%        |     silly material below with the information relevant   |
+%        |     to your document.                                    |
+%        |       a. Within the "listofsymbols" environment below    |
+%        |          you must use a separate \emblem{}{} command     |
+%        |          for each entry in your List of Symbols.         |
+%        |       b. As the examples below show, insert your symbol  |
+%        |          within the first set of braces in the           |
+%        |          \emblem{}{} command, and its definition within  |
+%        |          the second set of braces.                       |
+%        |       c. Use the \emblemskip command to insert a blank   |
+%        |          line between different categories of symbols:   |
+%        |          -) such additional spacing is required between  |
+%        |             different categories of symbols;             |
+%        |          -) see "Read_Me_First_(v12).pdf" for details.   |
+%        +----------------------------------------------------------+
+
+\begin{listofsymbols}
+
+ \emblem{$\ddagger$}{the degree to which the flayrod has gone out of
+                    skew on tredel}
+\emblem{$\triangle$}{the ratio of the M2 monetary aggregate to the
+                    Monetary Base}
+
+       \emblemskip
+
+  \emblem{$\alpha$}{angle of rotation around internal rotation axis}
+   \emblem{$\beta$}{the number of people named ``Bob''}
+
+       \emblemskip
+
+         \emblem{Q}{Tobin's q; the ratio of the market value of
+                    installed capital to the replacement cost of
+                    capital}
+         \emblem{Y}{Gross Domestic Product (adjusted for inflation)}
+
+\end{listofsymbols}
+
+%--------+----------------------------------------------------------+
+%        |  Preface Environment                         (OPTIONAL)  |
+%        |                                                          |
+%        |  See section 3.15 of "Read_Me_First_(v12).pdf"           |
+%        +----------------------------------------------------------+
+
+\begin{preface}
+This thesis is original, unpublished, independent work by the author, Srinivas Muthu under the tutelage of Dr.~Jackson Carvalho.
+\end{preface}
+
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+%--------+----------------------------------------------------------+
+%        |  \makebody                                   (REQUIRED)  |
+%        |                                                          |
+%        |  See section 3.16 of "Read_Me_First_(v12).pdf"           |
+%        |                                                          |
+%        |  This is a *required* UThesis command; again, bad        |
+%        |  things will happen if this command is not included in   |
+%        |  your document at this particular location --- see the   |
+%        |  file "Read_Me_First_(v12).pdf" for details.             |
+%        +----------------------------------------------------------+
+
+\makebody   %------->  ------->  ------->  DO NOT ALTER THIS COMMAND
+
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+%--------+----------------------------------------------------------+
+%        |  \chapter{}                                  (REQUIRED)  |
+%        |                                                          |
+%        |  See section 3.17 of "Read_Me_First_(v12).pdf"           |
+%        |                                                          |
+%        |  For guidance on using the commands \chapter{},          |
+%        |  \section{}, \subsection{}, \subsubsection{}, etc., see  |
+%        |  Leslie Lamport's "LaTeX: A Document Preparation         |
+%        |  System." Addison Wesley: Reading Massachusetts, 1985.   |
+%        +----------------------------------------------------------+
+
+\chapter{Introduction}
+
+	\section{Android Operating System}
+		
+		\subsection{Overview of the Android OS}
+			Android is a mobile OS based on the Linux kernel and designed primarily for touchscreen devices such as smart-phones and tablets [1]. In addition to touchscreen devices, Android TV, Android Auto and Android Wear are emerging technologies with specialized user interfaces. Globally, it is the most popular mobile OS [2]. Android has an active community of developers and enthusiasts who use the AOSP source code to develop and distribute their own modified versions of the operating system [4]. Android homescreens are typically made up of app icons and widgets. App icons launch the associated app, whereas widgets display live, auto-updating content such as the weather forecast, the user's email inbox, or a news ticker directly on the homescreen [5].
+			
+			Internally, Android OS is built on top of a Linux kernel. On top of the Linux kernel, there are the middleware, libraries and APIs written in C and application software running on an application framework. Development of the Linux kernel continues independently of other Android's source code bases.
+			
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width = 90mm]{images/androidSystemArchitecture.jpg}
+				\caption[Android System Architecture]{[3] Android System Architecture}
+			\end{figure}
+			
+		\subsection{Applications, Activities and Services}
+			
+			\subsubsection{Applications}
+				Android apps are written in the Java programming language. The Android SDK tools compiles the code, along with any data and resource files into an APK, which is an archive file with an .apk suffix. One APK file contains all the contents of an Android app and is the file that Android-powered devices use to install the app [6]. The Android operating system is a multi-user Linux system in which each app is a different user. Each process has its own virtual machine (VM), so an app's code runs in isolation from other apps. By default, every app runs in its own Linux process.
+				
+			\subsubsection{Activities}
+				An Activity is an application component that provides a screen with which users can interact in order to do something, such as dial the phone, take a photo, send an email, or view a map [7]. An application usually consists of multiple activities that are loosely bound to each other. Typically, one activity in an application is specified as the main activity, which is presented to the user when launching the application for the first time. Each activity can then start another activity in order to perform different actions.
+				
+			\subsection{Services}
+				A Service is an application component that can perform long-running operations in the background and does not provide a user interface [8]. Another application component can start a service and it will continue to run in the background even if the user switches to another application. Additionally, a component can bind to a service to interact with it and even perform IPC. For example, a service might handle network transactions, play music, perform file I/O, or interact with a content provider, all from the background.
+					 	
+	\section{Growth of available RAM over the years}
+		
+		\subsection{Advances in Technology}
+			RAM is a form of computer data storage. A RAM device allows data items to be accessed (read or written) in almost the same amount of time irrespective of the physical location of data inside the memory. The overall goal of using a RAM device is to obtain the highest possible average access performance while minimizing the total cost of the entire memory system. Today, random-access memory takes the form of IC(s).
+		
+			\subsubsection{Moore's Law}
+				Moore's law is the observation that the number of transistors in a dense IC doubles approximately every two years.
+				
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width = 90mm]{images/mooresLaw.png}
+					\caption[Moore's law]{[9] Moore's Law}
+				\end{figure}
+				
+				Advancements in digital electronics are strongly linked to Moore's law, especially in the context of memory capacity. T-Mobile G1, the very first Android smart-phone to be released back in 2008 [10] has a 256 MB RAM [11]. In comparison, the Nexus 6P that was released in September 2015 has a 3 GB RAM and some devices like the LG T585 have a 16 GB RAM [12][13], which amounts to 64 times the memory capacity of the T-Mobile G1. The rapid growth in the amount of RAM available to Android devices has in part led to newer possibilities and in our case, a better CRA for determining which processes (in the context of Android applications) remain in memory.
+			 	
+		\subsection{Demise of Task Killers}
+			One of the main benefits of the Android OS is the fact that unlike certain other OS(s), it can run apps in the background. This enables us to have multiple applications open at the same time which results in true multitasking. Thus, RAM availability is highly desirable [14]. A popular misconception is that forcibly removing applications from memory in order to 'free up RAM' will result in increased performance. In fact, several task-killer applications promise to do precisely that. With the advancement in the amount of RAM available, the debate should be about how to better use all this extra space, not killing applications to 'free up' more space. In fact, the Android OS can go one step further and pro-actively cache applications that the user might use in the near future. We'll analyze this prospect in more detail in the upcoming chapters.  
+	\section{Current CRA used by Android}
+		\subsection{LRU}
+		A\\\\\\\\\\
+		\subsection{Alternatives}
+		A\\\\\\\\\\
+		\subsection{Exceptions to the Rule}
+		A\\\\\\\\\\
+	\section{Goals and Objectives}
+		\subsection{A User-Centric CRA}
+		A\\\\\\\\\\
+		\subsection{Improvement in CHR and overall efficiency}
+		A\\\\\\\\\\
+		\subsection{Effects on the End User}
+		A\\\\\\\\\\
+	\section{Organization of Thesis}
+		Describe briefly what each subsequent section aims to address.\\\\\\\\\\
+
+
+%				How to Refer to a table, look below:
+
+%[ Insert your text to chapter 1 here.  A pretend example of a silly
+%table is provided below (i.e., Table~\ref{SILLY}).~]
+
+%								Table Template
+
+
+%     \vfill
+%     \begin{table}[ht]
+%     \caption{A silly glossary for research reports.\label{SILLY}}
+%     \begin{center}
+%     \begin{tabular}{p{2.75in}|p{2.5in}}
+%      \rule[-0.5em]{0pt}{1.75em} \bf When Professors write \ldots
+%      & \bf they REALLY mean \ldots \\ \hline\hline
+%      %--------+------------------------------------
+%      \rule[-0.5em]{0pt}{1.75em} Typical results are shown \ldots
+%      & The best results are shown \ldots \\ \hline
+%      %--------+------------------------------------
+%      \rule[-0.5em]{0pt}{1.75em} It is generally believed that
+%      \ldots & A couple of other guys think so too  \\ \hline
+%      %--------+------------------------------------
+%      \rule[-0.5em]{0pt}{1.75em}Thanks to Al K.~Seltzer for
+%      assistance and to I.P. Daly for valuable discussions &
+%      Seltzer did the work and Daly explained
+%      what it meant \\
+%     \end{tabular}
+%     \end{center}
+%     \end{table}
+%     \vfill
+
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+\chapter{Related Work}
+
+%      \vfill
+%      \begin{figure}[ht]
+%      \begin{center}
+%      \begin{tabular}{|cp{5.5in}c|} \hline
+%      & Let's pretend that instead of this text I provided a figure
+%      of myself smoking a most excellent cigar.  As long as we're
+%      pretending, let's assume that figure shows that I have a really
+%      big smile on my face. & \\
+%      & & \\[-0.75em]
+%      & OK, the truth is that I wanted to provide an example of a
+%      figure to contrast the text in the figure's caption to the text
+%      entered as a entry in the \emph{List of Figures}. This
+%      difference is controlled through the
+%      $\backslash$\texttt{caption[\,]\{\}} command. Appendix~B of
+%      ``Read Me First (v12).pdf'' provides a primer for this issue. &
+%      \\ \hline
+%      \end{tabular}
+%      \caption[Dr.~Dowd enjoying a wonderful cigar.] {Dr.~Dowd
+%              enjoying a wonderful cigar. From the smile on his face
+%              we are left to wonder if the cigar is an H.~Upmann
+%              \emph{Corona Imperial} or a Punch \emph{Rothchild}
+%              (with a double maduro wrapper, of course). \label{DOWD}
+%              }
+%      \end{center}
+%      \end{figure}
+%      \vfill
+\chapter{Phase A Design}
+\chapter{Phase B Design}
+\chapter{Data Analysis and Results}
+\chapter{Conclusion and Future Work}
+
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+%--------+----------------------------------------------------------+
+%        |  \myreferences{}                          (CONDITIONAL)  |
+%        |                                                          |
+%        |  See section 3.18 of "Read_Me_First_(v12).pdf"           |
+%        |                                                          |
+%        |  That section of the READ ME file describes two options  |
+%        |  for listing the works cited in your document: first,    |
+%        |  manually entering your list of references and, second,  |
+%        |  using BibTeX to generate that list.                     |
+%        |                                                          |
+%        |  1) If you manually enter your reference list, first     |
+%        |     include the \myreferences command, as illustrated    |
+%        |     below.  Second, use the "referencelist" environment  |
+%        |     described below.  For this, note that the UT Manual  |
+%        |     requires double-spacing *between* references in      |
+%        |     that list. However, it also states that *within*     |
+%        |     individual references the spacing may be single- or  |
+%        |     double-spaced.  Because of this, UThesis provides    |
+%        |     two options for the "referencelist" environment:     |
+%        |                                                          |
+%        |            \begin{referencelist}{ENTER OPTION HERE}      |
+%        |            \item ...                                     |
+%        |            \end{referencelist}                           |
+%        |                                                          |
+%        |     a. Replacing "ENTER OPTION HERE" above with the      |
+%        |        text "single" will generate a reference list      |
+%        |        with single-spaced entries in that list but       |
+%        |        double-spacing between those entries. An example  |
+%        |        of this is provided below.                        |
+%        |     b. Alternatively, using the "double" option will     |
+%        |        generate a list with double-spaced entries and    |
+%        |        double-spacing between entries. An example of     |
+%        |        this is also provided below.                      |
+%        |                                                          |
+%        |     Note that input to these options is case sensitive   |
+%        |     and the default setting is the "double" option.      |
+%        |                                                          |
+%        |  2) If you instead choose to use BibTeX to generate the  |
+%        |     reference list, then you *cannot* include either     |
+%        |     the "\myreferences" command or the "referencelist"   |
+%        |     environment in your document. In this case you must  |
+%        |                                                          |
+%        |     a. delete the \myreferences command and the two      |
+%        |        examples of the "referencelist"  environment      |
+%        |        below;                                            |
+%        |     b. then you must add and locate appropriately all    |
+%        |        necessary BibTeX commands within your document    |
+%        |        (e.g., \bibliographystyle{}, \citationstyle{},    |
+%        |        \bibliography{}, etc.).                           |
+%        +----------------------------------------------------------+
+
+\myreferences
+
+
+\begin{referencelist}{single}
+	
+	\item \textbf{[1]} ``The Android Source Code''
+	\emph{http://source.android.com/source/index.html}, October 2015. 
+	Online; Last Accessed: October 22, 2015.	
+	
+	\item \textbf{[2]} ``The Most Popular Smartphone Operating Systems Globally,''
+	      \emph{http://www.lifehacker.com.au/2014/09/the-most-popular-smartphone-operating-systems-around-the-world/}, September 2014. 
+	      Online; Last Accessed: October 22, 2015.
+	
+	\item \textbf{[3]} ``Android System Architecture''
+		\emph{https://mahalelabs.files.wordpress.com/2013/03/androidstack-1.jpg}, March 2013. 
+		Online; Last Accessed: October 22, 2015. 
+		
+	\item \textbf{[4]} ``Best custom ROMs for the Samsung Galaxy S2''
+		\emph{http://www.cnet.com/uk/how-to/best-custom-roms-for-the-samsung-galaxy-s2/}, April 2012. 
+		Online; Last Accessed: October 22, 2015. 
+		
+	\item \textbf{[5]} ``Widgets | Android Developers''
+		\emph{http://developer.android.com/design/patterns/widgets.html}, October 2015. 
+		Online; Last Accessed: October 22, 2015.
+		
+	\item \textbf{[6]} ``Application Fundamentals | Android Developers''
+		\emph{http://developer.android.com/guide/components/fundamentals.html}, October 2015. 
+		Online; Last Accessed: October 22, 2015.
+		
+	\item \textbf{[7]} ``Activities | Android Developers''
+	\emph{http://developer.android.com/guide/components/activities.html}, October 2015. 
+	Online; Last Accessed: October 22, 2015.					     
+
+	\item \textbf{[8]} ``Services | Android Developers''
+	\emph{http://developer.android.com/guide/components/services.html}, October 2015. 
+	Online; Last Accessed: October 22, 2015.
+	
+	\item \textbf{[9]} ``Wikimedia Upload''
+	\emph{http://www.extremetech.com/wp-content/uploads/2015/04/MooresLaw2.png}, October 2015. 
+	Online; Last Accessed: October 22, 2015.
+	
+	\item \textbf{[10]} ``A Brief History of Android Phones''
+	\emph{http://www.cnet.com/news/a-brief-history-of-android-phones/}, August 2011. 
+	Online; Last Accessed: October 22, 2015.
+	
+	\item \textbf{[11]} ``GSM Arena''
+	\emph{http://www.gsmarena.com/t\_mobile\_g1-2533.php}, October 2008. 
+	Online; Last Accessed: October 22, 2015.
+	
+	\item \textbf{[12]} ``Nexus 6P''
+	\emph{http://www.androidcentral.com/nexus-6p}, October 2015. 
+	Online; Last Accessed: October 22, 2015.
+	
+	\item \textbf{[13]} ``Phone Egg | LG T585''
+	\emph{http://us.phonegg.com/phone/4783-LG-T585}, November 2013. 
+	Online; Last Accessed: October 22, 2015.		
+	
+	\item \textbf{[14]} ``Android PSA: Stop Using Task Killer Apps''
+	\emph{http://phandroid.com/2011/06/16/android-psa-stop-using-task-killer-apps-now/}, June 2011. 
+	Online; Last Accessed: October 22, 2015.
+		
+\end{referencelist}
+
+
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+%--------+----------------------------------------------------------+
+%        |  \appendix                                  (IF NEEDED)  |
+%        |                                                          |
+%        |  See section 3.19 of "Read_Me_First_(v12).pdf"           |
+%        |                                                          |
+%        |  1) When you include the \appendix command a subsequent  |
+%        |     \chapter{} command will not generate a chapter but   |
+%        |     an appendix section.                                 |
+%        |                                                          |
+%        |  2) As is illustrated below, to generate a second or     |
+%        |     third appendix you simply have to include            |
+%        |     additional \chapter{} commands (i.e., you DO NOT     |
+%        |     have to repeat the use of the \appendix command).    |
+%        +----------------------------------------------------------+
+
+\appendix
+
+\chapter{Insert the Heading to Appendix A}
+
+[Insert text to Appendix A (if appendix is needed)]
+
+%====================================================================
+
+\chapter{Insert the Heading to Appendix B}
+
+[Insert text to Appendix B (if appendix is needed)]
+
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+%--------+----------------------------------------------------------+
+%        |  \end{document}                              (REQUIRED)  |
+%        |                                                          |
+%        |  Details (if you can call them "details") are provided   |
+%        |  in section 3.20 of "Read_Me_First_(v12).pdf"            |
+%        +----------------------------------------------------------+
+
+\end{document} %---> ---> ---> --->   DO NOT ALTER THIS COMMAND
+
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

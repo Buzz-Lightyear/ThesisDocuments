@@ -1,0 +1,552 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.21)  22 OCT 2015 19:31
+entering extended mode
+**"Srinivas Muthu Masters Thesis.tex"
+("Srinivas Muthu Masters Thesis.tex"
+LaTeX2e <2015/01/01> patch level 2
+Babel <3.9m> and hyphenation patterns for 69 languages loaded.
+(uthesis-v12.cls
+=========================================================
+============ University of Toledo Thesis Style ==========
+======================== UThesis ========================
+=========================================================
+======================= Mike Dowd =======================
+==================== August 22, 2011 ====================
+=========================================================
+Document Class: uthesis-v12 1994/12/09 v1.2x Standard LaTeX document class
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size12.clo"
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+
+=========================================================
+============ University of Toledo Thesis Style ==========
+=========================================================
+================= 
+================= Let the magic begin ...
+================= 
+=========================================================
+------------> borrowing Lamport's and Carlisle's ifthen.sty
+------------> borrowing Stephen Page's doublespace.sty
+------------> borrowing David M. Jones' hangcaption.sty
+\captionwidth=\skip43
+------------> UT Thesis Specifications
+\c@TotalSIGs=\count88
+\c@SecondSIG=\count89
+\c@ThirdSIG=\count90
+\c@FourthSIG=\count91
+\c@FifthSIG=\count92
+\c@SixthSIG=\count93
+\c@SeventhSIG=\count94
+\c@EighthSIG=\count95
+------------> borrowing David Carlisle's indentfirst.sty
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 94.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count96
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+("Srinivas Muthu Masters Thesis.aux")
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count97
+\scratchdimen=\dimen105
+\scratchbox=\box26
+\nofMPsegments=\count98
+\nofMParguments=\count99
+\everyMPshowfont=\toks15
+\MPscratchCnt=\count100
+\MPscratchDim=\dimen106
+\MPnumerator=\count101
+\makeMPintoPDFobject=\count102
+\everyMPtoPDFconversion=\toks16
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 177.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 177.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 177.
+ [1
+
+{C:/Users/Srinivas/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+[2
+
+] [3
+
+
+] [4] [5
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 216--218
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--218
+
+ []
+
+[6
+
+
+] ("Srinivas Muthu Masters Thesis.toc" [7
+
+
+])
+\tf@toc=\write3
+ [8]
+("Srinivas Muthu Masters Thesis.lot")
+\tf@lot=\write4
+ [9
+
+] ("Srinivas Muthu Masters Thesis.lof")
+\tf@lof=\write5
+[10
+
+] [11
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 334--335
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 339--340
+
+ []
+
+[12
+
+] [13
+
+]
+Chapter 1.
+<images/androidSystemArchitecture.jpg, id=47, 72.27pt x 72.27pt>
+File: images/androidSystemArchitecture.jpg Graphic file (type jpg)
+
+<use images/androidSystemArchitecture.jpg>
+Package pdftex.def Info: images/androidSystemArchitecture.jpg used on input lin
+e 403.
+(pdftex.def)             Requested size: 256.0748pt x 256.14449pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[1
+
+
+
+] [2 <./images/androidSystemArchitecture.jpg>]
+<images/mooresLaw.png, id=54, 1218.5525pt x 818.05624pt>
+File: images/mooresLaw.png Graphic file (type png)
+
+<use images/mooresLaw.png>
+Package pdftex.def Info: images/mooresLaw.png used on input line 428.
+(pdftex.def)             Requested size: 256.0748pt x 171.90923pt.
+ [3] [4 <./images/mooresLaw.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 438--439
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 438--439
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 438--439
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 438--439
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 438--439
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 440--441
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 440--441
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 440--441
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 440--441
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 440--441
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 442--443
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 442--443
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 442--443
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 442--443
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 442--443
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 445--446
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 445--446
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 445--446
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 445--446
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 445--446
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 447--448
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 447--448
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 447--448
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 447--448
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 447--448
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 449--450
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 449--450
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 449--450
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 449--450
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 449--450
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 451--452
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 451--452
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 451--452
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 451--452
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 451--452
+
+ []
+
+[7]
+Chapter 2.
+[8
+
+]
+Chapter 3.
+[9
+
+]
+Chapter 4.
+[10
+
+]
+Chapter 5.
+[11
+
+]
+Chapter 6.
+[12
+
+]
+Underfull \hbox (badness 10000) detected at line 584
+ 
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 588
+ 
+ []
+
+
+Overfull \hbox (125.73419pt too wide) in paragraph at lines 588--591
+[]\OT1/cmr/bx/n/12 [2] \OT1/cmr/m/n/12 ``The Most Pop-u-lar Smart-phone Op-er-a
+t-ing Sys-tems Glob-ally,'' \OT1/cmr/m/it/12 http://www.lifehacker.com.au/2014/
+09/the-
+ []
+
+
+Overfull \hbox (5.99835pt too wide) in paragraph at lines 588--591
+\OT1/cmr/m/it/12 most-popular-smartphone-operating-systems-around-the-world/\OT
+1/cmr/m/n/12 , Septem-ber 2014.
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 592
+ 
+ []
+
+
+Overfull \hbox (63.99092pt too wide) in paragraph at lines 592--595
+[]\OT1/cmr/bx/n/12 [3] \OT1/cmr/m/n/12 ``An-droid Sys-tem Ar-chi-tec-ture'' \OT
+1/cmr/m/it/12 https://mahalelabs.files.wordpress.com/2013/03/androidstack-
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 596
+ 
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 600
+ 
+ []
+
+
+Overfull \hbox (62.67816pt too wide) in paragraph at lines 600--603
+[]\OT1/cmr/bx/n/12 [5] \OT1/cmr/m/n/12 ``Wid-gets | An-droid De-vel-op-ers'' \O
+T1/cmr/m/it/12 http://developer.android.com/design/patterns/widgets.html\OT1/cm
+r/m/n/12 ,
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 604
+ 
+ []
+
+
+Overfull \hbox (198.50397pt too wide) in paragraph at lines 604--607
+[]\OT1/cmr/bx/n/12 [6] \OT1/cmr/m/n/12 ``Ap-pli-ca-tion Fun-da-men-tals | An-dr
+oid De-vel-op-ers'' \OT1/cmr/m/it/12 http://developer.android.com/guide/compone
+nts/fundamentals.html\OT1/cmr/m/n/12 ,
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 608
+ 
+ []
+
+
+Overfull \hbox (91.28244pt too wide) in paragraph at lines 608--611
+[]\OT1/cmr/bx/n/12 [7] \OT1/cmr/m/n/12 ``Ac-tiv-i-ties | An-droid De-vel-op-ers
+'' \OT1/cmr/m/it/12 http://developer.android.com/guide/components/activities.ht
+ml\OT1/cmr/m/n/12 ,
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 612
+ 
+ []
+
+
+Overfull \hbox (76.67694pt too wide) in paragraph at lines 612--615
+[]\OT1/cmr/bx/n/12 [8] \OT1/cmr/m/n/12 ``Ser-vices | An-droid De-vel-op-ers'' \
+OT1/cmr/m/it/12 http://developer.android.com/guide/components/services.html\OT1
+/cmr/m/n/12 ,
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 616
+ 
+ []
+
+
+Overfull \hbox (85.12256pt too wide) in paragraph at lines 616--619
+[]\OT1/cmr/bx/n/12 [9] \OT1/cmr/m/n/12 ``Wiki-me-dia Up-load'' \OT1/cmr/m/it/12
+ http://www.extremetech.com/wp-content/uploads/2015/04/MooresLaw2.png\OT1/cmr/m
+/n/12 ,
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 620
+ 
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 624
+ 
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 628
+ 
+ []
+
+[13
+
+]
+Underfull \hbox (badness 10000) detected at line 632
+ 
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 636
+ 
+ []
+
+
+Overfull \hbox (45.45723pt too wide) in paragraph at lines 636--639
+[]\OT1/cmr/bx/n/12 [14] \OT1/cmr/m/n/12 ``An-droid PSA: Stop Us-ing Task Killer
+ Apps'' \OT1/cmr/m/it/12 http://phandroid.com/2011/06/16/android-
+ []
+
+[14]
+Appendix A.
+[15
+
+]
+Appendix B.
+[16
+
+] ("Srinivas Muthu Masters Thesis.aux") ) 
+Here is how much of TeX's memory you used:
+ 1337 strings out of 493673
+ 17532 string characters out of 3141520
+ 76808 words of memory out of 3000000
+ 4714 multiletter control sequences out of 15000+200000
+ 9147 words of font info for 32 fonts, out of 3000000 for 9000
+ 1025 hyphenation exceptions out of 8191
+ 27i,9n,19p,1870b,241s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmti12.pfb>
+Output written on "Srinivas Muthu Masters Thesis.pdf" (29 pages, 242049 bytes).
+
+PDF statistics:
+ 117 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+
