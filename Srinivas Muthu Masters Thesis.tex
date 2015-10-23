@@ -512,7 +512,28 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 %XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 \chapter{Related Work}
-
+	
+	\section{Context Patterns in Application Usage}
+		Several works have attempted to collect user behavior data and they've accomplished this in unique ways. Hannu Verkasalo, in his 2007 paper titled {\em Contextual Patterns in Mobile Service Usage} analyzes how mobile services are used in different contexts [18]. Usage contexts were divided into {\em home, office} and {\em on the move}. A specialized algorithm tracked user's location patterns over a period of time to determine whether the user was at home or at work. Furthermore, changes in location data revealed whether the user was in transit between home and work. There was a correlation between the mobile services requested by the user and the user's physical location, which enabled the algorithm to understand the user's context quite well (refer Figure 2-1). It was also observed that certain services were requested more during the weekends as opposed to certain others being requested more during the weekdays i.e. days with office hours.  
+		
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics[width = 90mm]{images/appsByTime.png}
+			\caption[Mobile Services Requested At Various Times Of Day]
+			{By classifying user context into three distinct entities namely {\em home, work} and {\em on the move}, the author managed to infer which services were requested more in a given context. For e.g. Voice services i.e. calling was predominantly requested while the user was at home. This type of information can be very useful.}
+		\end{figure}
+	
+	\section{Context Phone}
+		Mika Raento, Antti Oulasvirta, Renaud Petit, and Hannu Toivonen, in their paper titled {\em ContextPhone: A Prototyping Platform for Context-Aware Mobile Applications} proposed that mobile phones are well suited for context aware computing due to an intimate relationship between the user and the phone [19]. Their primary goal was to provide context as a resource and in order to accomplish that, developed a {\em ContextPhone} which comprised of four components:
+		
+		\begin{itemize}
+			\item Sensors that acquire contextual data (such as location data from GPS)
+			\item Communication services (such as SMS, MMS to list a few)
+			\item Customizable Applications (that can replace existing applications)
+			\item System Services (such as background services for error logging)
+		\end{itemize}
+		
+		It is important to observe that this paper came out in 2005, two years before Android was even born. Yet, their fundamental point of focus is still relevant in how we can use Context as a powerful resource. Their point about customizable applications
 \chapter{Challenges in Collecting the Desired Metrics}
 	
 	\section{What are the desired metrics?}
@@ -728,6 +749,14 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\emph{http://www.vldb.org/conf/1994/P439.PDF}, January 1994. 
 	Online; Last Accessed: October 22, 2015.	
 		
+	\item \textbf{[18]} ``Hannu Verkasalo - Contextual patterns in mobile service usage''
+	\emph{http://lib.tkk.fi/Diss/2009/isbn9789512298440/isbn9789512298440.pdf}, March 2008. 
+	Online; Last Accessed: October 23, 2015.
+			
+	\item \textbf{[19]} ``Mika Raento, Antti Oulasvirta, Renaud Petit, and Hannu Toivonen - ContextPhone: A Prototyping Platform for Context-Aware Mobile Applications''
+	\emph{http://ieeexplore.ieee.org/xpl/login.jsp?tp=\&arnumber=1427649\&url=http\%3A\%2F\%2Fieeexplore.ieee.org\%2Fxpls\%2Fabs\_all.jsp\%3Farnumber\%3D1427649}, May 2005. 
+	Online; Last Accessed: October 23, 2015.
+				
 \end{referencelist}
 
 
