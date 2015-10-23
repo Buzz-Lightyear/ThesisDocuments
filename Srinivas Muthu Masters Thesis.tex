@@ -286,7 +286,7 @@ I'd like to thank all my friends and family for supporting me throughout my time
  \abbreviation{IC}{Integrated Circuits}
  \abbreviation{MB}{Mega-Byte} 
  \abbreviation{GB}{Giga-Byte}
- 
+ \abbreviation{APC}{Android Process Cache} 
 %							Template for some symbol based abbreviations
 
 %    \abbreviation{GLE}{Gauss' law for electricity: $\nabla\cdot E
@@ -394,7 +394,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\section{Android Operating System}
 		
 		\subsection{Overview of the Android OS}
-			Android is a mobile OS based on the Linux kernel and designed primarily for touchscreen devices such as smart-phones and tablets [1]. In addition to touchscreen devices, Android TV, Android Auto and Android Wear are emerging technologies with specialized user interfaces. Globally, it is the most popular mobile OS [2]. Android has an active community of developers and enthusiasts who use the AOSP source code to develop and distribute their own modified versions of the operating system [4]. Android homescreens are typically made up of app icons and widgets. App icons launch the associated app, whereas widgets display live, auto-updating content such as the weather forecast, the user's email inbox, or a news ticker directly on the homescreen [5].
+			Android is a mobile OS (Operating System) based on the Linux kernel and designed primarily for touchscreen devices such as smart-phones and tablets [1]. In addition to touchscreen devices, Android TV, Android Auto and Android Wear are emerging technologies with specialized user interfaces. Globally, it is the most popular mobile OS [2]. Android has an active community of developers and enthusiasts who use the AOSP (Android Open Source Project) source code to develop and distribute their own modified versions of the operating system [4]. Android homescreens are typically made up of app icons and widgets. App icons launch the associated app, whereas widgets display live, auto-updating content such as the weather forecast, the user's email inbox, or a news ticker directly on the homescreen [5].
 			
 			Internally, Android OS is built on top of a Linux kernel. On top of the Linux kernel, there are the middleware, libraries and APIs written in C and application software running on an application framework. Development of the Linux kernel continues independently of other Android's source code bases.
 			
@@ -407,18 +407,18 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		\subsection{Applications, Activities and Services}
 			
 			\subsubsection{Applications}
-				Android apps are written in the Java programming language. The Android SDK tools compiles the code, along with any data and resource files into an APK, which is an archive file with an .apk suffix. One APK file contains all the contents of an Android app and is the file that Android-powered devices use to install the app [6]. The Android operating system is a multi-user Linux system in which each app is a different user. Each process has its own virtual machine (VM), so an app's code runs in isolation from other apps. By default, every app runs in its own Linux process.
+				Android apps are written in the Java programming language. The Android SDK tools compiles the code, along with any data and resource files into an APK (Android Package), which is an archive file with an .apk suffix. One APK file contains all the contents of an Android app and is the file that Android-powered devices use to install the app [6]. The Android operating system is a multi-user Linux system in which each app is a different user. Each process has its own virtual machine (VM), so an app's code runs in isolation from other apps. By default, every app runs in its own Linux process.
 				
 			\subsubsection{Activities}
 				An Activity is an application component that provides a screen with which users can interact in order to do something, such as dial the phone, take a photo, send an email, or view a map [7]. An application usually consists of multiple activities that are loosely bound to each other. Typically, one activity in an application is specified as the main activity, which is presented to the user when launching the application for the first time. Each activity can then start another activity in order to perform different actions.
 				
 			\subsection{Services}
-				A Service is an application component that can perform long-running operations in the background and does not provide a user interface [8]. Another application component can start a service and it will continue to run in the background even if the user switches to another application. Additionally, a component can bind to a service to interact with it and even perform IPC. For example, a service might handle network transactions, play music, perform file I/O, or interact with a content provider, all from the background.
+				A Service is an application component that can perform long-running operations in the background and does not provide a user interface [8]. Another application component can start a service and it will continue to run in the background even if the user switches to another application. Additionally, a component can bind to a service to interact with it and even perform IPC (Inter Process Communication). For example, a service might handle network transactions, play music, perform file I/O, or interact with a content provider, all from the background.
 					 	
 	\section{Growth of available RAM over the years}
 		
 		\subsection{Advances in Technology}
-			RAM is a form of computer data storage. A RAM device allows data items to be accessed (read or written) in almost the same amount of time irrespective of the physical location of data inside the memory. The overall goal of using a RAM device is to obtain the highest possible average access performance while minimizing the total cost of the entire memory system. Today, random-access memory takes the form of IC(s).
+			RAM (Random Access memory) is a form of computer data storage. A RAM device allows data items to be accessed (read or written) in almost the same amount of time irrespective of the physical location of data inside the memory. The overall goal of using a RAM device is to obtain the highest possible average access performance while minimizing the total cost of the entire memory system. Today, random-access memory takes the form of IC (Integrated Circuits)(s).
 		
 			\subsubsection{Moore's Law}
 				Moore's law is the observation that the number of transistors in a dense IC doubles approximately every two years.
@@ -429,26 +429,50 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 					\caption[Moore's law]{[9] Moore's Law}
 				\end{figure}
 				
-				Advancements in digital electronics are strongly linked to Moore's law, especially in the context of memory capacity. T-Mobile G1, the very first Android smart-phone to be released back in 2008 [10] has a 256 MB RAM [11]. In comparison, the Nexus 6P that was released in September 2015 has a 3 GB RAM and some devices like the LG T585 have a 16 GB RAM [12][13], which amounts to 64 times the memory capacity of the T-Mobile G1. The rapid growth in the amount of RAM available to Android devices has in part led to newer possibilities and in our case, a better CRA for determining which processes (in the context of Android applications) remain in memory.
+				Advancements in digital electronics are strongly linked to Moore's law, especially in the context of memory capacity. T-Mobile G1, the very first Android smart-phone to be released back in 2008 [10] has a 256 MB (Mega-Byte) RAM [11]. In comparison, the Nexus 6P that was released in September 2015 has a 3 GB (Giga-Byte) RAM and some devices like the LG T585 have a 16 GB RAM [12][13], which amounts to 64 times the memory capacity of the T-Mobile G1. The rapid growth in the amount of RAM available to Android devices has in part led to newer possibilities and in our case, a better CRA (Cache Replacement Algorithm) for determining which processes (in the context of Android applications) remain in memory.
 			 	
 		\subsection{Demise of Task Killers}
 			One of the main benefits of the Android OS is the fact that unlike certain other OS(s), it can run apps in the background. This enables us to have multiple applications open at the same time which results in true multitasking. Thus, RAM availability is highly desirable [14]. A popular misconception is that forcibly removing applications from memory in order to 'free up RAM' will result in increased performance. In fact, several task-killer applications promise to do precisely that. With the advancement in the amount of RAM available, the debate should be about how to better use all this extra space, not killing applications to 'free up' more space. In fact, the Android OS can go one step further and pro-actively cache applications that the user might use in the near future. We'll analyze this prospect in more detail in the upcoming chapters.  
-	\section{Current CRA used by Android}
-		\subsection{LRU}
-		A\\\\\\\\\\
-		\subsection{Alternatives}
-		A\\\\\\\\\\
-		\subsection{Exceptions to the Rule}
-		A\\\\\\\\\\
+			
+	\section{How Android Manages Processes}
+		
+		\subsection{Android Process Lifecycle}
+			A Android process can be in one of five different states at any given time, from most important to least important [15]:
+			
+			\begin{itemize}
+				\item Foreground process: A foreground process is one that is required for what the user is currently doing.
+				
+				\item Visible process: A visible process is one holding an Activity that is visible to the user on-screen but not in the foreground.
+				
+				\item Service Process: Service processes are not directly visible to the user, they are generally doing things that the user cares about (such as playing music in the background). 
+				
+				\item Background process: A background process is one holding an Activity that is not currently visible to the user. They are kept in an LRU (Least Recently Used) list to ensure the process that was most recently seen by the user is the last to be killed when running low on memory.  
+				
+				\item Empty process: An empty process is one that doesn't hold any active application components. The only reason to keep such a process around is as a cache to improve startup time the next time a component of its application needs to run.				
+			\end{itemize}
+			
+			Every Android smart-phone user is capable of checking the processes that currently reside in physical memory. The Application Manager which is part of the Settings app shows a list of running processes and cached background processes. Additionally, it breaks down the composition of RAM usage by the System applications and user installed applications. 
+			
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width = 90mm]{images/runningApps.png}
+				\caption[Running Apps and Cached Background Processes]
+				{Left - List of Running Applications (Active Processes and Services)\\
+					Right - List of Cached Background Processes}
+			\end{figure}			
+			 
+		\subsection{LRU Cache}
+			LRU is a CRA that discards the least recently used items first. This algorithm requires keeping track of what was used when, which is expensive if one wants to make sure the algorithm always discards the least recently used item [17]. Android keeps processes that are not hosting a foreground app component in a LRU cache. As the system runs low on memory, it may kill processes in the LRU cache beginning with the process least recently used, but also giving some consideration toward which processes are most memory intensive [16].
+			
 	\section{Goals and Objectives}
+		
 		\subsection{A User-Centric CRA}
-		A\\\\\\\\\\
-		\subsection{Improvement in CHR and overall efficiency}
-		A\\\\\\\\\\
-		\subsection{Effects on the End User}
-		A\\\\\\\\\\
+			The main benefit of caching processes (components of applications recently clicked by the user) in memory is to improve startup time (of the application), the next time a component of the application needs to run. This greatly enhances the usability experience and therefore it's in Android's best interests to increase the efficiency of this cache i.e. improve its CHR (Cache Hit Ratio). In addition to recency of application usage (which is what Android currently relies on in the form of LRU as a CRA), there is scope to potentially infer what application a user may click in the near future. A more user-centric CRA could look into contextual clues and deduce patterns in user behavior to better the decision making involved in determining which applications to cache in memory.
+			
+			We will explore in theoretical detail many such possibilities for user behavior inference and as a proof of concept, read the user's Calendar  application and parse for contextual information that could help in improving the CHR of the APC (Android Process Cache). 
+
 	\section{Organization of Thesis}
-		Describe briefly what each subsequent section aims to address.\\\\\\\\\\
+		Several works in the past have focused on context-aware applications and ways to observe user behavior patterns. We'll explore some these works and how this contextual data was put to use in Section 2. In Section 3, we'll take a look at some of the challenges in collecting cache metrics like detecting what's in the RAM, detecting when the user clicks a new application, whether to approach the problem at the user level or the system level, to list a few. Section 4 elaborates on the setup of the experiment and analyzes the design of the applications used to collect these metrics. We dive into the data in Section 5 and summarize its ramifications. We also investigate how certain factors could explain the variation in data. Section 6 talks about scope for future work and explores some of the possibilities of directly adding to this work. We conclude the thesis with Section 7.  
 
 
 %				How to Refer to a table, look below:
@@ -489,36 +513,93 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 
 \chapter{Related Work}
 
-%      \vfill
-%      \begin{figure}[ht]
-%      \begin{center}
-%      \begin{tabular}{|cp{5.5in}c|} \hline
-%      & Let's pretend that instead of this text I provided a figure
-%      of myself smoking a most excellent cigar.  As long as we're
-%      pretending, let's assume that figure shows that I have a really
-%      big smile on my face. & \\
-%      & & \\[-0.75em]
-%      & OK, the truth is that I wanted to provide an example of a
-%      figure to contrast the text in the figure's caption to the text
-%      entered as a entry in the \emph{List of Figures}. This
-%      difference is controlled through the
-%      $\backslash$\texttt{caption[\,]\{\}} command. Appendix~B of
-%      ``Read Me First (v12).pdf'' provides a primer for this issue. &
-%      \\ \hline
-%      \end{tabular}
-%      \caption[Dr.~Dowd enjoying a wonderful cigar.] {Dr.~Dowd
-%              enjoying a wonderful cigar. From the smile on his face
-%              we are left to wonder if the cigar is an H.~Upmann
-%              \emph{Corona Imperial} or a Punch \emph{Rothchild}
-%              (with a double maduro wrapper, of course). \label{DOWD}
-%              }
-%      \end{center}
-%      \end{figure}
-%      \vfill
-\chapter{Phase A Design}
-\chapter{Phase B Design}
+\chapter{Challenges in Collecting the Desired Metrics}
+	
+	\section{What are the desired metrics?}
+		
+		\subsection{CRA(s) Under Consideration}
+		
+		\subsection{Cache Hit}
+			
+			\subsubsection{Categorizing Hits for Hybrid Approach}
+		
+		\subsection{Cache Miss}
+		
+		\subsection{Cache Hit Ratio}
+		
+		\subsection{Supplementary Data}
+	
+	\section{Challenges}
+		
+		\subsection{Deciding Between System vs User Level Approach}
+		
+		\subsection{Getting Processes in Memory}
+		
+		\subsection{Detecting a Change in the Foreground Application}
+		
+		\subsection{Reading the User's Calendar}
+		
+		\subsection{Parsing the Calendar Information}
+		
+		\subsection{Addressing Privacy Concerns}
+
+\chapter{Experiment Setup and Application Design}
+	
+	\section{Eligibility for Volunteers}
+	
+	\section{Process and Duration of Experiment}
+	
+	\section{Cache Analyzer Design}
+	
+	\section{Context Analyzer Design}
+	
+	\section{Code and APK}
+
 \chapter{Data Analysis and Results}
-\chapter{Conclusion and Future Work}
+	
+	\section{Phase A Data}
+	
+	\section{Phase B Data}
+	
+	\section{Default Approach Metrics}
+	
+	\section{Pure Prediction Approach Metrics}
+	
+	\section{Hybrid Approach Metrics}
+	
+	\section{Factors Influencing Variation In Data}
+		
+		\subsection{Android Version and Phone Model}
+		
+		\subsection{Number of Applications Installed}
+		
+		\subsection{Number of Applications Used}
+		
+		\subsection{User Bias}
+		
+		\subsection{User Demographics}
+	
+	\section{Points of Weakness}		
+
+\chapter{Scope for Future Work}
+	
+	\section{Conclusion}
+	
+	\section{Scope for Improvement}
+		
+		\subsection{Machine Learning in Calendar Parsing}
+		
+		\subsection{Other Ways of Gathering User Behavior Data}
+		
+		\subsection{Alternate Ways of Using the Contextual Information}
+			
+			\subsubsection{Switching to Silent Mode}
+			
+			\subsubsection{Disabling Texting at High Speeds}
+		
+		\subsection{Implementing the Hybrid Cache}
+
+\chapter{Conclusion}		
 
 %XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 %XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -636,6 +717,18 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\item \textbf{[14]} ``Android PSA: Stop Using Task Killer Apps''
 	\emph{http://phandroid.com/2011/06/16/android-psa-stop-using-task-killer-apps-now/}, June 2011. 
 	Online; Last Accessed: October 22, 2015.
+	
+	\item \textbf{[15]} ``Processes and Application Life Cycle''
+	\emph{http://developer.android.com/guide/topics/processes/process-lifecycle.html}, October 2015. 
+	Online; Last Accessed: October 22, 2015.
+	
+	\item \textbf{[16]} ``Managing Your App's Memory''
+	\emph{http://developer.android.com/training/articles/memory.html}, October 2015. 
+	Online; Last Accessed: October 22, 2015.	
+	
+	\item \textbf{[17] Theodore Johnson, Dennis Shasha} ``A Low Overhead High Performance Buffer Management Replacement Algorithm''
+	\emph{http://www.vldb.org/conf/1994/P439.PDF}, January 1994. 
+	Online; Last Accessed: October 22, 2015.	
 		
 \end{referencelist}
 

@@ -1,36 +1,73 @@
 \contentsline {chapter}{Abstract}{iii}
 \contentsline {chapter}{Acknowledgments}{vi}
 \contentsline {chapter}{Contents}{vii}
-\contentsline {chapter}{List of Tables}{ix}
-\contentsline {chapter}{List of Figures}{x}
-\contentsline {chapter}{List of Abbreviations}{xi}
-\contentsline {chapter}{List of Symbols}{xii}
-\contentsline {chapter}{Preface}{xiii}
+\contentsline {chapter}{List of Tables}{xi}
+\contentsline {chapter}{List of Figures}{xii}
+\contentsline {chapter}{List of Abbreviations}{xiii}
+\contentsline {chapter}{List of Symbols}{xiv}
+\contentsline {chapter}{Preface}{xv}
 \contentsline {chapter}{\numberline {1}Introduction}{1}
 \contentsline {section}{\numberline {1.1}Android Operating System}{1}
 \contentsline {subsection}{\numberline {1.1.1}Overview of the Android OS}{1}
 \contentsline {subsection}{\numberline {1.1.2}Applications, Activities and Services}{2}
 \contentsline {subsubsection}{\numberline {1.1.2.1}Applications}{2}
-\contentsline {subsubsection}{\numberline {1.1.2.2}Activities}{2}
+\contentsline {subsubsection}{\numberline {1.1.2.2}Activities}{3}
 \contentsline {subsection}{\numberline {1.1.3}Services}{3}
 \contentsline {section}{\numberline {1.2}Growth of available RAM over the years}{3}
 \contentsline {subsection}{\numberline {1.2.1}Advances in Technology}{3}
 \contentsline {subsubsection}{\numberline {1.2.1.1}Moore's Law}{4}
-\contentsline {subsection}{\numberline {1.2.2}Demise of Task Killers}{4}
-\contentsline {section}{\numberline {1.3}Current CRA used by Android}{5}
-\contentsline {subsection}{\numberline {1.3.1}LRU}{5}
-\contentsline {subsection}{\numberline {1.3.2}Alternatives}{5}
-\contentsline {subsection}{\numberline {1.3.3}Exceptions to the Rule}{6}
-\contentsline {section}{\numberline {1.4}Goals and Objectives}{6}
-\contentsline {subsection}{\numberline {1.4.1}A User-Centric CRA}{6}
-\contentsline {subsection}{\numberline {1.4.2}Improvement in CHR and overall efficiency}{6}
-\contentsline {subsection}{\numberline {1.4.3}Effects on the End User}{7}
-\contentsline {section}{\numberline {1.5}Organization of Thesis}{7}
-\contentsline {chapter}{\numberline {2}Related Work}{8}
-\contentsline {chapter}{\numberline {3}Phase A Design}{9}
-\contentsline {chapter}{\numberline {4}Phase B Design}{10}
-\contentsline {chapter}{\numberline {5}Data Analysis and Results}{11}
-\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{12}
-\contentsline {chapter}{References}{13}
-\contentsline {chapter}{\numberline {A}Insert the Heading to Appendix A}{15}
-\contentsline {chapter}{\numberline {B}Insert the Heading to Appendix B}{16}
+\contentsline {subsection}{\numberline {1.2.2}Demise of Task Killers}{5}
+\contentsline {section}{\numberline {1.3}How Android Manages Processes}{5}
+\contentsline {subsection}{\numberline {1.3.1}Android Process Lifecycle}{5}
+\contentsline {subsection}{\numberline {1.3.2}LRU Cache}{7}
+\contentsline {section}{\numberline {1.4}Goals and Objectives}{7}
+\contentsline {subsection}{\numberline {1.4.1}A User-Centric CRA}{7}
+\contentsline {section}{\numberline {1.5}Organization of Thesis}{8}
+\contentsline {chapter}{\numberline {2}Related Work}{9}
+\contentsline {chapter}{\numberline {3}Challenges in Collecting the Desired Metrics}{10}
+\contentsline {section}{\numberline {3.1}What are the desired metrics?}{11}
+\contentsline {subsection}{\numberline {3.1.1}CRA(s) Under Consideration}{11}
+\contentsline {subsection}{\numberline {3.1.2}Cache Hit}{11}
+\contentsline {subsubsection}{\numberline {3.1.2.1}Categorizing Hits for Hybrid Approach}{11}
+\contentsline {subsection}{\numberline {3.1.3}Cache Miss}{11}
+\contentsline {subsection}{\numberline {3.1.4}Cache Hit Ratio}{11}
+\contentsline {subsection}{\numberline {3.1.5}Supplementary Data}{11}
+\contentsline {section}{\numberline {3.2}Challenges}{11}
+\contentsline {subsection}{\numberline {3.2.1}Deciding Between System vs User Level Approach}{11}
+\contentsline {subsection}{\numberline {3.2.2}Getting Processes in Memory}{11}
+\contentsline {subsection}{\numberline {3.2.3}Detecting a Change in the Foreground Application}{11}
+\contentsline {subsection}{\numberline {3.2.4}Reading the User's Calendar}{11}
+\contentsline {subsection}{\numberline {3.2.5}Parsing the Calendar Information}{11}
+\contentsline {subsection}{\numberline {3.2.6}Addressing Privacy Concerns}{11}
+\contentsline {chapter}{\numberline {4}Experiment Setup and Application Design}{12}
+\contentsline {section}{\numberline {4.1}Eligibility for Volunteers}{12}
+\contentsline {section}{\numberline {4.2}Process and Duration of Experiment}{12}
+\contentsline {section}{\numberline {4.3}Cache Analyzer Design}{12}
+\contentsline {section}{\numberline {4.4}Context Analyzer Design}{12}
+\contentsline {section}{\numberline {4.5}Code and APK}{12}
+\contentsline {chapter}{\numberline {5}Data Analysis and Results}{13}
+\contentsline {section}{\numberline {5.1}Phase A Data}{14}
+\contentsline {section}{\numberline {5.2}Phase B Data}{14}
+\contentsline {section}{\numberline {5.3}Default Approach Metrics}{14}
+\contentsline {section}{\numberline {5.4}Pure Prediction Approach Metrics}{14}
+\contentsline {section}{\numberline {5.5}Hybrid Approach Metrics}{14}
+\contentsline {section}{\numberline {5.6}Factors Influencing Variation In Data}{14}
+\contentsline {subsection}{\numberline {5.6.1}Android Version and Phone Model}{14}
+\contentsline {subsection}{\numberline {5.6.2}Number of Applications Installed}{14}
+\contentsline {subsection}{\numberline {5.6.3}Number of Applications Used}{14}
+\contentsline {subsection}{\numberline {5.6.4}User Bias}{14}
+\contentsline {subsection}{\numberline {5.6.5}User Demographics}{14}
+\contentsline {section}{\numberline {5.7}Points of Weakness}{14}
+\contentsline {chapter}{\numberline {6}Scope for Future Work}{15}
+\contentsline {section}{\numberline {6.1}Conclusion}{15}
+\contentsline {section}{\numberline {6.2}Scope for Improvement}{15}
+\contentsline {subsection}{\numberline {6.2.1}Machine Learning in Calendar Parsing}{15}
+\contentsline {subsection}{\numberline {6.2.2}Other Ways of Gathering User Behavior Data}{15}
+\contentsline {subsection}{\numberline {6.2.3}Alternate Ways of Using the Contextual Information}{15}
+\contentsline {subsubsection}{\numberline {6.2.3.1}Switching to Silent Mode}{15}
+\contentsline {subsubsection}{\numberline {6.2.3.2}Disabling Texting at High Speeds}{15}
+\contentsline {subsection}{\numberline {6.2.4}Implementing the Hybrid Cache}{15}
+\contentsline {chapter}{\numberline {7}Conclusion}{16}
+\contentsline {chapter}{References}{17}
+\contentsline {chapter}{\numberline {A}Insert the Heading to Appendix A}{19}
+\contentsline {chapter}{\numberline {B}Insert the Heading to Appendix B}{20}
