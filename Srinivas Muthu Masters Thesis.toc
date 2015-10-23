@@ -59,15 +59,12 @@
 \contentsline {subsection}{\numberline {5.6.5}User Demographics}{14}
 \contentsline {section}{\numberline {5.7}Points of Weakness}{14}
 \contentsline {chapter}{\numberline {6}Scope for Future Work}{15}
-\contentsline {section}{\numberline {6.1}Conclusion}{15}
-\contentsline {section}{\numberline {6.2}Scope for Improvement}{15}
-\contentsline {subsection}{\numberline {6.2.1}Machine Learning in Calendar Parsing}{15}
-\contentsline {subsection}{\numberline {6.2.2}Other Ways of Gathering User Behavior Data}{15}
-\contentsline {subsection}{\numberline {6.2.3}Alternate Ways of Using the Contextual Information}{15}
-\contentsline {subsubsection}{\numberline {6.2.3.1}Switching to Silent Mode}{15}
-\contentsline {subsubsection}{\numberline {6.2.3.2}Disabling Texting at High Speeds}{15}
-\contentsline {subsection}{\numberline {6.2.4}Implementing the Hybrid Cache}{15}
+\contentsline {section}{\numberline {6.1}Improving Context Analysis}{15}
+\contentsline {subsection}{\numberline {6.1.1}Machine Learning in Calendar Parsing}{15}
+\contentsline {subsection}{\numberline {6.1.2}Other Ways of Gathering User Behavior Data}{15}
+\contentsline {section}{\numberline {6.2}Alternate Ways of Using the Contextual Information}{15}
+\contentsline {subsection}{\numberline {6.2.1}Switching to Silent Mode}{15}
+\contentsline {subsection}{\numberline {6.2.2}Disabling Texting at High Speeds}{15}
+\contentsline {section}{\numberline {6.3}Implementing the Hybrid Cache}{15}
 \contentsline {chapter}{\numberline {7}Conclusion}{16}
 \contentsline {chapter}{References}{17}
-\contentsline {chapter}{\numberline {A}Insert the Heading to Appendix A}{19}
-\contentsline {chapter}{\numberline {B}Insert the Heading to Appendix B}{20}
