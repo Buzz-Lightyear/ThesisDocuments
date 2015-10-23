@@ -48,7 +48,10 @@
 \contentsline {section}{\numberline {4.2}Process and Duration of Experiment}{17}
 \contentsline {section}{\numberline {4.3}Cache Analyzer Design}{17}
 \contentsline {section}{\numberline {4.4}Context Analyzer Design}{17}
-\contentsline {section}{\numberline {4.5}Code and APK}{17}
+\contentsline {section}{\numberline {4.5}Tools, Version Control and APK}{17}
+\contentsline {subsection}{\numberline {4.5.1}Android Studio}{17}
+\contentsline {subsection}{\numberline {4.5.2}Git}{17}
+\contentsline {subsection}{\numberline {4.5.3}Third Party APK(s)}{17}
 \contentsline {chapter}{\numberline {5}Data Analysis and Results}{18}
 \contentsline {section}{\numberline {5.1}Phase A Data}{19}
 \contentsline {section}{\numberline {5.2}Phase B Data}{19}
