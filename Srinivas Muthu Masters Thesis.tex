@@ -287,6 +287,8 @@ I'd like to thank all my friends and family for supporting me throughout my time
  \abbreviation{MB}{Mega-Byte} 
  \abbreviation{GB}{Giga-Byte}
  \abbreviation{APC}{Android Process Cache} 
+ \abbreviation{APMD}{Android Powered Mobile Device} 
+ 
 %							Template for some symbol based abbreviations
 
 %    \abbreviation{GLE}{Gauss' law for electricity: $\nabla\cdot E
@@ -524,7 +526,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		\end{figure}
 	
 	\section{Context Phone}
-		Mika Raento, Antti Oulasvirta, Renaud Petit, and Hannu Toivonen, in their paper titled {\em ContextPhone: A Prototyping Platform for Context-Aware Mobile Applications} proposed that mobile phones are well suited for context aware computing due to an intimate relationship between the user and the phone [19]. Their primary goal was to provide context as a resource and in order to accomplish that, developed a {\em ContextPhone} which comprised of four components:
+		Mika Raento, Antti Oulasvirta, Renaud Petit, and Hannu Toivonen, in their paper titled {\em ContextPhone: A Prototyping Platform for Context-Aware Mobile Applications} proposed that mobile phones are well suited for context aware computing due to an intimate relationship between the user and the phone [19]. Their primary goal was to provide context as a resource and in order to accomplish that, developed a {\em ContextPhone} which comprised of four components (Refer Figure 2-2):
 		
 		\begin{itemize}
 			\item Sensors that acquire contextual data (such as location data from GPS)
@@ -533,7 +535,15 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\item System Services (such as background services for error logging)
 		\end{itemize}
 		
-		It is important to observe that this paper came out in 2005, two years before Android was even born. Yet, their fundamental point of focus is still relevant in how we can use Context as a powerful resource. Their point about customizable applications
+		
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics[width = 90mm]{images/contextPhone.png}
+			\caption[Context Phone]
+			{The ContextPhone platform; Four interconnected components — sensors, system services, communication services, and customizable applications — facilitate communication with the outside world.}
+		\end{figure}
+		
+		It is important to observe that this paper came out in 2005, two years before the first version of Android was even launched. Yet, their fundamental point of focus is still relevant in how we can use context as a powerful resource. Their point about the necessity of customizable applications that are needed for context information to be relevant perfectly applies to this thesis. The Android OS which is open sourced as AOSP is as customizable as it can get when it comes to modifying mobile components and by extension the user experience with APMD(Android Powered Mobile Device)(s). To be specific, it facilitates ways to gather cache related information such as the list of processes currently residing in memory, the current foreground application and whether the caching mechanism per se is up for modification to list a few. It would be impossible to collect and/or modify such information on any other mobile OS (such as Apple's iOS).
 \chapter{Challenges in Collecting the Desired Metrics}
 	
 	\section{What are the desired metrics?}
