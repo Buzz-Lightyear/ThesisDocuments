@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.21)  24 OCT 2015 10:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.21)  24 OCT 2015 12:51
 entering extended mode
 **"Srinivas Muthu Masters Thesis.tex"
 ("Srinivas Muthu Masters Thesis.tex"
@@ -269,25 +269,25 @@ File: images/beforeAndAfterNews.png Graphic file (type png)
 Package pdftex.def Info: images/beforeAndAfterNews.png used on input line 630.
 (pdftex.def)             Requested size: 256.0748pt x 227.18855pt.
  [19 <./images/beforeAndAfterNews.png>]
-[20]
+[20] [21]
 Chapter 4.
-[21
+[22
 
 ]
 Chapter 5.
-[22
+[23
 
 ]
 Overfull \vbox (153.43213pt too high) has occurred while \output is active []
 
 
-[23]
+[24]
 Chapter 6.
-[24
+[25
 
 ]
 Chapter 7.
-[25
+[26
 
 ]
 Underfull \hbox (badness 10000) detected at line 801
@@ -370,7 +370,7 @@ Overfull \hbox (9.45514pt too wide) in paragraph at lines 833--836
 w2.png\OT1/cmr/m/n/12 , Oc-
  []
 
-[26
+[27
 
 ]
 Underfull \hbox (badness 10000) detected at line 837
@@ -452,7 +452,7 @@ Underfull \hbox (badness 10000) detected at line 873
  
  []
 
-[27]
+[28]
 Underfull \hbox (badness 10000) detected at line 877
  
  []
@@ -522,7 +522,17 @@ Overfull \hbox (24.91689pt too wide) in paragraph at lines 905--908
 cementpolicy.pdf\OT1/cmr/m/n/12 ,
  []
 
-[28] ("Srinivas Muthu Masters Thesis.aux") ) 
+
+Underfull \hbox (badness 10000) detected at line 909
+ 
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 913
+ 
+ []
+
+[29] [30] ("Srinivas Muthu Masters Thesis.aux") ) 
 Here is how much of TeX's memory you used:
  1364 strings out of 493673
  18183 string characters out of 3141520
@@ -531,16 +541,16 @@ Here is how much of TeX's memory you used:
  9147 words of font info for 32 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  27i,9n,19p,1870b,243s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmti12.pfb>
-Output written on "Srinivas Muthu Masters Thesis.pdf" (43 pages, 916934 bytes).
+<C:/Program Files (x86)/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on "Srinivas Muthu Masters Thesis.pdf" (45 pages, 919231 bytes).
 
 PDF statistics:
- 171 PDF objects out of 1000 (max. 8388607)
+ 177 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

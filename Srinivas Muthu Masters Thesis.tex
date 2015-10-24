@@ -632,11 +632,14 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 					{The image to the left describes the snapshot of the CBP(s) as displayed to the end-user by the Settings app. The image to the right displays the snapshot of the CBP(s) after the end-user requests for the News and Weather application. Note that the News and Weather application will not be cached as a CBP until the user is done interacting with it as up until that point, it will reside in memory as an active process.}
 				\end{figure}				
 				
-				It is worth noting that a perfect implementation of LRU requires a timestamp on each reference, and the OS needs to keep a list of items ordered by the timestamp. This implementation may be deemed too expensive in certain cases especially if the frequency of memory references is high. The common practice is to approximate the LRU behavior and this can be achieved in other ways [27]. 
+				It is worth noting that a perfect implementation of LRU requires a timestamp on each reference, and the OS needs to keep a list of items ordered by the timestamp. This implementation may be deemed too expensive in certain cases especially if the frequency of memory references is high. The common practice is to approximate the LRU behavior and this can be achieved in other ways [27].
+				 
 			\subsubsection{Most Recently Used (MRU)}
+				MRU discards, in contrast to LRU, the most recently used items first. In findings presented at the 11th VLDB conference, Chou and DeWitt noted that when a file is being repeatedly scanned in a looping sequential reference pattern, MRU was the best replacement algorithm [28]. Subsequently other researchers presenting at the 22nd VLDB conference noted that for random access patterns and repeated scans over large datasets (sometimes known as cyclic access patterns) MRU cache algorithms had more hits than LRU due to their tendency to retain older data [29]. In our scenario, CBP(s) neither comprise a 'large dataset' nor are they repeatedly scanned in a looping sequential reference pattern (as they are only invoked during application requests which are on average, not that often), therefore it's unlikely that MRU would result in a high CHR but it's worth mentioning nonetheless. MRU algorithms are most useful in situations where the older an item is, the more likely it is to be accessed, which again is not a feature of CBP(s).			
 			
 			\subsubsection{Least Frequently Used (LFU)}
-			
+				LFU is a type of CRA usually associated with memory management within a computer. The standard characteristics of this method involve the system keeping track of the number of times an item is referenced in memory. When the cache is full and requires more room the system will purge the item with the lowest reference frequency. This could be a really good fit with our scenario given the tendency of most smart-phone users to stick with the same set of popular applications and use them in rotation [31].LFU is sometimes combined with a Least Recently Used algorithm called LRFU [30]. We'll explore some of the possibilities with LFU in the future scope section and in our proposed hybrid approach where we incorporate global frequency of application usage in obtaining contextual information.
+				 
 			\subsubsection{Random Replacement (RR)}
 			
 			\subsubsection{LRU - Context Hybrid}
@@ -905,7 +908,22 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\item \textbf{[27]} ``LRU Replacement Policy''
 	\\\emph{https://www.seas.upenn.edu/~cit595/cit595s10/handouts/LRUreplacementpolicy.pdf}, October 2015. 
 	Online; Last Accessed: October 24, 2015.
-											
+	
+	\item \textbf{[28]} ``Hong-Tai Chou, David J. Dewitt - An Evaluation of Buffer Management Strategies for Relational Database Systems''
+	\\\emph{http://www.vldb.org/conf/1985/P127.PDF}, October 1985. 
+	Online; Last Accessed: October 24, 2015.
+	
+	\item \textbf{[29]} ``Shaul Dar, Michael J.~Franklin, Bjorn T.~Jonsson, Divesh Srivastava, Michael Tan - Semantic Data Caching and Replacement''
+	\\\emph{http://www.vldb.org/conf/1996/P330.PDF}, October 1996. 
+	Online; Last Accessed: October 24, 2015.
+	
+	\item \textbf{[30]} ``Donghee Lee, Member, IEEE, Jongmoo Choi, Member, IEEE, Jong-Hun Kim, Member, IEEE,
+	Sam H. Noh, Member, IEEE, Sang Lyul Min, Member, IEEE, Yookun Cho, Member, IEEE, and
+	Chong Sang Kim, Senior Member, IEEE - LRFU: A Spectrum of Policies that
+	Subsumes the Least Recently Used and
+	Least Frequently Used Policies''
+	\\\emph{http://u.cs.biu.ac.il/~wiseman/2os/lru/lrfu.pdf}, December 2001. 
+	Online; Last Accessed: October 24, 2015.													
 \end{referencelist}
 
 
