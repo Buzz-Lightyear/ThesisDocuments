@@ -291,7 +291,11 @@ I'd like to thank all my friends and family for supporting me throughout my time
  \abbreviation{APC}{Android Process Cache} 
  \abbreviation{APMD}{Android Powered Mobile Device}
  \abbreviation{CBP}{Cached Background Processes} 
- 
+ \abbreviation{MRU}{Most Recently Used}
+ \abbreviation{LFU}{Least Frequently Used}
+ \abbreviation{RR}{Random Replacement}
+
+
 %							Template for some symbol based abbreviations
 
 %    \abbreviation{GLE}{Gauss' law for electricity: $\nabla\cdot E
@@ -617,13 +621,15 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		\subsection{CRA(s) Under Consideration}
 			Now that we've determined the fundamental metrics we need, let's analyze the various CRA(s) including the one Android currently uses, namely LRU.
 			
+			\subsubsection{Belady's Algorithm}
+				The most efficient CRA would be to always discard the information that will not be needed for the longest time in the future. In our case, the ideal CRA would be one that ensures that every application the user requests, resides in memory. This optimal result is referred to as Bélády's optimal algorithm [26] or the clairvoyant algorithm. Since it is generally impossible to predict how far in the future information will be needed, this is not implementable in practice. The practical minimum can be calculated only after experimentation, and one can compare the effectiveness of the actually chosen CRA against Belady's as a benchmark.
 			\subsubsection{LRU}
 			
-			\subsubsection{MRU}
+			\subsubsection{Most Recently Used (MRU)}
 			
-			\subsubsection{LFU}
+			\subsubsection{Least Frequently Used (LFU)}
 			
-			\subsubsection{RR}
+			\subsubsection{Random Replacement (RR)}
 			
 			\subsubsection{LRU - Context Hybrid}
 			
@@ -869,6 +875,10 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\\\emph{https://www.techopedia.com/definition/6308/cache-miss}, October 2015. 
 	Online; Last Accessed: October 23, 2015.	
 									
+	\item \textbf{[26]} ``Najeeb A. Al-Samarraie - And Page Replacement Algorithms: Anomaly Cases''
+	\\\emph{http://www.iasj.net/iasj?func=fulltext\&aId=50712}, January 2003. 
+	Online; Last Accessed: October 23, 2015.
+										
 \end{referencelist}
 
 
