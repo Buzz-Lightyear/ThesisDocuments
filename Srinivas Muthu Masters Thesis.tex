@@ -647,9 +647,26 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				So far we've analyzed the standard CRA(s) that focus on discarding items that were either accessed least recently, least frequently or in other standard ways. Our approach combines the applications that Android caches through an LRU scheme with a separate context-analyzer module that reads the user's calendar and predicts which applications the user is likely to use. When the user requests an application, the combined set of applications (default applications in LRU and the list of suggested applications) is used as the base to predict whether a cache hit or cache miss occurred. We'll analyze in detail how each module functions but before that, let's take a look at whether Android caches CBP(s) pro-actively and how applications will be removed from memory in the cases where it runs too low.
 				
 				\paragraph{Pro-actively Adding CBP(s)}
-					%stage 1-2-3 (Image) suggests that Android recognizes that under-utilizing RAM is an issue and has the mechanism to proactively cache applications as CBP(s) 
+					In order for the proposed LRU-Context Hybrid (henceforth referred to as the Hybrid approach) CRA to work, there must be provision for the Android OS to pro-actively cache application components in memory as CBP(s). Presuming that the context-analyzer module does its job and suggests a list of applications the user might use in the near future (based on user's Calendar information), there must a mechanism for Android to utilize that information and pro-actively cache these applications in RAM as CBP(s). This mechanism can be verified at the user level through a small experiment. As previously mentioned, the Settings application provides a visual interface for the list of active processes and services running in memory and the CBP(s) that reside in memory at any moment in time. As part of the experiment, each and every CBP was forcefully removed from the cache (there is provision to do this at the user level (Refer Figure 3-4)). 
+						
+					\begin{figure}[!ht]
+						\centering
+						\includegraphics[width = 90mm]{images/removeCBP3.png}
+						\caption[Remove CBP]
+						{Pressing the {\em STOP} button removes the CBP from memory}
+					\end{figure}					
 					
-					%Now that you've established that there is a mechanism to do so, and that Android does it right now, you can incorporate Context Data in making this decision
+					Once each CBP was removed, the phone was untouched for three minutes. After three minutes, when the Settings application was launched to look at the list of CBP(s), it wasn't empty. Instead, there were several CBP(s), some of which were previously removed and some of which were'nt in the list to begin with (Refer Figure 3-5). 
+					
+					\begin{figure}[!ht]
+						\centering
+						\includegraphics[width = 130mm]{images/stage123.png}
+						\caption[CBP(s) before and after manual removal]
+						{The leftmost image shows the snapshot of the CBP(s) before forceful deletion. After each and every CBP was removed manually, the screen displayed is shown in the middle image. The image farthest to the right shows the repopulated list of CBP(s), 3 minutes after the middle image was taken. This demonstrates Android's ability to utilize free RAM space and pro-actively cache CBP(s)}
+					\end{figure}					
+					
+					This suggestes that Android recognizes that an under-utilized RAM is a waste of resource and pro-actively caches applications that were'nt in memory to begin with, as CBP(s). This is also the reason why task killer applications fell out of favor [33]. This demonstrates that not only does Android provide a mechanism to pro-actively cache applications in memory, it already does so. The applications suggested by the Hybrid CRA approach can be introduced into the memory as CBP(s) in the same way. This is discussed in future scope section. 
+
 				\paragraph{Prioritizing Overall Cache}	
 					%On the other end of the spectrum i.e. if memory is too full, for the sake of simplicity, we can resort to always prioritizing Android's default scheme over apps inferred from context. We'll explore other possibilities in the Future Scope section.
 		\subsection{Supplementary Data}
@@ -935,7 +952,11 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\item \textbf{[32]} ``ARM Documentation''
 	\\\emph{http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.set.cortexr/index.html}, July 2014. 
 	Online; Last Accessed: October 24, 2015.
-																
+
+	\item \textbf{[33]} ``Does Your Android Device Really Need a Task Killer?''
+	\\\emph{http://www.technorms.com/40664/android-task-killer-apps}, September 2014. 
+	Online; Last Accessed: October 24, 2015.
+																	
 \end{referencelist}
 
 
