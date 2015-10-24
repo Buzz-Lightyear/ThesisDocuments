@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.21)  24 OCT 2015 13:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.21)  24 OCT 2015 15:01
 entering extended mode
 **"Srinivas Muthu Masters Thesis.tex"
 ("Srinivas Muthu Masters Thesis.tex"
@@ -269,286 +269,297 @@ File: images/beforeAndAfterNews.png Graphic file (type png)
 Package pdftex.def Info: images/beforeAndAfterNews.png used on input line 630.
 (pdftex.def)             Requested size: 256.0748pt x 227.18855pt.
  [19 <./images/beforeAndAfterNews.png>]
-[20] [21]
+[20] [21] [22]
 Chapter 4.
-[22
+[23
 
 ]
 Chapter 5.
-[23
+[24
 
 ]
 Overfull \vbox (153.43213pt too high) has occurred while \output is active []
 
 
-[24]
+[25]
 Chapter 6.
-[25
-
-]
-Chapter 7.
 [26
 
 ]
-Underfull \hbox (badness 10000) detected at line 804
+Chapter 7.
+[27
+
+]
+Underfull \hbox (badness 10000) detected at line 807
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 808
+Underfull \hbox (badness 10000) detected at line 811
  
  []
 
 
-Overfull \hbox (4.9583pt too wide) in paragraph at lines 808--811
+Overfull \hbox (4.9583pt too wide) in paragraph at lines 811--814
 \OT1/cmr/m/it/12 http://www.lifehacker.com.au/2014/09/the-most-popular-smartpho
 ne-operating-
  []
 
 
-Underfull \hbox (badness 10000) detected at line 812
+Underfull \hbox (badness 10000) detected at line 815
  
  []
 
 
-Overfull \hbox (6.05295pt too wide) in paragraph at lines 812--815
+Overfull \hbox (6.05295pt too wide) in paragraph at lines 815--818
 \OT1/cmr/m/it/12 https://mahalelabs.files.wordpress.com/2013/03/androidstack-1.
 jpg\OT1/cmr/m/n/12 , March 2013.
  []
 
 
-Underfull \hbox (badness 10000) detected at line 816
+Underfull \hbox (badness 10000) detected at line 819
  
  []
 
 
-Overfull \hbox (1.0222pt too wide) in paragraph at lines 816--819
+Overfull \hbox (1.0222pt too wide) in paragraph at lines 819--822
 \OT1/cmr/m/it/12 http://www.cnet.com/uk/how-to/best-custom-roms-for-the-samsung
 -galaxy-s2/\OT1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) detected at line 820
+Underfull \hbox (badness 10000) detected at line 823
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 824
+Underfull \hbox (badness 10000) detected at line 827
  
  []
 
 
-Overfull \hbox (18.91956pt too wide) in paragraph at lines 824--827
+Overfull \hbox (18.91956pt too wide) in paragraph at lines 827--830
 \OT1/cmr/m/it/12 http://developer.android.com/guide/components/fundamentals.htm
 l\OT1/cmr/m/n/12 , Oc-to-ber 2015.
  []
 
 
-Underfull \hbox (badness 10000) detected at line 828
+Underfull \hbox (badness 10000) detected at line 831
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 832
+Underfull \hbox (badness 10000) detected at line 835
  
  []
 
 
-Overfull \hbox (14.63947pt too wide) in paragraph at lines 832--835
+Overfull \hbox (14.63947pt too wide) in paragraph at lines 835--838
 \OT1/cmr/m/it/12 http://developer.android.com/guide/components/services.html\OT
 1/cmr/m/n/12 , Oc-to-ber 2015. On-
  []
 
 
-Underfull \hbox (badness 10000) detected at line 836
+Underfull \hbox (badness 10000) detected at line 839
  
  []
 
 
-Overfull \hbox (9.45514pt too wide) in paragraph at lines 836--839
+Overfull \hbox (9.45514pt too wide) in paragraph at lines 839--842
 \OT1/cmr/m/it/12 http://www.extremetech.com/wp-content/uploads/2015/04/MooresLa
 w2.png\OT1/cmr/m/n/12 , Oc-
  []
 
-[27
+[28
 
 ]
-Underfull \hbox (badness 10000) detected at line 840
+Underfull \hbox (badness 10000) detected at line 843
  
  []
 
 
-Overfull \hbox (10.7311pt too wide) in paragraph at lines 840--843
+Overfull \hbox (10.7311pt too wide) in paragraph at lines 843--846
 \OT1/cmr/m/it/12 http://www.cnet.com/news/a-brief-history-of-android-phones/\OT
 1/cmr/m/n/12 , Au-gust 2011. On-
  []
 
 
-Underfull \hbox (badness 10000) detected at line 844
+Underfull \hbox (badness 10000) detected at line 847
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 848
+Underfull \hbox (badness 10000) detected at line 851
  
  []
 
 
-Overfull \hbox (1.24901pt too wide) in paragraph at lines 848--851
+Overfull \hbox (1.24901pt too wide) in paragraph at lines 851--854
 \OT1/cmr/m/it/12 http://www.androidcentral.com/nexus-6p\OT1/cmr/m/n/12 , Oc-to-
 ber 2015. On-line; Last Ac-cessed:
  []
 
 
-Underfull \hbox (badness 10000) detected at line 852
+Underfull \hbox (badness 10000) detected at line 855
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 856
+Underfull \hbox (badness 10000) detected at line 859
  
  []
 
 
-Overfull \hbox (8.3721pt too wide) in paragraph at lines 856--859
+Overfull \hbox (8.3721pt too wide) in paragraph at lines 859--862
 \OT1/cmr/m/it/12 http://phandroid.com/2011/06/16/android-psa-stop-using-task-ki
 ller-apps-now/\OT1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) detected at line 860
+Underfull \hbox (badness 10000) detected at line 863
  
  []
 
 
-Overfull \hbox (0.57191pt too wide) in paragraph at lines 860--863
+Overfull \hbox (0.57191pt too wide) in paragraph at lines 863--866
 \OT1/cmr/m/it/12 http://developer.android.com/guide/topics/processes/process-li
 fecycle.html\OT1/cmr/m/n/12 , Oc-
  []
 
 
-Underfull \hbox (badness 10000) detected at line 864
+Underfull \hbox (badness 10000) detected at line 867
  
  []
 
 
-Overfull \hbox (8.03938pt too wide) in paragraph at lines 864--867
+Overfull \hbox (8.03938pt too wide) in paragraph at lines 867--870
 \OT1/cmr/m/it/12 http://developer.android.com/training/articles/memory.html\OT1
 /cmr/m/n/12 , Oc-to-ber 2015. On-
  []
 
 
-Underfull \hbox (badness 10000) detected at line 868
+Underfull \hbox (badness 10000) detected at line 871
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 872
+Underfull \hbox (badness 10000) detected at line 875
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 876
+Underfull \hbox (badness 10000) detected at line 879
  
  []
 
-[28]
-Underfull \hbox (badness 10000) detected at line 880
+[29]
+Underfull \hbox (badness 10000) detected at line 883
  
  []
 
 
-Overfull \hbox (1.8209pt too wide) in paragraph at lines 880--883
+Overfull \hbox (1.8209pt too wide) in paragraph at lines 883--886
 \OT1/cmr/m/it/12 http://www.cc.gatech.edu/fce/ctk/pubs/HCIJ16.pdf\OT1/cmr/m/n/1
 2 , Jan-uary 2001. On-line; Last
  []
 
 
-Underfull \hbox (badness 10000) detected at line 884
+Underfull \hbox (badness 10000) detected at line 887
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 888
+Underfull \hbox (badness 10000) detected at line 891
  
  []
 
 
-Overfull \hbox (28.35576pt too wide) in paragraph at lines 888--891
+Overfull \hbox (28.35576pt too wide) in paragraph at lines 891--894
 \OT1/cmr/m/it/12 markus-jakobsson.com/wp-content/uploads/2010/11/ShiNiuJakobsso
 nChow2010.pdf\OT1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) detected at line 892
+Underfull \hbox (badness 10000) detected at line 895
  
  []
 
 
-Overfull \hbox (15.04462pt too wide) in paragraph at lines 892--895
+Overfull \hbox (15.04462pt too wide) in paragraph at lines 895--898
 \OT1/cmr/m/it/12 http://www.eecs.berkeley.edu/Pubs/TechRpts/1987/CSD-87-357.pdf
 \OT1/cmr/m/n/12 , Au-gust 1987.
  []
 
 
-Underfull \hbox (badness 10000) detected at line 896
+Underfull \hbox (badness 10000) detected at line 899
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 900
+Underfull \hbox (badness 10000) detected at line 903
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 904
+Underfull \hbox (badness 10000) detected at line 907
  
  []
 
 
-Overfull \hbox (0.43756pt too wide) in paragraph at lines 904--907
+Overfull \hbox (0.43756pt too wide) in paragraph at lines 907--910
 \OT1/cmr/m/it/12 http://www.iasj.net/iasj?func=fulltext&aId=50712\OT1/cmr/m/n/1
 2 , Jan-uary 2003. On-line; Last
  []
 
 
-Underfull \hbox (badness 10000) detected at line 908
+Underfull \hbox (badness 10000) detected at line 911
  
  []
 
 
-Overfull \hbox (24.91689pt too wide) in paragraph at lines 908--911
+Overfull \hbox (24.91689pt too wide) in paragraph at lines 911--914
 \OT1/cmr/m/it/12 https://www.seas.upenn.edu/ cit595/cit595s10/handouts/LRUrepla
 cementpolicy.pdf\OT1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) detected at line 912
+Underfull \hbox (badness 10000) detected at line 915
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 916
+Underfull \hbox (badness 10000) detected at line 919
  
  []
 
-[29]
-Underfull \hbox (badness 10000) detected at line 920
- 
- []
-
-
-Underfull \hbox (badness 10000) detected at line 928
+[30]
+Underfull \hbox (badness 10000) detected at line 923
  
  []
 
 
-Overfull \hbox (57.15886pt too wide) in paragraph at lines 928--931
+Underfull \hbox (badness 10000) detected at line 931
+ 
+ []
+
+
+Overfull \hbox (57.15886pt too wide) in paragraph at lines 931--934
 \OT1/cmr/m/it/12 http://techcrunch.com/2014/07/01/an-upper-limit-for-apps-new-d
 ata-suggests-consumers-
  []
 
-[30] ("Srinivas Muthu Masters Thesis.aux") ) 
+
+Underfull \hbox (badness 10000) detected at line 935
+ 
+ []
+
+
+Overfull \hbox (36.87262pt too wide) in paragraph at lines 935--938
+\OT1/cmr/m/it/12 http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.se
+t.cortexr/index.html\OT1/cmr/m/n/12 ,
+ []
+
+[31] ("Srinivas Muthu Masters Thesis.aux") ) 
 Here is how much of TeX's memory you used:
  1364 strings out of 493673
  18183 string characters out of 3141520
@@ -563,10 +574,10 @@ nts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
 ype1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmti12.pfb>
-Output written on "Srinivas Muthu Masters Thesis.pdf" (45 pages, 920774 bytes).
+Output written on "Srinivas Muthu Masters Thesis.pdf" (46 pages, 922552 bytes).
 
 PDF statistics:
- 177 PDF objects out of 1000 (max. 8388607)
+ 180 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
