@@ -476,9 +476,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\section{Goals and Objectives}
 		
 		\subsection{A User-Centric CRA}
-			The main benefit of caching processes (components of applications recently clicked by the user) in memory is to improve startup time (of the application), the next time a component of the application needs to run. This greatly enhances the usability experience and therefore it's in Android's best interests to increase the efficiency of this cache i.e. improve its CHR (Cache Hit Ratio). In addition to recency of application usage (which is what Android currently relies on in the form of LRU as a CRA), there is scope to potentially infer what application a user may click in the near future. A more user-centric CRA could look into contextual clues and deduce patterns in user behavior to better the decision making involved in determining which applications to cache in memory.
-			
-			We will explore in theoretical detail many such possibilities for user behavior inference and as a proof of concept, read the user's Calendar  application and parse for contextual information that could help in improving the CHR of the APC (Android Process Cache). 
+			The main benefit of caching processes (components of applications recently clicked by the user) in memory is to improve startup time (of the application), the next time a component of the application needs to run. This greatly enhances the usability experience and therefore it's in Android's best interests to increase the efficiency of this cache i.e. improve its CHR (Cache Hit Ratio). In addition to recency of application usage (which is what Android currently relies on in the form of LRU as a CRA), there is scope to potentially infer what application a user may click in the near future. A more user-centric CRA could look into contextual clues and deduce patterns in user behavior to improve the decision making involved in determining which applications to cache in memory, pro-actively or otherwise. We will explore in theoretical detail many such possibilities for user behavior inference and as a proof of concept, read the user's Calendar  application and parse for contextual information that could help in improving the CHR of the APC (Android Process Cache). 
 
 	\section{Organization of Thesis}
 		Several works in the past have focused on context-aware applications and ways to observe user behavior patterns. We'll explore some these works and how this contextual data was put to use in Section 2. In Section 3, we'll take a look at some of the challenges in collecting cache metrics like detecting what's in the RAM, detecting when the user clicks a new application, whether to approach the problem at the user level or the system level, to list a few. Section 4 elaborates on the setup of the experiment and analyzes the design of the applications used to collect these metrics. We dive into the data in Section 5 and summarize its ramifications. We also investigate how certain factors could explain the variation in data. Section 6 talks about scope for future work and explores some of the possibilities of directly adding to this work. We conclude the thesis with Section 7.  
@@ -614,17 +612,27 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\item CHR
 			\end{itemize}
 			
-			The latency of a cache describes how long after requesting a desired item, the cache can return that item (in the case of a cache hit). In our scenario, processes are cached in RAM. Therefore, even if the number of processes cached in memory increases, there will hardly be any difference in the time it takes to fetch a requested item (application component) as they all reside in RAM which by definition supports random access. Latency is more of a factor in caches that are located further away from physical memory (such as L1 and L2 caches).
+			The latency of a cache describes how long after requesting a desired item, the cache can return that item (in the case of a cache hit). In our scenario, processes are cached in RAM. Therefore, even if the number of processes cached in memory increases, there will hardly be any difference in the time it takes to fetch a reque-sted item (application component) as they all reside in RAM which by definition supports random access. Latency is more of a factor in caches that are located further away from physical memory (such as L1 and L2 caches).
 			
 			The CHR of a cache describes how often a searched-for item is actually found in the cache. The higher the CHR, the better the cache is. When applied to our context, a high CHR results is more application components being fetched from memory, rather than disk which in turn results in quicker application startup times. This improvent in startup speed results in an enhanced user experience.   
 		
 		\subsection{CRA(s) Under Consideration}
 			Now that we've determined the fundamental metrics we need, let's analyze the various CRA(s) including the one Android currently uses, namely LRU.
 			
-			\subsubsection{Belady's Algorithm}
+			\subsubsection{Optimal CRA}
 				The most efficient CRA would be to always discard the information that will not be needed for the longest time in the future. In our case, the ideal CRA would be one that ensures that every application the user requests, resides in memory. This optimal result is referred to as Belady's optimal algorithm [26] or the clairvoyant algorithm. Since it is generally impossible to predict how far in the future information will be needed, this is not implementable in practice. The practical minimum can be calculated only after experimentation, and one can compare the effectiveness of the actually chosen CRA against Belady's as a benchmark.
-			\subsubsection{LRU}
 			
+			\subsubsection{LRU}
+				This is the default CRA Android currently uses to discard processes from memory. LRU is a type of CRA that discards the least recently used items first. This algorithm keeps track of what was used when, and it's expensive to ensure that the least recently used item is always discarded first. When applied to our scenario, Android caches application components in memory as CBP(s) and associates each with a timestamp. If the memory gets too full, it starts removing the least frequently used CBP(s) first and depending on how direly low the memory is, it may not stop killing processes until even the active foreground application (the one user is interacting with) is removed, [15] although this situation is extremely rare in practice and only results in the case of malfunctioning applications that leak memory. The Settings application can give the user clues about which CBP(s) were recently used. Clicking on an application that is currently not in memory results in that application being cached as a CBP near the top of the list. This suggests that the CBP(s) displayed by the Settings application are roughly sorted by their timestamp from MRU to LRU (Refer Figure 3-3). 
+				
+				\begin{figure}[!ht]
+					\centering
+					\includegraphics[width = 90mm]{images/beforeAndAfterNews.png}
+					\caption[Before \& After News App Launch]
+					{The image to the left describes the snapshot of the CBP(s) as displayed to the end-user by the Settings app. The image to the right displays the snapshot of the CBP(s) after the end-user requests for the News and Weather application. Note that the News and Weather application will not be cached as a CBP until the user is done interacting with it as up until that point, it will reside in memory as an active process.}
+				\end{figure}				
+				
+				It is worth noting that a perfect implementation of LRU requires a timestamp on each reference, and the OS needs to keep a list of items ordered by the timestamp. This implementation may be deemed too expensive in certain cases especially if the frequency of memory references is high. The common practice is to approximate the LRU behavior and this can be achieved in other ways [27]. 
 			\subsubsection{Most Recently Used (MRU)}
 			
 			\subsubsection{Least Frequently Used (LFU)}
@@ -632,9 +640,18 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\subsubsection{Random Replacement (RR)}
 			
 			\subsubsection{LRU - Context Hybrid}
-			
+				\paragraph{Pro-actively Adding CBP(s)}
+					%stage 1-2-3 (Image) suggests that Android recognizes that under-utilizing RAM is an issue and has the mechanism to proactively cache applications as CBP(s) 
+					
+					%Now that you've established that there is a mechanism to do so, and that Android does it right now, you can incorporate Context Data in making this decision
+				\paragraph{Prioritizing Overall Cache}	
+					%On the other end of the spectrum i.e. if memory is too full, for the sake of simplicity, we can resort to always prioritizing Android's default scheme over apps inferred from context. We'll explore other possibilities in the Future Scope section.
 		\subsection{Supplementary Data}
-	
+			%apps installed
+			%apps clicked
+			%model and version
+			%distinction in hits between suggested and default - taht way we can measure the efficiency of three approaches simultaneously
+			
 	\section{Challenges}
 		
 		\subsection{Deciding Between System vs User Level Approach}
@@ -703,8 +720,14 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		
 		\subsection{Machine Learning in Calendar Parsing}
 		
+		\subsection{Calendar Parser - LFU Hybrid}
+		
 		\subsection{Other Ways of Gathering User Behavior Data}
 		
+		\subsection{Custom Priorities in Hybrid Cache}
+			% If 'call' was parsed from Calendar, then dialer app is high priority followed by LRU followed by other call apps.
+			
+			%Previous point - We can use machine learning to come up with custom priorities 
 	\section{Alternate Ways of Using the Contextual Information}
 			
 		\subsection{Switching to Silent Mode}
@@ -879,6 +902,10 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\\\emph{http://www.iasj.net/iasj?func=fulltext\&aId=50712}, January 2003. 
 	Online; Last Accessed: October 23, 2015.
 										
+	\item \textbf{[27]} ``LRU Replacement Policy''
+	\\\emph{https://www.seas.upenn.edu/~cit595/cit595s10/handouts/LRUreplacementpolicy.pdf}, October 2015. 
+	Online; Last Accessed: October 24, 2015.
+											
 \end{referencelist}
 
 
