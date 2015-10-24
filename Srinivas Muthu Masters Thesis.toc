@@ -36,10 +36,10 @@
 \contentsline {subsubsection}{\numberline {3.1.2.2}LRU}{18}
 \contentsline {subsubsection}{\numberline {3.1.2.3}Most Recently Used (MRU)}{20}
 \contentsline {subsubsection}{\numberline {3.1.2.4}Least Frequently Used (LFU)}{20}
-\contentsline {subsubsection}{\numberline {3.1.2.5}Random Replacement (RR)}{20}
-\contentsline {subsubsection}{\numberline {3.1.2.6}LRU - Context Hybrid}{20}
-\contentsline {paragraph}{Pro-actively Adding CBP(s)}{20}
-\contentsline {paragraph}{Prioritizing Overall Cache}{20}
+\contentsline {subsubsection}{\numberline {3.1.2.5}Random Replacement (RR)}{21}
+\contentsline {subsubsection}{\numberline {3.1.2.6}LRU - Context Hybrid}{21}
+\contentsline {paragraph}{Pro-actively Adding CBP(s)}{21}
+\contentsline {paragraph}{Prioritizing Overall Cache}{21}
 \contentsline {subsection}{\numberline {3.1.3}Supplementary Data}{21}
 \contentsline {section}{\numberline {3.2}Challenges}{21}
 \contentsline {subsection}{\numberline {3.2.1}Deciding Between System vs User Level Approach}{21}
