@@ -578,33 +578,55 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\section{What are the desired metrics?}
 		
 		\subsection{Hits, Misses, Hit Ratio \& Latency}
-		Alan Jay Smith defines Cache as a high speed buffer that holds items in current use [23]. In our context, Android holds application components (such as processes) as CBP (Cached Background Process)(s) in memory. As previously discussed, CBP(s) do not take up processor time, they are merely cached for quick application startup should the user request that particular application. A cache hit is a state in which data requested for processing by a component or application is found in the cache memory. It is a faster means of delivering data to the processor, as the cache already contains the requested data [24]. When applied to our scenario, a cache hit would represent a situation wherein the user requests (clicks) an application that currently resides in memory, either as an active process (including services) or as a CBP (Refer Figure 3-1).  
-		
-		\begin{figure}[!ht]
-			\centering
-			\includegraphics[width = 90mm]{images/runningApps.png}
-			\caption[Running Apps and CBP(s) - Cache Hit]
-			{Given this snapshot of the RAM, if the user clicks on the Messenger application (active process) or Clock application (CBP), it would result in a Cache Hit}
-		\end{figure}
-		
-		A cache miss is a state where the data requested for processing, by a component or application is not found in the cache memory [25]. When applied to our scenario, a cache miss would represent a situation wherein the user requests (clicks) an application that currently does not reside in memory, either as an active process (including services) or as a CBP (Refer Figure 3-2).
-		
-		\begin{figure}[!ht]
-			\centering
-			\includegraphics[width = 90mm]{images/runningApps.png}
-			\caption[Running Apps and CBP(s) - Cache Miss]
-			{Given this snapshot of the RAM, if the user clicks on say, the Google Drive application (process not in memory), it would result in a Cache Miss}
-		\end{figure}		
-		
-		CHR is defined as the percentage of cache hits compared to the overall number of requests (total of cache hits and cache misses).
-		
-		\begin{eqnarray}
-			Overall Number Of Requests = Cache Hits + Cache Misses \label{Total Requests} \\
-			CHR = \frac{Cache Hits}{Overall Number Of Requests} * 100 \label{CHR}
-		\end{eqnarray}
+			Alan Jay Smith defines Cache as a high speed buffer that holds items in current use [23]. In our context, Android holds application components (such as processes) as CBP (Cached Background Process)(s) in memory. As previously discussed, CBP(s) do not take up processor time, they are merely cached for quick application startup should the user request that particular application. A cache hit is a state in which data requested for processing by a component or application is found in the cache memory. It is a faster means of delivering data to the processor, as the cache already contains the requested data [24]. When applied to our scenario, a cache hit would represent a situation wherein the user requests (clicks) an application that currently resides in memory, either as an active process (including services) or as a CBP (Refer Figure 3-1).  
+			
+			\begin{figure}[!ht]
+				\centering
+				\includegraphics[width = 90mm]{images/runningApps.png}
+				\caption[Running Apps and CBP(s) - Cache Hit]
+				{Given this snapshot of the RAM, if the user clicks on the Messenger application (active process) or Clock application (CBP), it would result in a Cache Hit}
+			\end{figure}
+			
+			A cache miss is a state where the data requested for processing, by a component or application is not found in the cache memory [25]. When applied to our scenario, a cache miss would represent a situation wherein the user requests (clicks) an application that currently does not reside in memory, either as an active process (including services) or as a CBP (Refer Figure 3-2).
+			
+			\begin{figure}[!ht]
+				\centering
+				\includegraphics[width = 90mm]{images/runningApps.png}
+				\caption[Running Apps and CBP(s) - Cache Miss]
+				{Given this snapshot of the RAM, if the user clicks on say, the Google Drive application (process not in memory), it would result in a Cache Miss}
+			\end{figure}		
+			
+			CHR is defined as the percentage of cache hits compared to the overall number of requests (total of cache hits and cache misses).
+			
+			\begin{eqnarray}
+				Overall Number Of Requests = Cache Hits + Cache Misses \label{Total Requests} \\
+				CHR = \frac{Cache Hits}{Overall Number Of Requests} * 100 \label{CHR}
+			\end{eqnarray}
+			
+			There are two primary figures of merit of a cache [23]:
+			
+			\begin{itemize}
+				\item Latency
+				\item CHR
+			\end{itemize}
+			
+			The latency of a cache describes how long after requesting a desired item, the cache can return that item (in the case of a cache hit). In our scenario, processes are cached in RAM. Therefore, even if the number of processes cached in memory increases, there will hardly be any difference in the time it takes to fetch a requested item (application component) as they all reside in RAM which by definition supports random access. Latency is more of a factor in caches that are located further away from physical memory (such as L1 and L2 caches).
+			
+			The CHR of a cache describes how often a searched-for item is actually found in the cache. The higher the CHR, the better the cache is. When applied to our context, a high CHR results is more application components being fetched from memory, rather than disk which in turn results in quicker application startup times. This improvent in startup speed results in an enhanced user experience.   
 		
 		\subsection{CRA(s) Under Consideration}
-		
+			Now that we've determined the fundamental metrics we need, let's analyze the various CRA(s) including the one Android currently uses, namely LRU.
+			
+			\subsubsection{LRU}
+			
+			\subsubsection{MRU}
+			
+			\subsubsection{LFU}
+			
+			\subsubsection{RR}
+			
+			\subsubsection{LRU - Context Hybrid}
+			
 		\subsection{Supplementary Data}
 	
 	\section{Challenges}
@@ -664,7 +686,11 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		\subsection{User Demographics}
 	
 	\section{Points of Weakness}		
-
+		
+		\subsection{List from Drive}
+		
+		\subsection{Slight Increase in Battery Consumption}
+		
 \chapter{Scope for Future Work}
 		
 	\section{Improving Context Analysis}
