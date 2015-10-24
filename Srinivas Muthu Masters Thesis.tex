@@ -289,7 +289,8 @@ I'd like to thank all my friends and family for supporting me throughout my time
  \abbreviation{MB}{Mega-Byte} 
  \abbreviation{GB}{Giga-Byte}
  \abbreviation{APC}{Android Process Cache} 
- \abbreviation{APMD}{Android Powered Mobile Device} 
+ \abbreviation{APMD}{Android Powered Mobile Device}
+ \abbreviation{CBP}{Cached Background Processes} 
  
 %							Template for some symbol based abbreviations
 
@@ -572,18 +573,37 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		As demonstrated by Shi et al., there are numerous ways contextual information can come in handy. In our case, we propose a user-centric CRA for the APC, demonstrate its superior efficiency and user experience, by looking into the user's calendar for contextual information.  			
 	
 \chapter{Challenges in Collecting the Desired Metrics}
+	Now that we've laid the foundation for using contextual information to influence which processes Android caches in memory, we need to establish the metrics that need to be collected in order to measure the efficiency of the existing CRA and the proposed CRA. The following section addresses the metrics we need.
 	
 	\section{What are the desired metrics?}
 		
+		\subsection{Hits, Misses, Hit Ratio \& Latency}
+		Alan Jay Smith defines Cache as a high speed buffer that holds items in current use [23]. In our context, Android holds application components (such as processes) as CBP (Cached Background Process)(s) in memory. As previously discussed, CBP(s) do not take up processor time, they are merely cached for quick application startup should the user request that particular application. A cache hit is a state in which data requested for processing by a component or application is found in the cache memory. It is a faster means of delivering data to the processor, as the cache already contains the requested data [24]. When applied to our scenario, a cache hit would represent a situation wherein the user requests (clicks) an application that currently resides in memory, either as an active process (including services) or as a CBP (Refer Figure 3-1).  
+		
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics[width = 90mm]{images/runningApps.png}
+			\caption[Running Apps and CBP(s) - Cache Hit]
+			{Given this snapshot of the RAM, if the user clicks on the Messenger application (active process) or Clock application (CBP), it would result in a Cache Hit}
+		\end{figure}
+		
+		A cache miss is a state where the data requested for processing, by a component or application is not found in the cache memory [25]. When applied to our scenario, a cache miss would represent a situation wherein the user requests (clicks) an application that currently does not reside in memory, either as an active process (including services) or as a CBP (Refer Figure 3-2).
+		
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics[width = 90mm]{images/runningApps.png}
+			\caption[Running Apps and CBP(s) - Cache Miss]
+			{Given this snapshot of the RAM, if the user clicks on say, the Google Drive application (process not in memory), it would result in a Cache Miss}
+		\end{figure}		
+		
+		CHR is defined as the percentage of cache hits compared to the overall number of requests (total of cache hits and cache misses).
+		
+		\begin{eqnarray}
+			Overall Number Of Requests = Cache Hits + Cache Misses \label{Total Requests} \\
+			CHR = \frac{Cache Hits}{Overall Number Of Requests} * 100 \label{CHR}
+		\end{eqnarray}
+		
 		\subsection{CRA(s) Under Consideration}
-		
-		\subsection{Cache Hit}
-			
-			\subsubsection{Categorizing Hits for Hybrid Approach}
-		
-		\subsection{Cache Miss}
-		
-		\subsection{Cache Hit Ratio}
 		
 		\subsection{Supplementary Data}
 	
@@ -810,7 +830,19 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\item \textbf{[22]} ``Elaine Shi, Yuan Niu, Markus Jakobsson, and Richard Chow - Implicit Authentication through Learning User Behavior''
 	\\\emph{markus-jakobsson.com/wp-content/uploads/2010/11/ShiNiuJakobssonChow2010.pdf}, November 2010. 
 	Online; Last Accessed: October 23, 2015.
-							
+
+	\item \textbf{[23]} ``Alan Jay Smith - Design of CPU Cache Memories''
+	\\\emph{http://www.eecs.berkeley.edu/Pubs/TechRpts/1987/CSD-87-357.pdf}, August 1987. 
+	Online; Last Accessed: October 23, 2015.
+			
+	\item \textbf{[24]} ``Cache Hit | Techopedia''
+	\\\emph{https://www.techopedia.com/definition/6306/cache-hit}, October 2015. 
+	Online; Last Accessed: October 23, 2015.
+	
+	\item \textbf{[25]} ``Cache Miss | Techopedia''
+	\\\emph{https://www.techopedia.com/definition/6308/cache-miss}, October 2015. 
+	Online; Last Accessed: October 23, 2015.	
+									
 \end{referencelist}
 
 
