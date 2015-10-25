@@ -300,6 +300,8 @@ I'd like to thank all my friends and family for supporting me throughout my time
  \abbreviation{ADB}{Android Debug Bridge}
  \abbreviation{UID}{unique Identifier}
  \abbreviation{OOM}{Out Of Memory}
+ \abbreviation{API}{Application Programming Interface} 
+ \abbreviation{USA}{United States of America} 
  
 %							Template for some symbol based abbreviations
 
@@ -898,30 +900,73 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				
 				\For{EACH SECOND}
 				{	
-					{\em newForegroundApp --- getNewForegroundApp()}\\
-					{\em currentListOfProc --- getListOfProcesses()}\\	 			
-					\If{newForegroundApp EQUALS oldForegroundApp}{CONTINUE}
-					\eIf{oldListOfProc CONTAINS newForegroundApp}{cacheHit++}{cacheMiss++}
+					...\\
+					...\\
 					{\em updateMetrics()}\\
 					\If{END OF MINUTE}{ writeMetricsToFile()}
-					{\em oldListOfProc --- newListOfProc}\\
-					{\em oldForegroundApp --- newForegroundApp}		 			
+					...\\
+					...\\	
 				}
 				
 				\caption[Modified Update Metrics Algorithm]{In addition to updating the metrics every second, it also writes the data to internal storage every minute. Any time the application is closed and launched again the metrics are initialized with the values in file.}
 			\end{algorithm}
 			
 		\subsection{Reading the User's Calendar}
-			%Public API available
+			To compute the CHR of the Hybrid CRA approach, we need the ability to obtain the list of events from the user's calendar and the ability to parse that information to come up with a list of suggested applications. We'll discuss the parsing aspect in the next segment and focus on finding a way to read the user's calendar. The solution to this problem is quite simple, Google provides a public API (Application Programming Interface) [46] to obtain access to the user's calendar information, including the list of events. This operation does'nt have to be carried out with the same frequency as reading the list of processes in memory or obtaining the foreground application. In our solution, we query the calendar every four hours (for events occurring in that four hour period) and feed the data (events list) into a module that parses the information and produces a suggested list of applications (Refer Algorithm 5). 
+			
+			\begin{algorithm}[H]
+				\SetAlgoLined
+				\KwResult{Update Cache Metrics, Write to File AND Update List of Suggested Applications}
+				
+				\For{EACH SECOND}
+				{	
+					...\\
+					...\\
+					{\em updateMetrics()}\\
+					\If{END OF MINUTE}{ writeMetricsToFile()}
+					\If{END OF 4 HOURS}{updateListOfSuggestedApplications()}
+					...\\
+					...\\	
+				}
+				
+				\caption[Update Suggested Applications List]{In addition to updating the metrics every second and writing them to file every minute, it also updates the list of applications suggested by the Calendar Parser (discussed in next segment)}
+			\end{algorithm}
+			
+			The following algorithm (Algorithm 6) illustrates our implementation of the module that queries the user's calendar.
+			
+			\begin{algorithm}[H]
+				\SetAlgoLined
+				\KwResult{Get List of Events from Calendar}
+				INITIALIZE List {\em result}\\
+				List {\em allEvents} ---  QUERY {\em content://com.android.calendar/events}\\
+				\For{EACH event IN allEvents}
+				{	
+					\If{event.startTime() IS WITHIN 4 hours FROM NOW}{result.add(event)}
+				}
+				RETURN result
+				\caption[Algorithm to read user's calendar]{This algorithm obtains all events in the user's calendar that start within 4 hours from the time of the algorithm invocation. Since this algorithm is invoked every four hours, every event in the user's calendar is parsed although it's worth noting that once read, a change in the event details is not translated to the application. This is discussed further in the Points of Weaknesses section.}
+			\end{algorithm}
+						
 		\subsection{Parsing the Calendar Information}
-			%Mapping from top suggested applications in play store and number of downloads of the application for its use
-		\subsection{Addressing Privacy Concerns}
-			%Both applications are open source. Only way to obtain data is through the user's consent. No personal data is collected, only cache metrics. Full transparency with volunteers - discussed in POW.
+			We've examined the mechanism behind reading the user's calendar, thereby solving one half of the puzzle. The other half is utilizing this information to compute the Hybrid CRA's metrics. In order to achieve that, we need to build a module that parses the list of events obtained from reading the calendar and produces a suggested list of applications. Every event in the user's calendar is split into individual keywords and a predetermined mapping between keywords and applications builds the list of suggested applications. For instance the keyword {\em mail} is associated with the {\em GMail} application, among others. This mapping is determined by a combination of three things:
+			
+			\begin{itemize}
+				\item The suggestions from the Google Play Store [48] when searched with the keyword.
+				\item The number of downloads among competing applications for the same keyword.
+				\item Popularity of the applications in United States of America (USA) [47]. 
+			\end{itemize}
+
+			To elaborate, when the Play Store was searched with the keyword {\em skype}, Skype application was the top result. Once it is verified that Skype is part of the installed applications [49], it is added to the list of suggested applications. It is worth noting that most of the suggested applications are present by default on Android (such as GMail, Hangouts, Docs to list a few) and the only applications that are checked against the list of installed applications are highly popular applications [47]. Additionally, if there are no events in the user's calendar for the four hour period, then the list of suggested applications is populated with the ten most popular Android applications in USA [47]. Theoretically it seems likely that the user might use the applications suggested by Google's application search engine, for a particular keyword. However, it remains to be seen whether the suggested applications result in cache hits and by extension a better caching scheme. We'll analyze this data in Chapter 5.   
+		
+
 \chapter{Experiment Setup and Application Design}
 	
 	\section{Introduction}
 		
 	\section{Eligibility for Volunteers}
+	
+		\subsection{Addressing Privacy Concerns}
+			%Both applications are open source. Only way to obtain data is through the user's consent. No personal data is collected, only cache metrics. Full transparency with volunteers - discussed in POW.	
 	
 	\section{Process and Duration of Experiment}
 	
@@ -965,7 +1010,9 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	
 	\section{Points of Weakness}		
 		
-		\subsection{List from Drive}
+		\subsection{Constant Change in Calendar events}
+		
+		\subsection{List from Google Drive}
 		
 		\subsection{Slight Increase in Battery Consumption}
 		
@@ -1238,7 +1285,23 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\item \textbf{[45]} ``Storage Options | Android Developers''
 	\\\emph{http://developer.android.com/guide/topics/data/data-storage.html}, October 2015. 
 	Online; Last Accessed: October 24, 2015.
-								
+
+	\item \textbf{[46]} ``Calendar Provider | Android Developers''
+	\\\emph{http://developer.android.com/guide/topics/providers/calendar-provider.html}, October 2015. 
+	Online; Last Accessed: October 24, 2015.
+
+	\item \textbf{[47]} ``These are the 25 most popular mobile apps in America''
+	\\\emph{http://qz.com/481245/these-are-the-25-most-popular-2015-mobile-apps-in-america/}, August 2015. 
+	Online; Last Accessed: October 24, 2015.
+	
+	\item \textbf{[48]} ``Google Play''
+	\\\emph{https://play.google.com/store}, October 2015. 
+	Online; Last Accessed: October 24, 2015.
+											
+	\item \textbf{[49]} ``Package Manager | Android Developers''
+	\\\emph{http://developer.android.com/reference/android/content/pm/PackageManager.html}, October 2015. 
+	Online; Last Accessed: October 24, 2015.
+												
 \end{referencelist}
 
 
