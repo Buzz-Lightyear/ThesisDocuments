@@ -851,7 +851,27 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			If {\em cmdline} contains {\em com.android.systemui} or if {\em uid} lies between 1000 and 1038, it's a system application and is thus eliminated from consideration. The crucial attribute of the foreground application is that it has the lowest OOM score of all applications. When the Android OS is running too low on memory, it is the job of the Linux OOM killer [44] to sacrifice one or more processes in order to free up memory for the system when all else fails. A low OOM score indicates that the process is less likely to be killed and that it is lower on the OOM killer's radar. It quite intuitive that the process with the lowest OOM score would be the foreground process as it is of paramount importance not to remove the process, the end-user is interacting with, unless it's the very last resort. This unique property of the foreground process enables us to distinguish it from the rest of the pool. 
 			
 		\subsection{Updating the Statistics}
-			% So far, we've established ways to collect the list of processes in memory and the foreground application. The next step is to figure out a way to update the metrics as and when the user requests new applications. Speed of change between applications varies a lot and there is not inherent mechanism to detect a third party app launch as it is a security issue. So, a background thread obtains the list of processes and the foreground app every second to see if there are any changes in the foreground app. If so, it updates the statistics and writes it to a file. We'll see next why it's important to back this data up. Next section will elaborate on the design of the applications and how the service interacts with the application.
+			 So far, we've established ways to collect the list of processes in memory and the foreground application. The next step is to figure out a way to update the metrics as and when the user requests new applications. The rate at which the end-user toggles between applications varies from person to person. It also depends on the level of usage. For instance, there are times when the end-user is actively using their APMD and others when the APMD is idle or is switched off. Therefore it's hard to predict when there could be a potential change in the foreground application. There is no inherent mechanism for user-level applications to detect third party application launches (That privilege is reserved for system level processes). Therefore, our solution comprises of starting a service [8] that retrieves the current foreground process (Refer Algorithm 2) and the current list of processes residing in memory (Refer Algorithm 1) every second. If there is a change detected in the foreground process (compared to the last second), then the cache metrics are updated. The time interval of one second is chosen as it deemed to be reasonably accommodative of the average time it takes an end-user to switch from one application to another. This is further discussed in the Points of Weakness section. The design of the service and the corresponding application is discussed in sections 4.4 and 4.5. The following algorithm (Refer Algorithm 3) illustrates the process of updating the cache metrics.\\     
+			 
+		 	\begin{algorithm}[H]
+		 		\SetAlgoLined
+		 		\KwResult{Update Cache Metrics}
+		 				 		
+		 		\For{EACH SECOND}
+		 		{	
+		 			{\em newForegroundApp --- getNewForegroundApp()}\\
+		 			{\em currentListOfProc --- getListOfProcesses()}\\	 			
+		 			\If{newForegroundApp EQUALS oldForegroundApp}{CONTINUE}
+		 			\eIf{oldListOfProc CONTAINS newForegroundApp}{cacheHit++}{cacheMiss++}
+		 			{\em updateMetrics()}\\
+		 			{\em oldListOfProc --- newListOfProc}\\
+		 			{\em oldForegroundApp --- newForegroundApp}		 			
+		 		}
+		 		
+		 		\caption[Algorithm to update cache metrics]{This algorithm retrieves the foreground application and checks if it has changed since the last second. If it has, it verifies whether it was a cache hit or a cache miss and updates the cache metrics. Finally, it updates the old foreground application and the previous list of processes to the current one so that the next iteration uses these values as the base.}
+		 	\end{algorithm}
+			 
+%			 The speed of change between applications varies a lot and there is not inherent mechanism to detect a third party app launch as it is a security issue. So, a background thread obtains the list of processes and the foreground app every second to see if there are any changes in the foreground app. If so, it updates the statistics and writes it to a file. We'll see next why it's important to back this data up. Next section will elaborate on the design of the applications and how the service interacts with the application.
 		\subsection{Backing Up the Data}
 			%Because our background service is running all the time, it's OOM score increases [44] and therefore it's likely to be killed and it's important not to lose the statistics.
 		\subsection{Reading the User's Calendar}
