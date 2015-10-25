@@ -802,7 +802,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				
 				RETURN processes;\\
 			
-			\caption[Algorithm to get list of processes in RAM]{In the above algorithm, {\em Process} is a custom data structure that parses the output format of the {\em toolbox ps} command. Its class structure is discussed in detail in Section 4.4. Each process is added to a result list that is returned by the algorithm. Note that the requesting application represented by {\em myPid} (discussed in 4.4) and {\em toolbox} related processes represented by process names that match {\em toolbox}, are'nt added to the result.}
+			\caption[Algorithm to get list of processes in RAM]{In the above algorithm, {\em Process} is a custom data structure that parses the output format of the {\em toolbox ps} command. Its class structure is discussed in detail in Section 4.4. The {\em APP-ID-PATTERN} is a custom regular expression that maps to application ID patterns for the Android OS in versions 4.0 and above. Each process is added to a result list that is returned by the algorithm. Note that the requesting application represented by {\em myPid} (discussed in 4.4) and {\em toolbox} related processes represented by process names that match {\em toolbox}, are'nt added to the result.}
 			\end{algorithm}			
 			
 		\subsection{Detecting a Change in the Foreground Application}
