@@ -299,7 +299,8 @@ I'd like to thank all my friends and family for supporting me throughout my time
  \abbreviation{OEM}{Original Equipment Manufacturer}
  \abbreviation{ADB}{Android Debug Bridge}
  \abbreviation{UID}{unique Identifier}
-
+ \abbreviation{OOM}{Out Of Memory}
+ 
 %							Template for some symbol based abbreviations
 
 %    \abbreviation{GLE}{Gauss' law for electricity: $\nabla\cdot E
@@ -807,7 +808,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\end{algorithm}			
 			
 		\subsection{Obtaining the Foreground Application}
-			In order to update the CHR metric, we need the ability to detect new cache hits and cache misses. A new cache hit/miss occurs when there are new application requests i.e. changes in the foreground application. Before we analyze how to detect change in the foreground application, we first need a way to obtain the current foreground application. Had we approached this problem at the system level, we could've made use of system level privileges such as listening to a new screen-touch by the user and detecting which application was  launched but this is not possible from a third party user-level application. Fortunately, there is a workaround to detecting the foreground application at the user level. We obtain every process currently running in memory and through a process of elimination, obtain the foreground application. To elaborate, the foreground application has certain unique properties in its process name, UID (Unique Identifier) and other fields, that can be exploited to eliminate processes that are not associated with the current foreground application. The following  flow chart (Refer Figure 3-6) illustrates this process.
+			In order to update the CHR metric, we need the ability to detect new cache hits and cache misses. A new cache hit/miss occurs when there are new application requests i.e. changes in the foreground application. Before we analyze how to detect change in the foreground application, we first need a way to obtain the current foreground application. Had we approached this problem at the system level, we could've made use of system level privileges such as listening to a new screen-touch by the user and detecting which application was  launched but this is not possible from a third party user-level application. Fortunately, there is a workaround to detecting the foreground application at the user level. We obtain every process currently running in memory and through a process of elimination, obtain the foreground application. To elaborate, the foreground application has certain unique properties in its process name, UID (Unique Identifier) and other fields, that can be exploited to eliminate processes that are not associated with the current foreground application. The following   algorithm (Refer Algorithm 2) illustrates this process.
 			
 			\begin{algorithm}[H]
 				\SetAlgoLined
@@ -832,20 +833,33 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 					{\em oomAdj} --- FILE READ ({\em /proc/\%d/oom\_score\_adj})\\
 					{\em oomScore} --- FILE READ ({\em /proc/\%d/oom\_score})\\
 					
-					\If{LOWEST oomScore AND oomAdj NOT 0}{RETURN cmdline}
+					\If{LOWEST oomScore AND oomAdj EQUAL TO 0}{RETURN cmdline}
 				}
 				
-				\caption{Algorithm to get current foreground application}
+				\caption[Algorithm to get current foreground application]{This algorithm obtains the current foreground process i.e. the process associated with the application that the user is interacting with.}
 			\end{algorithm}
-
+			
+			Firstly, all files with path {\em /proc} are obtained and each iterated over, to find the foreground application. We eliminate file directories as these are of no concern to us. If the CPU account sub-system ends with {\em pid}, it's not an application process and is thus eliminated. Similarly, if the CPU sub-system ends with {\em bg\_non\_interactive}, it's a background process and is eliminated as well. The application stored in {\em cmdline} is a potential candidate for the foreground application and is the right choice as long as it clears four more hurdles:
+			
+			\begin{itemize}
+				\item {\em cmdline} does not contain {\em com.android.systemui}
+				\item {\em uid} does not lie between 1000 and 1038
+				\item {\em oomAdj} i.e. the OOM (Out Of Memory) adjustment level [43] equals 0
+				\item {\em oomScore} is the lowest among all iterated values
+			\end{itemize}
+			
+			If {\em cmdline} contains {\em com.android.systemui} or if {\em uid} lies between 1000 and 1038, it's a system application and is thus eliminated from consideration. The crucial attribute of the foreground application is that it has the lowest OOM score of all applications. When the Android OS is running too low on memory, it is the job of the Linux OOM killer [44] to sacrifice one or more processes in order to free up memory for the system when all else fails. A low OOM score indicates that the process is less likely to be killed and that it is lower on the OOM killer's radar. It quite intuitive that the process with the lowest OOM score would be the foreground process as it is of paramount importance not to remove the process, the end-user is interacting with, unless it's the very last resort. This unique property of the foreground process enables us to distinguish it from the rest of the pool. 
+			
 		\subsection{Updating the Statistics}
-		
+			% So far, we've established ways to collect the list of processes in memory and the foreground application. The next step is to figure out a way to update the metrics as and when the user requests new applications. Speed of change between applications varies a lot and there is not inherent mechanism to detect a third party app launch as it is a security issue. So, a background thread obtains the list of processes and the foreground app every second to see if there are any changes in the foreground app. If so, it updates the statistics and writes it to a file. We'll see next why it's important to back this data up. Next section will elaborate on the design of the applications and how the service interacts with the application.
+		\subsection{Backing Up the Data}
+			%Because our background service is running all the time, it's OOM score increases [44] and therefore it's likely to be killed and it's important not to lose the statistics.
 		\subsection{Reading the User's Calendar}
-		
+			%Public API available
 		\subsection{Parsing the Calendar Information}
-		
+			%Mapping from top suggested applications in play store and number of downloads of the application for its use
 		\subsection{Addressing Privacy Concerns}
-
+			%Both applications are open source. Only way to obtain data is through the user's consent. No personal data is collected, only cache metrics. Full transparency with volunteers - discussed in POW.
 \chapter{Experiment Setup and Application Design}
 	
 	\section{Introduction}
@@ -1156,6 +1170,14 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\\\emph{https://github.com/android/platform\_system\_core/tree/master/toolbox}, October 2015. 
 	Online; Last Accessed: October 24, 2015.	
 					
+	\item \textbf{[43]} ``Low RAM Configuration | Android Source Code''
+	\\\emph{https://source.android.com/devices/tech/config/low-ram.html}, October 2015. 
+	Online; Last Accessed: October 24, 2015.
+						
+	\item \textbf{[44]} ``OOM Killer''
+	\\\emph{http://linux-mm.org/OOM\_Killer}, October 2015. 
+	Online; Last Accessed: October 24, 2015.
+							
 \end{referencelist}
 
 
