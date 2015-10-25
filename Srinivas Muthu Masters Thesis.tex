@@ -2,6 +2,7 @@
 
 \usepackage{graphicx}
 \usepackage{amssymb}
+\usepackage{algorithm2e}
 
 \begin{document} %---> %---> %---> %---> DO NOT ALTER THIS COMMAND
 %--------+----------------------------------------------------------+
@@ -294,6 +295,8 @@ I'd like to thank all my friends and family for supporting me throughout my time
  \abbreviation{MRU}{Most Recently Used}
  \abbreviation{LFU}{Least Frequently Used}
  \abbreviation{RR}{Random Replacement}
+ \abbreviation{OEM}{Original Equipment Manufacturer}
+ \abbreviation{ADB}{Android Debug Bridge}
 
 
 %							Template for some symbol based abbreviations
@@ -727,7 +730,67 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			We'll inspect in detail, why and how we need to solve these problems (and others) in the next section but the  '\checkmark' indicates that they are indeed solvable at the user level and do not require system level changes.
 			
 		\subsection{Getting Processes in Memory}
-		
+			Let's first address why it's necessary to get the list of processes that reside in memory. In our scenario, we are trying to determine the most efficient caching scheme amongst the following:
+			
+			\begin{itemize}
+				\item LRU (Default)
+				\item Pure Prediction (Applications will be cached solely based on context inference)
+				\item LRU-Context Hybrid (or simply Hybrid)
+			\end{itemize}
+			
+			In order to determine which scheme is most efficient, we need the ability to measure CHR data and by extension if and when a cache hit or miss occurs. We can only determine if a cache hit occurred if we had access to the list of processes in the cache i.e. the active processes and the CBP(s) in memory. The {\em ActivityManager} class in Android provides two relevant helper methods [35]:
+			
+			\begin{itemize}
+				\item {\em getRunningTasks()}
+				\item {\em getRunningAppProcesses()}
+			\end{itemize} 
+			
+			Unfortunately, as of Android 5.0, it has become increasingly difficult to get a list of applications running in memory. {\em getRunningTasks()} has been deprecated and {\em getRunningAppProcesses()} has been killed (It only returns the requesting application rather than all applications running in memory). The documentation has'nt changed and Google is ignoring requests to either update the documentation or restore the original implementation. An alternate solution is to use the {\em UsageStatsManager} class [36]. However, it requires special permission from the user in the Settings application and some OEM (Original Equipment Manufacturers)(s) have removed this setting explicitly rendering this solution unreliable. The best solution involves using the ADB (Android Debug Bridge) shell to retrieve the desired information which can then be parsed into a suitable list of processes residing in memory. ADB is a versatile command line tool that enables communication with an emulator instance or a connected APMD. It is a client-server program that includes three components [37]:
+			
+			\begin{itemize}
+				\item A client, which runs on the APMD. The client can be invoked from a shell by issuing an ADB command. Other Android tools can create ADB clients as well.
+				\item A server, which runs as a background process on the APMD. The server manages communication between the client and the ADB daemon running on the APMD.
+				\item A daemon, which runs as a background process on the APMD.
+			\end{itemize}
+			
+			The ADB provides a Unix shell that can be used to run a variety of commands on the APMD. The command binaries are stored in the APMD's file system at {\em /system/bin/} [38]. We eventually obtain the list of processes residing in memory by running the {\em toolbox} command [42] in the shell. The Android {\em toolbox} command encapsulates the functionality of many common Linux commands (and some special Android commands) into a single binary [39]. Some of the commands provided by Toolbox are listed below (not an exhaustive list):
+			
+			\begin{itemize}
+				\item cat, chmod, chown, cmp, cp
+				\item ctrlaltdel, date, dd, df, dmesg
+				\item toolbox, top, touch, umount
+				\item ps, reboot, renice, rm, rmdir
+			\end{itemize}
+			
+			Of these, we are most concerned with the {\em toolbox} and {\em ps} commands as they provide a direct window into the processes residing in memory. We use the following parameters with the {\em ps} command to get the desired process data:
+			
+			\begin{itemize}
+				\item '-P': It shows the scheduling policy.
+				\item '-p': It displays the priorities and niceness level.
+				\item '-x': It shows system time in seconds
+				\item '-c': It displays the CPU
+			\end{itemize}
+			
+			With the help of {\em libsuperuser} library which provided a convenient framework to run shell commands [40] and Jared Rummler's {\em AndroidProcess} library that provided a framework to parse the process-related shell outputs [41], the following algorithm was written to obtain a list of processes residing in memory (active processes and CBP(s)): 
+			
+			\begin{algorithm}[H]
+				\SetAlgoLined
+				\KwResult{Write here the result }
+				initialization;
+				\While{While condition}{
+					instructions;
+					\eIf{condition}{
+						instructions1;
+						instructions2;
+					}{
+					instructions3;
+				}
+			}
+			\caption{How to write algorithms}
+			\end{algorithm}			
+			
+			It is worth noting that this list corresponds to the list of processes displayed by the Settings application (Refer Figure 3-1) as part of the running applications and CBP screens and that the Settings application has system privileges that third party Android applications don't.	
+			
 		\subsection{Detecting a Change in the Foreground Application}
 		
 		\subsection{Reading the User's Calendar}
@@ -1013,7 +1076,39 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\item \textbf{[34]} ``CyanogenMod''
 	\\\emph{http://www.cyanogenmod.org/}, October 2015. 
 	Online; Last Accessed: October 24, 2015.
-																		
+											
+	\item \textbf{[35]} ``Activity Manager | Android Developers''
+	\\\emph{http://developer.android.com/reference/android/app/ActivityManager.html}, October 2015. 
+	Online; Last Accessed: October 24, 2015.
+	
+	\item \textbf{[36]} ``Usage Stats Manager | Android Developers''
+	\\\emph{https://developer.android.com/reference/android/app/usage/UsageStatsManager.html}, October 2015. 
+	Online; Last Accessed: October 24, 2015.																			
+
+	\item \textbf{[37]} ``Android Debug Bridge | Android Developers''
+	\\\emph{http://developer.android.com/tools/help/adb.html}, October 2015. 
+	Online; Last Accessed: October 24, 2015.
+
+	\item \textbf{[38]} ``ADB Shell Commands | Android Developers''
+	\\\emph{http://developer.android.com/tools/help/shell.html}, October 2015. 
+	Online; Last Accessed: October 24, 2015.
+	
+	\item \textbf{[39]} ``Android Toolbox''
+	\\\emph{http://elinux.org/Android\_toolbox}, October 2015. 
+	Online; Last Accessed: October 24, 2015.
+	
+	\item \textbf{[40]} ``Chainfire | Github | libsuperuser''
+	\\\emph{https://github.com/Chainfire/libsuperuser}, October 2015. 
+	Online; Last Accessed: October 24, 2015.
+	
+	\item \textbf{[41]} ``Jared Rummler | Github | AndroidProcesses''
+	\\\emph{https://github.com/jaredrummler/AndroidProcesses}, October 2015. 
+	Online; Last Accessed: October 24, 2015.
+
+	\item \textbf{[42]} ``toolbox | Github''
+	\\\emph{https://github.com/android/platform\_system\_core/tree/master/toolbox}, October 2015. 
+	Online; Last Accessed: October 24, 2015.	
+					
 \end{referencelist}
 
 

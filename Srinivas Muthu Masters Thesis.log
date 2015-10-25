@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.21)  24 OCT 2015 20:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.21)  24 OCT 2015 22:40
 entering extended mode
 **"Srinivas Muthu Masters Thesis.tex"
 ("Srinivas Muthu Masters Thesis.tex"
@@ -93,39 +93,92 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-("Srinivas Muthu Masters Thesis.aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\algorithm2e\algorithm2e.sty"
+Package: algorithm2e 2013/01/06 v5.00 algorithms environments
+\c@AlgoLine=\count97
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\xspace.sty"
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\relsize.sty"
+Package: relsize 2003/07/04 ver 3.1
+)
+********************************************************
+Package `algorithm2e' Release 5.0 -- january 06 2013 --
+- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
+- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
+subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
+- Author: Christophe Fiorio (cfiorio@um2.fr)
+********************************************************
+\skiptotal=\skip44
+\skiplinenumber=\skip45
+\skiprule=\skip46
+\skiphlne=\skip47
+\skiptext=\skip48
+\skiplength=\skip49
+\algomargin=\skip50
+\skipalgocfslide=\skip51
+\algowidth=\dimen105
+\inoutsize=\dimen106
+\inoutindent=\dimen107
+\interspacetitleruled=\dimen108
+\interspacealgoruled=\dimen109
+\interspacetitleboxruled=\dimen110
+\algocf@inoutbox=\box26
+\algocf@inputbox=\box27
+\AlCapSkip=\skip52
+\AlCapHSkip=\skip53
+\algoskipindent=\skip54
+\algocf@nlbox=\box28
+\algocf@hangingbox=\box29
+\algocf@untilbox=\box30
+\algocf@skipuntil=\skip55
+\algocf@capbox=\box31
+\algoheightruledefault=\skip56
+\algoheightrule=\skip57
+\algotitleheightruledefault=\skip58
+\algotitleheightrule=\skip59
+\c@algocfline=\count98
+\c@algocfproc=\count99
+\c@algocf=\count100
+\algocf@algoframe=\box32
+\algocf@algobox=\box33
+) ("Srinivas Muthu Masters Thesis.aux")
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count97
-\scratchdimen=\dimen105
-\scratchbox=\box26
-\nofMPsegments=\count98
-\nofMParguments=\count99
+\scratchcounter=\count101
+\scratchdimen=\dimen111
+\scratchbox=\box34
+\nofMPsegments=\count102
+\nofMParguments=\count103
 \everyMPshowfont=\toks16
-\MPscratchCnt=\count100
-\MPscratchDim=\dimen106
-\MPnumerator=\count101
-\makeMPintoPDFobject=\count102
+\MPscratchCnt=\count104
+\MPscratchDim=\dimen112
+\MPnumerator=\count105
+\makeMPintoPDFobject=\count106
 \everyMPtoPDFconversion=\toks17
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 179.
+LaTeX Font Info:    Try loading font information for U+msa on input line 180.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 179.
+LaTeX Font Info:    Try loading font information for U+msb on input line 180.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -139,12 +192,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ] [4] [5
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 218--220
+Underfull \hbox (badness 10000) in paragraph at lines 219--221
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--220
+Underfull \hbox (badness 10000) in paragraph at lines 219--221
 
  []
 
@@ -178,7 +231,7 @@ File: images/androidSystemArchitecture.jpg Graphic file (type jpg)
 
 <use images/androidSystemArchitecture.jpg>
 Package pdftex.def Info: images/androidSystemArchitecture.jpg used on input lin
-e 413.
+e 416.
 (pdftex.def)             Requested size: 256.0748pt x 256.14449pt.
 
 
@@ -193,14 +246,14 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: images/mooresLaw.png Graphic file (type png)
 
 <use images/mooresLaw.png>
-Package pdftex.def Info: images/mooresLaw.png used on input line 438.
+Package pdftex.def Info: images/mooresLaw.png used on input line 441.
 (pdftex.def)             Requested size: 256.0748pt x 171.90923pt.
  [4 <./images/mooresLaw.png (PNG copy)>] [5]
 <images/runningApps.png, id=71, 1628.33344pt x 1410.0178pt>
 File: images/runningApps.png Graphic file (type png)
 
 <use images/runningApps.png>
-Package pdftex.def Info: images/runningApps.png used on input line 468.
+Package pdftex.def Info: images/runningApps.png used on input line 471.
 (pdftex.def)             Requested size: 256.0748pt x 221.73474pt.
  [6 <./images/runningApps.png>] [7] [8]
 Chapter 2.
@@ -210,14 +263,14 @@ Chapter 2.
 File: images/appsByTime.png Graphic file (type png)
 
 <use images/appsByTime.png>
-Package pdftex.def Info: images/appsByTime.png used on input line 540.
+Package pdftex.def Info: images/appsByTime.png used on input line 543.
 (pdftex.def)             Requested size: 256.0748pt x 125.61583pt.
 
 <images/contextPhone.png, id=90, 430.60875pt x 331.99031pt>
 File: images/contextPhone.png Graphic file (type png)
 
 <use images/contextPhone.png>
-Package pdftex.def Info: images/contextPhone.png used on input line 558.
+Package pdftex.def Info: images/contextPhone.png used on input line 561.
 (pdftex.def)             Requested size: 256.0748pt x 197.43283pt.
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
@@ -236,7 +289,7 @@ ce.png, id=97, 188.95593pt x 127.97812pt>
 File: images/gpsTrace.png Graphic file (type png)
 
 <use images/gpsTrace.png>
-Package pdftex.def Info: images/gpsTrace.png used on input line 570.
+Package pdftex.def Info: images/gpsTrace.png used on input line 573.
 (pdftex.def)             Requested size: 256.0748pt x 173.45232pt.
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
@@ -257,357 +310,427 @@ Chapter 3.
 ]
 File: images/runningApps.png Graphic file (type png)
  <use images/runningApps.png>
-Package pdftex.def Info: images/runningApps.png used on input line 590.
+Package pdftex.def Info: images/runningApps.png used on input line 593.
 (pdftex.def)             Requested size: 256.0748pt x 221.73474pt.
 File: images/runningApps.png Graphic file (type png)
  <use images/runningApps.png>
-Package pdftex.def Info: images/runningApps.png used on input line 599.
+Package pdftex.def Info: images/runningApps.png used on input line 602.
 (pdftex.def)             Requested size: 256.0748pt x 221.73474pt.
  [16] [17]
 [18] <images/beforeAndAfterNews.png, id=118, 1629.08624pt x 1445.4pt>
 File: images/beforeAndAfterNews.png Graphic file (type png)
 
 <use images/beforeAndAfterNews.png>
-Package pdftex.def Info: images/beforeAndAfterNews.png used on input line 633.
+Package pdftex.def Info: images/beforeAndAfterNews.png used on input line 636.
 (pdftex.def)             Requested size: 256.0748pt x 227.18855pt.
  [19 <./images/beforeAndAfterNews.png>]
 [20] [21] <images/removeCBP3.png, id=130, 405.76593pt x 310.91156pt>
 File: images/removeCBP3.png Graphic file (type png)
 
 <use images/removeCBP3.png>
-Package pdftex.def Info: images/removeCBP3.png used on input line 657.
+Package pdftex.def Info: images/removeCBP3.png used on input line 660.
 (pdftex.def)             Requested size: 256.0748pt x 196.21687pt.
 
 <images/stage123.png, id=131, 2430.07875pt x 1385.175pt>
 File: images/stage123.png Graphic file (type png)
 
 <use images/stage123.png>
-Package pdftex.def Info: images/stage123.png used on input line 666.
+Package pdftex.def Info: images/stage123.png used on input line 669.
 (pdftex.def)             Requested size: 369.88582pt x 210.83202pt.
  [22 <./images/removeCBP3.png>] [23 <./images/stage123.png>] [24] [25] [26] [27
-]
+] [28] [29]
 Chapter 4.
-[28
+[30
 
 ]
 Overfull \vbox (5.10855pt too high) has occurred while \output is active []
 
 
-[29]
+[31]
 Chapter 5.
-[30
+[32
 
 ]
 Overfull \vbox (201.83556pt too high) has occurred while \output is active []
 
 
-[31]
+[33]
 Chapter 6.
-[32
+[34
 
 ]
 Overfull \vbox (7.67186pt too high) has occurred while \output is active []
 
 
-[33]
+[35]
 Chapter 7.
-[34
+[36
 
 ]
-Underfull \hbox (badness 10000) detected at line 877
+Underfull \hbox (badness 10000) detected at line 940
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 881
+Underfull \hbox (badness 10000) detected at line 944
  
  []
 
 
-Overfull \hbox (4.9583pt too wide) in paragraph at lines 881--884
+Overfull \hbox (4.9583pt too wide) in paragraph at lines 944--947
 \OT1/cmr/m/it/12 http://www.lifehacker.com.au/2014/09/the-most-popular-smartpho
 ne-operating-
  []
 
 
-Underfull \hbox (badness 10000) detected at line 885
+Underfull \hbox (badness 10000) detected at line 948
  
  []
 
 
-Overfull \hbox (6.05295pt too wide) in paragraph at lines 885--888
+Overfull \hbox (6.05295pt too wide) in paragraph at lines 948--951
 \OT1/cmr/m/it/12 https://mahalelabs.files.wordpress.com/2013/03/androidstack-1.
 jpg\OT1/cmr/m/n/12 , March 2013.
  []
 
 
-Underfull \hbox (badness 10000) detected at line 889
+Underfull \hbox (badness 10000) detected at line 952
  
  []
 
 
-Overfull \hbox (1.0222pt too wide) in paragraph at lines 889--892
+Overfull \hbox (1.0222pt too wide) in paragraph at lines 952--955
 \OT1/cmr/m/it/12 http://www.cnet.com/uk/how-to/best-custom-roms-for-the-samsung
 -galaxy-s2/\OT1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) detected at line 893
+Underfull \hbox (badness 10000) detected at line 956
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 897
+Underfull \hbox (badness 10000) detected at line 960
  
  []
 
 
-Overfull \hbox (18.91956pt too wide) in paragraph at lines 897--900
+Overfull \hbox (18.91956pt too wide) in paragraph at lines 960--963
 \OT1/cmr/m/it/12 http://developer.android.com/guide/components/fundamentals.htm
 l\OT1/cmr/m/n/12 , Oc-to-ber 2015.
  []
 
 
-Underfull \hbox (badness 10000) detected at line 901
+Underfull \hbox (badness 10000) detected at line 964
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 905
+Underfull \hbox (badness 10000) detected at line 968
  
  []
 
 
-Overfull \hbox (14.63947pt too wide) in paragraph at lines 905--908
+Overfull \hbox (14.63947pt too wide) in paragraph at lines 968--971
 \OT1/cmr/m/it/12 http://developer.android.com/guide/components/services.html\OT
 1/cmr/m/n/12 , Oc-to-ber 2015. On-
  []
 
 
-Underfull \hbox (badness 10000) detected at line 909
+Underfull \hbox (badness 10000) detected at line 972
  
  []
 
 
-Overfull \hbox (9.45514pt too wide) in paragraph at lines 909--912
+Overfull \hbox (9.45514pt too wide) in paragraph at lines 972--975
 \OT1/cmr/m/it/12 http://www.extremetech.com/wp-content/uploads/2015/04/MooresLa
 w2.png\OT1/cmr/m/n/12 , Oc-
  []
 
-[35
+[37
 
 ]
-Underfull \hbox (badness 10000) detected at line 913
+Underfull \hbox (badness 10000) detected at line 976
  
  []
 
 
-Overfull \hbox (10.7311pt too wide) in paragraph at lines 913--916
+Overfull \hbox (10.7311pt too wide) in paragraph at lines 976--979
 \OT1/cmr/m/it/12 http://www.cnet.com/news/a-brief-history-of-android-phones/\OT
 1/cmr/m/n/12 , Au-gust 2011. On-
  []
 
 
-Underfull \hbox (badness 10000) detected at line 917
+Underfull \hbox (badness 10000) detected at line 980
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 921
+Underfull \hbox (badness 10000) detected at line 984
  
  []
 
 
-Overfull \hbox (1.24901pt too wide) in paragraph at lines 921--924
+Overfull \hbox (1.24901pt too wide) in paragraph at lines 984--987
 \OT1/cmr/m/it/12 http://www.androidcentral.com/nexus-6p\OT1/cmr/m/n/12 , Oc-to-
 ber 2015. On-line; Last Ac-cessed:
  []
 
 
-Underfull \hbox (badness 10000) detected at line 925
+Underfull \hbox (badness 10000) detected at line 988
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 929
+Underfull \hbox (badness 10000) detected at line 992
  
  []
 
 
-Overfull \hbox (8.3721pt too wide) in paragraph at lines 929--932
+Overfull \hbox (8.3721pt too wide) in paragraph at lines 992--995
 \OT1/cmr/m/it/12 http://phandroid.com/2011/06/16/android-psa-stop-using-task-ki
 ller-apps-now/\OT1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) detected at line 933
+Underfull \hbox (badness 10000) detected at line 996
  
  []
 
 
-Overfull \hbox (0.57191pt too wide) in paragraph at lines 933--936
+Overfull \hbox (0.57191pt too wide) in paragraph at lines 996--999
 \OT1/cmr/m/it/12 http://developer.android.com/guide/topics/processes/process-li
 fecycle.html\OT1/cmr/m/n/12 , Oc-
  []
 
 
-Underfull \hbox (badness 10000) detected at line 937
+Underfull \hbox (badness 10000) detected at line 1000
  
  []
 
 
-Overfull \hbox (8.03938pt too wide) in paragraph at lines 937--940
+Overfull \hbox (8.03938pt too wide) in paragraph at lines 1000--1003
 \OT1/cmr/m/it/12 http://developer.android.com/training/articles/memory.html\OT1
 /cmr/m/n/12 , Oc-to-ber 2015. On-
  []
 
 
-Underfull \hbox (badness 10000) detected at line 941
+Underfull \hbox (badness 10000) detected at line 1004
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 945
+Underfull \hbox (badness 10000) detected at line 1008
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 949
+Underfull \hbox (badness 10000) detected at line 1012
  
  []
 
-[36]
-Underfull \hbox (badness 10000) detected at line 953
+[38]
+Underfull \hbox (badness 10000) detected at line 1016
  
  []
 
 
-Overfull \hbox (1.8209pt too wide) in paragraph at lines 953--956
+Overfull \hbox (1.8209pt too wide) in paragraph at lines 1016--1019
 \OT1/cmr/m/it/12 http://www.cc.gatech.edu/fce/ctk/pubs/HCIJ16.pdf\OT1/cmr/m/n/1
 2 , Jan-uary 2001. On-line; Last
  []
 
 
-Underfull \hbox (badness 10000) detected at line 957
+Underfull \hbox (badness 10000) detected at line 1020
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 961
+Underfull \hbox (badness 10000) detected at line 1024
  
  []
 
 
-Overfull \hbox (28.35576pt too wide) in paragraph at lines 961--964
+Overfull \hbox (28.35576pt too wide) in paragraph at lines 1024--1027
 \OT1/cmr/m/it/12 markus-jakobsson.com/wp-content/uploads/2010/11/ShiNiuJakobsso
 nChow2010.pdf\OT1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) detected at line 965
+Underfull \hbox (badness 10000) detected at line 1028
  
  []
 
 
-Overfull \hbox (15.04462pt too wide) in paragraph at lines 965--968
+Overfull \hbox (15.04462pt too wide) in paragraph at lines 1028--1031
 \OT1/cmr/m/it/12 http://www.eecs.berkeley.edu/Pubs/TechRpts/1987/CSD-87-357.pdf
 \OT1/cmr/m/n/12 , Au-gust 1987.
  []
 
 
-Underfull \hbox (badness 10000) detected at line 969
+Underfull \hbox (badness 10000) detected at line 1032
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 973
+Underfull \hbox (badness 10000) detected at line 1036
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 977
+Underfull \hbox (badness 10000) detected at line 1040
  
  []
 
 
-Overfull \hbox (0.43756pt too wide) in paragraph at lines 977--980
+Overfull \hbox (0.43756pt too wide) in paragraph at lines 1040--1043
 \OT1/cmr/m/it/12 http://www.iasj.net/iasj?func=fulltext&aId=50712\OT1/cmr/m/n/1
 2 , Jan-uary 2003. On-line; Last
  []
 
 
-Underfull \hbox (badness 10000) detected at line 981
+Underfull \hbox (badness 10000) detected at line 1044
  
  []
 
 
-Overfull \hbox (24.91689pt too wide) in paragraph at lines 981--984
+Overfull \hbox (24.91689pt too wide) in paragraph at lines 1044--1047
 \OT1/cmr/m/it/12 https://www.seas.upenn.edu/ cit595/cit595s10/handouts/LRUrepla
 cementpolicy.pdf\OT1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) detected at line 985
+Underfull \hbox (badness 10000) detected at line 1048
  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 989
+Underfull \hbox (badness 10000) detected at line 1052
  
  []
 
-[37]
-Underfull \hbox (badness 10000) detected at line 993
- 
- []
-
-
-Underfull \hbox (badness 10000) detected at line 1001
+[39]
+Underfull \hbox (badness 10000) detected at line 1056
  
  []
 
 
-Overfull \hbox (57.15886pt too wide) in paragraph at lines 1001--1004
+Underfull \hbox (badness 10000) detected at line 1064
+ 
+ []
+
+
+Overfull \hbox (57.15886pt too wide) in paragraph at lines 1064--1067
 \OT1/cmr/m/it/12 http://techcrunch.com/2014/07/01/an-upper-limit-for-apps-new-d
 ata-suggests-consumers-
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1005
+Underfull \hbox (badness 10000) detected at line 1068
  
  []
 
 
-Overfull \hbox (36.87262pt too wide) in paragraph at lines 1005--1008
+Overfull \hbox (36.87262pt too wide) in paragraph at lines 1068--1071
 \OT1/cmr/m/it/12 http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.se
 t.cortexr/index.html\OT1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1009
+Underfull \hbox (badness 10000) detected at line 1072
  
  []
 
 
-Overfull \hbox (10.2682pt too wide) in paragraph at lines 1009--1012
+Overfull \hbox (10.2682pt too wide) in paragraph at lines 1072--1075
 \OT1/cmr/m/it/12 http://www.technorms.com/40664/android-task-killer-apps\OT1/cm
 r/m/n/12 , Septem-ber 2014. On-
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1013
+Underfull \hbox (badness 10000) detected at line 1076
  
  []
 
-[38] ("Srinivas Muthu Masters Thesis.aux") ) 
+
+Underfull \hbox (badness 10000) detected at line 1080
+ 
+ []
+
+
+Overfull \hbox (5.11633pt too wide) in paragraph at lines 1080--1083
+\OT1/cmr/m/it/12 http://developer.android.com/reference/android/app/ActivityMan
+ager.html\OT1/cmr/m/n/12 , Oc-
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 1084
+ 
+ []
+
+
+Overfull \hbox (38.56711pt too wide) in paragraph at lines 1084--1087
+\OT1/cmr/m/it/12 https://developer.android.com/reference/android/app/usage/Usag
+eStatsManager.html\OT1/cmr/m/n/12 ,
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 1088
+ 
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 1092
+ 
+ []
+
+[40]
+Underfull \hbox (badness 10000) detected at line 1096
+ 
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 1100
+ 
+ []
+
+
+Overfull \hbox (5.5992pt too wide) in paragraph at lines 1100--1103
+\OT1/cmr/m/it/12 https://github.com/Chainfire/libsuperuser\OT1/cmr/m/n/12 , Oc-
+to-ber 2015. On-line; Last Ac-cessed:
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 1104
+ 
+ []
+
+
+Overfull \hbox (4.21407pt too wide) in paragraph at lines 1104--1107
+\OT1/cmr/m/it/12 https://github.com/jaredrummler/AndroidProcesses\OT1/cmr/m/n/1
+2 , Oc-to-ber 2015. On-line; Last
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 1108
+ 
+ []
+
+
+Overfull \hbox (0.73502pt too wide) in paragraph at lines 1108--1111
+\OT1/cmr/m/it/12 https://github.com/android/platform[]system[]core/tree/master/
+toolbox\OT1/cmr/m/n/12 , Oc-to-ber
+ []
+
+[41] ("Srinivas Muthu Masters Thesis.aux") ) 
 Here is how much of TeX's memory you used:
- 1667 strings out of 493673
- 21671 string characters out of 3141520
- 78345 words of memory out of 3000000
- 5018 multiletter control sequences out of 15000+200000
+ 3026 strings out of 493673
+ 41091 string characters out of 3141520
+ 120173 words of memory out of 3000000
+ 6363 multiletter control sequences out of 15000+200000
  11056 words of font info for 41 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 27i,9n,26p,1472b,243s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,12n,26p,1472b,331s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/
 fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
@@ -615,10 +738,10 @@ s/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
 ype1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
 /public/amsfonts/symbols/msam10.pfb>
-Output written on "Srinivas Muthu Masters Thesis.pdf" (53 pages, 1292994 bytes)
+Output written on "Srinivas Muthu Masters Thesis.pdf" (56 pages, 1300203 bytes)
 .
 PDF statistics:
- 208 PDF objects out of 1000 (max. 8388607)
+ 218 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
