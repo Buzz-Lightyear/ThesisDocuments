@@ -50,10 +50,10 @@
 \contentsline {subsection}{\numberline {3.3.5}Backing Up the Data}{35}
 \contentsline {subsection}{\numberline {3.3.6}Reading the User's Calendar}{37}
 \contentsline {subsection}{\numberline {3.3.7}Parsing the Calendar Information}{39}
-\contentsline {subsection}{\numberline {3.3.8}Addressing Privacy Concerns}{40}
 \contentsline {chapter}{\numberline {4}Experiment Setup and Application Design}{42}
 \contentsline {section}{\numberline {4.1}Introduction}{43}
 \contentsline {section}{\numberline {4.2}Eligibility for Volunteers}{43}
+\contentsline {subsection}{\numberline {4.2.1}Addressing Privacy Concerns}{43}
 \contentsline {section}{\numberline {4.3}Process and Duration of Experiment}{43}
 \contentsline {section}{\numberline {4.4}Cache Analyzer Design}{43}
 \contentsline {section}{\numberline {4.5}Context Analyzer Design}{43}
