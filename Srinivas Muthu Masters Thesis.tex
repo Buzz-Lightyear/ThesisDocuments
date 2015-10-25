@@ -339,6 +339,7 @@ I'd like to thank all my friends and family for supporting me throughout my time
 \begin{listofsymbols}
 
  \emblem{\checkmark}{Represents a check mark indicating that a particular item has been checked or in a different context, whether the checked item is correct}
+ 
 % \emblem{$\ddagger$}{the degree to which the flayrod has gone out of
 %                    skew on tredel}
 %\emblem{$\triangle$}{the ratio of the M2 monetary aggregate to the
@@ -771,25 +772,38 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\item '-c': It displays the CPU
 			\end{itemize}
 			
-			With the help of {\em libsuperuser} library which provided a convenient framework to run shell commands [40] and Jared Rummler's {\em AndroidProcess} library that provided a framework to parse the process-related shell outputs [41], the following algorithm was written to obtain a list of processes residing in memory (active processes and CBP(s)): 
+			With the help of {\em libsuperuser} library which provided a convenient framework to run shell commands [40] and Jared Rummler's {\em AndroidProcess} library that provided a framework to parse the process-related shell outputs [41], the following algorithm (Refer Algorithm 1) was written to obtain a list of processes residing in memory (active processes and CBP(s)). It is worth noting that this list corresponds to the list of processes displayed by the Settings application (Refer Figure 3-1) as part of the running applications and CBP screens, and that the Settings application has system privileges that third party Android applications don't.\\ 
 			
 			\begin{algorithm}[H]
 				\SetAlgoLined
-				\KwResult{Write here the result }
-				initialization;
-				\While{While condition}{
-					instructions;
-					\eIf{condition}{
-						instructions1;
-						instructions2;
-					}{
-					instructions3;
+				\KwResult{LIST Process}
+				
+				INITIALIZE LIST Process - processes\\
+				LIST String - stdout --- Shell.SH.run("toolbox ps -p -P -x -c")\\
+				Integer myPid 		 --- android.os.Process.myPid()
+				
+				\For{String line : stdout}
+				{
+					INITIALIZE Process - process\\
+					\eIf{process matches APP-ID-PATTERN}
+					{
+						\eIf{(process.ppid EQUAL TO myPid)\\ OR (process.name EQUAL TO "toolbox")}
+						{
+							CONTINUE
+						}
+						{
+							ADD TO processes - process
+						}
+					}
+					{
+						CONTINUE
+					}
 				}
-			}
-			\caption{How to write algorithms}
-			\end{algorithm}			
+				
+				RETURN processes;\\
 			
-			It is worth noting that this list corresponds to the list of processes displayed by the Settings application (Refer Figure 3-1) as part of the running applications and CBP screens and that the Settings application has system privileges that third party Android applications don't.	
+			\caption[Algorithm to get list of processes in RAM]{In the above algorithm, {\em Process} is a custom data structure that parses the output format of the {\em toolbox ps} command. Its class structure is discussed in detail in Section 4.4. Each process is added to a result list that is returned by the algorithm. Note that the requesting application represented by {\em myPid} (discussed in 4.4) and {\em toolbox} related processes represented by process names that match {\em toolbox}, are'nt added to the result.}
+			\end{algorithm}			
 			
 		\subsection{Detecting a Change in the Foreground Application}
 		
