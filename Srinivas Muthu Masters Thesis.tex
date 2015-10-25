@@ -3,6 +3,7 @@
 \usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage{algorithm2e}
+\usepackage{algpseudocode}
 
 \begin{document} %---> %---> %---> %---> DO NOT ALTER THIS COMMAND
 %--------+----------------------------------------------------------+
@@ -297,7 +298,7 @@ I'd like to thank all my friends and family for supporting me throughout my time
  \abbreviation{RR}{Random Replacement}
  \abbreviation{OEM}{Original Equipment Manufacturer}
  \abbreviation{ADB}{Android Debug Bridge}
-
+ \abbreviation{UID}{unique Identifier}
 
 %							Template for some symbol based abbreviations
 
@@ -805,7 +806,39 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\caption[Algorithm to get list of processes in RAM]{In the above algorithm, {\em Process} is a custom data structure that parses the output format of the {\em toolbox ps} command. Its class structure is discussed in detail in Section 4.4. The {\em APP-ID-PATTERN} is a custom regular expression that maps to application ID patterns for the Android OS in versions 4.0 and above. Each process is added to a result list that is returned by the algorithm. Note that the requesting application represented by {\em myPid} (discussed in 4.4) and {\em toolbox} related processes represented by process names that match {\em toolbox}, are'nt added to the result.}
 			\end{algorithm}			
 			
-		\subsection{Detecting a Change in the Foreground Application}
+		\subsection{Obtaining the Foreground Application}
+			In order to update the CHR metric, we need the ability to detect new cache hits and cache misses. A new cache hit/miss occurs when there are new application requests i.e. changes in the foreground application. Before we analyze how to detect change in the foreground application, we first need a way to obtain the current foreground application. Had we approached this problem at the system level, we could've made use of system level privileges such as listening to a new screen-touch by the user and detecting which application was  launched but this is not possible from a third party user-level application. Fortunately, there is a workaround to detecting the foreground application at the user level. We obtain every process currently running in memory and through a process of elimination, obtain the foreground application. To elaborate, the foreground application has certain unique properties in its process name, UID (Unique Identifier) and other fields, that can be exploited to eliminate processes that are not associated with the current foreground application. The following  flow chart (Refer Figure 3-6) illustrates this process.
+			
+			\begin{algorithm}[H]
+				\SetAlgoLined
+				\KwResult{Foreground Application}
+				
+				INITIALIZE LIST {\em files} --- LIST {\em /proc} File\\
+				\For{File file : files}
+				{
+					\If{file IS A DIRECTORY}{CONTINUE}
+					
+					{\em pid --- file.getName()}\\
+					{\em cgroup} --- FILE READ ({\em /proc/\%d/cgroup})\\
+					{\em cpuSubSystem, cpuAccountSubSystem --- cgroup}\\
+					
+					\If{cpuAccountSubSystem ENDS WITH pid OR cpuSubSystem ENDS WITH bg\_non\_interactive}{CONTINUE}
+					
+					{\em cmdline} --- FILE READ ({\em /proc/\%d/cmdline})\\
+					{\em uid} --- PARSE FROM {\em cpuAccountSubSystem}\\
+					
+					\If{cmdline CONTAINS com.android.systemui OR uid BETWEEN 1000 AND 1038}{CONTINUE}
+					
+					{\em oomAdj} --- FILE READ ({\em /proc/\%d/oom\_score\_adj})\\
+					{\em oomScore} --- FILE READ ({\em /proc/\%d/oom\_score})\\
+					
+					\If{LOWEST oomScore AND oomAdj NOT 0}{RETURN cmdline}
+				}
+				
+				\caption{Algorithm to get current foreground application}
+			\end{algorithm}
+
+		\subsection{Updating the Statistics}
 		
 		\subsection{Reading the User's Calendar}
 		

@@ -45,46 +45,47 @@
 \contentsline {section}{\numberline {3.3}Challenges}{25}
 \contentsline {subsection}{\numberline {3.3.1}Deciding Between System vs User Level Approach}{25}
 \contentsline {subsection}{\numberline {3.3.2}Getting Processes in Memory}{26}
-\contentsline {subsection}{\numberline {3.3.3}Detecting a Change in the Foreground Application}{31}
-\contentsline {subsection}{\numberline {3.3.4}Reading the User's Calendar}{31}
-\contentsline {subsection}{\numberline {3.3.5}Parsing the Calendar Information}{31}
-\contentsline {subsection}{\numberline {3.3.6}Addressing Privacy Concerns}{31}
-\contentsline {chapter}{\numberline {4}Experiment Setup and Application Design}{32}
-\contentsline {section}{\numberline {4.1}Introduction}{33}
-\contentsline {section}{\numberline {4.2}Eligibility for Volunteers}{33}
-\contentsline {section}{\numberline {4.3}Process and Duration of Experiment}{33}
-\contentsline {section}{\numberline {4.4}Cache Analyzer Design}{33}
-\contentsline {section}{\numberline {4.5}Context Analyzer Design}{33}
-\contentsline {section}{\numberline {4.6}Tools, Version Control and APK}{33}
-\contentsline {subsection}{\numberline {4.6.1}Android Studio}{33}
-\contentsline {subsection}{\numberline {4.6.2}Git}{33}
-\contentsline {subsection}{\numberline {4.6.3}Third Party APK(s)}{33}
-\contentsline {chapter}{\numberline {5}Data Analysis and Results}{34}
-\contentsline {section}{\numberline {5.1}Introduction}{35}
-\contentsline {section}{\numberline {5.2}Phase A Data}{35}
-\contentsline {section}{\numberline {5.3}Phase B Data}{35}
-\contentsline {section}{\numberline {5.4}Default Approach Metrics}{35}
-\contentsline {section}{\numberline {5.5}Pure Prediction Approach Metrics}{35}
-\contentsline {section}{\numberline {5.6}Hybrid Approach Metrics}{35}
-\contentsline {section}{\numberline {5.7}Factors Influencing Variation In Data}{35}
-\contentsline {subsection}{\numberline {5.7.1}Android Version and Phone Model}{35}
-\contentsline {subsection}{\numberline {5.7.2}Number of Applications Installed}{35}
-\contentsline {subsection}{\numberline {5.7.3}Number of Applications Used}{35}
-\contentsline {subsection}{\numberline {5.7.4}User Bias}{35}
-\contentsline {subsection}{\numberline {5.7.5}User Demographics}{35}
-\contentsline {section}{\numberline {5.8}Points of Weakness}{35}
-\contentsline {subsection}{\numberline {5.8.1}List from Drive}{35}
-\contentsline {subsection}{\numberline {5.8.2}Slight Increase in Battery Consumption}{35}
-\contentsline {chapter}{\numberline {6}Scope for Future Work}{36}
-\contentsline {section}{\numberline {6.1}Introduction}{37}
-\contentsline {section}{\numberline {6.2}Improving Context Analysis}{37}
-\contentsline {subsection}{\numberline {6.2.1}Machine Learning in Calendar Parsing}{37}
-\contentsline {subsection}{\numberline {6.2.2}Calendar Parser - LFU Hybrid}{37}
-\contentsline {subsection}{\numberline {6.2.3}Other Ways of Gathering User Behavior Data}{37}
-\contentsline {subsection}{\numberline {6.2.4}Custom Priorities in Hybrid Cache}{37}
-\contentsline {section}{\numberline {6.3}Alternate Ways of Using the Contextual Information}{37}
-\contentsline {subsection}{\numberline {6.3.1}Switching to Silent Mode}{37}
-\contentsline {subsection}{\numberline {6.3.2}Disabling Texting at High Speeds}{37}
-\contentsline {section}{\numberline {6.4}Implementing the Hybrid Cache}{37}
-\contentsline {chapter}{\numberline {7}Conclusion}{38}
-\contentsline {chapter}{References}{39}
+\contentsline {subsection}{\numberline {3.3.3}Obtaining the Foreground Application}{31}
+\contentsline {subsection}{\numberline {3.3.4}Updating the Statistics}{33}
+\contentsline {subsection}{\numberline {3.3.5}Reading the User's Calendar}{33}
+\contentsline {subsection}{\numberline {3.3.6}Parsing the Calendar Information}{33}
+\contentsline {subsection}{\numberline {3.3.7}Addressing Privacy Concerns}{33}
+\contentsline {chapter}{\numberline {4}Experiment Setup and Application Design}{34}
+\contentsline {section}{\numberline {4.1}Introduction}{35}
+\contentsline {section}{\numberline {4.2}Eligibility for Volunteers}{35}
+\contentsline {section}{\numberline {4.3}Process and Duration of Experiment}{35}
+\contentsline {section}{\numberline {4.4}Cache Analyzer Design}{35}
+\contentsline {section}{\numberline {4.5}Context Analyzer Design}{35}
+\contentsline {section}{\numberline {4.6}Tools, Version Control and APK}{35}
+\contentsline {subsection}{\numberline {4.6.1}Android Studio}{35}
+\contentsline {subsection}{\numberline {4.6.2}Git}{35}
+\contentsline {subsection}{\numberline {4.6.3}Third Party APK(s)}{35}
+\contentsline {chapter}{\numberline {5}Data Analysis and Results}{36}
+\contentsline {section}{\numberline {5.1}Introduction}{37}
+\contentsline {section}{\numberline {5.2}Phase A Data}{37}
+\contentsline {section}{\numberline {5.3}Phase B Data}{37}
+\contentsline {section}{\numberline {5.4}Default Approach Metrics}{37}
+\contentsline {section}{\numberline {5.5}Pure Prediction Approach Metrics}{37}
+\contentsline {section}{\numberline {5.6}Hybrid Approach Metrics}{37}
+\contentsline {section}{\numberline {5.7}Factors Influencing Variation In Data}{37}
+\contentsline {subsection}{\numberline {5.7.1}Android Version and Phone Model}{37}
+\contentsline {subsection}{\numberline {5.7.2}Number of Applications Installed}{37}
+\contentsline {subsection}{\numberline {5.7.3}Number of Applications Used}{37}
+\contentsline {subsection}{\numberline {5.7.4}User Bias}{37}
+\contentsline {subsection}{\numberline {5.7.5}User Demographics}{37}
+\contentsline {section}{\numberline {5.8}Points of Weakness}{37}
+\contentsline {subsection}{\numberline {5.8.1}List from Drive}{37}
+\contentsline {subsection}{\numberline {5.8.2}Slight Increase in Battery Consumption}{37}
+\contentsline {chapter}{\numberline {6}Scope for Future Work}{38}
+\contentsline {section}{\numberline {6.1}Introduction}{39}
+\contentsline {section}{\numberline {6.2}Improving Context Analysis}{39}
+\contentsline {subsection}{\numberline {6.2.1}Machine Learning in Calendar Parsing}{39}
+\contentsline {subsection}{\numberline {6.2.2}Calendar Parser - LFU Hybrid}{39}
+\contentsline {subsection}{\numberline {6.2.3}Other Ways of Gathering User Behavior Data}{39}
+\contentsline {subsection}{\numberline {6.2.4}Custom Priorities in Hybrid Cache}{39}
+\contentsline {section}{\numberline {6.3}Alternate Ways of Using the Contextual Information}{39}
+\contentsline {subsection}{\numberline {6.3.1}Switching to Silent Mode}{39}
+\contentsline {subsection}{\numberline {6.3.2}Disabling Texting at High Speeds}{39}
+\contentsline {section}{\numberline {6.4}Implementing the Hybrid Cache}{39}
+\contentsline {chapter}{\numberline {7}Conclusion}{40}
+\contentsline {chapter}{References}{41}
