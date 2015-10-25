@@ -870,10 +870,47 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		 		
 		 		\caption[Algorithm to update cache metrics]{This algorithm retrieves the foreground application and checks if it has changed since the last second. If it has, it verifies whether it was a cache hit or a cache miss and updates the cache metrics. Finally, it updates the old foreground application and the previous list of processes to the current one so that the next iteration uses these values as the base.}
 		 	\end{algorithm}
-			 
-%			 The speed of change between applications varies a lot and there is not inherent mechanism to detect a third party app launch as it is a security issue. So, a background thread obtains the list of processes and the foreground app every second to see if there are any changes in the foreground app. If so, it updates the statistics and writes it to a file. We'll see next why it's important to back this data up. Next section will elaborate on the design of the applications and how the service interacts with the application.
+
 		\subsection{Backing Up the Data}
-			%Because our background service is running all the time, it's OOM score increases [44] and therefore it's likely to be killed and it's important not to lose the statistics.
+			Previously, we discussed the mechanism by which the background service updates the cache metrics. The other aspect of this issue is storing this data. Before we inspect how to store the data, let's discuss the necessity for such a provision. Our background service is designed to run throughout the duration of the experiment and retrieve the foreground application and the list of processes in memory every second. This results in it's OOM score increasing i.e. it's likelihood of getting killed by the Linux OOM killer [44] which would result in a loss of data. It is worth noting that the OOM killer selects the {\em best} process to kill which is decided by the combination of how long a process has been running and how much memory would be released if the process is killed. Even though our process scores poorly on the time duration aspect, it takes up relatively low memory compared to some of the other common background processes (Refer Figure 3-6).
+
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width = 70mm]{images/lowMemory.png}
+				\caption[Memory Occupied by the Background Service]{CacheAnalyzer is an application that collects the default (LRU) cache metrics. The service mentioned in the diagram is the background service that updates the metrics every second. We'll discuss the design of this application in Section 4.4 but it's worth noting here that the memory footprint of the application is quite low. This is not to suggest that it won't get killed by the OOM killer, which is why we're backing the data up.}
+			\end{figure} 
+
+			Android provides several options for saving persistent application data. There are five ways to accomplish this task [45]:
+			
+			\begin{itemize}
+				\item Shared Preferences - It is used in cases where primitive data needs to be stored in Key Value pairs.
+				\item Internal Storage - It is used to store private data on device memory.
+				\item External Storage - It is used to store public data on shared external storage
+				\item SQLite Databases - They are used to store structured data in a relational database.
+				\item Network Connection - It is used to store data over the Internet.
+			\end{itemize}
+			
+			For our scenario, Internal Storage is the best fit as it keeps the data private to the application and since the data is quite primitive (cache hits and misses), we do not need SQLite databases or network connections. The data is written to a file every minute. That way, we don't have to constantly perform I/O operations from the service and in the worst case scenario, fifty nine seconds of Cache data would be lost which is relatively a small amount of time. Algorithm 3 can be tweaked to incorporate the file write operation (Refer Algorithm 4).
+			
+			\begin{algorithm}[H]
+				\SetAlgoLined
+				\KwResult{Update Cache Metrics AND Write to File}
+				
+				\For{EACH SECOND}
+				{	
+					{\em newForegroundApp --- getNewForegroundApp()}\\
+					{\em currentListOfProc --- getListOfProcesses()}\\	 			
+					\If{newForegroundApp EQUALS oldForegroundApp}{CONTINUE}
+					\eIf{oldListOfProc CONTAINS newForegroundApp}{cacheHit++}{cacheMiss++}
+					{\em updateMetrics()}\\
+					\If{END OF MINUTE}{ writeMetricsToFile()}
+					{\em oldListOfProc --- newListOfProc}\\
+					{\em oldForegroundApp --- newForegroundApp}		 			
+				}
+				
+				\caption[Modified Update Metrics Algorithm]{In addition to updating the metrics every second, it also writes the data to internal storage every minute. Any time the application is closed and launched again the metrics are initialized with the values in file.}
+			\end{algorithm}
+			
 		\subsection{Reading the User's Calendar}
 			%Public API available
 		\subsection{Parsing the Calendar Information}
@@ -1197,7 +1234,11 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\item \textbf{[44]} ``OOM Killer''
 	\\\emph{http://linux-mm.org/OOM\_Killer}, October 2015. 
 	Online; Last Accessed: October 24, 2015.
-							
+	
+	\item \textbf{[45]} ``Storage Options | Android Developers''
+	\\\emph{http://developer.android.com/guide/topics/data/data-storage.html}, October 2015. 
+	Online; Last Accessed: October 24, 2015.
+								
 \end{referencelist}
 
 
