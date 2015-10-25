@@ -1,7 +1,7 @@
 \documentclass[12pt]{uthesis-v12}  %---> DO NOT ALTER THIS COMMAND
 
 \usepackage{graphicx}
-
+\usepackage{amssymb}
 
 \begin{document} %---> %---> %---> %---> DO NOT ALTER THIS COMMAND
 %--------+----------------------------------------------------------+
@@ -185,7 +185,7 @@
 %        +----------------------------------------------------------+
 
 \begin{abstractpage}
-With the advent of increase in the amount of RAM available in Android smart-phones, there is a case to be made that this additional memory availability can be put to better use. By default, every Android application runs in its own Linux process. Android starts the process when any of the application's components need to be executed, then shuts down the process when it's no longer needed or when the system must recover memory for other applications. When a smart-phone that runs on the Android operating system is active (turned on), the RAM contains all the active processes and services (processes that run in the background). In addition to these processes and services, the RAM also contains cached background processes. These processes are kept in memory so that in the event the user clicks any of these applications, they can be loaded onto the screen quickly as they're already in memory and don't have to be fetched from the disk. If Android needs to reclaim memory for other processes, it eliminates cached background processes through an LRU scheme. Ideally we would like every application the user clicked to be present in memory but due to constraints in RAM availability, Android employs the LRU scheme to decide which processes to retain. I postulate that looking into user behavior could help us better determine which applications to cache in memory, as cached background processes. I parse the user's Calendar for contextual clues and gather information that could help me predict which application a user is about to use. I measure the cache efficiency (Cache hits and misses, CHR) for the default CRA Android employs (LRU), a pure prediction based CRA and finally a hybrid approach that combines the LRU approach with the prediction approach. I also demonstrate why the hybrid CRA is the most efficient one.
+With the advent of increase in the amount of RAM (Random Access memory) available in Android smart-phones, there is a case to be made that this additional memory availability can be put to better use. By default, every Android application runs in its own Linux process. When a smart-phone that runs on Android is active, the RAM contains all the active processes and services (processes that run in the background). In addition to these processes and services, the RAM also contains cached background processes. These processes are kept in memory so that in the event the user clicks any of the corresponding applications, they can be loaded onto the screen quickly. If Android needs to reclaim memory for other processes, it eliminates cached background processes through an LRU (Least Recently Used) scheme. We postulate that analyzing  user behavior could help us better determine which applications to cache in memory, as cached background processes. We parse the user's Calendar for contextual clues and gather information that could help us predict which application a user is about to use. We measure the cache efficiency (Cache hits and misses, CHR (Cache Hit Ratio)) for the default CRA (Cache Replacement Algorithm) Android employs (LRU), a pure prediction based CRA and finally a hybrid approach that combines the LRU approach with the prediction approach. We also demonstrate why the hybrid CRA is the most efficient one.
 
 
 \end{abstractpage}
@@ -335,22 +335,23 @@ I'd like to thank all my friends and family for supporting me throughout my time
 
 \begin{listofsymbols}
 
- \emblem{$\ddagger$}{the degree to which the flayrod has gone out of
-                    skew on tredel}
-\emblem{$\triangle$}{the ratio of the M2 monetary aggregate to the
-                    Monetary Base}
-
-       \emblemskip
-
-  \emblem{$\alpha$}{angle of rotation around internal rotation axis}
-   \emblem{$\beta$}{the number of people named ``Bob''}
-
-       \emblemskip
-
-         \emblem{Q}{Tobin's q; the ratio of the market value of
-                    installed capital to the replacement cost of
-                    capital}
-         \emblem{Y}{Gross Domestic Product (adjusted for inflation)}
+ \emblem{\checkmark}{Represents a check mark indicating that a particular item has been checked or in a different context, whether the checked item is correct}
+% \emblem{$\ddagger$}{the degree to which the flayrod has gone out of
+%                    skew on tredel}
+%\emblem{$\triangle$}{the ratio of the M2 monetary aggregate to the
+%                    Monetary Base}
+%
+%       \emblemskip
+%
+%  \emblem{$\alpha$}{angle of rotation around internal rotation axis}
+%   \emblem{$\beta$}{the number of people named ``Bob''}
+%
+%       \emblemskip
+%
+%         \emblem{Q}{Tobin's q; the ratio of the market value of
+%                    installed capital to the replacement cost of
+%                    capital}
+%         \emblem{Y}{Gross Domestic Product (adjusted for inflation)}
 
 \end{listofsymbols}
 
@@ -427,7 +428,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\section{Growth of available RAM over the years}
 		
 		\subsection{Advances in Technology}
-			RAM (Random Access memory) is a form of computer data storage. A RAM device allows data items to be accessed (read or written) in almost the same amount of time irrespective of the physical location of data inside the memory. The overall goal of using a RAM device is to obtain the highest possible average access performance while minimizing the total cost of the entire memory system. Today, random-access memory takes the form of IC (Integrated Circuits)(s).
+			RAM is a form of computer data storage. A RAM device allows data items to be accessed (read or written) in almost the same amount of time irrespective of the physical location of data inside the memory. The overall goal of using a RAM device is to obtain the highest possible average access performance while minimizing the total cost of the entire memory system. Today, random-access memory takes the form of IC (Integrated Circuits)(s).
 		
 			\subsubsection{Moore's Law}
 				Moore's law is the observation that the number of transistors in a dense IC doubles approximately every two years.
@@ -438,7 +439,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 					\caption[Moore's law]{[9] Moore's Law}
 				\end{figure}
 				
-				Advancements in digital electronics are strongly linked to Moore's law, especially in the context of memory capacity. T-Mobile G1, the very first Android smart-phone to be released back in 2008 [10] has a 256 MB (Mega-Byte) RAM [11]. In comparison, the Nexus 6P that was released in September 2015 has a 3 GB (Giga-Byte) RAM and some devices like the LG T585 have a 16 GB RAM [12][13], which amounts to 64 times the memory capacity of the T-Mobile G1. The rapid growth in the amount of RAM available to Android devices has in part led to newer possibilities and in our case, a better CRA (Cache Replacement Algorithm) for determining which processes (in the context of Android applications) remain in memory.
+				Advancements in digital electronics are strongly linked to Moore's law, especially in the context of memory capacity. T-Mobile G1, the very first Android smart-phone to be released back in 2008 [10] has a 256 MB (Mega-Byte) RAM [11]. In comparison, the Nexus 6P that was released in September 2015 has a 3 GB (Giga-Byte) RAM and some devices like the LG T585 have a 16 GB RAM [12][13], which amounts to 64 times the memory capacity of the T-Mobile G1. The rapid growth in the amount of RAM available to Android devices has in part led to newer possibilities and in our case, a better CRA for determining which processes (in the context of Android applications) remain in memory.
 			 	
 		\subsection{Demise of Task Killers}
 			One of the main benefits of the Android OS is the fact that unlike certain other OS(s), it can run apps in the background. This enables us to have multiple applications open at the same time which results in true multitasking. Thus, RAM availability is highly desirable [14]. A popular misconception is that forcibly removing applications from memory in order to 'free up RAM' will result in increased performance. In fact, several task-killer applications promise to do precisely that. With the advancement in the amount of RAM available, the debate should be about how to better use all this extra space, not killing applications to 'free up' more space. In fact, the Android OS can go one step further and pro-actively cache applications that the user might use in the near future. We'll analyze this prospect in more detail in the upcoming chapters.  
@@ -455,7 +456,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				
 				\item Service Process: Service processes are not directly visible to the user, they are generally doing things that the user cares about (such as playing music in the background). 
 				
-				\item Background process: A background process is one holding an Activity that is not currently visible to the user. They are kept in an LRU (Least Recently Used) list to ensure the process that was most recently seen by the user is the last to be killed when running low on memory.  
+				\item Background process: A background process is one holding an Activity that is not currently visible to the user. They are kept in an LRU list to ensure the process that was most recently seen by the user is the last to be killed when running low on memory.  
 				
 				\item Empty process: An empty process is one that doesn't hold any active application components. The only reason to keep such a process around is as a cache to improve startup time the next time a component of its application needs to run.				
 			\end{itemize}
@@ -476,7 +477,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\section{Goals and Objectives}
 		
 		\subsection{A User-Centric CRA}
-			The main benefit of caching processes (components of applications recently clicked by the user) in memory is to improve startup time (of the application), the next time a component of the application needs to run. This greatly enhances the usability experience and therefore it's in Android's best interests to increase the efficiency of this cache i.e. improve its CHR (Cache Hit Ratio). In addition to recency of application usage (which is what Android currently relies on in the form of LRU as a CRA), there is scope to potentially infer what application a user may click in the near future. A more user-centric CRA could look into contextual clues and deduce patterns in user behavior to improve the decision making involved in determining which applications to cache in memory, pro-actively or otherwise. We will explore in theoretical detail many such possibilities for user behavior inference and as a proof of concept, read the user's Calendar  application and parse for contextual information that could help in improving the CHR of the APC (Android Process Cache). 
+			The main benefit of caching processes (components of applications recently clicked by the user) in memory is to improve startup time (of the application), the next time a component of the application needs to run. This greatly enhances the usability experience and therefore it's in Android's best interests to increase the efficiency of this cache i.e. improve its CHR. In addition to recency of application usage (which is what Android currently relies on in the form of LRU as a CRA), there is scope to potentially infer what application a user may click in the near future. A more user-centric CRA could look into contextual clues and deduce patterns in user behavior to improve the decision making involved in determining which applications to cache in memory, pro-actively or otherwise. We will explore in theoretical detail many such possibilities for user behavior inference and as a proof of concept, read the user's Calendar  application and parse for contextual information that could help in improving the CHR of the APC (Android Process Cache). 
 
 	\section{Organization of Thesis}
 		Several works in the past have focused on context-aware applications and ways to observe user behavior patterns. We'll explore some these works and how this contextual data was put to use in Section 2. In Section 3, we'll take a look at some of the challenges in collecting cache metrics like detecting what's in the RAM, detecting when the user clicks a new application, whether to approach the problem at the user level or the system level, to list a few. Section 4 elaborates on the setup of the experiment and analyzes the design of the applications used to collect these metrics. We dive into the data in Section 5 and summarize its ramifications. We also investigate how certain factors could explain the variation in data. Section 6 talks about scope for future work and explores some of the possibilities of directly adding to this work. We conclude the thesis with Section 7.  
@@ -575,7 +576,9 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		As demonstrated by Shi et al., there are numerous ways contextual information can come in handy. In our case, we propose a user-centric CRA for the APC, demonstrate its superior efficiency and user experience, by looking into the user's calendar for contextual information.  			
 	
 \chapter{Challenges in Collecting the Desired Metrics}
-	Now that we've laid the foundation for using contextual information to influence which processes Android caches in memory, we need to establish the metrics that need to be collected in order to measure the efficiency of the existing CRA and the proposed CRA. The following section addresses the metrics we need.
+	
+	\section{Introduction}
+		Now that we've laid the foundation for using contextual information to influence which processes Android caches in memory, we need to establish the metrics that need to be collected in order to measure the efficiency of the existing CRA and the proposed CRA. The following section addresses the metrics we need.
 	
 	\section{What are the desired metrics?}
 		
@@ -671,23 +674,58 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 					The Hybrid CRA would involve storing as CBP(s), both default application components cached by Android's LRU scheme and the application components of the list of applications obtained from analyzing the user's Calendar. So the question now becomes, who gets kicked out when memory is running low? Since the applications inferred from user's contextual information do not have a recency associated with them, the LRU CRA cannot be applied over the overall list of CBP(s). A simple solution is to prioritize the CBP(s) obtained from the list of suggested applications over the default LRU based CBP(s) i.e. all the default CBP(s) are removed from memory before the CBP(s) cached as a result of context inference. There are two advantages to this approach:
 					
 					\begin{itemize}
+						
 						\item Only few applications are suggested by the context module.
-							\subitem For instance, say the user has a Calendar entry that reads {\em Call Mom}. There will be two or at most three applications suggested by the context-module that would be potentially useful to the smart-phone user in the context of calling his mother. This makes it more convenient to target CBP(s) cached by the LRU scheme in case of low memory.
+						
+							\begin{itemize}
+								\item For instance, say the user has a Calendar entry that reads {\em Call Mom}. There will be two or at most three applications suggested by the context-module that would be potentially useful to the smart-phone user in the context of calling his mother. This makes it more convenient to target CBP(s) cached by the LRU scheme in case of low memory.
+							\end{itemize}
+							
 						\item The probability of user requesting an application related to the Calendar event is quite high.
-							\subitem This is due to the fact that a recorded event in a user's Calendar is highly likely to occur and the applications needed in this context have a higher chance of being utilized as opposed to CBP(s) cached by the LRU scheme.
-							\subitem This is explored further in the future scope section where we discuss the relative probabilities of applications being used in conjunction with a Calendar event. 	
+						
+							\begin{itemize}
+								
+								\item This is due to the fact that a recorded event in a user's Calendar is highly likely to occur and the applications needed in this context have a higher chance of being utilized as opposed to CBP(s) cached by the LRU scheme.
+								
+								\item This is explored further in the future scope section where we discuss the relative probabilities of applications being used in conjunction with a Calendar event.
+								
+							\end{itemize}
+								
 					\end{itemize}  
 					
 		\subsection{Supplementary Data}
-			%apps installed
-			%apps clicked
-			%model and version
-			%distinction in hits between suggested and default - taht way we can measure the efficiency of three approaches simultaneously
+			We've talked about the fundamental metrics involved in measuring the efficiency of the APC, namely cache hits, cache misses and CHR. We explored potential candidates for serving as the CRA in managing the APC. There are other subtle measurements that are'nt as significant as the fundamental metrics but are important nonetheless as they shed light on certain attributes of the experiment. They are listed below:
+			
+			\begin{itemize}
+				\item Number of Installed Applications
+				\item Number of Unique Applications Requested (Clicked)
+				\item Phone Model
+				\item Android OS Version
+			\end{itemize} 
+			
+			Depending on the value of the overall number of installed applications and the overall number of unique applications requested by the end-user, certain CRA(s) have an edge over the others. Phone model information is collected to see if there is any correlation between models and cache efficiencies. Some of the techniques used to gather context information are not possible in certain Android OS versions. We'll analyze the correlation between these fields and the efficiency of CRA(s) in the Section 5.  
 			
 	\section{Challenges}
+		Now that we've established what the desired metrics are, let's examine some of the challenges in collecting them.  
 		
 		\subsection{Deciding Between System vs User Level Approach}
-		
+			Firstly, we need to determine whether to approach the problem from a user level perspective or not. Attempting to solve the problem i.e. collecting the aforementioned metrics at the user level would involve building Android applications to gather relevant data. On the other hand, approaching the problem from a system level would involve altering the source code of the Android OS (facilitated by AOSP) and recompiling it to build our own custom distribution, much like the CyanogenMod community [34]. It is easier to solve the problem (if possible) at the user level for two reasons:
+			
+			\begin{itemize}
+				\item The complexity involved in altering OS source code is significantly higher compared to writing Android applications.
+				\item It would be significantly harder to convince potential research volunteers to reboot their smart-phones with a custom distribution of the Android OS as opposed to asking them to install an Android application or two.
+			\end{itemize}
+			
+			Given that it's beneficial to gather relevant data at the user level, we need to identify the complexities involved and determine whether they are solvable at the user level. In order to effectively determine which CRA is ideal for the APC, we need to identify whether the following problems can be approached from a user level perspective:
+			
+			\begin{itemize}
+				\item Getting the list of processes currently in memory \checkmark
+				\item Knowing when a new process is launched by the user \checkmark
+				\item Reading the User's Calendar \checkmark
+			\end{itemize} 
+			
+			We'll inspect in detail, why and how we need to solve these problems (and others) in the next section but the  \checkmark indicates that they are indeed solvable at the user level and do not require system level changes.
+			
 		\subsection{Getting Processes in Memory}
 		
 		\subsection{Detecting a Change in the Foreground Application}
@@ -700,6 +738,8 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 
 \chapter{Experiment Setup and Application Design}
 	
+	\section{Introduction}
+		
 	\section{Eligibility for Volunteers}
 	
 	\section{Process and Duration of Experiment}
@@ -717,6 +757,8 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		\subsection{Third Party APK(s)}
 
 \chapter{Data Analysis and Results}
+	
+	\section{Introduction}
 	
 	\section{Phase A Data}
 	
@@ -747,6 +789,8 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		\subsection{Slight Increase in Battery Consumption}
 		
 \chapter{Scope for Future Work}
+		
+	\section{Introduction}
 		
 	\section{Improving Context Analysis}
 		
@@ -965,7 +1009,11 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\item \textbf{[33]} ``Does Your Android Device Really Need a Task Killer?''
 	\\\emph{http://www.technorms.com/40664/android-task-killer-apps}, September 2014. 
 	Online; Last Accessed: October 24, 2015.
-																	
+											
+	\item \textbf{[34]} ``CyanogenMod''
+	\\\emph{http://www.cyanogenmod.org/}, October 2015. 
+	Online; Last Accessed: October 24, 2015.
+																		
 \end{referencelist}
 
 
