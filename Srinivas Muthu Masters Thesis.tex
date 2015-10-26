@@ -484,7 +484,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			LRU is a CRA that discards the least recently used items first. This algorithm requires keeping track of what was used when, which is expensive if one wants to make sure the algorithm always discards the least recently used item [17]. Android keeps processes that are not hosting a foreground app component in a LRU cache. As the system runs low on memory, it may kill processes in the LRU cache beginning with the process least recently used, but also giving some consideration toward which processes are most memory intensive [16].
 			
 	\section{Goals and Objectives}
-		The main benefit of caching processes (components of applications recently clicked by the user) in memory is to improve startup time (of the application), the next time a component of the application needs to run. This greatly enhances the usability experience and therefore it's in Android's best interests to increase the efficiency of this cache i.e. improve its CHR. In addition to recency of application usage (which is what Android currently relies on in the form of LRU as a CRA), there is scope to potentially infer what application a user may click in the near future. A more user-centric caching scheme could look into contextual clues and deduce patterns in user behavior to improve the decision making involved in determining which applications to cache in memory. As a proof of concept, we propose a user-centric caching scheme that incorporates contextual information (from reading the user's calendar) and we compare the efficiency of such a scheme with Android's current scheme. 
+		The main benefit of caching processes (components of applications recently clicked by the user) in memory is to improve startup time (of the application), the next time a component of the application needs to run. This greatly enhances the usability experience and therefore it's in Android's best interests to increase the efficiency of this cache i.e. improve its CHR. In addition to recency of application usage (which is what Android currently relies on in the form of LRU as a CRA), there is scope to potentially infer what application a user may click in the near future. A more user-centric caching scheme could look into contextual clues and deduce patterns in user behavior to improve the decision making involved in determining which applications to cache in memory. As a proof of concept, we propose a user-centric caching scheme that incorporates contextual information (from reading the user's calendar) and compare the efficiency of such a scheme with Android's current scheme. 
 
 	\section{Organization of Thesis}
 		Several works in the past have focused on context-aware applications and ways to observe user behavior patterns. We'll explore some these works and how this contextual data was put to use in Section 2. In Section 3, we'll take a look at some of the challenges in collecting cache metrics like detecting what's in the RAM, detecting when the user clicks a new application, whether to approach the problem at the user level or the system level, to list a few. Section 4 elaborates on the setup of the experiment and analyzes the design of the applications used to collect these metrics. We dive into the data in Section 5 and summarize its ramifications. We also investigate how certain factors could explain the variation in data. Section 6 talks about scope for future work and explores some of the possibilities of directly adding to this work. We conclude the thesis with Section 7.  
@@ -1041,13 +1041,26 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\caption[Context Analyzer UI]{The images to the left, middle and right represent the top, middle and bottom portions of the UI respectively. Note that the Cache Hits in the Suggested Applications Metrics section is divided into suggested-exclusive and suggested non-exclusive. In addition to the cache metrics, it also displays some supplementary data such as the number of unique applications clicked, phone model, OS version and the number of installed applications. These details are discussed in Chapter 5 and are presented as demographic data. Finally, similar to {\em CacheAnalyzer}, it also displays recent cache hits/misses, memory list and the calendar list for the user's benefit.}
 		\end{figure}
 		
-	\section{Tools, Version Control and APK}
+		{\em ContextAnalyzer}'s design closely resembles that of {\em CacheAnalyzer}. Since they share some functionalities such as obtaining the list of processes in memory, and the foreground application, they share modules as well. {\em ContextAnalyzer} comprises of the following modules:
 		
-		\subsection{Android Studio}
+		\begin{itemize}
+			\item Main Activity [7]
+			\item Background Service [8]
+			\item Process Manager
+			\item Calendar Reader
+			\item Calendar Parser
+		\end{itemize}
 		
-		\subsection{Git}
-		
-		\subsection{Third Party APK(s)}
+		Note that the first three modules are common between the two applications. The functionalities of the main activity and the process manager are identical to that of {\em CacheAnalyzer}. The background service has the additional task of obtaining the calendar list from the calendar parser in addition to its responsibilities outlined in the previous application's design. The calendar parser gets the list of calendar events from the calendar reader and produces the calendar list (that the service consumes). The calendar reader queries the user's calendar API and obtains the list of events for the next four hours. The following class diagram (Refer Figure 4-4) illustrates {\em ContextAnalyzer}'s design.
+	
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width = 150mm]{images/contextAnalyzerDesign.png}
+			\caption[Context Analyzer Class Diagram]{Context Analyzer Class Diagram - Note the similarity to {\em CacheAnalyzer}'s design.}
+		\end{figure}
+		   
+
+		Both applications were developed using Android Studio [53] and the source code was uploaded on Github [50][51]. The class diagrams were built using Gliffy [54]. The APK files were uploaded on our Github I/O page [55][56].
 
 \chapter{Data Analysis and Results}
 	
@@ -1369,7 +1382,23 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	
 	\item \textbf{[52]} ``Bound Services | Android Developer Guide''
 	\\\emph{http://developer.android.com/guide/components/bound-services.html}, October 2015. 
-	Online; Last Accessed: October 24, 2015.														
+	Online; Last Accessed: October 24, 2015.	
+	
+	\item \textbf{[53]} ``Android Studio | Android Developer Guide''
+	\\\emph{http://developer.android.com/tools/studio/index.html}, October 2015. 
+	Online; Last Accessed: October 24, 2015.
+											
+	\item \textbf{[54]} ``Gliffy''
+	\\\emph{https://www.gliffy.com/}, October 2015. 
+	Online; Last Accessed: October 24, 2015.
+							
+	\item \textbf{[55]} ``Github Pages''
+	\\\emph{https://pages.github.com/}, October 2015. 
+	Online; Last Accessed: October 24, 2015.
+	
+	\item \textbf{[56]} ``Buzz-Lightyear Github | Cache-Analyzer-APK''
+	\\\emph{http://buzz-lightyear.github.io/Cache-Analyzer-APK/}, October 2015. 
+	Online; Last Accessed: October 24, 2015.																	
 \end{referencelist}
 
 
