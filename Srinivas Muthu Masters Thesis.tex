@@ -962,11 +962,28 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 \chapter{Experiment Setup and Application Design}
 	
 	\section{Introduction}
+		In the previous chapter, we examined the metrics we needed to analyze the best caching scheme for the APC. We looked into some of the common CRA(s) and analyzed some of the challenges in collecting the metrics needed to determine if contextual information can help better the CHR of the Hybrid approach. To analyze the efficiencies of the default LRU and the Hybrid approaches, two Android applications namely {\em CacheAnalyzer} and {\em ContextAnalyzer} were written and installed in the APMD(s) of research volunteers. In this chapter, we'll address the details of the experiment and analyze the design of these two Android applications. 
 		
 	\section{Eligibility for Volunteers}
-	
+		The following criteria had to be met to qualify as a research volunteer:
+		
+		\begin{itemize}
+			\item The volunteer must own an APMD with Android OS version greater than 5.0 (Lollipop and above).
+			\item The volunteer must be willing to install two third party applications on their APMD for the duration of a week.
+		\end{itemize}
+		
+		The algorithm that obtains the list of processes currently residing in memory and the algorithm that retrieves the current foreground application do not apply to Android OS versions below 5.0, hence the necessity for APMD(s) with OS versions that are Lollipop and above.
+		
 		\subsection{Addressing Privacy Concerns}
-			%Both applications are open source. Only way to obtain data is through the user's consent. No personal data is collected, only cache metrics. Full transparency with volunteers - discussed in POW.	
+			Since the research volunteers had to install two third party applications ({\em CacheAnalyzer} and {\em ContextAnalyzer}), it was crucial to address any privacy concerns that arose. In order to gain the trust of the volunteers, we adopted a policy of full transparency and took the following measures:
+			
+			\begin{itemize}
+				\item We fully explained to each volunteer, the nature of the data we were collecting i.e. cache metrics.
+				\item We open sourced both Android applications [50][51] in case the volunteers wanted to verify that there were no nefarious activities going on in the background.
+				\item We did not automatically store the cache metrics in a server. Instead, we asked the volunteers to send us the data in order to convey the message that we were'nt collecting any private data that the volunteers were'nt aware of.
+			\end{itemize}
+			
+			Although the aforementioned points address the privacy issues, we realize that divulging the nature of the experiment has the potential to bias the volunteers in their APMD usage. We explore this aspect in detail in the Points of Weaknesses section. 
 	
 	\section{Process and Duration of Experiment}
 	
@@ -1015,6 +1032,8 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		\subsection{List from Google Drive}
 		
 		\subsection{Slight Increase in Battery Consumption}
+		
+		\subsection{Divulging the Nature of the Experiment}
 		
 \chapter{Scope for Future Work}
 		
@@ -1301,7 +1320,14 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\item \textbf{[49]} ``Package Manager | Android Developers''
 	\\\emph{http://developer.android.com/reference/android/content/pm/PackageManager.html}, October 2015. 
 	Online; Last Accessed: October 24, 2015.
-												
+
+	\item \textbf{[50]} ``Cache Analyzer | Github''
+	\\\emph{https://github.com/Buzz-Lightyear/Cache-Analyzer}, October 2015. 
+	Online; Last Accessed: October 24, 2015.
+	
+	\item \textbf{[51]} ``Context Analyzer | Github''
+	\\\emph{https://github.com/Buzz-Lightyear/Context-Analyzer}, October 2015. 
+	Online; Last Accessed: October 24, 2015.													
 \end{referencelist}
 
 
