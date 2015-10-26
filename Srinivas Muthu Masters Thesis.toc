@@ -63,22 +63,20 @@
 \contentsline {subsection}{\numberline {4.6.3}Third Party APK(s)}{44}
 \contentsline {chapter}{\numberline {5}Data Analysis and Results}{45}
 \contentsline {section}{\numberline {5.1}Introduction}{46}
-\contentsline {section}{\numberline {5.2}Phase A Data}{46}
-\contentsline {section}{\numberline {5.3}Phase B Data}{46}
-\contentsline {section}{\numberline {5.4}Default Approach Metrics}{46}
-\contentsline {section}{\numberline {5.5}Pure Prediction Approach Metrics}{46}
-\contentsline {section}{\numberline {5.6}Hybrid Approach Metrics}{46}
-\contentsline {section}{\numberline {5.7}Factors Influencing Variation In Data}{46}
-\contentsline {subsection}{\numberline {5.7.1}Android Version and Phone Model}{46}
-\contentsline {subsection}{\numberline {5.7.2}Number of Applications Installed}{46}
-\contentsline {subsection}{\numberline {5.7.3}Number of Applications Used}{46}
-\contentsline {subsection}{\numberline {5.7.4}User Bias}{46}
-\contentsline {subsection}{\numberline {5.7.5}User Demographics}{46}
-\contentsline {section}{\numberline {5.8}Points of Weakness}{46}
-\contentsline {subsection}{\numberline {5.8.1}Constant Change in Calendar events}{46}
-\contentsline {subsection}{\numberline {5.8.2}List from Google Drive}{46}
-\contentsline {subsection}{\numberline {5.8.3}Slight Increase in Battery Consumption}{46}
-\contentsline {subsection}{\numberline {5.8.4}Divulging the Nature of the Experiment}{46}
+\contentsline {section}{\numberline {5.2}Pilot Study}{46}
+\contentsline {section}{\numberline {5.3}Demographic Data}{46}
+\contentsline {section}{\numberline {5.4}Experiment Results}{46}
+\contentsline {section}{\numberline {5.5}Factors Influencing Variation In Data}{46}
+\contentsline {subsection}{\numberline {5.5.1}Android Version and Phone Model}{46}
+\contentsline {subsection}{\numberline {5.5.2}Number of Applications Installed}{46}
+\contentsline {subsection}{\numberline {5.5.3}Number of Applications Used}{46}
+\contentsline {subsection}{\numberline {5.5.4}User Bias}{46}
+\contentsline {subsection}{\numberline {5.5.5}User Demographics}{46}
+\contentsline {section}{\numberline {5.6}Points of Weakness}{46}
+\contentsline {subsection}{\numberline {5.6.1}Constant Change in Calendar events}{46}
+\contentsline {subsection}{\numberline {5.6.2}List from Google Drive}{46}
+\contentsline {subsection}{\numberline {5.6.3}Slight Increase in Battery Consumption}{46}
+\contentsline {subsection}{\numberline {5.6.4}Divulging the Nature of the Experiment}{46}
 \contentsline {chapter}{\numberline {6}Scope for Future Work}{47}
 \contentsline {section}{\numberline {6.1}Introduction}{48}
 \contentsline {section}{\numberline {6.2}Improving Context Analysis}{48}
