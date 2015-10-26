@@ -302,6 +302,7 @@ I'd like to thank all my friends and family for supporting me throughout my time
  \abbreviation{OOM}{Out Of Memory}
  \abbreviation{API}{Application Programming Interface} 
  \abbreviation{USA}{United States of America} 
+ \abbreviation{UI}{User Interface}
  
 %							Template for some symbol based abbreviations
 
@@ -483,9 +484,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			LRU is a CRA that discards the least recently used items first. This algorithm requires keeping track of what was used when, which is expensive if one wants to make sure the algorithm always discards the least recently used item [17]. Android keeps processes that are not hosting a foreground app component in a LRU cache. As the system runs low on memory, it may kill processes in the LRU cache beginning with the process least recently used, but also giving some consideration toward which processes are most memory intensive [16].
 			
 	\section{Goals and Objectives}
-		
-		\subsection{A User-Centric CRA}
-			The main benefit of caching processes (components of applications recently clicked by the user) in memory is to improve startup time (of the application), the next time a component of the application needs to run. This greatly enhances the usability experience and therefore it's in Android's best interests to increase the efficiency of this cache i.e. improve its CHR. In addition to recency of application usage (which is what Android currently relies on in the form of LRU as a CRA), there is scope to potentially infer what application a user may click in the near future. A more user-centric CRA could look into contextual clues and deduce patterns in user behavior to improve the decision making involved in determining which applications to cache in memory, pro-actively or otherwise. We will explore in theoretical detail many such possibilities for user behavior inference and as a proof of concept, read the user's Calendar  application and parse for contextual information that could help in improving the CHR of the APC (Android Process Cache). 
+		The main benefit of caching processes (components of applications recently clicked by the user) in memory is to improve startup time (of the application), the next time a component of the application needs to run. This greatly enhances the usability experience and therefore it's in Android's best interests to increase the efficiency of this cache i.e. improve its CHR. In addition to recency of application usage (which is what Android currently relies on in the form of LRU as a CRA), there is scope to potentially infer what application a user may click in the near future. A more user-centric caching scheme could look into contextual clues and deduce patterns in user behavior to improve the decision making involved in determining which applications to cache in memory. As a proof of concept, we propose a user-centric caching scheme that incorporates contextual information (from reading the user's calendar) and we compare the efficiency of such a scheme with Android's current scheme. 
 
 	\section{Organization of Thesis}
 		Several works in the past have focused on context-aware applications and ways to observe user behavior patterns. We'll explore some these works and how this contextual data was put to use in Section 2. In Section 3, we'll take a look at some of the challenges in collecting cache metrics like detecting what's in the RAM, detecting when the user clicks a new application, whether to approach the problem at the user level or the system level, to list a few. Section 4 elaborates on the setup of the experiment and analyzes the design of the applications used to collect these metrics. We dive into the data in Section 5 and summarize its ramifications. We also investigate how certain factors could explain the variation in data. Section 6 talks about scope for future work and explores some of the possibilities of directly adding to this work. We conclude the thesis with Section 7.  
@@ -655,10 +654,10 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				Much like the name suggests RR is a CRA that randomly selects a candidate item and discards it to make space when necessary. This algorithm does not require keeping any information about the access history. For its simplicity, it has been used in ARM processors [32]. When applied to our scenario, it does'nt seem like a viable option, mainly because there is'nt a benefit in randomly caching applications in memory.
 				 
 			\subsubsection{LRU - Context Hybrid}
-				So far we've analyzed the standard CRA(s) that focus on discarding items that were either accessed least recently, least frequently or in other standard ways. Our approach combines the applications that Android caches through an LRU scheme with a separate context-analyzer module that reads the user's calendar and predicts which applications the user is likely to use. When the user requests an application, the combined set of applications (default applications in LRU and the list of suggested applications) is used as the base to predict whether a cache hit or cache miss occurred. We'll analyze in detail how each module functions but before that, let's take a look at whether Android caches CBP(s) pro-actively and how applications will be removed from memory in the cases where it runs too low.
+				So far we've analyzed the standard CRA(s) that focus on discarding items that were either accessed least recently, least frequently or in other standard ways. Our approach combines the applications that Android caches through an LRU scheme, with a separate context-analyzer module that reads the user's calendar and predicts which applications the user is likely to use. When the user requests an application, the combined set of applications (default applications in LRU and the list of predicted applications) is used as the base to compute whether a cache hit or cache miss occurred. We'll analyze in detail how each module functions but before that, let's take a look at whether Android caches CBP(s) pro-actively and how applications will be removed from memory in the cases where it runs too low.
 				
 				\paragraph{Pro-actively Adding CBP(s)}
-					In order for the proposed LRU-Context Hybrid (henceforth referred to as the Hybrid approach) CRA to work, there must be provision for the Android OS to pro-actively cache application components in memory as CBP(s). Presuming that the context-analyzer module does its job and suggests a list of applications the user might use in the near future (based on user's Calendar information), there must a mechanism for Android to utilize that information and pro-actively cache these applications in RAM as CBP(s). This mechanism can be verified at the user level through a small experiment. As previously mentioned, the Settings application provides a visual interface for the list of active processes and services running in memory and the CBP(s) that reside in memory at any moment in time. As part of the experiment, each and every CBP was forcefully removed from the cache (there is provision to do this at the user level (Refer Figure 3-4)). 
+					In order for the proposed LRU-Context Hybrid (henceforth referred to as the Hybrid approach) caching scheme to work, there must be provision for the Android OS to pro-actively cache application components in memory as CBP(s). Presuming that the context-analyzer module does its job and suggests a list of applications the user might use in the near future (based on user's Calendar information), there must a mechanism for Android to utilize that information and pro-actively cache these applications in RAM as CBP(s). This mechanism can be verified at the user level through a small experiment. As previously mentioned, the Settings application provides a visual interface for the list of active processes and services running in memory and the CBP(s) that reside in memory at any moment in time. As part of the experiment, each and every CBP was forcefully removed from the cache (there is provision to do this at the user level (Refer Figure 3-4)). 
 						
 					\begin{figure}[!ht]
 						\centering
@@ -962,14 +961,14 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 \chapter{Experiment Setup and Application Design}
 	
 	\section{Introduction}
-		In the previous chapter, we examined the metrics we needed to analyze the best caching scheme for the APC. We looked into some of the common CRA(s) and analyzed some of the challenges in collecting the metrics needed to determine if contextual information can help better the CHR of the Hybrid approach. To analyze the efficiencies of the default LRU and the Hybrid approaches, two Android applications namely {\em CacheAnalyzer} and {\em ContextAnalyzer} were written and installed in the APMD(s) of research volunteers. In this chapter, we'll address the details of the experiment and analyze the design of these two Android applications. 
+		In the previous chapter, we examined the metrics we needed to analyze the best caching scheme for the APC. We looked into some of the common CRA(s) and analyzed some of the challenges in collecting the metrics needed to determine if contextual information can help better the CHR of the Hybrid approach. To analyze the efficiencies of the default LRU and the Hybrid approaches, two Android applications namely {\em CacheAnalyzer} and {\em ContextAnalyzer} were written and installed in the APMD(s) of research volunteers. {\em CacheAnalyzer} collected the cache hits and misses in the default (LRU) caching scheme while {\em ContextAnalyzer} collected the cache hits and misses in the Hybrid caching scheme (among other data which we'll discuss later in Chapter 5). In this chapter, we'll address the details of the experiment and analyze the design of these two Android applications. 
 		
 	\section{Eligibility for Volunteers}
 		The following criteria had to be met to qualify as a research volunteer:
 		
 		\begin{itemize}
 			\item The volunteer must own an APMD with Android OS version greater than 5.0 (Lollipop and above).
-			\item The volunteer must be willing to install two third party applications on their APMD for the duration of a week.
+			\item The volunteer must be willing to install two third party applications on their APMD, each for the duration of one week.
 		\end{itemize}
 		
 		The algorithm that obtains the list of processes currently residing in memory and the algorithm that retrieves the current foreground application do not apply to Android OS versions below 5.0, hence the necessity for APMD(s) with OS versions that are Lollipop and above.
@@ -986,11 +985,62 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			Although the aforementioned points address the privacy issues, we realize that divulging the nature of the experiment has the potential to bias the volunteers in their APMD usage. We explore this aspect in detail in the Points of Weaknesses section. 
 	
 	\section{Process and Duration of Experiment}
-		Once the volunteers were briefed of their responsibilities, they were given detailed instructions to download both applications. The links to the APK files were posted online and each volunteer downloaded and installed the application as a third party application. In this context, the term third-party refers to the fact that the Android application was'nt downloaded from the Google Play store. The volunteers were instructed not to close the applications for a week which was the duration of the experiment. A total of twenty volunteers signed up and installed the applications and at the end of the week, sent their data through email. This data is thoroughly analyzed in Chapter 5. 
+		
+		The overall duration of the experiment was two weeks. Each volunteer downloaded the first application at the start of the experiment and sent the data displayed by the application at the end of first week. Additionally, they installed the second application at the end of first week and sent the data displayed by the second application at the end of second week. The volunteers were given detailed instructions to download both applications. The links to the APK files were posted online and each volunteer downloaded and installed each application as a third-party application. In this context, the term third-party refers to the fact that the Android application was'nt downloaded from the Google Play store. The volunteers were instructed not to manually stop the applications for the duration of the experiment. A total of seventeen volunteers signed up and installed the applications.
+		 
 	\section{Cache Analyzer Design}
+		Each volunteer had to install two applications namely {\em CacheAnalyzer} and {\em ContextAnalyzer}. {\em CacheAnalyzer} collected the metrics for the default scheme that Android employs. Every time the user switched to a new application, it identified whether it was a cache hit or cache miss (using the techniques discusses in Section 3-3) and updated the statistics on the file. Its User Interface (UI) listed the following details:
+		
+		\begin{itemize}
+			\item Cache Hits
+			\item Cache Misses
+			\item Cache Hit Ratio
+			\item Recent Cache Hits/Misses
+			\item List of Running Processes
+		\end{itemize}  
+		
+		The {\em Cache Hit Ratio} and {\em List of Running Processes} items were merely added to the user interface for the benefit of the volunteer. They did not in any way contribute towards the data collected. The following snapshot (Refer Figure 4-1) illustrates the actual UI of the {\em CacheAnalyzer} application.
 	
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width = 70mm]{images/cacheAnalyzerUI.png}
+			\caption[Cache Analyzer UI]{The {\em Recent Cache Hits/Misses} section shows the volunteers whether the applications they clicked resulted in a cache hit or a cache miss. It only displays the previous ten hits/misses, not the entire history. The {\em List of Running Processes} section displays the list of processes in RAM (both active and CBP(s)).}
+		\end{figure}
+		
+		Let's inspect the design of this Android application. {\em CacheAnalyzer} comprises of three main modules:
+		 
+		\begin{itemize}
+			\item Main Activity
+			\item Background Service
+			\item Process Template
+		\end{itemize}
+		 
+		 The main activity [7] is the heart of the application. It is responsible for launching the application and creating a background service[8]. The background service retrieves the list of processes in memory and the current foreground application. The background service is bound to the activity i.e. it's life-cycle is tied to that of the activity's [52]. It is for this reason that the volunteers are instructed not to forcefully close {\em CacheAnalyzer} for the duration of the experiment as that would destroy the service along with the activity and all metric collection would stop. The process manager module contains a {\em Process} data structure that encapsulates a running process and all of its attributes (name, user identifier, process identifier to list a few). It also contains the algorithm that fetches the list of processes residing in memory. The background service launches a separate thread that invokes this algorithm every second to compute the cache metrics and update the user interface. The following class diagram (Refer Figure 4-2) illustrates the design of {\em CacheAnalyzer}. 
+		 
+		 \begin{figure}[h]
+		 	\centering
+		 	\includegraphics[width = 110mm]{images/cacheAnalyzerDesign.png}
+		 	\caption[Cache Analyzer Class Diagram]{Cache Analyzer Class Diagram}
+		 \end{figure}
+		 
 	\section{Context Analyzer Design}
-	
+		{\em ContextAnalyzer} is similar to {\em CacheAnalyzer} in that they both detect cache hits and misses. While the former does so for the default caching scheme, the latter computes the metrics for the Hybrid scheme. {\em ContextAnalyzer} reads the user's calendar and produces a list of applications that the user is likely to use. For the sake of simplicity, let's refer to this list as the calendar list. Similar to {\em CacheAnalyzer}, it also reads the list of processes residing in memory. Let's refer to this list as the memory list. Given this information, every application that the user requests falls in one of four categories:
+		
+		\begin{itemize}
+			\item The application was present in neither list.
+			\item The application was present in memory list but not the calendar list.
+			\item The application was present in calendar list but not the memory list.
+			\item The application was present in both lists. 
+		\end{itemize}  
+		
+		If the application was present in neither list, it results in an overall cache miss. To elaborate, an overall cache miss implies that neither the list of processes in memory (cached by the default LRU caching scheme) nor the list of applications predicted by reading the calendar contained the requested application. If the application was present only in memory list, it results in an overall cache hit and a suggested cache miss i.e. the Hybrid scheme would've still had a hit but it was not present in the list of applications suggested by the calendar list. If the application was present only in the calendar list, it results in an overall cache hit and a suggested-exclusive cache hit, implying that the hit is solely a result of the calendar list's suggestion. This metric is important as it reveals the significance of the list of applications suggested by the calendar list. We'll discuss this further in Chapter 5. Finally, if the application was present in both lists, it results in an overall cache hit and suggested non-exclusive cache hit, implying that the hit would've occurred regardless of whether the application was present in the calendar list or not. The following snapshot (Figure 4-3) illustrates {\em ContextAnalyzer}'s UI.  
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width = 130mm]{images/contextAnalyzerUI.png}
+			\caption[Context Analyzer UI]{The images to the left, middle and right represent the top, middle and bottom portions of the UI respectively. Note that the Cache Hits in the Suggested Applications Metrics section is divided into suggested-exclusive and suggested non-exclusive. In addition to the cache metrics, it also displays some supplementary data such as the number of unique applications clicked, phone model, OS version and the number of installed applications. These details are discussed in Chapter 5 and are presented as demographic data. Finally, similar to {\em CacheAnalyzer}, it also displays recent cache hits/misses, memory list and the calendar list for the user's benefit.}
+		\end{figure}
+		
 	\section{Tools, Version Control and APK}
 		
 		\subsection{Android Studio}
@@ -1009,27 +1059,19 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	
 	\section{Experiment Results}
 	
-	\section{Factors Influencing Variation In Data}
+		\subsection{Correlation between Increase in Hybrid CHR \& Calendar Usage}
 		
-		\subsection{Android Version and Phone Model}
+		\subsection{Correlation between Applications Used \& Increase in Hybrid CHR}
 		
-		\subsection{Number of Applications Installed}
-		
-		\subsection{Number of Applications Used}
-		
-		\subsection{User Bias}
-		
-		\subsection{User Demographics}
-	
 	\section{Points of Weakness}		
 		
-		\subsection{Constant Change in Calendar events}
+		\subsection{Inability to Detect Change in Calendar Events}
 		
 		\subsection{List from Google Drive}
 		
-		\subsection{Slight Increase in Battery Consumption}
+		\subsection{Limited Demographic}
 		
-		\subsection{Divulging the Nature of the Experiment}
+		\subsection{User Bias}
 		
 \chapter{Scope for Future Work}
 		
@@ -1323,7 +1365,11 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	
 	\item \textbf{[51]} ``Context Analyzer | Github''
 	\\\emph{https://github.com/Buzz-Lightyear/Context-Analyzer}, October 2015. 
-	Online; Last Accessed: October 24, 2015.													
+	Online; Last Accessed: October 24, 2015.
+	
+	\item \textbf{[52]} ``Bound Services | Android Developer Guide''
+	\\\emph{http://developer.android.com/guide/components/bound-services.html}, October 2015. 
+	Online; Last Accessed: October 24, 2015.														
 \end{referencelist}
 
 
