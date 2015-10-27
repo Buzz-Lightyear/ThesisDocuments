@@ -54,30 +54,28 @@
 \contentsline {section}{\numberline {4.2}Eligibility for Volunteers}{43}
 \contentsline {subsection}{\numberline {4.2.1}Addressing Privacy Concerns}{43}
 \contentsline {section}{\numberline {4.3}Process and Duration of Experiment}{44}
-\contentsline {section}{\numberline {4.4}Cache Analyzer Design}{44}
-\contentsline {section}{\numberline {4.5}Context Analyzer Design}{46}
+\contentsline {section}{\numberline {4.4}Cache Analyzer Design}{45}
+\contentsline {section}{\numberline {4.5}Context Analyzer Design}{47}
 \contentsline {chapter}{\numberline {5}Data Analysis and Results}{51}
-\contentsline {section}{\numberline {5.1}Introduction}{52}
-\contentsline {section}{\numberline {5.2}Pilot Study}{52}
-\contentsline {section}{\numberline {5.3}Demographic Data}{52}
-\contentsline {section}{\numberline {5.4}Experiment Results}{52}
-\contentsline {subsection}{\numberline {5.4.1}Correlation between Increase in Hybrid CHR \& Calendar Usage}{52}
-\contentsline {subsection}{\numberline {5.4.2}Correlation between Applications Used \& Increase in Hybrid CHR}{52}
-\contentsline {section}{\numberline {5.5}Points of Weakness}{52}
-\contentsline {subsection}{\numberline {5.5.1}Inability to Detect Change in Calendar Events}{52}
-\contentsline {subsection}{\numberline {5.5.2}List from Google Drive}{52}
-\contentsline {subsection}{\numberline {5.5.3}Limited Demographic}{52}
-\contentsline {subsection}{\numberline {5.5.4}User Bias}{52}
-\contentsline {chapter}{\numberline {6}Scope for Future Work}{53}
-\contentsline {section}{\numberline {6.1}Introduction}{54}
-\contentsline {section}{\numberline {6.2}Improving Context Analysis}{54}
-\contentsline {subsection}{\numberline {6.2.1}Machine Learning in Calendar Parsing}{54}
-\contentsline {subsection}{\numberline {6.2.2}Calendar Parser - LFU Hybrid}{54}
-\contentsline {subsection}{\numberline {6.2.3}Other Ways of Gathering User Behavior Data}{54}
-\contentsline {subsection}{\numberline {6.2.4}Custom Priorities in Hybrid Cache}{54}
-\contentsline {section}{\numberline {6.3}Alternate Ways of Using the Contextual Information}{54}
-\contentsline {subsection}{\numberline {6.3.1}Switching to Silent Mode}{54}
-\contentsline {subsection}{\numberline {6.3.2}Disabling Texting at High Speeds}{54}
-\contentsline {section}{\numberline {6.4}Implementing the Hybrid Cache}{54}
-\contentsline {chapter}{\numberline {7}Conclusion}{55}
-\contentsline {chapter}{References}{56}
+\contentsline {section}{\numberline {5.1}Introduction}{51}
+\contentsline {section}{\numberline {5.2}Demographic Data}{51}
+\contentsline {section}{\numberline {5.3}Experiment Results}{51}
+\contentsline {section}{\numberline {5.4}Significance Testing}{51}
+\contentsline {section}{\numberline {5.5}Points of Weakness}{51}
+\contentsline {subsection}{\numberline {5.5.1}Inability to Detect Change in Calendar Events}{51}
+\contentsline {subsection}{\numberline {5.5.2}List from Google Drive}{51}
+\contentsline {subsection}{\numberline {5.5.3}Limited Demographic}{51}
+\contentsline {subsection}{\numberline {5.5.4}User Bias}{51}
+\contentsline {chapter}{\numberline {6}Scope for Future Work}{52}
+\contentsline {section}{\numberline {6.1}Introduction}{53}
+\contentsline {section}{\numberline {6.2}Improving Context Analysis}{53}
+\contentsline {subsection}{\numberline {6.2.1}Machine Learning in Calendar Parsing}{53}
+\contentsline {subsection}{\numberline {6.2.2}Use LFU for user instead of Overall Default}{53}
+\contentsline {subsection}{\numberline {6.2.3}Other Ways of Gathering User Behavior Data}{53}
+\contentsline {subsection}{\numberline {6.2.4}Custom Priorities in Hybrid Cache}{53}
+\contentsline {section}{\numberline {6.3}Alternate Ways of Using the Contextual Information}{53}
+\contentsline {subsection}{\numberline {6.3.1}Switching to Silent Mode}{53}
+\contentsline {subsection}{\numberline {6.3.2}Disabling Texting at High Speeds}{53}
+\contentsline {section}{\numberline {6.4}Implementing the Hybrid Cache}{53}
+\contentsline {chapter}{\numberline {7}Conclusion}{54}
+\contentsline {chapter}{References}{55}

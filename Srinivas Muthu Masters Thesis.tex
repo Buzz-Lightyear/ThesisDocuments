@@ -968,10 +968,10 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		
 		\begin{itemize}
 			\item The volunteer must own an APMD with Android OS version greater than 5.0 (Lollipop and above).
-			\item The volunteer must be willing to install two third party applications on their APMD, each for the duration of one week and an overall duration of two weeks.
+			\item The volunteer must be willing to install two third party applications on their APMD.
 		\end{itemize}
 		
-		The algorithm that obtains the list of processes currently residing in memory and the algorithm that retrieves the current foreground application do not apply to Android OS versions below 5.0, hence the necessity for APMD(s) with OS versions that are Lollipop and above.
+		The algorithm that obtains the list of processes currently residing in memory (Refer Section 3.3.2) and the algorithm that retrieves the current foreground application (Refer Section 3.3.3) do not apply to Android OS versions below 5.0, hence the necessity for APMD(s) with OS versions that are Lollipop and above.
 		
 		\subsection{Addressing Privacy Concerns}
 			Since the research volunteers had to install two third party applications ({\em CacheAnalyzer} and {\em ContextAnalyzer}), it was crucial to address any privacy concerns that arose. In order to gain the trust of the volunteers, we adopted a policy of full transparency and took the following measures:
@@ -985,8 +985,14 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			Although the aforementioned points address the privacy issues, we realize that divulging the nature of the experiment has the potential to bias the volunteers in their APMD usage. We explore this aspect in detail in the Points of Weaknesses section. 
 	
 	\section{Process and Duration of Experiment}
+		A total of nineteen volunteers signed up and installed the applications. They were divided into two groups:
 		
-		The overall duration of the experiment was two weeks. Each volunteer downloaded the first application at the start of the experiment and sent the data displayed by the application at the end of first week. Additionally, they installed the second application at the end of first week and sent the data displayed by the second application at the end of second week. They also sent a snapshot of their calendar events during the second week. The volunteers were given detailed instructions to download both applications. The links to the APK files were posted online and each volunteer downloaded and installed each application as a third-party application. In this context, the term third-party refers to the fact that the Android application was'nt downloaded from the Google Play store. The volunteers were instructed not to manually stop the applications for the duration of the experiment. A total of seventeen volunteers signed up and installed the applications.
+		\begin{itemize}
+			\item Those without a set duration of observation.
+			\item Those with a set duration of observation (1 week).
+		\end{itemize}
+		
+		The first group comprised of 8 volunteers and they were not monitored over a set duration of time. They installed both applications at some point of time and had them running on their APMD(s). The only stipulation that group one was placed under was that they had to run each application for at least a week although there was no upper bound. There were no constraints on whether they had to run both applications simultaneously. Group two comprised of eleven volunteers. They installed and started both applications simultaneously and had them running for exactly one week. Both groups sent the data from each application and additionally provided the number of  entries they entered in their calendar during the time that {\em ContextAnalyzer} was running. The links to both APK files were posted online [56] and each volunteer downloaded and installed each application as a third-party application. In this context, the term third-party refers to the fact that the Android application was'nt downloaded from the Google Play store. The volunteers were instructed not to manually stop the applications for the duration of the experiment [52].
 		 
 	\section{Cache Analyzer Design}
 		Each volunteer had to install two applications namely {\em CacheAnalyzer} and {\em ContextAnalyzer}. {\em CacheAnalyzer} collected the metrics for the default scheme that Android employs. Every time the user switched to a new application, it identified whether it was a cache hit or cache miss (using the techniques discusses in Section 3-3) and updated the statistics on the file. Its User Interface (UI) listed the following details:
@@ -1066,15 +1072,17 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	
 	\section{Introduction}
 	
-	\section{Pilot Study}
-	
 	\section{Demographic Data}
 	
 	\section{Experiment Results}
 	
-		\subsection{Correlation between Increase in Hybrid CHR \& Calendar Usage}
-		
-		\subsection{Correlation between Applications Used \& Increase in Hybrid CHR}
+		%Divide groups by time duration
+		%Divide groups by hours of usage (overall clicks)
+		%Divide groups by unique apps clicked
+		%Divide groups by calendar usage
+		%Don't divide groups at all, give overall stats
+	
+	\section{Significance Testing}	
 		
 	\section{Points of Weakness}		
 		
@@ -1094,7 +1102,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		
 		\subsection{Machine Learning in Calendar Parsing}
 		
-		\subsection{Calendar Parser - LFU Hybrid}
+		\subsection{Use LFU for user instead of Overall Default}
 		
 		\subsection{Other Ways of Gathering User Behavior Data}
 		
