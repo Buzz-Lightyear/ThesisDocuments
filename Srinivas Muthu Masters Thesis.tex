@@ -17,8 +17,8 @@
 %        |  entering a middle initial in the \author command.       |
 %        +----------------------------------------------------------+
 
-\title{Optimizing Android Memory Management
-       \protect\\ by Predicting User Behavior}
+\title{A Context-Aware Approach
+       \protect\\ to Android Memory Management}
        
 % Alternatively, A User-Centric Approach to Android Memory Management
 
@@ -187,9 +187,7 @@
 %        +----------------------------------------------------------+
 
 \begin{abstractpage}
-With the advent of increase in the amount of RAM (Random Access memory) available in Android smart-phones, there is a case to be made that this additional memory availability can be put to better use. By default, every Android application runs in its own Linux process. When a smart-phone that runs on Android is active, the RAM contains all the active processes and services (processes that run in the background). In addition to these processes and services, the RAM also contains cached background processes. These processes are kept in memory so that in the event the user clicks any of the corresponding applications, they can be loaded onto the screen quickly. If Android needs to reclaim memory for other processes, it eliminates cached background processes through an LRU (Least Recently Used) scheme. We postulate that analyzing  user behavior could help us better determine which applications to cache in memory, as cached background processes. We parse the user's Calendar for contextual clues and gather information that could help us predict which application a user is about to use. We measure the cache efficiency (Cache hits and misses, CHR (Cache Hit Ratio)) for the default CRA (Cache Replacement Algorithm) Android employs (LRU), a pure prediction based CRA and finally a hybrid approach that combines the LRU approach with the prediction approach. We also demonstrate why the hybrid CRA is the most efficient one.
-
-
+	Smart-phones are ubiquitous and operate in diverse environments. Hence, they are well suited to utilize contextual information in enhancing the behavior of their applications. However, the potential of context analysis is not fully utilized by Android devices. The Android operating system caches the processes of recently-used applications in memory, so that they can be loaded quickly should the user request them again. We postulate that incorporating context information can improve this caching scheme. As a proof of concept, we setup an experiment comprising of nineteen volunteers (Android smart-phone users) and compared the cache hit ratios of the default scheme with a default-context hybrid scheme. This hybrid scheme incorporated information from the user's calendar in determining which processes were cached.  To accomplish this task, each volunteer installed an Android application that parses their Calendar for contextual clues and generates a list of applications that the user is likely to use. This list is then combined with the default list (that Android generates through recency of usage) to determine the cache hit ratios of the hybrid scheme. Finally, we use the data collected from the experiment to show why the hybrid scheme is more efficient and on a broader level, that context analysis is beneficial in enhancing the user experience.        
 \end{abstractpage}
 
 %--------+----------------------------------------------------------+
@@ -304,13 +302,6 @@ I'd like to thank all my friends and family for supporting me throughout my time
  \abbreviation{USA}{United States of America} 
  \abbreviation{UI}{User Interface}
  
-%							Template for some symbol based abbreviations
-
-%    \abbreviation{GLE}{Gauss' law for electricity: $\nabla\cdot E
-%                       = \displaystyle\frac{\rho}{\varepsilon_0}
-%                       = 4\pi k \rho$}
-%    \abbreviation{HHS}{Department of Health and Human Services}
-%    \abbreviation{IaR}{I am root}
 
 \end{listofabbreviations}
 
@@ -409,9 +400,39 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 %        +----------------------------------------------------------+
 
 \chapter{Introduction}
-
-	\section{Android Operating System}
+	
+	\section{Problem}
+		With the advent of increase in the amount of RAM (Random Access memory) available in Android smart-phones, there is a case to be made that this additional memory availability can be put to better use. By default, every Android application runs in its own Linux process [50]. When a smart-phone that runs on Android is active, the RAM contains all the active processes [15] and services [8]. In addition, it also contains cached background processes. These processes are kept in memory so that in the event the user clicks any of the corresponding applications, they can be loaded onto the screen quickly, thereby enhancing the user experience. Consequently, it's in Android's best interests to maximize the chances of the user requesting one of these applications. Currently, Android uses recency of usage to determine which applications get cached. To elaborate, the most recently used applications are cached as cached background processes. Therefore, the problem at hand is determining whether there is a better caching scheme and whether contextual information can be influential in such a scheme.
 		
+	\section{Proposed Solution}		
+		We postulate that incorporating context information can lead to a better caching scheme. In our case we utilize context by looking into the user's calendar to try and predict which applications the user is likely to use in the near future. This leads to three possible caching schemes:
+		
+		\begin{itemize}
+			\item Default Scheme (based on caching recently used applications)
+			\item Context Scheme (based on caching applications predicted by reading the user's calendar)
+			\item Default-Context Hybrid Scheme (based on caching applications from both groups)
+		\end{itemize}
+		
+		We need to measure the efficiency of each scheme in order to determine the best one. To accomplish this task, we setup an experiment that comprised of nineteen android smart-phone users, to measure the cache hit ratios of each scheme. We developed an Android application that parsed the user's calendar and generated a list of applications likely to be used by the user. Additionally, it collected the basic cache metrics (cache hit, cache miss, cache hit ratio) for each scheme. We thoroughly analyze the data collected and demonstrate the superiority of the default-context hybrid scheme.  
+		
+		\subsection{Assumptions}	
+			We've made the following assumptions:
+			\begin{itemize}
+				\item For the purpose of this thesis, the user's context is obtained through reading the user's calendar.
+				\item All the research volunteers own an Android smart-phone that operates at API (Application Programming Interface) Level 21 and above [57].
+				\item Each volunteer authorized the application to access their calendar.
+			\end{itemize}
+			
+			There are plenty of ways to obtain contextual information but reading the calendar is beneficial for two reasons:
+			
+			\begin{itemize}
+				\item Android provides a public interface to read the user's calendar with their permission [46]. Therefore it's quite simple to obtain this information.
+				\item The probability that the event listed in the calendar actually occurring is quite high. This is due to the fact that the user personally entered the event which beats models that predict user behavior.  
+			\end{itemize}
+			
+			Chapter 4 elaborates on why volunteers require API level 21 and above, and Android mandates that the user authorize all permissions for third-party applications to access their data, during installation.
+			
+	\section{Android Fundamentals} 
 		\subsection{Overview of the Android OS}
 			Android is a mobile OS (Operating System) based on the Linux kernel and designed primarily for touchscreen devices such as smart-phones and tablets [1]. In addition to touchscreen devices, Android TV, Android Auto and Android Wear are emerging technologies with specialized user interfaces. Globally, it is the most popular mobile OS [2]. Android has an active community of developers and enthusiasts who use the AOSP (Android Open Source Project) source code to develop and distribute their own modified versions of the operating system [4]. Android homescreens are typically made up of app icons and widgets. App icons launch the associated app, whereas widgets display live, auto-updating content such as the weather forecast, the user's email inbox, or a news ticker directly on the homescreen [5].
 			
@@ -424,15 +445,43 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\end{figure}
 			
 		\subsection{Applications, Activities and Services}
-			
+		
 			\subsubsection{Applications}
-				Android apps are written in the Java programming language. The Android SDK tools compiles the code, along with any data and resource files into an APK (Android Package), which is an archive file with an .apk suffix. One APK file contains all the contents of an Android app and is the file that Android-powered devices use to install the app [6]. The Android operating system is a multi-user Linux system in which each app is a different user. Each process has its own virtual machine (VM), so an app's code runs in isolation from other apps. By default, every app runs in its own Linux process.
-				
+			Android apps are written in the Java programming language. The Android SDK tools compiles the code, along with any data and resource files into an APK (Android Package), which is an archive file with an .apk suffix. One APK file contains all the contents of an Android app and is the file that Android-powered devices use to install the app [6]. The Android operating system is a multi-user Linux system in which each app is a different user. Each process has its own virtual machine (VM), so an app's code runs in isolation from other apps. By default, every app runs in its own Linux process.
+			
 			\subsubsection{Activities}
-				An Activity is an application component that provides a screen with which users can interact in order to do something, such as dial the phone, take a photo, send an email, or view a map [7]. An application usually consists of multiple activities that are loosely bound to each other. Typically, one activity in an application is specified as the main activity, which is presented to the user when launching the application for the first time. Each activity can then start another activity in order to perform different actions.
+			An Activity is an application component that provides a screen with which users can interact in order to do something, such as dial the phone, take a photo, send an email, or view a map [7]. An application usually consists of multiple activities that are loosely bound to each other. Typically, one activity in an application is specified as the main activity, which is presented to the user when launching the application for the first time. Each activity can then start another activity in order to perform different actions.
+			
+			\subsubsection{Services}
+			A Service is an application component that can perform long-running operations in the background and does not provide a user interface [8]. Another application component can start a service and it will continue to run in the background even if the user switches to another application. Additionally, a component can bind to a service to interact with it and even perform IPC (Inter Process Communication). For example, a service might handle network transactions, play music, perform file I/O, or interact with a content provider, all from the background.
+					
+		\subsection{Android Process Lifecycle}
+			A Android process can be in one of five different states at any given time, from most important to least important [15]:
+			
+				\begin{itemize}
+					\item Foreground process: A foreground process is one that is required for what the user is currently doing.
+					
+					\item Visible process: A visible process is one holding an Activity that is visible to the user on-screen but not in the foreground.
+					
+					\item Service Process: Service processes are not directly visible to the user, they are generally doing things that the user cares about (such as playing music in the background). 
+					
+					\item Background process: A background process is one holding an Activity that is not currently visible to the user. They are kept in an LRU list to ensure the process that was most recently seen by the user is the last to be killed when running low on memory.  
+					
+					\item Empty process: An empty process is one that doesn't hold any active application components. The only reason to keep such a process around is as a cache to improve startup time the next time a component of its application needs to run.				
+				\end{itemize}
 				
-			\subsection{Services}
-				A Service is an application component that can perform long-running operations in the background and does not provide a user interface [8]. Another application component can start a service and it will continue to run in the background even if the user switches to another application. Additionally, a component can bind to a service to interact with it and even perform IPC (Inter Process Communication). For example, a service might handle network transactions, play music, perform file I/O, or interact with a content provider, all from the background.
+				Every Android smart-phone user is capable of checking the processes that currently reside in physical memory. The Application Manager which is part of the Settings app shows a list of running processes and cached background processes. Additionally, it breaks down the composition of RAM usage by the System applications and user installed applications. 
+				
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width = 90mm]{images/runningApps.png}
+					\caption[Running Apps and Cached Background Processes]
+					{Left - List of Running Applications (Active Processes and Services)\\
+						Right - List of Cached Background Processes}
+				\end{figure}		
+		
+			
+		
 					 	
 	\section{Growth of available RAM over the years}
 		
@@ -452,42 +501,10 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			 	
 		\subsection{Demise of Task Killers}
 			One of the main benefits of the Android OS is the fact that unlike certain other OS(s), it can run apps in the background. This enables us to have multiple applications open at the same time which results in true multitasking. Thus, RAM availability is highly desirable [14]. A popular misconception is that forcibly removing applications from memory in order to 'free up RAM' will result in increased performance. In fact, several task-killer applications promise to do precisely that. With the advancement in the amount of RAM available, the debate should be about how to better use all this extra space, not killing applications to 'free up' more space. In fact, the Android OS can go one step further and pro-actively cache applications that the user might use in the near future. We'll analyze this prospect in more detail in the upcoming chapters.  
-			
-	\section{How Android Manages Processes}
-		
-		\subsection{Android Process Lifecycle}
-			A Android process can be in one of five different states at any given time, from most important to least important [15]:
-			
-			\begin{itemize}
-				\item Foreground process: A foreground process is one that is required for what the user is currently doing.
-				
-				\item Visible process: A visible process is one holding an Activity that is visible to the user on-screen but not in the foreground.
-				
-				\item Service Process: Service processes are not directly visible to the user, they are generally doing things that the user cares about (such as playing music in the background). 
-				
-				\item Background process: A background process is one holding an Activity that is not currently visible to the user. They are kept in an LRU list to ensure the process that was most recently seen by the user is the last to be killed when running low on memory.  
-				
-				\item Empty process: An empty process is one that doesn't hold any active application components. The only reason to keep such a process around is as a cache to improve startup time the next time a component of its application needs to run.				
-			\end{itemize}
-			
-			Every Android smart-phone user is capable of checking the processes that currently reside in physical memory. The Application Manager which is part of the Settings app shows a list of running processes and cached background processes. Additionally, it breaks down the composition of RAM usage by the System applications and user installed applications. 
-			
-			\begin{figure}[h]
-				\centering
-				\includegraphics[width = 90mm]{images/runningApps.png}
-				\caption[Running Apps and Cached Background Processes]
-				{Left - List of Running Applications (Active Processes and Services)\\
-					Right - List of Cached Background Processes}
-			\end{figure}			
-			 
-		\subsection{LRU Cache}
-			LRU is a CRA that discards the least recently used items first. This algorithm requires keeping track of what was used when, which is expensive if one wants to make sure the algorithm always discards the least recently used item [17]. Android keeps processes that are not hosting a foreground app component in a LRU cache. As the system runs low on memory, it may kill processes in the LRU cache beginning with the process least recently used, but also giving some consideration toward which processes are most memory intensive [16].
-			
-	\section{Goals and Objectives}
-		The main benefit of caching processes (components of applications recently clicked by the user) in memory is to improve startup time (of the application), the next time a component of the application needs to run. This greatly enhances the usability experience and therefore it's in Android's best interests to increase the efficiency of this cache i.e. improve its CHR. In addition to recency of application usage (which is what Android currently relies on in the form of LRU as a CRA), there is scope to potentially infer what application a user may click in the near future. A more user-centric caching scheme could look into contextual clues and deduce patterns in user behavior to improve the decision making involved in determining which applications to cache in memory. As a proof of concept, we propose a user-centric caching scheme that incorporates contextual information (from reading the user's calendar) and compare the efficiency of such a scheme with Android's current scheme. 
 
 	\section{Organization of Thesis}
-		Several works in the past have focused on context-aware applications and ways to observe user behavior patterns. We'll explore some these works and how this contextual data was put to use in Section 2. In Section 3, we'll take a look at some of the challenges in collecting cache metrics like detecting what's in the RAM, detecting when the user clicks a new application, whether to approach the problem at the user level or the system level, to list a few. Section 4 elaborates on the setup of the experiment and analyzes the design of the applications used to collect these metrics. We dive into the data in Section 5 and summarize its ramifications. We also investigate how certain factors could explain the variation in data. Section 6 talks about scope for future work and explores some of the possibilities of directly adding to this work. We conclude the thesis with Section 7.  
+		Several works in the past have focused on context-aware applications and ways to observe user behavior patterns. We'll explore some these works and how this contextual data was put to use in Chapter 2. In Chapter 3, we'll take a look at some of the challenges in collecting cache metrics like detecting the applications in memory, detecting when the user clicks a new application, whether to approach the problem at the user level or the system level, to list a few. Chapter 4 elaborates on the setup of the experiment and analyzes the design of the application used to collect these metrics. We dive into the data in Chapter 5 and summarize the results. We also investigate how certain factors could explain the variation in data. 
+		We conclude this thesis with Chapter 6 and Chapter 7 talks about scope for future work and explores some of the possibilities of directly adding to this thesis.  
 
 
 %				How to Refer to a table, look below:
@@ -525,6 +542,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 %XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 %XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 %XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
 
 \chapter{Related Work}
 	
@@ -1086,19 +1104,38 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		{\em ContextAnalyzer} was developed using Android Studio [53] and the source code was uploaded on Github [51]. The class diagram was built using Gliffy [54]. The APK file was uploaded on our Github I/O page [55][56].
 
 \chapter{Data Analysis and Results}
+
+
+\section{Introduction}
+
+\section{Improving Context Analysis}
+
+\subsection{Machine Learning in Calendar Parsing}
+
+\subsection{Use LFU for user instead of Overall Default}
+
+\subsection{Other Ways of Gathering User Behavior Data}
+
+\subsection{Custom Priorities in Hybrid Cache}
+% If 'call' was parsed from Calendar, then dialer app is high priority followed by LRU followed by other call apps.
+
+%Previous point - We can use machine learning to come up with custom priorities 
+\section{Alternate Ways of Using the Contextual Information}
+
+\subsection{Switching to Silent Mode}
+
+\subsection{Disabling Texting at High Speeds}
+
+\section{Implementing the Hybrid Cache}
+
+\chapter{Conclusion}
 	
 	\section{Introduction}
 	
 	\section{Demographic Data}
 	
 	\section{Experiment Results}
-	
-		%Divide groups by time duration
-		%Divide groups by hours of usage (overall clicks)
-		%Divide groups by unique apps clicked
-		%Divide groups by calendar usage
-		%Don't divide groups at all, give overall stats
-	
+		
 	\section{Significance Testing}	
 		
 	\section{Points of Weakness}		
@@ -1111,31 +1148,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		
 		\subsection{User Bias}
 		
-\chapter{Scope for Future Work}
-		
-	\section{Introduction}
-		
-	\section{Improving Context Analysis}
-		
-		\subsection{Machine Learning in Calendar Parsing}
-		
-		\subsection{Use LFU for user instead of Overall Default}
-		
-		\subsection{Other Ways of Gathering User Behavior Data}
-		
-		\subsection{Custom Priorities in Hybrid Cache}
-			% If 'call' was parsed from Calendar, then dialer app is high priority followed by LRU followed by other call apps.
-			
-			%Previous point - We can use machine learning to come up with custom priorities 
-	\section{Alternate Ways of Using the Contextual Information}
-			
-		\subsection{Switching to Silent Mode}
-			
-		\subsection{Disabling Texting at High Speeds}
-		
-	\section{Implementing the Hybrid Cache}
-
-\chapter{Conclusion}		
+\chapter{Scope for Future Work}		
 
 %XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 %XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -1397,8 +1410,8 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\\\emph{http://developer.android.com/reference/android/content/pm/PackageManager.html}, October 2015. 
 	Online; Last Accessed: October 24, 2015.
 
-	\item \textbf{[50]} ``Cache Analyzer | Github''
-	\\\emph{https://github.com/Buzz-Lightyear/Cache-Analyzer}, October 2015. 
+	\item \textbf{[50]} ``Chapter 4 - Processes''
+	\\\emph{http://www.tldp.org/LDP/tlk/kernel/processes.html}, October 2015. 
 	Online; Last Accessed: October 24, 2015.
 	
 	\item \textbf{[51]} ``Context Analyzer | Github''
@@ -1423,7 +1436,11 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	
 	\item \textbf{[56]} ``Buzz-Lightyear Github | Cache-Analyzer-APK''
 	\\\emph{http://buzz-lightyear.github.io/Cache-Analyzer-APK/}, October 2015. 
-	Online; Last Accessed: October 24, 2015.																	
+	Online; Last Accessed: October 24, 2015.
+	
+	\item \textbf{[57]} ``API Level 21 | Android Developers''
+	\\\emph{https://developer.android.com/about/versions/android-5.0.html}, October 2015. 
+	Online; Last Accessed: October 28, 2015.																		
 \end{referencelist}
 
 
