@@ -187,7 +187,7 @@
 %        +----------------------------------------------------------+
 
 \begin{abstractpage}
-	Smart-phones are ubiquitous and operate in diverse environments. Hence, they are well suited to utilize contextual information in enhancing the behavior of their applications. However, the potential of context analysis is not fully utilized by Android devices. The Android operating system caches the processes of recently-used applications in memory, so that they can be loaded quickly should the user request them again. We postulate that incorporating context information can improve this caching scheme. As a proof of concept, we setup an experiment comprising of nineteen volunteers (Android smart-phone users) and compared the cache hit ratios of the default scheme with a default-context hybrid scheme. This hybrid scheme incorporated information from the user's calendar in determining which processes were cached.  To accomplish this task, each volunteer installed an Android application that parses their Calendar for contextual clues and generates a list of applications that the user is likely to use. This list is then combined with the default list (that Android generates through recency of usage) to determine the cache hit ratios of the hybrid scheme. Finally, we use the data collected from the experiment to show why the hybrid scheme is more efficient and on a broader level, that context analysis is beneficial in enhancing the user experience.        
+	Smart-phones are ubiquitous and operate in diverse environments. Hence, they are well suited to utilize contextual information in enhancing the behavior of their applications. However, the potential of context analysis is not fully utilized by Android devices. The Android operating system caches the processes of recently-used applications in memory, so that they can be loaded quickly should the user request them again. We postulate that incorporating context information can improve this caching scheme. As a proof of concept, we setup an experiment comprising of twenty volunteers (Android smart-phone users) and compared the cache hit ratios of the default scheme with a default-context hybrid scheme. This hybrid scheme incorporated information from the user's calendar in determining which processes were cached.  To accomplish this task, each volunteer installed an Android application that parses their Calendar for contextual clues and generates a list of applications that the user is likely to use. This list is then combined with the default list (that Android generates through recency of usage) to determine the cache hit ratios of the hybrid scheme. Finally, we use the data collected from the experiment to show why the hybrid scheme is more efficient and on a broader level, that context analysis is beneficial in enhancing the user experience.        
 \end{abstractpage}
 
 %--------+----------------------------------------------------------+
@@ -408,7 +408,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\item Default-Context Hybrid Scheme (based on caching applications from both groups)
 		\end{itemize}
 		
-		We need to measure the efficiency of each scheme in order to determine the best one. To accomplish this task, we setup an experiment that comprised of nineteen android smart-phone users, to measure the cache hit ratios of each scheme. We developed an Android application that parsed the user's calendar and generated a list of applications likely to be used by the user. Additionally, it collected the basic cache metrics (cache hit, cache miss, cache hit ratio) for each scheme. We thoroughly analyze the data collected and demonstrate the superiority of the default-context hybrid scheme.  
+		We need to measure the efficiency of each scheme in order to determine the best one. To accomplish this task, we setup an experiment that comprised of twenty android smart-phone users, to measure the cache hit ratios of each scheme. We developed an Android application that parsed the user's calendar and generated a list of applications likely to be used by the user. Additionally, it collected the basic cache metrics (cache hit, cache miss, cache hit ratio) for each scheme. We thoroughly analyze the data collected and demonstrate the superiority of the default-context hybrid scheme.  
 		
 		\subsection{Assumptions}	
 			We've made the following assumptions:
@@ -595,7 +595,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		
 		As demonstrated by Shi et al., there are numerous ways contextual information can come in handy. In our case, we propose a user-centric caching scheme for caching application components in memory, demonstrate its superior efficiency and user experience, by looking into the user's calendar for contextual information.  			
 	
-\chapter{Challenges in Collecting the Desired Metrics}
+\chapter{Challenges in Collecting the Metrics}
 	
 	\section{Introduction}
 		Now that we've laid the foundation for using contextual information to influence which processes Android caches in memory, we need to establish the metrics that need to be collected in order to measure the efficiency of the existing caching scheme and the proposed caching scheme. The following section addresses the metrics we need.
@@ -658,7 +658,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				It is worth noting that a perfect implementation of this caching scheme requires a time-stamp on each reference, and the OS needs to keep a list of items ordered by the time-stamp. This implementation may be deemed too expensive in certain cases especially if the frequency of memory references is high. The common practice is to approximate the behavior of this scheme [27].
 			
 			\subsubsection{Frequency of Usage}
-				This caching scheme relies on the frequency of application usage as opposed to the recency of application usage. To elaborate, the most frequently used applications would be cached as CBP(s) in memory. This could be a really good alternative to the default recency based scheme, given the tendency of most smart-phone users to stick with the same set of popular applications and use them in rotation [31]. Under these circumstances, the frequency of a select few applications would be really high and would always be cached in memory as they're requested often. Frequency based caching scheme is sometimes combined with a recency based caching scheme to form a frequency-recency hybrid [30].
+				This caching scheme relies on the frequency of application usage as opposed to the recency of application usage. To elaborate, the most frequently used applications would be cached as CBP(s) in memory. This could be a really good alternative to the default recency-based scheme, given the tendency of most smart-phone users to stick with the same set of popular applications and use them in rotation [31]. Under these circumstances, the frequency of a select few applications would be really high and would always be cached in memory as they're requested often. Frequency based caching scheme is sometimes combined with a recency-based caching scheme to form a frequency-recency hybrid [30].
 				 
 			\subsubsection{Random}
 				Much like the name suggests this caching scheme would randomly select an application and cache it in memory as a CBP. This scheme does not require keeping any information about the access history. For its simplicity, it has been used in ARM processors [32]. When applied to our scenario, it does'nt seem like a viable option, mainly because there is'nt a benefit in randomly caching applications in memory.
@@ -693,14 +693,14 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 					This indicates that Android pro-actively caches applications that were'nt in memory to begin with, as CBP(s). This is also the reason why task killer applications fell out of favor [33]. This demonstrates that not only does Android provide a mechanism to pro-actively cache applications in memory, it already does so. The applications suggested by the Hybrid scheme can be introduced into the memory as CBP(s) in the same way. This is discussed in Chapter 7.
 
 				\paragraph{Prioritizing Applications in Hybrid Scheme}	
-					The Hybrid scheme would involve storing as CBP(s), both default application components cached by Android's recency based scheme and the application components of the list of applications obtained from analyzing the user's calendar. So the question now becomes, who gets kicked out when memory is running low? Since the applications inferred from user's contextual information do not have a recency associated with them, the overall list of CBP(s) cannot be prioritized based on recency of usage. A simple solution is to prioritize the CBP(s) obtained from the list of suggested applications over the default ones i.e. all the default CBP(s) are removed from memory before the CBP(s) cached as a result of context inference. There are two advantages to this approach:
+					The Hybrid scheme would involve storing as CBP(s), both default application components cached by Android's recency-based scheme and the application components of the list of applications obtained from analyzing the user's calendar. So the question now becomes, who gets kicked out when memory is running low? Since the applications inferred from user's contextual information do not have a recency associated with them, the overall list of CBP(s) cannot be prioritized based on recency of usage. A simple solution is to prioritize the CBP(s) obtained from the list of suggested applications over the default ones i.e. all the default CBP(s) are removed from memory before the CBP(s) cached as a result of context inference. There are two advantages to this approach:
 					
 					\begin{itemize}
 						
 						\item Only few applications are suggested by the context module.
 						
 							\begin{itemize}
-								\item For instance, say the user has a Calendar entry that reads {\em Call Mom}. There will be two or at most three applications suggested by the context-module that would be potentially useful to the user in the context of calling his/her mother. This makes it more convenient to target CBP(s) cached by the default recency based scheme in case of low memory.
+								\item For instance, say the user has a Calendar entry that reads {\em Call Mom}. There will be two or at most three applications suggested by the context-module that would be potentially useful to the user in the context of calling his/her mother. This makes it more convenient to target CBP(s) cached by the default recency-based scheme in case of low memory.
 							\end{itemize}
 							
 						\item The probability of user requesting an application related to the Calendar event is quite high.
@@ -723,6 +723,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\begin{itemize}
 				\item Number of Installed Applications
 				\item Number of Unique Applications Requested (Clicked)
+				\item Number of Calendar Entries During the Course of the Experiment
 				\item Phone Model
 				\item Android OS Version
 			\end{itemize} 
@@ -981,7 +982,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 \chapter{Experiment Setup and Application Design}
 	
 	\section{Introduction}
-		In the previous chapter, we examined the metrics we needed to analyze the best caching scheme for caching application components in memory as CBP(s). We looked into some of the common caching schemes and analyzed some of the challenges in collecting the metrics needed to determine if contextual information can help better the CHR of the Hybrid approach. To analyze the efficiencies of the default recency based approach and the Hybrid approaches, an Android application namely {\em ContextAnalyzer} was developed to collect the desired cache metrics. It was installed in the APMD(s) of research volunteers. We'll dissect {\em ContextAnalyzer}'s design in Section 4.4.  
+		In the previous chapter, we examined the metrics we needed to analyze the best caching scheme for caching application components in memory as CBP(s). We looked into some of the common caching schemes and analyzed some of the challenges in collecting the metrics needed to determine if contextual information can help better the CHR of the Hybrid approach. To analyze the efficiencies of the default recency-based approach and the Hybrid approaches, an Android application namely {\em ContextAnalyzer} was developed to collect the desired cache metrics. It was installed in the APMD(s) of research volunteers. We'll dissect {\em ContextAnalyzer}'s design in Section 4.4.  
 		
 	\section{Eligibility for Volunteers}
 		The following criteria had to be met to qualify as a research volunteer:
@@ -1005,14 +1006,14 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			Although the aforementioned points address the privacy issues, we realize that divulging the nature of the experiment has the potential to bias the volunteers in their APMD usage. We explore this aspect in detail in the Points of Weaknesses section. 
 	
 	\section{Process and Duration of Experiment}
-		A total of nineteen volunteers signed up and installed the application. They were divided into two groups:
+		A total of twenty volunteers signed up and installed the application. They were divided into two groups:
 		
 		\begin{itemize}
 			\item Those without a set duration of observation.
 			\item Those with a set duration of observation (1 week).
 		\end{itemize}
 		
-		The first group comprised of 8 volunteers and they were not monitored over a set duration of time. They installed the application at some point of time and had it running on their APMD(s). The only stipulation that group one was placed under was that they had to run the application for at least a week although there was no upper bound. Group two comprised of eleven volunteers. They had the application running for exactly one week. Both groups sent the data from the application and additionally provided the number of  entries they entered in their calendar during the monitoring period. The link to the APK file was posted online [56] and each volunteer downloaded and installed the application as a third-party application. In this context, the term third-party refers to the fact that the Android application was'nt downloaded from the Google Play store. The volunteers were instructed not to manually stop the application for the duration of the experiment [52].
+		The first group comprised of 9 volunteers and they were not monitored over a set duration of time. They installed the application at some point of time and had it running on their APMD(s). The only stipulation that group one was placed under was that they had to run the application for at least a week although there was no upper bound. Group two comprised of eleven volunteers. They had the application running for exactly one week. Both groups sent the data from the application and additionally provided the number of  entries they entered in their calendar during the monitoring period. The link to the APK file was posted online [56] and each volunteer downloaded and installed the application as a third-party application. In this context, the term third-party refers to the fact that the Android application was'nt downloaded from the Google Play store. The volunteers were instructed not to manually stop the application for the duration of the experiment [52].
 		 		 
 	\section{Context Analyzer Design}
 		{\em ContextAnalyzer} computes the metrics for both the default scheme and the Hybrid scheme. In order to  accomplish this, {\em ContextAnalyzer} reads the user's calendar (Section 3.3.6) and produces a list of applications that the user is likely to use. For the sake of simplicity, let's refer to this list as the calendar list. It also reads the list of processes residing in memory (Section 3.3.2). Let's refer to this list as the memory list. Given this information, every application that the user requests falls in one of four categories:
@@ -1024,7 +1025,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\item The application is present in both lists. 
 		\end{itemize}  
 		
-		If the application is present in neither list, it results in an overall cache miss. To elaborate, an overall cache miss implies that neither the list of processes in memory (cached by the default recency based caching scheme) nor the list of applications predicted by reading the calendar, contained the requested application. If the application was present only in memory list, it results in an overall cache hit and a suggested cache miss i.e. the Hybrid scheme would've still had a hit but it was not present in the list of applications suggested by the calendar list. If the application was present only in the calendar list, it results in an overall cache hit and a suggested-exclusive cache hit, implying that the hit is solely a result of the calendar list's suggestion. This metric is important as it reveals the significance of the list of applications suggested by the calendar list. We'll discuss this further in Chapter 5. Finally, if the application was present in both lists, it results in an overall cache hit and suggested non-exclusive cache hit, implying that the hit would've occurred regardless of whether the application was present in the calendar list or not. The following snapshot (Figure 4-3) illustrates {\em ContextAnalyzer}'s UI.  
+		If the application is present in neither list, it results in an overall cache miss. To elaborate, an overall cache miss implies that neither the list of processes in memory (cached by the default recency-based caching scheme) nor the list of applications predicted by reading the calendar, contained the requested application. If the application was present only in memory list, it results in an overall cache hit and a suggested cache miss i.e. the Hybrid scheme would've still had a hit but it was not present in the list of applications suggested by the calendar list. If the application was present only in the calendar list, it results in an overall cache hit and a suggested-exclusive cache hit, implying that the hit is solely a result of the calendar list's suggestion. This metric is important as it reveals the significance of the list of applications suggested by the calendar list. We'll discuss this further in Chapter 5. Finally, if the application was present in both lists, it results in an overall cache hit and suggested non-exclusive cache hit, implying that the hit would've occurred regardless of whether the application was present in the calendar list or not. The following snapshot (Figure 4-3) illustrates {\em ContextAnalyzer}'s UI.  
 		
 		\begin{figure}[h]
 			\centering
@@ -1108,31 +1109,29 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 \chapter{Data Analysis and Results}
 
 		\section{Introduction}
-		
+%			chapter 3 - challenges in collecting the desired data - previous chapter - exp setup and design - this chapter we'll analyze the data collected for each scheme and compare efficiencies. first demographic data to get an idea about volunteers, then cache metrics data, significance testing to see if increase is significant, points of weaknesses
+			
 		\section{Demographic Data}
-		
+%			\begin{itemize}
+%				\item Number of Installed Applications
+%				\item Number of Unique Applications Requested (Clicked)
+%				\item Number of Calendar Entries During the Course of the Experiment
+%				\item Phone Model
+%				\item Android OS Version
+%			\end{itemize} 
+%			average for each, charts, point about OS Version
 		\section{Experiment Results}
-		
+%			3 schemes - average for each scheme, charts for each - why context alone is bad and expected - increase in hybrid - looks good but is it significant? - potentially correlation between calendar usage and increase in ratio - other correlations
 		\section{Significance Testing}	
-		
+%		paired t test - rejecting the null hypothesis - whether results are significant
 		\section{Points of Weakness}		
-		
-			\subsection{Inability to Detect Change in Calendar Events}
-			
-			\subsection{List from Google Drive}
-			
-			\subsection{Limited Demographic}
-			
-			\subsection{User Bias}
-
-
+%			there are certain factors that could decrease the value of this thesis - calendar not enough as not everything is covered by calendar, involve other context info - change in calendar events within 4 hr period not detected - too similar a demographic - theoretically volunteer bias - instructed not to close, not enforced, choosing time periods may theoretically affect data.
 
 \chapter{Conclusion}
-	
-
+	The typical user is not facing a desktop machine in the relatively predictable office environment anymore. Smart-phones are well suited to utilize contextual information in enhancing the behavior of their applications. However, the full potential of context analysis is not harnessed by Android devices. Currently, the Android OS caches application components in memory, based on recency of application usage. We have demonstrated that incorporating context information improves the efficiency of this caching scheme. For this purpose, we set up an experiment comprising of twenty volunteers. We developed an Android application to measure the cache metrics of both the default recency-based caching scheme and a default-context hybrid scheme, which in addition to relying on recency of usage, parsed the user's calendar for contextual clues. We analyzed the data and proved that on an average, the hybrid scheme had a significantly higher cache hit ratio. By virtue of its superior efficiency, the hybrid scheme would result in a lower startup time for relatively more applications, thereby enhancing the overall user experience.
 		
 \chapter{Future Work}		
-	In addition to the user's calendar, other sources of information can be utilized to obtain context. These days, most APMD(s) have built-in sensors that measure motion, orientation, and various environmental conditions. These sensors are capable of providing raw data with high precision and accuracy, and are useful in monitoring three-dimensional device movement or positioning, or changes in the ambient environment near a device [21]. Information from multiple sensors can significantly improve the reliability of contextual data. Shi et al.'s work focused on constructing a user behavior model [22] based on analyzing user behavior. A similar approach can be used to predict the list of applications the user is likely to use in the immediate future. Currently the calendar parser relies on predetermined mapping between keywords and applications. This can me improved upon by learning the user's preferences. If the user predominantly requests an application, associated with a particular event in the calendar, then the mapping can be altered by learning the user's preferences. Finally, this thesis merely verifies whether a caching scheme that incorporates context information is more efficient than the default recency based scheme. The next step would be to implement this caching scheme by building a custom distribution of the Android OS, facilitated by the AOSP [59].
+	In addition to the user's calendar, other sources of information can be utilized to obtain context. These days, most APMD(s) have built-in sensors that measure motion, orientation, and various environmental conditions. These sensors are capable of providing raw data with high precision and accuracy, and are useful in monitoring three-dimensional device movement or positioning, or changes in the ambient environment near a device [21]. Information from multiple sensors can significantly improve the reliability of contextual data. Shi et al.'s work focused on constructing a user behavior model [22] based on analyzing user behavior. A similar approach can be used to predict the list of applications the user is likely to use in the immediate future. Currently the calendar parser relies on predetermined mapping between keywords and applications. This can me improved upon by learning the user's preferences. If the user predominantly requests an application, associated with a particular event in the calendar, then the mapping can be altered by learning the user's preferences. Finally, this thesis merely verifies whether a caching scheme that incorporates context information is more efficient than the default recency-based scheme. The next step would be to implement this caching scheme by building a custom distribution of the Android OS, facilitated by the AOSP [59].
 
 	
 %XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
