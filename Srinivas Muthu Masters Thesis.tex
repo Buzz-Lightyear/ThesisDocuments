@@ -658,7 +658,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				It is worth noting that a perfect implementation of this caching scheme requires a time-stamp on each reference, and the OS needs to keep a list of items ordered by the time-stamp. This implementation may be deemed too expensive in certain cases especially if the frequency of memory references is high. The common practice is to approximate the behavior of this scheme [27].
 			
 			\subsubsection{Frequency of Usage}
-				This caching scheme relies on the frequency of application usage as opposed to the recency of application usage. To elaborate, the most frequently used applications would be cached as CBP(s) in memory. This could be a really good fit in our case, given the tendency of most smart-phone users to stick with the same set of popular applications and use them in rotation [31]. Under these circumstances, the frequency of a select few applications would be really high and would always be cached in memory as they're requested often. Frequency based caching scheme is sometimes combined with a recency based caching scheme to form a frequency-recency hybrid [30]. We'll explore some of the possibilities with this scheme in Chapter 7.
+				This caching scheme relies on the frequency of application usage as opposed to the recency of application usage. To elaborate, the most frequently used applications would be cached as CBP(s) in memory. This could be a really good alternative to the default recency based scheme, given the tendency of most smart-phone users to stick with the same set of popular applications and use them in rotation [31]. Under these circumstances, the frequency of a select few applications would be really high and would always be cached in memory as they're requested often. Frequency based caching scheme is sometimes combined with a recency based caching scheme to form a frequency-recency hybrid [30].
 				 
 			\subsubsection{Random}
 				Much like the name suggests this caching scheme would randomly select an application and cache it in memory as a CBP. This scheme does not require keeping any information about the access history. For its simplicity, it has been used in ARM processors [32]. When applied to our scenario, it does'nt seem like a viable option, mainly because there is'nt a benefit in randomly caching applications in memory.
@@ -766,33 +766,26 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\item {\em getRunningAppProcesses()}
 			\end{itemize} 
 			
-			Unfortunately, as of Android 5.0, it has become increasingly difficult to get a list of applications running in memory. {\em getRunningTasks()} has been deprecated and {\em getRunningAppProcesses()} has been killed (It only returns the requesting application rather than all applications running in memory). The documentation has'nt changed and Google is ignoring requests to either update the documentation or restore the original implementation. An alternate solution is to use the {\em UsageStatsManager} class [36]. However, it requires special permission from the user in the Settings application and some OEM (Original Equipment Manufacturers)(s) have removed this setting explicitly rendering this solution unreliable. The best solution involves using the ADB (Android Debug Bridge) shell to retrieve the desired information which can then be parsed into a suitable list of processes residing in memory. ADB is a versatile command line tool that enables communication with an emulator instance or a connected APMD. It is a client-server program that includes three components [37]:
+			Unfortunately, as of Android 5.0, it has become increasingly difficult to get a list of applications running in memory. {\em getRunningTasks()} has been deprecated and {\em getRunningAppProcesses()} has been killed (It only returns the requesting application rather than all applications running in memory). An alternate solution is to use the {\em UsageStatsManager} class [36]. However, it requires special permission from the user in the Settings application and some OEM (Original Equipment Manufacturers)(s) have removed this setting explicitly rendering this solution unreliable. The best solution involves using the ADB (Android Debug Bridge) shell to retrieve the desired information which can then be parsed into a suitable list of processes residing in memory. ADB is a versatile command line tool that enables communication with an APMD. It is a client-server program that includes three components [37]:
 			
 			\begin{itemize}
-				\item A client, which runs on the APMD. The client can be invoked from a shell by issuing an ADB command. Other Android tools can create ADB clients as well.
+				\item A client, which runs on the APMD. The client can be invoked from a shell by issuing an ADB command.
 				\item A server, which runs as a background process on the APMD. The server manages communication between the client and the ADB daemon running on the APMD.
 				\item A daemon, which runs as a background process on the APMD.
 			\end{itemize}
 			
-			The ADB provides a Unix shell that can be used to run a variety of commands on the APMD. The command binaries are stored in the APMD's file system at {\em /system/bin/} [38]. We eventually obtain the list of processes residing in memory by running the {\em toolbox} command [42] in the shell. The Android {\em toolbox} command encapsulates the functionality of many common Linux commands (and some special Android commands) into a single binary [39]. Some of the commands provided by Toolbox are listed below (not an exhaustive list):
+			The ADB provides a Unix shell that can be used to run a variety of commands on the APMD. The command binaries are stored in the APMD's file system at {\em /system/bin/} [38]. We eventually obtain the list of processes residing in memory by running the {\em toolbox} command [42] in the shell. The Android {\em toolbox} command encapsulates the functionality of many common Linux commands (and some special Android commands) into a single binary [39]. Of these, we are most interested in the {\em toolbox} and {\em ps} commands as they provide a direct window into the processes residing in memory. 
 			
-			\begin{itemize}
-				\item cat, chmod, chown, cmp, cp
-				\item ctrlaltdel, date, dd, df, dmesg
-				\item toolbox, top, touch, umount
-				\item ps, reboot, renice, rm, rmdir
-			\end{itemize}
-			
-			Of these, we are most concerned with the {\em toolbox} and {\em ps} commands as they provide a direct window into the processes residing in memory. We use the following parameters with the {\em ps} command to get the desired process data:
-			
-			\begin{itemize}
-				\item '-P': It shows the scheduling policy.
-				\item '-p': It displays the priorities and niceness level.
-				\item '-x': It shows system time in seconds
-				\item '-c': It displays the CPU
-			\end{itemize}
-			
-			With the help of {\em libsuperuser} library which provided a convenient framework to run shell commands [40] and Jared Rummler's {\em AndroidProcess} library that provided a framework to parse the process-related shell outputs [41], the following algorithm (Refer Algorithm 1) was written to obtain a list of processes residing in memory (active processes and CBP(s)). It is worth noting that this list corresponds to the list of processes displayed by the Settings application (Refer Figure 3-1) as part of the running applications and CBP screens, and that the Settings application has system privileges that third party Android applications don't.\\ 
+%			We use the following parameters with the {\em toolbox ps} command to get the desired process data:
+%			
+%			\begin{itemize}
+%				\item '-P': It shows the scheduling policy.
+%				\item '-p': It displays the priorities and niceness level.
+%				\item '-x': It shows system time in seconds
+%				\item '-c': It displays the CPU
+%			\end{itemize}
+%			
+			With the help of {\em libsuperuser} library which provides a convenient framework to run shell commands [40] and the {\em AndroidProcess} library which provides a framework to parse the process-related shell outputs [41], the following algorithm (Refer Algorithm 1) was written to obtain a list of processes residing in memory (active processes and CBP(s)). It is worth noting that this list corresponds to the list of processes displayed by the Settings application (Refer Figure 3-1) as part of the running applications and CBP screens, and that the Settings application has system privileges that third party Android applications don't.\\ 
 			
 			\begin{algorithm}[H]
 				\SetAlgoLined
@@ -822,7 +815,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				
 				RETURN processes;\\
 			
-			\caption[Algorithm to get list of processes in RAM]{In the above algorithm, {\em Process} is a custom data structure that parses the output format of the {\em toolbox ps} command. Its class structure is discussed in detail in Section 4.4. The {\em APP-ID-PATTERN} is a custom regular expression that maps to application ID patterns for the Android OS in versions 4.0 and above. Each process is added to a result list that is returned by the algorithm. Note that the requesting application represented by {\em myPid} (discussed in 4.4) and {\em toolbox} related processes represented by process names that match {\em toolbox}, are'nt added to the result.}
+			\caption[Algorithm to get list of processes in RAM]{In the above algorithm, {\em Process} is a custom data structure that parses the output format of the {\em toolbox ps} command. Its class structure is discussed in detail in Chapter 4. The {\em APP-ID-PATTERN} is a custom regular expression that maps to application ID patterns for the Android OS in versions 4.0 and above. Each process is added to a result list that is returned by the algorithm. Note that the requesting application represented by {\em myPid} (discussed in 4.4) and {\em toolbox} related processes represented by process names that match {\em toolbox}, are'nt added to the result.}
 			\end{algorithm}			
 			
 		\subsection{Obtaining the Foreground Application}
@@ -964,16 +957,26 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\end{algorithm}
 						
 		\subsection{Parsing the Calendar Information}
-			We've examined the mechanism behind reading the user's calendar, thereby solving one half of the puzzle. The other half is utilizing this information to compute the Hybrid scheme's metrics. In order to achieve that, we need to build a module that parses the list of events obtained from reading the calendar and produces a suggested list of applications. Every event in the user's calendar is split into individual keywords and a predetermined mapping between keywords and applications builds the list of suggested applications. For instance the keyword {\em mail} is associated with the {\em GMail} application, among others. This mapping is determined by a combination of three things:
+			We've examined the mechanism behind reading the user's calendar, thereby solving one half of the puzzle. The other half is utilizing this information to compute the Hybrid scheme's metrics. In order to achieve that, we need to build a module that parses the list of events obtained from reading the calendar and produces a suggested list of applications. Every event in the user's calendar is split into individual keywords and a predetermined mapping between keywords and applications builds the list of suggested applications. This mapping is determined by a two factors:
 			
 			\begin{itemize}
-				\item The suggestions from the Google Play Store [48] when searched with the keyword.
-				\item The number of downloads among competing applications for the same keyword.
-				\item Popularity of the applications in United States of America (USA) [47]. 
+				
+				\item There is a default application [58] that directly maps to the keyword.
+					
+					\begin{itemize}
+						\item For instance the keyword {\em mail} is mapped to the {\em GMail} application, which is the default e-mail application in APMD(s).
+						\item Similarly the keyword {\em call} is mapped to the {\em Google Dialer} application, which is the default application to make and receive calls.
+					\end{itemize}
+				
+				\item Additionally, when the Google Play Store [48] is searched with the keyword, the top result is mapped to it.
+					
+					\begin{itemize}
+						\item  For instance, when the Play Store was searched with the keyword {\em skype}, Skype application was the top result. Once it is verified that Skype is part of the installed applications [49], it is added to the list of suggested applications.
+					\end{itemize}
+					
 			\end{itemize}
 
-			To elaborate, when the Play Store was searched with the keyword {\em skype}, Skype application was the top result. Once it is verified that Skype is part of the installed applications [49], it is added to the list of suggested applications. It is worth noting that most of the suggested applications are present by default on Android (such as GMail, Hangouts, Docs to list a few) and the only applications that are checked against the list of installed applications are highly popular applications [47]. Additionally, if there are no events in the user's calendar for the four hour period, then the list of suggested applications is populated with the ten most popular Android applications in USA [47]. Theoretically it seems likely that the user might use the applications suggested by Google's application search engine, for a particular keyword. However, it remains to be seen whether the suggested applications result in cache hits and by extension a better caching scheme. We'll analyze this data in Chapter 5.   
-		
+			Finally, if there are no events in the user's calendar for the four hour period, then the list of suggested applications is populated with five default applications. These five applications are derived from the list of most popular Android applications in USA (United States of America) [47].
 
 \chapter{Experiment Setup and Application Design}
 	
@@ -1128,28 +1131,9 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	
 
 		
-\chapter{Scope for Future Work}		
-	\section{Introduction}
-	
-	\section{Improving Context Analysis}
-	
-		\subsection{Machine Learning in Calendar Parsing}
-		
-		\subsection{Use frequency for user as default instead of most popular in America}
-		
-		\subsection{Other Ways of Gathering User Behavior Data}
-		
-		\subsection{Custom Priorities in Hybrid Cache}
-		% If 'call' was parsed from Calendar, then dialer app is high priority followed by default followed by other call apps.
-		
-		%Previous point - We can use machine learning to come up with custom priorities 
-	\section{Alternate Ways of Using the Contextual Information}
-		
-		\subsection{Switching to Silent Mode}
-		
-		\subsection{Disabling Texting at High Speeds}
-		
-	\section{Implementing the Hybrid Cache}
+\chapter{Future Work}		
+	In addition to the user's calendar, other sources of information can be utilized to obtain context. These days, most APMD(s) have built-in sensors that measure motion, orientation, and various environmental conditions. These sensors are capable of providing raw data with high precision and accuracy, and are useful in monitoring three-dimensional device movement or positioning, or changes in the ambient environment near a device [21]. Information from multiple sensors can significantly improve the reliability of contextual data. Shi et al.'s work focused on constructing a user behavior model [22] based on analyzing user behavior. A similar approach can be used to predict the list of applications the user is likely to use in the immediate future. Currently the calendar parser relies on predetermined mapping between keywords and applications. This can me improved upon by learning the user's preferences. If the user predominantly requests an application, associated with a particular event in the calendar, then the mapping can be altered by learning the user's preferences. Finally, this thesis merely verifies whether a caching scheme that incorporates context information is more efficient than the default recency based scheme. The next step would be to implement this caching scheme by building a custom distribution of the Android OS, facilitated by the AOSP [59].
+
 	
 %XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 %XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -1441,7 +1425,16 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	
 	\item \textbf{[57]} ``API Level 21 | Android Developers''
 	\\\emph{https://developer.android.com/about/versions/android-5.0.html}, October 2015. 
-	Online; Last Accessed: October 28, 2015.																		
+	Online; Last Accessed: October 28, 2015.	
+	
+	\item \textbf{[58]} ``Google Inc Apps''
+	\\\emph{https://play.google.com/store/apps/developer?id=Google+Inc.\&hl=en}, October 2015. 
+	Online; Last Accessed: October 28, 2015.
+											
+	\item \textbf{[59]} ``Android Open Source Project''
+	\\\emph{https://source.android.com/}, October 2015. 
+	Online; Last Accessed: October 28, 2015.
+																				
 \end{referencelist}
 
 
