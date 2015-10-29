@@ -280,20 +280,15 @@ I'd like to thank all my friends and family for supporting me throughout my time
  \abbreviation{RAM}{Random Access Memory}
  \abbreviation{LRU}{Least Recently Used}
  \abbreviation{CHR}{Cache Hit Ratio}
- \abbreviation{CRA}{Cache Replacement Algorithm}
  \abbreviation{OS}{Operating System}
  \abbreviation{AOSP}{Android Open Source Project}
  \abbreviation{APK}{Android Package}
  \abbreviation{IPC}{Inter Process Communication}
  \abbreviation{IC}{Integrated Circuits}
  \abbreviation{MB}{Mega-Byte} 
- \abbreviation{GB}{Giga-Byte}
- \abbreviation{APC}{Android Process Cache} 
+ \abbreviation{GB}{Giga-Byte} 
  \abbreviation{APMD}{Android Powered Mobile Device}
  \abbreviation{CBP}{Cached Background Processes} 
- \abbreviation{MRU}{Most Recently Used}
- \abbreviation{LFU}{Least Frequently Used}
- \abbreviation{RR}{Random Replacement}
  \abbreviation{OEM}{Original Equipment Manufacturer}
  \abbreviation{ADB}{Android Debug Bridge}
  \abbreviation{UID}{unique Identifier}
@@ -434,7 +429,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			
 	\section{Android Fundamentals} 
 		\subsection{Overview of the Android OS}
-			Android is a mobile OS (Operating System) based on the Linux kernel and designed primarily for touchscreen devices such as smart-phones and tablets [1]. In addition to touchscreen devices, Android TV, Android Auto and Android Wear are emerging technologies with specialized user interfaces. Globally, it is the most popular mobile OS [2]. Android has an active community of developers and enthusiasts who use the AOSP (Android Open Source Project) source code to develop and distribute their own modified versions of the operating system [4]. Android homescreens are typically made up of app icons and widgets. App icons launch the associated app, whereas widgets display live, auto-updating content such as the weather forecast, the user's email inbox, or a news ticker directly on the homescreen [5].
+			Android is a mobile OS (Operating System) based on the Linux kernel and designed primarily for touchscreen devices such as smart-phones and tablets [1]. In addition to touchscreen devices, Android TV, Android Auto and Android Wear are emerging technologies with specialized user interfaces. Globally, it is the most popular mobile OS [2]. Android has an active community of developers and enthusiasts who use the AOSP (Android Open Source Project) source code to develop and distribute their own modified versions of the operating system [4]. Android homescreens are typically made up of application icons and widgets. Application icons launch the associated application, whereas widgets display live, auto-updating content such as the weather forecast, the user's email inbox, or a news ticker directly on the homescreen [5].
 			
 			Internally, Android OS is built on top of a Linux kernel. On top of the Linux kernel, there are the middleware, libraries and APIs written in C and application software running on an application framework. Development of the Linux kernel continues independently of other Android's source code bases.
 			
@@ -447,7 +442,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		\subsection{Applications, Activities and Services}
 		
 			\subsubsection{Applications}
-			Android apps are written in the Java programming language. The Android SDK tools compiles the code, along with any data and resource files into an APK (Android Package), which is an archive file with an .apk suffix. One APK file contains all the contents of an Android app and is the file that Android-powered devices use to install the app [6]. The Android operating system is a multi-user Linux system in which each app is a different user. Each process has its own virtual machine (VM), so an app's code runs in isolation from other apps. By default, every app runs in its own Linux process.
+			Android applications are written in the Java programming language. The Android SDK tools compiles the code, along with any data and resource files into an APK (Android Package), which is an archive file with an .apk suffix. One APK file contains all the contents of an Android application and is the file that Android-powered devices use to install the application [6]. The Android operating system is a multi-user Linux system in which each application is a different user. Each process has its own virtual machine (VM), so an application's code runs in isolation from other applications. By default, every application runs in its own Linux process.
 			
 			\subsubsection{Activities}
 			An Activity is an application component that provides a screen with which users can interact in order to do something, such as dial the phone, take a photo, send an email, or view a map [7]. An application usually consists of multiple activities that are loosely bound to each other. Typically, one activity in an application is specified as the main activity, which is presented to the user when launching the application for the first time. Each activity can then start another activity in order to perform different actions.
@@ -465,12 +460,12 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 					
 					\item Service Process: Service processes are not directly visible to the user, they are generally doing things that the user cares about (such as playing music in the background). 
 					
-					\item Background process: A background process is one holding an Activity that is not currently visible to the user. They are kept in an LRU list to ensure the process that was most recently seen by the user is the last to be killed when running low on memory.  
+					\item Background process: A background process is one holding an Activity that is not currently visible to the user. They are kept in an LRU (Least Recently Used) list to ensure the process that was most recently seen by the user is the last to be killed when running low on memory.  
 					
 					\item Empty process: An empty process is one that doesn't hold any active application components. The only reason to keep such a process around is as a cache to improve startup time the next time a component of its application needs to run.				
 				\end{itemize}
 				
-				Every Android smart-phone user is capable of checking the processes that currently reside in physical memory. The Application Manager which is part of the Settings app shows a list of running processes and cached background processes. Additionally, it breaks down the composition of RAM usage by the System applications and user installed applications. 
+				Every Android smart-phone user is capable of checking the processes that currently reside in physical memory. The Application Manager which is part of the Settings application shows a list of running processes and cached background processes. Additionally, it breaks down the composition of RAM usage by the System applications and user installed applications. 
 				
 				\begin{figure}[h]
 					\centering
@@ -497,10 +492,10 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 					\caption[Moore's law]{[9] Moore's Law}
 				\end{figure}
 				
-				Advancements in digital electronics are strongly linked to Moore's law, especially in the context of memory capacity. T-Mobile G1, the very first Android smart-phone to be released back in 2008 [10] has a 256 MB (Mega-Byte) RAM [11]. In comparison, the Nexus 6P that was released in September 2015 has a 3 GB (Giga-Byte) RAM and some devices like the LG T585 have a 16 GB RAM [12][13], which amounts to 64 times the memory capacity of the T-Mobile G1. The rapid growth in the amount of RAM available to Android devices has in part led to newer possibilities and in our case, a better CRA for determining which processes (in the context of Android applications) remain in memory.
+				Advancements in digital electronics are strongly linked to Moore's law, especially in the context of memory capacity. T-Mobile G1, the very first Android smart-phone to be released back in 2008 [10] has a 256 MB (Mega-Byte) RAM [11]. In comparison, the Nexus 6P that was released in September 2015 has a 3 GB (Giga-Byte) RAM and some devices like the LG T585 have a 16 GB RAM [12][13], which amounts to 64 times the memory capacity of the T-Mobile G1. The rapid growth in the amount of RAM available to Android devices has in part led to newer possibilities and in our case, a better caching scheme for determining which application's components are cached in memory.
 			 	
 		\subsection{Demise of Task Killers}
-			One of the main benefits of the Android OS is the fact that unlike certain other OS(s), it can run apps in the background. This enables us to have multiple applications open at the same time which results in true multitasking. Thus, RAM availability is highly desirable [14]. A popular misconception is that forcibly removing applications from memory in order to 'free up RAM' will result in increased performance. In fact, several task-killer applications promise to do precisely that. With the advancement in the amount of RAM available, the debate should be about how to better use all this extra space, not killing applications to 'free up' more space. In fact, the Android OS can go one step further and pro-actively cache applications that the user might use in the near future. We'll analyze this prospect in more detail in the upcoming chapters.  
+			One of the main benefits of the Android OS is the fact that unlike certain other OS(s), it can run applications in the background. This enables us to have multiple applications open at the same time which results in true multitasking. Thus, RAM availability is highly desirable [14]. A popular misconception is that forcibly removing applications from memory in order to 'free up RAM' will result in increased performance. In fact, several task-killer applications promise to do precisely that. With the advancement in the amount of RAM available, the debate should be about how to better use all this extra space, not killing applications to 'free up' more space. In fact, the Android OS can go one step further and pro-actively cache applications that the user might use in the near future. We'll analyze this prospect in more detail in the upcoming chapters.  
 
 	\section{Organization of Thesis}
 		Several works in the past have focused on context-aware applications and ways to observe user behavior patterns. We'll explore some these works and how this contextual data was put to use in Chapter 2. In Chapter 3, we'll take a look at some of the challenges in collecting cache metrics like detecting the applications in memory, detecting when the user clicks a new application, whether to approach the problem at the user level or the system level, to list a few. Chapter 4 elaborates on the setup of the experiment and analyzes the design of the application used to collect these metrics. We dive into the data in Chapter 5 and summarize the results. We also investigate how certain factors could explain the variation in data. 
@@ -598,12 +593,12 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		\end{figure}		
 		Once the user model is built and the profile completed, the algorithm can determine the likelihood of a random user of the phone not being the owner of the phone (the one whose user model was profiled). 
 		
-		As demonstrated by Shi et al., there are numerous ways contextual information can come in handy. In our case, we propose a user-centric CRA for the APC, demonstrate its superior efficiency and user experience, by looking into the user's calendar for contextual information.  			
+		As demonstrated by Shi et al., there are numerous ways contextual information can come in handy. In our case, we propose a user-centric caching scheme for caching application components in memory, demonstrate its superior efficiency and user experience, by looking into the user's calendar for contextual information.  			
 	
 \chapter{Challenges in Collecting the Desired Metrics}
 	
 	\section{Introduction}
-		Now that we've laid the foundation for using contextual information to influence which processes Android caches in memory, we need to establish the metrics that need to be collected in order to measure the efficiency of the existing CRA and the proposed CRA. The following section addresses the metrics we need.
+		Now that we've laid the foundation for using contextual information to influence which processes Android caches in memory, we need to establish the metrics that need to be collected in order to measure the efficiency of the existing caching scheme and the proposed caching scheme. The following section addresses the metrics we need.
 	
 	\section{What are the desired metrics?}
 		
@@ -644,38 +639,40 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			
 			The CHR of a cache describes how often a searched-for item is actually found in the cache. The higher the CHR, the better the cache is. When applied to our context, a high CHR results is more application components being fetched from memory, rather than disk which in turn results in quicker application startup times. This improvent in startup speed results in an enhanced user experience.   
 		
-		\subsection{CRA(s) Under Consideration}
-			Now that we've determined the fundamental metrics we need, let's analyze the various CRA(s) including the one Android currently uses, namely LRU.
+		\subsection{Caching Schemes Under Consideration}
+			Now that we've determined the fundamental metrics we need, let's analyze the various caching schemes under consideration.
 			
-			\subsubsection{Optimal CRA}
-				The most efficient CRA would be to always discard the information that will not be needed for the longest time in the future. In our case, the ideal CRA would be one that ensures that every application the user requests, resides in memory. This optimal result is referred to as Belady's optimal algorithm [26] or the clairvoyant algorithm. Since it is generally impossible to predict how far in the future information will be needed, this is not implementable in practice. The practical minimum can be calculated only after experimentation, and one can compare the effectiveness of the actually chosen CRA against Belady's as a benchmark.
+			\subsubsection{Optimal Caching Scheme}
+				The most efficient caching scheme would always have the requested item in cache. In our case, the ideal scheme would be one that ensures that every application the user requests, resides in memory. This optimal result is referred to as Belady's optimal algorithm [26] or the clairvoyant algorithm. Since it is generally impossible to predict the exact behavior of the user, this is not implementable in practice. The practical minimum can be calculated only after experimentation, and one can compare the effectiveness of the actually chosen caching scheme against Belady's as a benchmark.
 			
-			\subsubsection{LRU}
-				This is the default CRA Android currently uses to discard processes from memory. LRU is a type of CRA that discards the least recently used items first. This algorithm keeps track of what was used when, and it's expensive to ensure that the least recently used item is always discarded first. When applied to our scenario, Android caches application components in memory as CBP(s) and associates each with a timestamp. If the memory gets too full, it starts removing the least frequently used CBP(s) first and depending on how direly low the memory is, it may not stop killing processes until even the active foreground application (the one user is interacting with) is removed, [15] although this situation is extremely rare in practice and only results in the case of malfunctioning applications that leak memory. The Settings application can give the user clues about which CBP(s) were recently used. Clicking on an application that is currently not in memory results in that application being cached as a CBP near the top of the list. This suggests that the CBP(s) displayed by the Settings application are roughly sorted by their timestamp from MRU to LRU (Refer Figure 3-3). 
+			\subsubsection{Recency of Usage}
+				This caching scheme primarily relies on recency of application usage and this is the default scheme Android currently uses. Android caches application components in memory as CBP(s) and associates each with a time-stamp. If the memory gets too full, it starts removing the least recently used CBP(s) first and depending on how direly low the memory is, it may not stop killing processes until even the active foreground application (the one user is interacting with) is removed [15], although this situation is extremely rare in practice and only results in the case of malfunctioning applications that leak memory. The Settings application can give the user clues about which CBP(s) were recently used. Clicking on an application that is currently not in memory results in that application being cached as a CBP near the top of the list. This suggests that the CBP(s) displayed by the Settings application are roughly sorted by their time-stamp from most recently used to least recently used (Refer Figure 3-3). 
 				
 				\begin{figure}[!ht]
 					\centering
 					\includegraphics[width = 90mm]{images/beforeAndAfterNews.png}
-					\caption[Before \& After News App Launch]
-					{The image to the left describes the snapshot of the CBP(s) as displayed to the end-user by the Settings app. The image to the right displays the snapshot of the CBP(s) after the end-user requests for the News and Weather application. Note that the News and Weather application will not be cached as a CBP until the user is done interacting with it as up until that point, it will reside in memory as an active process.}
+					\caption[Before \& After News Application Launch]
+					{The image to the left describes the snapshot of the CBP(s) as displayed to the end-user by the Settings application. The image to the right displays the snapshot of the CBP(s) after the end-user requests for the News and Weather application. Note that the News and Weather application will not be cached as a CBP until the user is done interacting with it as up until that point, it will reside in memory as an active process.}
 				\end{figure}				
 				
-				It is worth noting that a perfect implementation of LRU requires a timestamp on each reference, and the OS needs to keep a list of items ordered by the timestamp. This implementation may be deemed too expensive in certain cases especially if the frequency of memory references is high. The common practice is to approximate the LRU behavior and this can be achieved in other ways [27].
-				 
-			\subsubsection{Most Recently Used (MRU)}
-				MRU discards, in contrast to LRU, the most recently used items first. In findings presented at the 11th VLDB conference, Chou and DeWitt noted that when a file is being repeatedly scanned in a looping sequential reference pattern, MRU was the best replacement algorithm [28]. Subsequently other researchers presenting at the 22nd VLDB conference noted that for random access patterns and repeated scans over large datasets (sometimes known as cyclic access patterns) MRU cache algorithms had more hits than LRU due to their tendency to retain older data [29]. In our scenario, CBP(s) neither comprise a 'large dataset' nor are they repeatedly scanned in a looping sequential reference pattern (as they are only invoked during application requests which are on average, not that often), therefore it's unlikely that MRU would result in a high CHR but it's worth mentioning nonetheless. MRU algorithms are most useful in situations where the older an item is, the more likely it is to be accessed, which again is not a feature of CBP(s).			
+				It is worth noting that a perfect implementation of this caching scheme requires a time-stamp on each reference, and the OS needs to keep a list of items ordered by the time-stamp. This implementation may be deemed too expensive in certain cases especially if the frequency of memory references is high. The common practice is to approximate the behavior of this scheme [27].
 			
-			\subsubsection{Least Frequently Used (LFU)}
-				LFU is a type of CRA usually associated with memory management within a computer. The standard characteristics of this method involve the system keeping track of the number of times an item is referenced in memory. When the cache is full and requires more room the system will purge the item with the lowest reference frequency. This could be a really good fit with our scenario given the tendency of most smart-phone users to stick with the same set of popular applications and use them in rotation [31]. Under these circumstances, the frequency of a select few applications would be really high and would always be cached in memory as they're requested often. LFU is sometimes combined with a Least Recently Used algorithm called LRFU [30]. We'll explore some of the possibilities with LFU in the future scope section and in our proposed hybrid approach where we incorporate global frequency of application usage in obtaining contextual information.
+			\subsubsection{Frequency of Usage}
+				This caching scheme relies on the frequency of application usage as opposed to the recency of application usage. To elaborate, the most frequently used applications would be cached as CBP(s) in memory. This could be a really good fit in our case, given the tendency of most smart-phone users to stick with the same set of popular applications and use them in rotation [31]. Under these circumstances, the frequency of a select few applications would be really high and would always be cached in memory as they're requested often. Frequency based caching scheme is sometimes combined with a recency based caching scheme to form a frequency-recency hybrid [30]. We'll explore some of the possibilities with this scheme in Chapter 7.
 				 
-			\subsubsection{Random Replacement (RR)}
-				Much like the name suggests RR is a CRA that randomly selects a candidate item and discards it to make space when necessary. This algorithm does not require keeping any information about the access history. For its simplicity, it has been used in ARM processors [32]. When applied to our scenario, it does'nt seem like a viable option, mainly because there is'nt a benefit in randomly caching applications in memory.
+			\subsubsection{Random}
+				Much like the name suggests this caching scheme would randomly select an application and cache it in memory as a CBP. This scheme does not require keeping any information about the access history. For its simplicity, it has been used in ARM processors [32]. When applied to our scenario, it does'nt seem like a viable option, mainly because there is'nt a benefit in randomly caching applications in memory.
 				 
-			\subsubsection{LRU - Context Hybrid}
-				So far we've analyzed the standard CRA(s) that focus on discarding items that were either accessed least recently, least frequently or in other standard ways. Our approach combines the applications that Android caches through an LRU scheme, with a separate context-analyzer module that reads the user's calendar and predicts which applications the user is likely to use. When the user requests an application, the combined set of applications (default applications in LRU and the list of predicted applications) is used as the base to compute whether a cache hit or cache miss occurred. We'll analyze in detail how each module functions but before that, let's take a look at whether Android caches CBP(s) pro-actively and how applications will be removed from memory in the cases where it runs too low.
+			\subsubsection{Default-Context Hybrid}
+				So far we've analyzed the standard caching schemes that focus on caching items that were either accessed recently, frequently or in other ways that analyze past behavior. Our approach combines the applications that Android caches through a recency of usage scheme, with a separate context-analyzer module that reads the user's calendar and predicts which applications the user is likely to use. When the user requests an application, the combined set of applications (default applications based on recency and the list of predicted applications) is used as the base to compute whether a cache hit or a cache miss occurred. We'll analyze in detail how each module functions but before that we need to examine two things:
 				
+				\begin{itemize}
+					\item Whether Android can pro-actively cache application components in memory.
+					\item Which applications will be removed from memory when it runs too low.
+				\end{itemize}
+								
 				\paragraph{Pro-actively Adding CBP(s)}
-					In order for the proposed LRU-Context Hybrid (henceforth referred to as the Hybrid approach) caching scheme to work, there must be provision for the Android OS to pro-actively cache application components in memory as CBP(s). Presuming that the context-analyzer module does its job and suggests a list of applications the user might use in the near future (based on user's Calendar information), there must a mechanism for Android to utilize that information and pro-actively cache these applications in RAM as CBP(s). This mechanism can be verified at the user level through a small experiment. As previously mentioned, the Settings application provides a visual interface for the list of active processes and services running in memory and the CBP(s) that reside in memory at any moment in time. As part of the experiment, each and every CBP was forcefully removed from the cache (there is provision to do this at the user level (Refer Figure 3-4)). 
+					In order for the proposed Default-Context Hybrid (henceforth referred to as Hybrid) caching scheme to work, there must be provision for the Android OS to pro-actively cache application components in memory as CBP(s). Presuming that the context-analyzer module does its job and suggests a list of applications the user might use in the near future, there must a mechanism for Android to utilize that information and pro-actively cache these applications in RAM as CBP(s). This mechanism can be verified at the user level through a small experiment. As previously mentioned, the Settings application provides a visual interface for the list of active processes and services running in memory and the CBP(s) that reside in memory at any moment in time. As part of the experiment, each and every CBP was forcefully removed from the cache (there is provision to do this at the user level (Refer Figure 3-4)). 
 						
 					\begin{figure}[!ht]
 						\centering
@@ -693,33 +690,35 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 						{The leftmost image shows the snapshot of the CBP(s) before forceful deletion. After each and every CBP was removed manually, the screen displayed is shown in the middle image. The image farthest to the right shows the repopulated list of CBP(s), 3 minutes after the middle image was taken. This demonstrates Android's ability to utilize free RAM space and pro-actively cache CBP(s)}
 					\end{figure}					
 					
-					This suggestes that Android recognizes that an under-utilized RAM is a waste of resource and pro-actively caches applications that were'nt in memory to begin with, as CBP(s). This is also the reason why task killer applications fell out of favor [33]. This demonstrates that not only does Android provide a mechanism to pro-actively cache applications in memory, it already does so. The applications suggested by the Hybrid CRA approach can be introduced into the memory as CBP(s) in the same way. This is discussed in future scope section. 
+					This indicates that Android pro-actively caches applications that were'nt in memory to begin with, as CBP(s). This is also the reason why task killer applications fell out of favor [33]. This demonstrates that not only does Android provide a mechanism to pro-actively cache applications in memory, it already does so. The applications suggested by the Hybrid scheme can be introduced into the memory as CBP(s) in the same way. This is discussed in Chapter 7.
 
-				\paragraph{Prioritizing Overall Cache}	
-					The Hybrid CRA would involve storing as CBP(s), both default application components cached by Android's LRU scheme and the application components of the list of applications obtained from analyzing the user's Calendar. So the question now becomes, who gets kicked out when memory is running low? Since the applications inferred from user's contextual information do not have a recency associated with them, the LRU CRA cannot be applied over the overall list of CBP(s). A simple solution is to prioritize the CBP(s) obtained from the list of suggested applications over the default LRU based CBP(s) i.e. all the default CBP(s) are removed from memory before the CBP(s) cached as a result of context inference. There are two advantages to this approach:
+				\paragraph{Prioritizing Applications in Hybrid Scheme}	
+					The Hybrid scheme would involve storing as CBP(s), both default application components cached by Android's recency based scheme and the application components of the list of applications obtained from analyzing the user's calendar. So the question now becomes, who gets kicked out when memory is running low? Since the applications inferred from user's contextual information do not have a recency associated with them, the overall list of CBP(s) cannot be prioritized based on recency of usage. A simple solution is to prioritize the CBP(s) obtained from the list of suggested applications over the default ones i.e. all the default CBP(s) are removed from memory before the CBP(s) cached as a result of context inference. There are two advantages to this approach:
 					
 					\begin{itemize}
 						
 						\item Only few applications are suggested by the context module.
 						
 							\begin{itemize}
-								\item For instance, say the user has a Calendar entry that reads {\em Call Mom}. There will be two or at most three applications suggested by the context-module that would be potentially useful to the smart-phone user in the context of calling his mother. This makes it more convenient to target CBP(s) cached by the LRU scheme in case of low memory.
+								\item For instance, say the user has a Calendar entry that reads {\em Call Mom}. There will be two or at most three applications suggested by the context-module that would be potentially useful to the user in the context of calling his/her mother. This makes it more convenient to target CBP(s) cached by the default recency based scheme in case of low memory.
 							\end{itemize}
 							
 						\item The probability of user requesting an application related to the Calendar event is quite high.
 						
 							\begin{itemize}
 								
-								\item This is due to the fact that a recorded event in a user's Calendar is highly likely to occur and the applications needed in this context have a higher chance of being utilized as opposed to CBP(s) cached by the LRU scheme.
+								\item This is due to the fact that a recorded event in a user's Calendar is highly likely to occur and the applications needed in this context have a higher chance of being utilized as opposed to CBP(s) cached by the recency of usage.
 								
-								\item This is explored further in the future scope section where we discuss the relative probabilities of applications being used in conjunction with a Calendar event.
+								\item This is explored further in Chapter 7 where we discuss the likelihood of an application being used in conjunction with a Calendar event.
 								
 							\end{itemize}
 								
 					\end{itemize}  
 					
+					Alternatively, the CBP(s) with the least memory footprint can be prioritized i.e. the most memory-heavy CBP(s) are removed first. While this approach releases memory quickly, it does'nt take into account the likelihood of application usage in the immediate future.
+					
 		\subsection{Supplementary Data}
-			We've talked about the fundamental metrics involved in measuring the efficiency of the APC, namely cache hits, cache misses and CHR. We explored potential candidates for serving as the CRA in managing the APC. There are other subtle measurements that are'nt as significant as the fundamental metrics but are important nonetheless as they shed light on certain attributes of the experiment. They are listed below:
+			We've talked about the fundamental metrics involved in measuring the efficiency of any caching scheme, namely cache hits, cache misses and CHR. We explored potential candidates for serving as the caching scheme in managing the list of CBP(s) cached in memory. There are other subtle measurements that are'nt as significant as the fundamental metrics but are important nonetheless as they shed light on certain attributes of the experiment. They are listed below:
 			
 			\begin{itemize}
 				\item Number of Installed Applications
@@ -728,7 +727,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\item Android OS Version
 			\end{itemize} 
 			
-			Depending on the value of the overall number of installed applications and the overall number of unique applications requested by the end-user, certain CRA(s) have an edge over the others. Phone model information is collected to see if there is any correlation between models and cache efficiencies. Some of the techniques used to gather context information are not possible in certain Android OS versions. We'll analyze the correlation between these fields and the efficiency of CRA(s) in the Section 5.  
+			These are elaborated upon in Chapter 5 under the demographic data section.   
 			
 	\section{Challenges}
 		Now that we've established what the desired metrics are, let's examine some of the challenges in collecting them.  
@@ -741,7 +740,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\item It would be significantly harder to convince potential research volunteers to reboot their smart-phones with a custom distribution of the Android OS as opposed to asking them to install an Android application or two.
 			\end{itemize}
 			
-			Given that it's beneficial to gather relevant data at the user level, we need to identify the complexities involved and determine whether they are solvable at the user level. In order to effectively determine which CRA is ideal for the APC, we need to identify whether the following problems can be approached from a user level perspective:
+			Given that it's beneficial to gather relevant data at the user level, we need to identify the complexities involved and determine whether they are solvable at the user level. In order to effectively determine which caching scheme is ideal for caching CBP(s) in memory, we need to identify whether the following problems can be approached from a user level perspective:
 			
 			\begin{itemize}
 				\item Getting the list of processes currently in memory \checkmark
@@ -752,12 +751,12 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			We'll inspect in detail, why and how we need to solve these problems (and others) in the next section but the  '\checkmark' indicates that they are indeed solvable at the user level and do not require system level changes.
 			
 		\subsection{Getting Processes in Memory}
-			Let's first address why it's necessary to get the list of processes that reside in memory. In our scenario, we are trying to determine the most efficient caching scheme amongst the following:
+			Let's first address why it's necessary to get the list of processes that reside in memory. In our scenario, we are trying to determine the most efficient caching scheme among the following:
 			
 			\begin{itemize}
-				\item LRU (Default)
-				\item Pure Prediction (Applications will be cached solely based on context inference)
-				\item LRU-Context Hybrid (or simply Hybrid)
+				\item Default Recency based Scheme
+				\item Pure Context Scheme (Applications will be cached solely based on context inference)
+				\item Default-Context Hybrid (or simply Hybrid)
 			\end{itemize}
 			
 			In order to determine which scheme is most efficient, we need the ability to measure CHR data and by extension if and when a cache hit or miss occurs. We can only determine if a cache hit occurred if we had access to the list of processes in the cache i.e. the active processes and the CBP(s) in memory. The {\em ActivityManager} class in Android provides two relevant helper methods [35]:
@@ -929,7 +928,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\end{algorithm}
 			
 		\subsection{Reading the User's Calendar}
-			To compute the CHR of the Hybrid CRA approach, we need the ability to obtain the list of events from the user's calendar and the ability to parse that information to come up with a list of suggested applications. We'll discuss the parsing aspect in the next segment and focus on finding a way to read the user's calendar. The solution to this problem is quite simple, Google provides a public API (Application Programming Interface) [46] to obtain access to the user's calendar information, including the list of events. This operation does'nt have to be carried out with the same frequency as reading the list of processes in memory or obtaining the foreground application. In our solution, we query the calendar every four hours (for events occurring in that four hour period) and feed the data (events list) into a module that parses the information and produces a suggested list of applications (Refer Algorithm 5). 
+			To compute the CHR of the Hybrid scheme, we need the ability to obtain the list of events from the user's calendar and the ability to parse that information to come up with a list of suggested applications. We'll discuss the parsing aspect in the next segment and focus on finding a way to read the user's calendar. The solution to this problem is quite simple, Google provides a public API (Application Programming Interface) [46] to obtain access to the user's calendar information, including the list of events. This operation does'nt have to be carried out with the same frequency as reading the list of processes in memory or obtaining the foreground application. In our solution, we query the calendar every four hours (for events occurring in that four hour period) and feed the data (events list) into a module that parses the information and produces a suggested list of applications (Refer Algorithm 5). 
 			
 			\begin{algorithm}[H]
 				\SetAlgoLined
@@ -965,7 +964,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\end{algorithm}
 						
 		\subsection{Parsing the Calendar Information}
-			We've examined the mechanism behind reading the user's calendar, thereby solving one half of the puzzle. The other half is utilizing this information to compute the Hybrid CRA's metrics. In order to achieve that, we need to build a module that parses the list of events obtained from reading the calendar and produces a suggested list of applications. Every event in the user's calendar is split into individual keywords and a predetermined mapping between keywords and applications builds the list of suggested applications. For instance the keyword {\em mail} is associated with the {\em GMail} application, among others. This mapping is determined by a combination of three things:
+			We've examined the mechanism behind reading the user's calendar, thereby solving one half of the puzzle. The other half is utilizing this information to compute the Hybrid scheme's metrics. In order to achieve that, we need to build a module that parses the list of events obtained from reading the calendar and produces a suggested list of applications. Every event in the user's calendar is split into individual keywords and a predetermined mapping between keywords and applications builds the list of suggested applications. For instance the keyword {\em mail} is associated with the {\em GMail} application, among others. This mapping is determined by a combination of three things:
 			
 			\begin{itemize}
 				\item The suggestions from the Google Play Store [48] when searched with the keyword.
@@ -979,7 +978,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 \chapter{Experiment Setup and Application Design}
 	
 	\section{Introduction}
-		In the previous chapter, we examined the metrics we needed to analyze the best caching scheme for the APC. We looked into some of the common CRA(s) and analyzed some of the challenges in collecting the metrics needed to determine if contextual information can help better the CHR of the Hybrid approach. To analyze the efficiencies of the default LRU and the Hybrid approaches, an Android application namely {\em ContextAnalyzer} was developed to collect the desired cache metrics. It was installed in the APMD(s) of research volunteers. We'll dissect {\em ContextAnalyzer}'s design in Section 4.4.  
+		In the previous chapter, we examined the metrics we needed to analyze the best caching scheme for caching application components in memory as CBP(s). We looked into some of the common caching schemes and analyzed some of the challenges in collecting the metrics needed to determine if contextual information can help better the CHR of the Hybrid approach. To analyze the efficiencies of the default recency based approach and the Hybrid approaches, an Android application namely {\em ContextAnalyzer} was developed to collect the desired cache metrics. It was installed in the APMD(s) of research volunteers. We'll dissect {\em ContextAnalyzer}'s design in Section 4.4.  
 		
 	\section{Eligibility for Volunteers}
 		The following criteria had to be met to qualify as a research volunteer:
@@ -1022,7 +1021,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\item The application is present in both lists. 
 		\end{itemize}  
 		
-		If the application is present in neither list, it results in an overall cache miss. To elaborate, an overall cache miss implies that neither the list of processes in memory (cached by the default LRU caching scheme) nor the list of applications predicted by reading the calendar, contained the requested application. If the application was present only in memory list, it results in an overall cache hit and a suggested cache miss i.e. the Hybrid scheme would've still had a hit but it was not present in the list of applications suggested by the calendar list. If the application was present only in the calendar list, it results in an overall cache hit and a suggested-exclusive cache hit, implying that the hit is solely a result of the calendar list's suggestion. This metric is important as it reveals the significance of the list of applications suggested by the calendar list. We'll discuss this further in Chapter 5. Finally, if the application was present in both lists, it results in an overall cache hit and suggested non-exclusive cache hit, implying that the hit would've occurred regardless of whether the application was present in the calendar list or not. The following snapshot (Figure 4-3) illustrates {\em ContextAnalyzer}'s UI.  
+		If the application is present in neither list, it results in an overall cache miss. To elaborate, an overall cache miss implies that neither the list of processes in memory (cached by the default recency based caching scheme) nor the list of applications predicted by reading the calendar, contained the requested application. If the application was present only in memory list, it results in an overall cache hit and a suggested cache miss i.e. the Hybrid scheme would've still had a hit but it was not present in the list of applications suggested by the calendar list. If the application was present only in the calendar list, it results in an overall cache hit and a suggested-exclusive cache hit, implying that the hit is solely a result of the calendar list's suggestion. This metric is important as it reveals the significance of the list of applications suggested by the calendar list. We'll discuss this further in Chapter 5. Finally, if the application was present in both lists, it results in an overall cache hit and suggested non-exclusive cache hit, implying that the hit would've occurred regardless of whether the application was present in the calendar list or not. The following snapshot (Figure 4-3) illustrates {\em ContextAnalyzer}'s UI.  
 		
 		\begin{figure}[h]
 			\centering
@@ -1105,51 +1104,53 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 
 \chapter{Data Analysis and Results}
 
+		\section{Introduction}
+		
+		\section{Demographic Data}
+		
+		\section{Experiment Results}
+		
+		\section{Significance Testing}	
+		
+		\section{Points of Weakness}		
+		
+			\subsection{Inability to Detect Change in Calendar Events}
+			
+			\subsection{List from Google Drive}
+			
+			\subsection{Limited Demographic}
+			
+			\subsection{User Bias}
 
-\section{Introduction}
 
-\section{Improving Context Analysis}
-
-\subsection{Machine Learning in Calendar Parsing}
-
-\subsection{Use LFU for user instead of Overall Default}
-
-\subsection{Other Ways of Gathering User Behavior Data}
-
-\subsection{Custom Priorities in Hybrid Cache}
-% If 'call' was parsed from Calendar, then dialer app is high priority followed by LRU followed by other call apps.
-
-%Previous point - We can use machine learning to come up with custom priorities 
-\section{Alternate Ways of Using the Contextual Information}
-
-\subsection{Switching to Silent Mode}
-
-\subsection{Disabling Texting at High Speeds}
-
-\section{Implementing the Hybrid Cache}
 
 \chapter{Conclusion}
 	
-	\section{Introduction}
-	
-	\section{Demographic Data}
-	
-	\section{Experiment Results}
-		
-	\section{Significance Testing}	
-		
-	\section{Points of Weakness}		
-		
-		\subsection{Inability to Detect Change in Calendar Events}
-		
-		\subsection{List from Google Drive}
-		
-		\subsection{Limited Demographic}
-		
-		\subsection{User Bias}
+
 		
 \chapter{Scope for Future Work}		
-
+	\section{Introduction}
+	
+	\section{Improving Context Analysis}
+	
+		\subsection{Machine Learning in Calendar Parsing}
+		
+		\subsection{Use frequency for user as default instead of most popular in America}
+		
+		\subsection{Other Ways of Gathering User Behavior Data}
+		
+		\subsection{Custom Priorities in Hybrid Cache}
+		% If 'call' was parsed from Calendar, then dialer app is high priority followed by default followed by other call apps.
+		
+		%Previous point - We can use machine learning to come up with custom priorities 
+	\section{Alternate Ways of Using the Contextual Information}
+		
+		\subsection{Switching to Silent Mode}
+		
+		\subsection{Disabling Texting at High Speeds}
+		
+	\section{Implementing the Hybrid Cache}
+	
 %XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 %XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 %XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
