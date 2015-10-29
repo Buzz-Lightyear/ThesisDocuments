@@ -1124,8 +1124,18 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 %			3 schemes - average for each scheme, charts for each - why context alone is bad and expected - increase in hybrid - looks good but is it significant? - potentially correlation between calendar usage and increase in ratio - other correlations
 		\section{Significance Testing}	
 %		paired t test - rejecting the null hypothesis - whether results are significant
-		\section{Points of Weakness}		
-%			there are certain factors that could decrease the value of this thesis - calendar not enough as not everything is covered by calendar, involve other context info - change in calendar events within 4 hr period not detected - too similar a demographic - theoretically volunteer bias - instructed not to close, not enforced, choosing time periods may theoretically affect data.
+		\section{Points of Weakness}
+			While the data demonstrates that incorporating context analysis improves the efficiency of the default caching scheme, there are certain factors that could affect the validity of this thesis:
+			
+			\begin{itemize}
+				\item The volunteers were instructed to use their calendar applications. However real-world users may or may not use their calendar application.
+				\item The entries in the calendar may not be indicative of the application that the user might use during that calendar event. 
+				\item Not all applications can be mapped to keywords obtained from calendar entries. For instance, while {\em call} can de directly mapped to the Caller application, there are no keywords that come to mind for the Camera application.
+				\item Since the calendar is only queried every four hours, change in event descriptions within a four hour period are not captured by our application. However, this is merely a design decision and the frequency can be increased to account for this issue. 
+				\item The lack of diversity in our volunteer demographic could've influenced the data. Given that all research volunteers were male college students, the rate of smart-phone usage was quite high. It would've been conducive to gather volunteers of all ages and gender.
+				\item Due to our policy of full transparency, the volunteers were aware of the type of data being collected. Even though there was no inherent motivation for any of the volunteers to intentionally skew the cache metrics, theoretically they had the ability to do so. 
+				\item The volunteers were instructed not to close the application for the duration of the experiment but this was not enforced. Technically, a volunteer could've selectively closed the application for certain times of the day resulting in an inaccurate monitoring period. However, they had no motivation to do so as no personal information was being collected.
+			\end{itemize}  		
 
 \chapter{Conclusion}
 	The typical user is not facing a desktop machine in the relatively predictable office environment anymore. Smart-phones are well suited to utilize contextual information in enhancing the behavior of their applications. However, the full potential of context analysis is not harnessed by Android devices. Currently, the Android OS caches application components in memory, based on recency of application usage. We have demonstrated that incorporating context information improves the efficiency of this caching scheme. For this purpose, we set up an experiment comprising of twenty volunteers. We developed an Android application to measure the cache metrics of both the default recency-based caching scheme and a default-context hybrid scheme, which in addition to relying on recency of usage, parsed the user's calendar for contextual clues. We analyzed the data and proved that on an average, the hybrid scheme had a significantly higher cache hit ratio. By virtue of its superior efficiency, the hybrid scheme would result in a lower startup time for relatively more applications, thereby enhancing the overall user experience.
