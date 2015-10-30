@@ -1,31 +1,33 @@
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1-1}{\ignorespaces Android System Architecture}}{4}
-\contentsline {figure}{\numberline {1-2}{\ignorespaces Running Apps and Cached Background Processes}}{7}
-\contentsline {figure}{\numberline {1-3}{\ignorespaces Moore's law}}{8}
+\contentsline {figure}{\numberline {1-1}{\ignorespaces Running Apps and Cached Background Processes}}{4}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2-1}{\ignorespaces Mobile Services Requested At Various Times Of Day}}{12}
-\contentsline {figure}{\numberline {2-2}{\ignorespaces Context Phone}}{13}
-\contentsline {figure}{\numberline {2-3}{\ignorespaces User's GPS Trace}}{14}
+\contentsline {figure}{\numberline {2-1}{\ignorespaces Mobile Services Requested At Various Times Of Day}}{7}
+\contentsline {figure}{\numberline {2-2}{\ignorespaces Context Phone}}{8}
+\contentsline {figure}{\numberline {2-3}{\ignorespaces User's GPS Trace}}{9}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3-1}{\ignorespaces Running Apps and CBP(s) - Cache Hit}}{17}
-\contentsline {figure}{\numberline {3-2}{\ignorespaces Running Apps and CBP(s) - Cache Miss}}{18}
-\contentsline {figure}{\numberline {3-3}{\ignorespaces Before \& After News Application Launch}}{20}
-\contentsline {figure}{\numberline {3-4}{\ignorespaces Remove CBP}}{23}
-\contentsline {figure}{\numberline {3-5}{\ignorespaces CBP(s) before and after manual removal}}{24}
-\contentsline {figure}{\numberline {3-6}{\ignorespaces Memory Occupied by the Background Service}}{40}
+\contentsline {figure}{\numberline {3-1}{\ignorespaces Running Apps and CBP(s) - Cache Hit}}{12}
+\contentsline {figure}{\numberline {3-2}{\ignorespaces Running Apps and CBP(s) - Cache Miss}}{13}
+\contentsline {figure}{\numberline {3-3}{\ignorespaces Before \& After News Application Launch}}{15}
+\contentsline {figure}{\numberline {3-4}{\ignorespaces Remove CBP}}{18}
+\contentsline {figure}{\numberline {3-5}{\ignorespaces CBP(s) before and after manual removal}}{19}
+\contentsline {figure}{\numberline {3-6}{\ignorespaces Memory Occupied by the Background Service}}{35}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4-1}{\ignorespaces Context Analyzer UI}}{45}
-\contentsline {figure}{\numberline {4-2}{\ignorespaces Context Analyzer Class Diagram}}{48}
+\contentsline {figure}{\numberline {4-1}{\ignorespaces Context Analyzer UI}}{40}
+\contentsline {figure}{\numberline {4-2}{\ignorespaces Context Analyzer Class Diagram}}{43}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5-1}{\ignorespaces Distribution of Total Installed Applications}}{50}
-\contentsline {figure}{\numberline {5-2}{\ignorespaces Distribution of Unique Applications Requested}}{51}
-\contentsline {figure}{\numberline {5-3}{\ignorespaces Distribution of Number of Calendar Entries}}{52}
-\contentsline {figure}{\numberline {5-4}{\ignorespaces Distribution of CHR for Context Scheme}}{53}
-\contentsline {figure}{\numberline {5-5}{\ignorespaces Distribution of CHR for Default Scheme}}{54}
-\contentsline {figure}{\numberline {5-6}{\ignorespaces Distribution of CHR for Hybrid Scheme}}{55}
-\contentsline {figure}{\numberline {5-7}{\ignorespaces Relative Increase in CHR - Table}}{60}
-\contentsline {figure}{\numberline {5-8}{\ignorespaces Relative Increase in CHR - Chart}}{61}
-\contentsline {figure}{\numberline {5-9}{\ignorespaces Paired T Test Resuts}}{61}
-\contentsline {figure}{\numberline {5-10}{\ignorespaces Increase in CHR vs Calendar Entries}}{62}
+\contentsline {figure}{\numberline {5-1}{\ignorespaces Distribution of Total Installed Applications}}{45}
+\contentsline {figure}{\numberline {5-2}{\ignorespaces Distribution of Unique Applications Requested}}{46}
+\contentsline {figure}{\numberline {5-3}{\ignorespaces Distribution of Number of Calendar Entries}}{47}
+\contentsline {figure}{\numberline {5-4}{\ignorespaces Distribution of CHR for Context Scheme}}{48}
+\contentsline {figure}{\numberline {5-5}{\ignorespaces Distribution of CHR for Default Scheme}}{49}
+\contentsline {figure}{\numberline {5-6}{\ignorespaces Distribution of CHR for Hybrid Scheme}}{50}
+\contentsline {figure}{\numberline {5-7}{\ignorespaces Relative Increase in CHR - Table}}{54}
+\contentsline {figure}{\numberline {5-8}{\ignorespaces Relative Increase in CHR - Chart}}{55}
+\contentsline {figure}{\numberline {5-9}{\ignorespaces Paired T Test Resuts}}{55}
+\contentsline {figure}{\numberline {5-10}{\ignorespaces Increase in CHR vs Calendar Entries - Table}}{56}
+\contentsline {figure}{\numberline {5-11}{\ignorespaces Increase in CHR vs Calendar Entries - Plot}}{57}
+\contentsline {figure}{\numberline {5-12}{\ignorespaces Increase in CHR vs Unique Applications Requested - Table}}{58}
+\contentsline {figure}{\numberline {5-13}{\ignorespaces Increase in CHR vs Unique Applications Requested - Plot}}{59}
+\addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

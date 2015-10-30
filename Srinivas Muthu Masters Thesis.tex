@@ -282,11 +282,7 @@ I'd like to thank all my friends and family for supporting me throughout my time
  \abbreviation{CHR}{Cache Hit Ratio}
  \abbreviation{OS}{Operating System}
  \abbreviation{AOSP}{Android Open Source Project}
- \abbreviation{APK}{Android Package}
- \abbreviation{IPC}{Inter Process Communication}
- \abbreviation{IC}{Integrated Circuits}
- \abbreviation{MB}{Mega-Byte} 
- \abbreviation{GB}{Giga-Byte} 
+ \abbreviation{APK}{Android Package} 
  \abbreviation{APMD}{Android Powered Mobile Device}
  \abbreviation{CBP}{Cached Background Processes} 
  \abbreviation{OEM}{Original Equipment Manufacturer}
@@ -297,6 +293,7 @@ I'd like to thank all my friends and family for supporting me throughout my time
  \abbreviation{USA}{United States of America} 
  \abbreviation{UI}{User Interface}
  \abbreviation{PPMCC}{Pearson Product Moment Correlation Coefficient}
+ \abbreviation{CI}{Confidence Interval}
 
 \end{listofabbreviations}
 
@@ -427,75 +424,16 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			
 			Chapter 4 elaborates on why volunteers require API level 21 and above, and Android mandates that the user authorize all permissions for third-party applications to access their data, during installation.
 			
-	\section{Android Fundamentals} 
-		\subsection{Overview of the Android OS}
-			Android is a mobile OS (Operating System) based on the Linux kernel and designed primarily for touchscreen devices such as smart-phones and tablets [1]. In addition to touchscreen devices, Android TV, Android Auto and Android Wear are emerging technologies with specialized user interfaces. Globally, it is the most popular mobile OS [2]. Android has an active community of developers and enthusiasts who use the AOSP (Android Open Source Project) source code to develop and distribute their own modified versions of the operating system [4]. Android homescreens are typically made up of application icons and widgets. Application icons launch the associated application, whereas widgets display live, auto-updating content such as the weather forecast, the user's email inbox, or a news ticker directly on the homescreen [5].
-			
-			Internally, Android OS is built on top of a Linux kernel. On top of the Linux kernel, there are the middleware, libraries and APIs written in C and application software running on an application framework. Development of the Linux kernel continues independently of other Android's source code bases.
-			
-			\begin{figure}[h]
-				\centering
-				\includegraphics[width = 90mm]{images/androidSystemArchitecture.jpg}
-				\caption[Android System Architecture]{[3] Android System Architecture}
-			\end{figure}
-			
-		\subsection{Applications, Activities and Services}
+	\section{Checking Applications in RAM}
+		Every Android smart-phone user is capable of checking the processes that currently reside in physical memory. The Application Manager which is part of the Settings application shows a list of running processes and cached background processes. Additionally, it breaks down the composition of RAM usage by the System applications and user installed applications. 
 		
-			\subsubsection{Applications}
-			Android applications are written in the Java programming language. The Android SDK tools compiles the code, along with any data and resource files into an APK (Android Package), which is an archive file with an .apk suffix. One APK file contains all the contents of an Android application and is the file that Android-powered devices use to install the application [6]. The Android operating system is a multi-user Linux system in which each application is a different user. Each process has its own virtual machine (VM), so an application's code runs in isolation from other applications. By default, every application runs in its own Linux process.
-			
-			\subsubsection{Activities}
-			An Activity is an application component that provides a screen with which users can interact in order to do something, such as dial the phone, take a photo, send an email, or view a map [7]. An application usually consists of multiple activities that are loosely bound to each other. Typically, one activity in an application is specified as the main activity, which is presented to the user when launching the application for the first time. Each activity can then start another activity in order to perform different actions.
-			
-			\subsubsection{Services}
-			A Service is an application component that can perform long-running operations in the background and does not provide a user interface [8]. Another application component can start a service and it will continue to run in the background even if the user switches to another application. Additionally, a component can bind to a service to interact with it and even perform IPC (Inter Process Communication). For example, a service might handle network transactions, play music, perform file I/O, or interact with a content provider, all from the background.
-					
-		\subsection{Android Process Lifecycle}
-			A Android process can be in one of five different states at any given time, from most important to least important [15]:
-			
-				\begin{itemize}
-					\item Foreground process: A foreground process is one that is required for what the user is currently doing.
-					
-					\item Visible process: A visible process is one holding an Activity that is visible to the user on-screen but not in the foreground.
-					
-					\item Service Process: Service processes are not directly visible to the user, they are generally doing things that the user cares about (such as playing music in the background). 
-					
-					\item Background process: A background process is one holding an Activity that is not currently visible to the user. They are kept in an LRU (Least Recently Used) list to ensure the process that was most recently seen by the user is the last to be killed when running low on memory.  
-					
-					\item Empty process: An empty process is one that doesn't hold any active application components. The only reason to keep such a process around is as a cache to improve startup time the next time a component of its application needs to run.				
-				\end{itemize}
-				
-				Every Android smart-phone user is capable of checking the processes that currently reside in physical memory. The Application Manager which is part of the Settings application shows a list of running processes and cached background processes. Additionally, it breaks down the composition of RAM usage by the System applications and user installed applications. 
-				
-				\begin{figure}[h]
-					\centering
-					\includegraphics[width = 90mm]{images/runningApps.png}
-					\caption[Running Apps and Cached Background Processes]
-					{Left - List of Running Applications (Active Processes and Services)\\
-						Right - List of Cached Background Processes}
-				\end{figure}		
-		
-			
-		
-					 	
-	\section{Growth of available RAM over the years}
-		
-		\subsection{Advances in Technology}
-			RAM is a form of computer data storage. A RAM device allows data items to be accessed (read or written) in almost the same amount of time irrespective of the physical location of data inside the memory. The overall goal of using a RAM device is to obtain the highest possible average access performance while minimizing the total cost of the entire memory system. Today, random-access memory takes the form of IC (Integrated Circuits)(s).
-		
-			\subsubsection{Moore's Law}
-				Moore's law is the observation that the number of transistors in a dense IC doubles approximately every two years.
-				
-				\begin{figure}[h]
-					\centering
-					\includegraphics[width = 90mm]{images/mooresLaw.png}
-					\caption[Moore's law]{[9] Moore's Law}
-				\end{figure}
-				
-				Advancements in digital electronics are strongly linked to Moore's law, especially in the context of memory capacity. T-Mobile G1, the very first Android smart-phone to be released back in 2008 [10] has a 256 MB (Mega-Byte) RAM [11]. In comparison, the Nexus 6P that was released in September 2015 has a 3 GB (Giga-Byte) RAM and some devices like the LG T585 have a 16 GB RAM [12][13], which amounts to 64 times the memory capacity of the T-Mobile G1. The rapid growth in the amount of RAM available to Android devices has in part led to newer possibilities and in our case, a better caching scheme for determining which application's components are cached in memory.
-			 	
-		\subsection{Demise of Task Killers}
-			One of the main benefits of the Android OS is the fact that unlike certain other OS(s), it can run applications in the background. This enables us to have multiple applications open at the same time which results in true multitasking. Thus, RAM availability is highly desirable [14]. A popular misconception is that forcibly removing applications from memory in order to 'free up RAM' will result in increased performance. In fact, several task-killer applications promise to do precisely that. With the advancement in the amount of RAM available, the debate should be about how to better use all this extra space, not killing applications to 'free up' more space. In fact, the Android OS can go one step further and pro-actively cache applications that the user might use in the near future. We'll analyze this prospect in more detail in the upcoming chapters.  
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width = 90mm]{images/runningApps.png}
+			\caption[Running Apps and Cached Background Processes]
+			{Left - List of Running Applications (Active Processes and Services)\\
+				Right - List of Cached Background Processes}
+		\end{figure}	
 
 	\section{Organization of Thesis}
 		Several works in the past have focused on context-aware applications and ways to observe user behavior patterns. We'll explore some these works and how this contextual data was put to use in Chapter 2. In Chapter 3, we'll take a look at some of the challenges in collecting cache metrics like detecting the applications in memory, detecting when the user clicks a new application, whether to approach the problem at the user level or the system level, to list a few. Chapter 4 elaborates on the setup of the experiment and analyzes the design of the application used to collect these metrics. We dive into the data in Chapter 5 and summarize the results. We also investigate how certain factors could explain the variation in data. 
@@ -550,7 +488,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\item No tools were available to jump-start the development of context-aware applications.
 		\end{itemize}
 		
-		 They focused their efforts on the pieces of context that could be inferred automatically from sensors in a physical environment and produced Context Toolkit [20], a conceptual framework that supported the rapid development of context-aware applications. It is important to keep in mind that at the time this paper was published, the notion of what we refer to as a smart-phone was non-existent. This is evident from the fact that most APMD(s) have built-in sensors that measure motion, orientation, and various environmental conditions. These sensors are capable of providing raw data with high precision and accuracy, and are useful in monitoring three-dimensional device movement or positioning, or changes in the ambient environment near a device [21]. These conditions make APMD(s) very suitable for utilizing contextual information and translating that potential into a better user experience. We utilize this feature of APMD(s) to propose ways to improve user experience by incorporating contextual information in managing the physical memory of the APMD.		
+		 They focused their efforts on the pieces of context that could be inferred automatically from sensors in a physical environment and produced Context Toolkit [20], a conceptual framework that supported the rapid development of context-aware applications. It is important to keep in mind that at the time this paper was published, the notion of what we refer to as a smart-phone was non-existent. This is evident from the fact that most APMD (Android Powered Mobile Device)(s) have built-in sensors that measure motion, orientation, and various environmental conditions. These sensors are capable of providing raw data with high precision and accuracy, and are useful in monitoring three-dimensional device movement or positioning, or changes in the ambient environment near a device [21]. These conditions make APMD(s) very suitable for utilizing contextual information and translating that potential into a better user experience. We utilize this feature of APMD(s) to propose ways to improve user experience by incorporating contextual information in managing the physical memory of the APMD.		
 			
 	\section{Context Patterns in Application Usage}
 		Several works have attempted to collect user behavior data and they've accomplished this in unique ways. Hannu Verkasalo, in his 2007 paper titled {\em Contextual Patterns in Mobile Service Usage} analyzes how mobile services are used in different contexts [18]. Usage contexts were divided into {\em home, office} and {\em on the move}. A specialized algorithm tracked user's location patterns over a period of time to determine whether the user was at home or at work. Furthermore, changes in location data revealed whether the user was in transit between home and work. There was a correlation between the mobile services requested by the user and the user's physical location, which enabled the algorithm to understand the user's context quite well (refer Figure 2-1). It was also observed that certain services were requested more during the weekends as opposed to certain others being requested more during the weekdays i.e. days with office hours.  
@@ -580,7 +518,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			{The ContextPhone platform; Four interconnected components — sensors, system services, communication services, and customizable applications — facilitate communication with the outside world.}
 		\end{figure}
 		
-		It is important to observe that this paper came out in 2005, two years before the first version of Android was even launched. Yet, their fundamental point of focus is still relevant in how we can use context as a powerful resource. Their point about the necessity of customizable applications that are needed for context information to be relevant perfectly applies to this thesis. The Android OS which is open sourced as AOSP is as customizable as it can get when it comes to modifying mobile components and by extension the user experience with APMD(Android Powered Mobile Device)(s). To be specific, it facilitates ways to gather cache related information such as the list of processes currently residing in memory, the current foreground application and whether the caching mechanism per se is up for modification to list a few. It would be impossible to collect and/or modify such information on any other mobile OS (such as Apple's iOS).
+		It is important to observe that this paper came out in 2005, two years before the first version of Android was even launched. Yet, their fundamental point of focus is still relevant in how we can use context as a powerful resource. Their point about the necessity of customizable applications that are needed for context information to be relevant perfectly applies to this thesis. The Android OS which is open sourced as AOSP (Android Open Source Project) is as customizable as it can get when it comes to modifying mobile components and by extension the user experience with APMD(Android Powered Mobile Device)(s). To be specific, it facilitates ways to gather cache related information such as the list of processes currently residing in memory, the current foreground application and whether the caching mechanism per se is up for modification to list a few. It would be impossible to collect and/or modify such information on any other mobile OS (such as Apple's iOS).
 		
 	\section{Using Context Information for Authentication}
 		Dey et al. established a framework for collecting contextual data and Verkasalo and Raento et al. have shown how user behavior can be analyzed through sensors and other modules that gather contextual information. Shi et al.'s paper titled {\em Implicit Authentication through Learning User Behavior} demonstrates a similar approach in collecting behavioral data of the user but differ in how they put that information to use. They have devised a model to implicitly authenticate smart-phone users based on their behavioral patterns. The user's usage patterns are collected (for e.g. how many calls a user makes a day, how many times user's location changes (Refer Figure 2-3) etc.) and this information is used in building a user model [22].  
@@ -621,7 +559,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				{Given this snapshot of the RAM, if the user clicks on say, the Google Drive application (process not in memory), it would result in a Cache Miss}
 			\end{figure}		
 			
-			CHR is defined as the percentage of cache hits compared to the overall number of requests (total of cache hits and cache misses).
+			CHR (Cache Hit Ratio) is defined as the percentage of cache hits compared to the overall number of requests (total of cache hits and cache misses).
 			
 			\begin{eqnarray}
 				Overall Number Of Requests = Cache Hits + Cache Misses \label{Total Requests} \\
@@ -1006,7 +944,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			Although the aforementioned points address the privacy issues, we realize that divulging the nature of the experiment has the potential to bias the volunteers in their APMD usage. We explore this aspect in detail in the Points of Weaknesses section. 
 	
 	\section{Process and Duration of Experiment}
-		A total of twenty volunteers signed up and installed the application. Each volunteer had the application running for a minimum of 7 days and a maximum of 12 days. A 7 day minimum was enforced to ensure that the monitoring period included both weekdays and weekends. This accounted for any difference in usage patterns among the volunteers during the weekends. The link to the APK file was posted online [56] and each volunteer downloaded and installed the application as a third-party application. In this context, the term third-party refers to the fact that the Android application was'nt downloaded from the Google Play store. The volunteers were instructed not to manually stop the application for the duration of the experiment [52].
+		A total of twenty volunteers signed up and installed the application. Each volunteer had the application running for a minimum of 7 days and a maximum of 12 days. A 7 day minimum was enforced to ensure that the monitoring period included both weekdays and weekends. This accounted for any difference in usage patterns among the volunteers during the weekends. The link to the APK (Android Package) file was posted online [56] and each volunteer downloaded and installed the application as a third-party application. In this context, the term third-party refers to the fact that the Android application was'nt downloaded from the Google Play store. The volunteers were instructed not to manually stop the application for the duration of the experiment [52].
 		 		 
 	\section{Context Analyzer Design}
 		{\em ContextAnalyzer} computes the metrics for both the default scheme and the Hybrid scheme. In order to  accomplish this, {\em ContextAnalyzer} reads the user's calendar (Section 3.3.6) and produces a list of applications that the user is likely to use. For the sake of simplicity, let's refer to this list as the calendar list. It also reads the list of processes residing in memory (Section 3.3.2). Let's refer to this list as the memory list. Given this information, every application that the user requests falls in one of four categories:
@@ -1018,7 +956,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\item The application is present in both lists. 
 		\end{itemize}  
 		
-		If the application is present in neither list, it results in an overall cache miss. To elaborate, an overall cache miss implies that neither the list of processes in memory (cached by the default recency-based caching scheme) nor the list of applications predicted by reading the calendar, contained the requested application. If the application was present only in memory list, it results in an overall cache hit and a suggested cache miss i.e. the Hybrid scheme would've still had a hit but it was not present in the list of applications suggested by the calendar list. If the application was present only in the calendar list, it results in an overall cache hit and a suggested-exclusive cache hit, implying that the hit is solely a result of the calendar list's suggestion. This metric is important as it reveals the significance of the list of applications suggested by the calendar list. We'll discuss this further in Chapter 5. Finally, if the application was present in both lists, it results in an overall cache hit and suggested non-exclusive cache hit, implying that the hit would've occurred regardless of whether the application was present in the calendar list or not. The following snapshot (Figure 4-3) illustrates {\em ContextAnalyzer}'s UI.  
+		If the application is present in neither list, it results in an overall cache miss. To elaborate, an overall cache miss implies that neither the list of processes in memory (cached by the default recency-based caching scheme) nor the list of applications predicted by reading the calendar, contained the requested application. If the application was present only in memory list, it results in an overall cache hit and a suggested cache miss i.e. the Hybrid scheme would've still had a hit but it was not present in the list of applications suggested by the calendar list. If the application was present only in the calendar list, it results in an overall cache hit and a suggested-exclusive cache hit, implying that the hit is solely a result of the calendar list's suggestion. This metric is important as it reveals the significance of the list of applications suggested by the calendar list. We'll discuss this further in Chapter 5. Finally, if the application was present in both lists, it results in an overall cache hit and suggested non-exclusive cache hit, implying that the hit would've occurred regardless of whether the application was present in the calendar list or not. The following snapshot (Figure 4-3) illustrates {\em ContextAnalyzer}'s UI (User Interface).  
 		
 		\begin{figure}[h]
 			\centering
@@ -1154,34 +1092,34 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			Let us analyze the data from each scheme. Since the absolute number of cache hits and cache misses vary depending on frequency of smart-phone usage, the only relevant metrics are the CHR(s) for each scheme. We'll examine the CHR(s) in percentages for each caching scheme.
 			
 			\subsection{Context Scheme}
-				The maximum CHR recorded by any volunteer for this scheme was 37.39\%. However, this is not representative of the average case. The mean CHR for the context scheme was 18.47\% with a standard deviation of 7.67\% and a variance of 58.75. The minimum recorded CHR was 5.92\% suggesting that in the worst case, roughly only 1 in 16 application requests resulted in a cache hit. The median CHR was 17.35\%. The following scatter plot (Refer Figure 5-4) illustrates this distribution.
+				The maximum CHR recorded by any volunteer for this scheme was 37.39\%. However, this is not representative of the average case. The mean CHR for the context scheme was 18.47\% with a standard deviation of 7.67\% and a variance of 58.75. The minimum recorded CHR was 5.92\% suggesting that in the worst case, roughly only 1 in 16 application requests resulted in a cache hit. The median CHR was 17.35\%. The following box plot (Refer Figure 5-4) illustrates this distribution.
 				
 				\begin{figure}[h]
 					\centering
 					\includegraphics[width = 130mm]{images/contextScheme.png}
-					\caption[Distribution of CHR for Context Scheme]{This scatter plot illustrates the distribution for the CHR(s) in the context scheme, among the 20 volunteers. It is worth noting that 25\% of the volunteers had a CHR of 14.05\% or less i.e. the Q1 value is 14.05\%. Similarly, 75\% of the volunteers had a CHR of 20.68\% or below indicating that the third quartile value or Q3 is 20.68\%. On a side note, this scatter plot was generated using Minitab, a statistical software package [64].}
+					\caption[Distribution of CHR for Context Scheme]{This box plot illustrates the distribution for the CHR(s) in the context scheme, among the 20 volunteers. It is worth noting that 25\% of the volunteers had a CHR of 14.05\% or less i.e. the Q1 value is 14.05\%. Similarly, 75\% of the volunteers had a CHR of 20.68\% or below indicating that the third quartile value or Q3 is 20.68\%. Note that the two outlier values are indicated by the asterisk symbol at the very top. On a side note, this box plot was generated using Minitab, a statistical software package [64].}
 				\end{figure}
 				
 				The average CHR was 18.47\% i.e. roughly 4 in 5 application requests resulted in a cache miss. While it's better than nothing, it remains to be seen whether the default scheme or the default-context hybrid scheme can put up better numbers.	
 			
 			\subsection{Default Scheme}
-				The maximum CHR recorded by any volunteer for this scheme was 93.19\%. However, this is not representative of the average case. The mean CHR for the default scheme was 79.17\% with a standard deviation of 13.87\% and a variance of 192.37. The minimum recorded CHR was 46.52\% suggesting that in the worst case, less than 1 in 2 application requests resulted in a cache hit. The median CHR was 84.04\%. The following scatter plot (Refer Figure 5-4) illustrates this distribution.
+				The maximum CHR recorded by any volunteer for this scheme was 93.19\%. However, this is not representative of the average case. The mean CHR for the default scheme was 79.17\% with a standard deviation of 13.87\% and a variance of 192.37. The minimum recorded CHR was 46.52\% suggesting that in the worst case, less than 1 in 2 application requests resulted in a cache hit. The median CHR was 84.04\%. The following box plot (Refer Figure 5-4) illustrates this distribution.
 				
 				\begin{figure}[h]
 					\centering
 					\includegraphics[width = 130mm]{images/defaultScheme.png}
-					\caption[Distribution of CHR for Default Scheme]{This scatter plot illustrates the distribution for the CHR(s) in the default scheme, among the 20 volunteers. It is worth noting that 25\% of the volunteers had a CHR of 70.28\% or less i.e. the Q1 value is 70.28\%. Similarly, 75\% of the volunteers had a CHR of 89.34\% or below indicating that the third quartile value or Q3 is 89.34\%. This scatter plot was generated using Minitab as well [64].}
+					\caption[Distribution of CHR for Default Scheme]{This box plot illustrates the distribution for the CHR(s) in the default scheme, among the 20 volunteers. It is worth noting that 25\% of the volunteers had a CHR of 70.28\% or less i.e. the Q1 value is 70.28\%. Similarly, 75\% of the volunteers had a CHR of 89.34\% or below indicating that the third quartile value or Q3 is 89.34\%. This box plot was generated using Minitab as well [64].}
 				\end{figure}
 				
 				The average CHR was 79.17\% i.e. roughly 4 in 5 application requests resulted in a cache hit. To put that in perspective, it is more than 4 times the average CHR of the context scheme. Let's see if the hybrid scheme can improve these numbers.
 				
 			\subsection{Default-Context Hybrid Scheme}
-				The maximum CHR recorded by any volunteer for this scheme was 95.62\%. However, this is not representative of the average case. The mean CHR for the hybrid scheme was 83.50\% with a standard deviation of 12.39\% and a variance of 153.49. The minimum recorded CHR was 53.48\% suggesting that in the worst case, less than 1 in 2 application requests resulted in a cache miss. The median CHR was 88.48\%. The following scatter plot (Refer Figure 5-4) illustrates this distribution.
+				The maximum CHR recorded by any volunteer for this scheme was 95.62\%. However, this is not representative of the average case. The mean CHR for the hybrid scheme was 83.50\% with a standard deviation of 12.39\% and a variance of 153.49. The minimum recorded CHR was 53.48\% suggesting that in the worst case, less than 1 in 2 application requests resulted in a cache miss. The median CHR was 88.48\%. The following box plot (Refer Figure 5-4) illustrates this distribution.
 				
 				\begin{figure}[h]
 					\centering
 					\includegraphics[width = 130mm]{images/hybridScheme.png}
-					\caption[Distribution of CHR for Hybrid Scheme]{This scatter plot illustrates the distribution for the CHR(s) in the hybrid scheme, among the 20 volunteers. It is worth noting that 25\% of the volunteers had a CHR of 73.97\% or less i.e. the Q1 value is 73.97\%. Similarly, 75\% of the volunteers had a CHR of 92.73\% or below indicating that the third quartile value or Q3 is 92.73\%. This scatter plot was generated using Minitab as well [64].}
+					\caption[Distribution of CHR for Hybrid Scheme]{This box plot illustrates the distribution for the CHR(s) in the hybrid scheme, among the 20 volunteers. It is worth noting that 25\% of the volunteers had a CHR of 73.97\% or less i.e. the Q1 value is 73.97\%. Similarly, 75\% of the volunteers had a CHR of 92.73\% or below indicating that the third quartile value or Q3 is 92.73\%. This box plot was generated using Minitab as well [64].}
 				\end{figure}
 				
 				The average CHR was 83.50\% i.e. roughly more than 4 in 5 application requests resulted in a cache hit. It is worth noting that the hybrid scheme's average CHR is 4.33\% more than that of the default scheme, hinting at an improvement in efficiency. In the next section, we'll examine if this increase in CHR is statistically significant, by performing a paired t test [60]. 
@@ -1198,7 +1136,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\begin{figure}[h]
 				\centering
 				\includegraphics[width = 110mm]{images/chrDifferences.png}
-				\caption[Relative Increase in CHR - Chart]{This scatter plot illustrates the increase in CHR from the default to hybrid scheme for each of the 20 volunteers.}
+				\caption[Relative Increase in CHR - Chart]{This box plot illustrates the increase in CHR from the default to hybrid scheme for each of the 20 volunteers. Note that the two outliers are indicated by the asterisk symbol at the very top.}
 			\end{figure}
 			
 			Before the test is performed, two things need to be determined:
@@ -1207,7 +1145,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\item Significance Level
 			\end{itemize}
 			
-			The null hypothesis refers to a general statement or a default position that there is no relationship between two measured phenomena [67]. In our case, the null hypothesis would state that the increase in CHR is purely due to sampling error and therefore statistically insignificant. Our objective is to disprove or reject the null hypothesis by performing a paired t test. Significance level is the probability of rejecting the null hypothesis given that it is true [68]. By convention, the significance level is set to 0.05 (5\%), implying that it is acceptable to have a 5\% probability of incorrectly rejecting the null hypothesis. The {\em p-value} is defined as the probability of obtaining a result equal to or more statistically extreme than what was actually observed, assuming that the null hypothesis is true [69]. Therefore, if the paried t test produces a p-value lesser than the significance level i.e. the probability of obtaining more extreme results is lesser than the probability of incorrectly rejecting the null hypothesis, then the results are statistically significant and the null hypothesis can be rejected. The results of the paired t test are shown in Figure 5-9.
+			The null hypothesis refers to a general statement or a default position that there is no relationship between two measured phenomena [67]. In our case, the null hypothesis would state that there is no difference in the means between the CHR(s) of the default and the hybrid schemes. Our objective is to perform a paired t test and determine the validity of the null hypothesis and by extension the statistical significance of our data. Significance level is the probability of rejecting the null hypothesis given that it is true [68]. By convention, the significance level is set to 0.05 (5\%), implying that it is acceptable to have a 5\% probability of incorrectly rejecting the null hypothesis. The {\em p-value} is defined as the probability of obtaining a result equal to or more statistically extreme than what was actually observed, assuming that the null hypothesis is true [69]. Therefore, if the paired t test produces a p-value less than the significance level i.e. the probability of obtaining more extreme results is less than the probability of incorrectly rejecting the null hypothesis, then the results are statistically significant and the null hypothesis can be rejected. The results of the paired t test are shown in Figure 5-9.
 			
 			\begin{figure}[h]
 				\centering
@@ -1215,35 +1153,74 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\caption[Paired T Test Resuts]{ This image illustrates the results of a paired t test conducted with the data listed in Figure 5-7. The paired t test was conducted using Minitab [64].}
 			\end{figure}			
 		
-			Given that the {\em p-value} (0.00) is lesser than the significance level (0.05), the null hypothesis can be rejected. Therefore, the increase in CHR between the two caching schemes is not due to sampling error and is statistically significant. In the next section, we'll examine potential correlations between the cache hit ratios and some of the demographic data.
+			Given that the {\em p-value} is less than the significance level (0.05), there is strong evidence to reject the null hypothesis. Furthermore, a 95\% CI (Confidence Interval) [70] between 2.97\% \& 5.70\% indicates the lower and upper bound for the true average increase in CHR (If the study were conducted with a larger population). Therefore, it is reasonable to conclude that the increase in CHR between the two caching schemes is not due to sampling error and is statistically significant. In the next section, we'll examine potential correlations between the cache hit ratios and some of the demographic data.
 			
 		\section{Correlation with Demographic Data}
-			Intuitively, we'd expect the increase in CHR to be higher when the calendar usage is higher. Let us examine if such a correlation exists is the data we collected. We compute the Pearson product-moment correlation coefficient (PPMCC) for the increase in CHR and the number of calendar entries for each volunteer (Refer Figure 5-10). 
 			
-			\begin{figure}[h]
-				\centering
-				\includegraphics[width = 70mm]{images/calendarData.png}
-				\caption[Increase in CHR vs Calendar Entries]{This table illustrates the data used to compute the correlation between increase in CHR and the number of calendar entries entered by each volunteer for the duration of the experiment.}
-			\end{figure}
+			\subsection{Calendar Usage}
+				Intuitively, we'd expect the increase in CHR to be higher when the calendar usage is higher. Let us examine if such a correlation exists is the data we collected. We compute the PPMCC (Pearson product-moment correlation coefficient) [69] for the increase in CHR and the number of calendar entries for each volunteer (Refer Figure 5-10). 
+				
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width = 70mm]{images/calendarData.png}
+					\caption[Increase in CHR vs Calendar Entries - Table]{This table illustrates the data used to compute the correlation between increase in CHR and the number of calendar entries entered by each volunteer for the duration of the experiment.}
+				\end{figure}
+				
+				PPMCC is a measure of the linear correlation between two variables X and Y, giving a value between $+1$ and $−1$ inclusive, where 1 is total positive correlation, 0 is no correlation, and $−1$ is total negative correlation. The results of the PPMCC computation (using Minitab [64]) were the following:
+				
+				\begin{itemize}
+					\item A PPMCC value of 0.467 
+					\item A p-value of 0.038
+				\end{itemize}
+				
+				
+				 If we assume the significance level to be 0.05, then a p-value of 0.038 (less than significance level) corroborates the statistical significance of our PPMCC. A PPMCC value of 0.467 signifies a modest positive correlation. Therefore, it is reasonable to conclude that an increase in CHR from the default to hybrid scheme is consistent with an increase in calendar usage among the test subjects. The following fitted line plot (Figure 5-11) illustrates this linear correlation.
+				
+				 \begin{figure}[h]
+				 	\centering
+				 	\includegraphics[width = 110mm]{images/regressionPlot.png}
+				 	\caption[Increase in CHR vs Calendar Entries - Plot]{This fitted line plot illustrates the linear correlation between increase in CHR and calendar usage. Note that the two outliers are marked at the top with red circles.}
+				 \end{figure}
 			
-			PPMCC is a measure of the linear correlation between two variables X and Y, giving a value between +1 and −1 inclusive, where 1 is total positive correlation, 0 is no correlation, and −1 is total negative correlation [69]. In our case, a PPMCC value of 0.467 was obtained (using Minitab [64]) which signifies a moderate to strong positive correlation. Therefore, it is reasonable to conclude the increase in CHR from the default to hybrid scheme is consistent with an increase in calendar usage among the test subjects.
-			
-%		increase in CHR and calendar usage
-%		default CHR and number of unique applications
+			\subsection{Number of Unique Applications Requested}
+				
+				Let us examine if there is a relationship between the number of unique applications a user requests over the course of the experiment, and an increase in the cache hit ratio. We compute the PPMCC [69] for the increase in CHR and the number of unique applications requested for each volunteer (Refer Figure 5-10). 
+				
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width = 70mm]{images/uniqueAppsData.png}
+					\caption[Increase in CHR vs Unique Applications Requested - Table]{This table illustrates the data used to compute the correlation between increase in CHR and the number of unique applications requested by each volunteer for the duration of the experiment.}
+				\end{figure}
+				
+				 The results of the PPMCC computation (using Minitab [64]) were the following:
+				
+				\begin{itemize}
+					\item A PPMCC value of $-0.437$ 
+					\item A p-value of 0.054
+				\end{itemize}
+				
+				
+				If we assume the significance level to be 0.05, then a p-value of 0.054 (approximately equal to the significance level) corroborates the statistical significance of our PPMCC. A PPMCC value of $-0.437$ signifies a modest negative correlation. Therefore, it is reasonable to conclude that an increase in CHR from the default to hybrid scheme is consistent with a decrease in the number of unique applications requested among the test subjects. However, it is worth noting that the p-value is within the margin of error compared to a 0.05 significance level. The following fitted line plot (Figure 5-11) illustrates this negative correlation.
+				
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width = 110mm]{images/uniqueAppsPlot.png}
+					\caption[Increase in CHR vs Unique Applications Requested - Plot]{This fitted line plot illustrates the negative correlation between increase in CHR and number of unique applications requested over the course of the experiment. Note that the two outliers are marked at the top with red circles. It is also worth noting that the two highest increases in CHR(s) occurred for the volunteers with the lowest number of unique applications clicked which considerably influenced the result.}
+				\end{figure}
 
-		\section{Points of Weakness}
-			While the data demonstrates that incorporating context analysis improves the efficiency of the default caching scheme, there are certain factors that could affect the validity of this thesis:
-			
-			\begin{itemize}
-				\item The volunteers were instructed to use their calendar applications. However real-world users may or may not use their calendar application.
-				\item The entries in the calendar may not be indicative of the application that the user might use during that calendar event. 
-				\item Not all applications can be mapped to keywords obtained from calendar entries. For instance, while {\em call} can de directly mapped to the Caller application, there are no keywords that come to mind for the Camera application.
-				\item Since the calendar is only queried every four hours, change in event descriptions within a four hour period are not captured by our application. However, this is merely a design decision and the frequency can be increased to account for this issue. 
-				\item If no events were found in the calendar for a four hour period, then the list of suggested applications is set to a default list derived from the most popular Android applications in USA (Section 3.3.7). A significant amount of the cache hits for the hybrid scheme could've occurred as a result of the requested application being found in this default list rather than the applications truly inferred from calendar events.
-				\item The lack of diversity in our volunteer demographic could've influenced the data. Given that all research volunteers were male college students, the rate of smart-phone usage was quite high. It would've been conducive to gather volunteers of all ages and gender.
-				\item Due to our policy of full transparency, the volunteers were aware of the type of data being collected. Even though there was no inherent motivation for any of the volunteers to intentionally skew the cache metrics, theoretically they had the ability to do so. 
-				\item The volunteers were instructed not to close the application for the duration of the experiment but this was not enforced. Technically, a volunteer could've selectively closed the application for certain times of the day resulting in an inaccurate monitoring period. However, they had no motivation to do so as no personal information was being collected.
-			\end{itemize}  		
+\chapter{Points of Weakness}
+	While the data demonstrates that incorporating context analysis improves the efficiency of the default caching scheme, there are certain factors that could affect the validity of this thesis:
+	
+	\begin{itemize}
+		\item The volunteers were instructed to use their calendar applications. However real-world users may or may not use their calendar application.
+		\item The entries in the calendar may not be indicative of the application that the user might use during that calendar event. 
+		\item Not all applications can be mapped to keywords obtained from calendar entries. For instance, while {\em call} can de directly mapped to the Caller application, there are no keywords that come to mind for the Camera application.
+		\item Since the calendar is only queried every four hours, change in event descriptions within a four hour period are not captured by our application. However, this is merely a design decision and the frequency can be increased to account for this issue. 
+		\item If no events were found in the calendar for a four hour period, then the list of suggested applications is set to a default list derived from the most popular Android applications in USA (Section 3.3.7). A significant amount of the cache hits for the hybrid scheme could've occurred as a result of the requested application being found in this default list rather than the applications truly inferred from calendar events.
+		\item The lack of diversity in our volunteer demographic could've influenced the data. Given that all research volunteers were male college students, the rate of smart-phone usage was quite high. It would've been conducive to gather volunteers of all ages and gender.
+		\item Due to our policy of full transparency, the volunteers were aware of the type of data being collected. Even though there was no inherent motivation for any of the volunteers to intentionally skew the cache metrics, theoretically they had the ability to do so. 
+		\item The volunteers were instructed not to close the application for the duration of the experiment but this was not enforced. Technically, a volunteer could've selectively closed the application for certain times of the day resulting in an inaccurate monitoring period. However, they had no motivation to do so as no personal information was being collected.
+	\end{itemize}  		
 
 \chapter{Conclusion}
 	The typical user is not facing a desktop machine in the relatively predictable office environment anymore. Smart-phones are well suited to utilize contextual information in enhancing the behavior of their applications. However, the full potential of context analysis is not harnessed by Android devices. Currently, the Android OS caches application components in memory, based on recency of application usage. We have demonstrated that incorporating context information improves the efficiency of this caching scheme. For this purpose, we set up an experiment comprising of twenty volunteers. We developed an Android application to measure the cache metrics of both the default recency-based caching scheme and a default-context hybrid scheme, which in addition to relying on recency of usage, parsed the user's calendar for contextual clues. We analyzed the data and proved that on an average, the hybrid scheme had a significantly higher cache hit ratio. By virtue of its superior efficiency, the hybrid scheme would result in a lower startup time for relatively more applications, thereby enhancing the overall user experience.
@@ -1311,31 +1288,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 \myreferences
 
 \begin{referencelist}{single}
-	
-	\item \textbf{[1]} ``The Android Source Code''
-	\\\emph{http://source.android.com/source/index.html}, October 2015. 
-	Online; Last Accessed: October 22, 2015.	
-	
-	\item \textbf{[2]} ``The Most Popular Smartphone Operating Systems Globally,''
-    \\\emph{http://www.lifehacker.com.au/2014/09/the-most-popular-smartphone-operating-systems-around-the-world/}, September 2014. 
-    Online; Last Accessed: October 22, 2015.
-	
-	\item \textbf{[3]} ``Android System Architecture''
-	\\\emph{https://mahalelabs.files.wordpress.com/2013/03/androidstack-1.jpg}, March 2013. 
-	Online; Last Accessed: October 22, 2015. 
-		
-	\item \textbf{[4]} ``Best custom ROMs for the Samsung Galaxy S2''
-	\\\emph{http://www.cnet.com/uk/how-to/best-custom-roms-for-the-samsung-galaxy-s2/}, April 2012. 
-	Online; Last Accessed: October 22, 2015. 
-		
-	\item \textbf{[5]} ``Widgets | Android Developers''
-	\\\emph{http://developer.android.com/design/patterns/widgets.html}, October 2015. 
-	Online; Last Accessed: October 22, 2015.
-		
-	\item \textbf{[6]} ``Application Fundamentals | Android Developers''
-	\\\emph{http://developer.android.com/guide/components/fundamentals.html}, October 2015. 
-	Online; Last Accessed: October 22, 2015.
-		
+
 	\item \textbf{[7]} ``Activities | Android Developers''
 	\\\emph{http://developer.android.com/guide/components/activities.html}, October 2015. 
 	Online; Last Accessed: October 22, 2015.					     
@@ -1344,41 +1297,9 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\\\emph{http://developer.android.com/guide/components/services.html}, October 2015. 
 	Online; Last Accessed: October 22, 2015.
 	
-	\item \textbf{[9]} ``Wikimedia Upload''
-	\\\emph{http://www.extremetech.com/wp-content/uploads/2015/04/MooresLaw2.png}, October 2015. 
-	Online; Last Accessed: October 22, 2015.
-	
-	\item \textbf{[10]} ``A Brief History of Android Phones''
-	\\\emph{http://www.cnet.com/news/a-brief-history-of-android-phones/}, August 2011. 
-	Online; Last Accessed: October 22, 2015.
-	
-	\item \textbf{[11]} ``GSM Arena''
-	\\\emph{http://www.gsmarena.com/t\_mobile\_g1-2533.php}, October 2008. 
-	Online; Last Accessed: October 22, 2015.
-	
-	\item \textbf{[12]} ``Nexus 6P''
-	\\\emph{http://www.androidcentral.com/nexus-6p}, October 2015. 
-	Online; Last Accessed: October 22, 2015.
-	
-	\item \textbf{[13]} ``Phone Egg | LG T585''
-	\\\emph{http://us.phonegg.com/phone/4783-LG-T585}, November 2013. 
-	Online; Last Accessed: October 22, 2015.		
-	
-	\item \textbf{[14]} ``Android PSA: Stop Using Task Killer Apps''
-	\\\emph{http://phandroid.com/2011/06/16/android-psa-stop-using-task-killer-apps-now/}, June 2011. 
-	Online; Last Accessed: October 22, 2015.
-	
 	\item \textbf{[15]} ``Processes and Application Life Cycle''
 	\\\emph{http://developer.android.com/guide/topics/processes/process-lifecycle.html}, October 2015. 
 	Online; Last Accessed: October 22, 2015.
-	
-	\item \textbf{[16]} ``Managing Your App's Memory''
-	\\\emph{http://developer.android.com/training/articles/memory.html}, October 2015. 
-	Online; Last Accessed: October 22, 2015.	
-	
-	\item \textbf{[17]} ``Theodore Johnson, Dennis Shasha - A Low Overhead High Performance Buffer Management Replacement Algorithm''
-	\\\emph{http://www.vldb.org/conf/1994/P439.PDF}, January 1994. 
-	Online; Last Accessed: October 22, 2015.	
 		
 	\item \textbf{[18]} ``Hannu Verkasalo - Contextual patterns in mobile service usage''
 	\\\emph{http://lib.tkk.fi/Diss/2009/isbn9789512298440/isbn9789512298440.pdf}, March 2008. 
@@ -1418,14 +1339,6 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 										
 	\item \textbf{[27]} ``LRU Replacement Policy''
 	\\\emph{https://www.seas.upenn.edu/~cit595/cit595s10/handouts/LRUreplacementpolicy.pdf}, October 2015. 
-	Online; Last Accessed: October 24, 2015.
-	
-	\item \textbf{[28]} ``Hong-Tai Chou, David J. Dewitt - An Evaluation of Buffer Management Strategies for Relational Database Systems''
-	\\\emph{http://www.vldb.org/conf/1985/P127.PDF}, October 1985. 
-	Online; Last Accessed: October 24, 2015.
-	
-	\item \textbf{[29]} ``Shaul Dar, Michael J.~Franklin, Bjorn T.~Jonsson, Divesh Srivastava, Michael Tan - Semantic Data Caching and Replacement''
-	\\\emph{http://www.vldb.org/conf/1996/P330.PDF}, October 1996. 
 	Online; Last Accessed: October 24, 2015.
 	
 	\item \textbf{[30]} ``Donghee Lee, Member, IEEE, Jongmoo Choi, Member, IEEE, Jong-Hun Kim, Member, IEEE,
@@ -1586,7 +1499,9 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 
 	\item \textbf{[69]} ``Stigler, Stephen M.~, Francis Galton's Account of the Invention of Correlation''
 	\\\emph{ Statistical Science 4 (2): 73–79.}, April 1989. Last Accessed: October 30, 2015.
-					
+
+	\item \textbf{[70]} ``Cox D.~R.~, Hinkley D.~V.~, Theoretical Statistics''
+	\\\emph{Chapman \& Hall, p49, p209}, April 1974. Last Accessed: October 30, 2015.					
 \end{referencelist}
 
 
