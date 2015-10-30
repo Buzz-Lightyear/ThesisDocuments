@@ -236,7 +236,7 @@ I'd like to thank all my friends and family for supporting me throughout my time
 %        +----------------------------------------------------------+
 
 \tableofcontents  %----->  ----->  ---->  DO NOT ALTER THIS COMMAND
-\listoftables \listoffigures
+\listoffigures
 
 %--------+----------------------------------------------------------+
 %        |  \captionformat{}                            (REQUIRED)  |
@@ -977,7 +977,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 					
 			\end{itemize}
 
-			Finally, if there are no events in the user's calendar for the four hour period, then the list of suggested applications is populated with five default applications. These five applications are derived from the list of most popular Android applications in USA (United States of America) [47].
+			Finally, if there are no events in the user's calendar for the four hour period, then the list of suggested applications is populated with ten default applications. These ten applications are derived from the list of most popular Android applications in USA (United States of America) [47] that the user has installed in their APMD.
 
 \chapter{Experiment Setup and Application Design}
 	
@@ -1006,14 +1006,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			Although the aforementioned points address the privacy issues, we realize that divulging the nature of the experiment has the potential to bias the volunteers in their APMD usage. We explore this aspect in detail in the Points of Weaknesses section. 
 	
 	\section{Process and Duration of Experiment}
-		A total of twenty volunteers signed up and installed the application. They were divided into two groups:
-		
-		\begin{itemize}
-			\item Those without a set duration of observation.
-			\item Those with a set duration of observation (1 week).
-		\end{itemize}
-		
-		The first group comprised of 9 volunteers and they were not monitored over a set duration of time. They installed the application at some point of time and had it running on their APMD(s). The only stipulation that group one was placed under was that they had to run the application for at least a week although there was no upper bound. Group two comprised of eleven volunteers. They had the application running for exactly one week. Both groups sent the data from the application and additionally provided the number of  entries they entered in their calendar during the monitoring period. The link to the APK file was posted online [56] and each volunteer downloaded and installed the application as a third-party application. In this context, the term third-party refers to the fact that the Android application was'nt downloaded from the Google Play store. The volunteers were instructed not to manually stop the application for the duration of the experiment [52].
+		A total of twenty volunteers signed up and installed the application. Each volunteer had the application running for a minimum of 7 days and a maximum of 12 days. A 7 day minimum was enforced to ensure that the monitoring period included both weekdays and weekends. This accounted for any difference in usage patterns among the volunteers during the weekends. The link to the APK file was posted online [56] and each volunteer downloaded and installed the application as a third-party application. In this context, the term third-party refers to the fact that the Android application was'nt downloaded from the Google Play store. The volunteers were instructed not to manually stop the application for the duration of the experiment [52].
 		 		 
 	\section{Context Analyzer Design}
 		{\em ContextAnalyzer} computes the metrics for both the default scheme and the Hybrid scheme. In order to  accomplish this, {\em ContextAnalyzer} reads the user's calendar (Section 3.3.6) and produces a list of applications that the user is likely to use. For the sake of simplicity, let's refer to this list as the calendar list. It also reads the list of processes residing in memory (Section 3.3.2). Let's refer to this list as the memory list. Given this information, every application that the user requests falls in one of four categories:
@@ -1193,9 +1186,37 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				
 				The average CHR was 83.50\% i.e. roughly more than 4 in 5 application requests resulted in a cache hit. It is worth noting that the hybrid scheme's average CHR is 4.33\% more than that of the default scheme, hinting at an improvement in efficiency. In the next section, we'll examine if this increase in CHR is statistically significant, by performing a paired t test [60]. 
 
-		\section{Significance Testing}	
-%		paired t test - rejecting the null hypothesis - whether results are significant
+		\section{Significance Testing}
+			In any experiment or observation that involves drawing a sample from a population, there is always the possibility that an observed effect could have occurred due to sampling error alone [65][66]. In order to prove that the increase in CHR for the hybrid scheme is statistically significant, we performed a paired t test using every (hybrid CHR, default CHR) pair collected over the duration of the experiment (Refer Figures 5-7, 5-8).
+			
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width = 110mm]{images/chrPairs.png}
+				\caption[Relative Increase in CHR - Table]{The data listed in this table illustrates the relative increase in CHR between the default and hybrid schemes for each volunteer. This data is used as the input for the paired t test to measure its statistical significance.}
+			\end{figure}
+			
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width = 110mm]{images/chrDifferences.png}
+				\caption[Relative Increase in CHR - Chart]{This scatter plot illustrates the increase in CHR from the default to hybrid scheme for each of the 20 volunteers.}
+			\end{figure}
+			
+			Before the test is performed, two things need to be determined:
+			\begin{itemize}
+				\item Null Hypothesis
+				\item Significance Level
+			\end{itemize}
+			
+			The null hypothesis refers to a general statement or a default position that there is no relationship between two measured phenomena [67]. In our case, the null hypothesis would state that the increase in CHR is purely due to sampling error and therefore statistically insignificant. Our objective is to disprove or reject the null hypothesis by performing a paired t test. Significance level is the probability of rejecting the null hypothesis given that it is true [68]. By convention, the significance level is set to 0.05 (5\%), implying that it is acceptable to have a 5\% probability of incorrectly rejecting the null hypothesis. The {\em p-value} is defined as the probability of obtaining a result equal to or more statistically extreme than what was actually observed, assuming that the null hypothesis is true [69]. Therefore, if the paried t test produces a p-value lesser than the significance level i.e. the probability of obtaining more extreme results is lesser than the probability of incorrectly rejecting the null hypothesis, then the results are statistically significant and the null hypothesis can be rejected. The results of the paired t test are shown in Figure 5-9.
+			
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width = 110mm]{images/pairedTest.png}
+				\caption[Paired T Test Resuts]{ This image illustrates the results of a paired t test conducted with the data listed in Figure 5-7. The paired t test was conducted using Minitab [64].}
+			\end{figure}			
 		
+			Given that the {\em p-value} (0.00) is lesser than the significance level (0.05), the null hypothesis can be rejected. Therefore, the increase in CHR between the two caching schemes is not due to sampling error and is statistically significant. In the next section, we'll examine potential correlations between the cache hit ratios and some of the demographic data.
+			
 		\section{Correlation with Demographic Data}
 %		increase in CHR and calendar usage
 %		default CHR and number of unique applications
@@ -1208,6 +1229,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\item The entries in the calendar may not be indicative of the application that the user might use during that calendar event. 
 				\item Not all applications can be mapped to keywords obtained from calendar entries. For instance, while {\em call} can de directly mapped to the Caller application, there are no keywords that come to mind for the Camera application.
 				\item Since the calendar is only queried every four hours, change in event descriptions within a four hour period are not captured by our application. However, this is merely a design decision and the frequency can be increased to account for this issue. 
+				\item If no events were found in the calendar for a four hour period, then the list of suggested applications is set to a default list derived from the most popular Android applications in USA (Section 3.3.7). A significant amount of the cache hits for the hybrid scheme could've occurred as a result of the requested application being found in this default list rather than the applications truly inferred from calendar events.
 				\item The lack of diversity in our volunteer demographic could've influenced the data. Given that all research volunteers were male college students, the rate of smart-phone usage was quite high. It would've been conducive to gather volunteers of all ages and gender.
 				\item Due to our policy of full transparency, the volunteers were aware of the type of data being collected. Even though there was no inherent motivation for any of the volunteers to intentionally skew the cache metrics, theoretically they had the ability to do so. 
 				\item The volunteers were instructed not to close the application for the duration of the experiment but this was not enforced. Technically, a volunteer could've selectively closed the application for certain times of the day resulting in an inaccurate monitoring period. However, they had no motivation to do so as no personal information was being collected.
@@ -1539,7 +1561,19 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\item \textbf{[64]} ``Minitab''
 	\\\emph{https://www.minitab.com/en-us/}, October 2015. 
 	Online; Last Accessed: October 29, 2015.				
-																				
+
+	\item \textbf{[65]} ``Babbie, Earl R.~, The Logic of Sampling''
+	\\\emph{The Practice of Social Research (13th ed.). Pages 185–226}, October 2013.  Last Accessed: October 30, 2015.	
+							
+	\item \textbf{[66]} ``David, H.~A.~; Gunnink, Jason L, The Paired t Test Under Artificial Pairing''
+	\\\emph{The American Statistician 51 (1): 9–12}, March 1997. Last Accessed: October 30, 2015.
+	
+	\item \textbf{[67]} ``Everitt, Brian, The Cambridge Dictionary of Statistics''
+	\\\emph{Cambridge, UK New York: Cambridge University Press}, March 1998. Last Accessed: October 30, 2015.
+
+	\item \textbf{[68]} ``Schlotzhauer, Sandra, Elementary Statistics Using JMP (SAS Press) (1 ed.)''
+	\\\emph{Cary, NC: SAS Institute. pp. 166–423}, March 2007. Last Accessed: October 30, 2015.
+							
 \end{referencelist}
 
 
