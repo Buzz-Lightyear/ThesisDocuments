@@ -296,7 +296,7 @@ I'd like to thank all my friends and family for supporting me throughout my time
  \abbreviation{API}{Application Programming Interface} 
  \abbreviation{USA}{United States of America} 
  \abbreviation{UI}{User Interface}
- 
+ \abbreviation{PPMCC}{Pearson Product Moment Correlation Coefficient}
 
 \end{listofabbreviations}
 
@@ -1218,6 +1218,16 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			Given that the {\em p-value} (0.00) is lesser than the significance level (0.05), the null hypothesis can be rejected. Therefore, the increase in CHR between the two caching schemes is not due to sampling error and is statistically significant. In the next section, we'll examine potential correlations between the cache hit ratios and some of the demographic data.
 			
 		\section{Correlation with Demographic Data}
+			Intuitively, we'd expect the increase in CHR to be higher when the calendar usage is higher. Let us examine if such a correlation exists is the data we collected. We compute the Pearson product-moment correlation coefficient (PPMCC) for the increase in CHR and the number of calendar entries for each volunteer (Refer Figure 5-10). 
+			
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width = 70mm]{images/calendarData.png}
+				\caption[Increase in CHR vs Calendar Entries]{This table illustrates the data used to compute the correlation between increase in CHR and the number of calendar entries entered by each volunteer for the duration of the experiment.}
+			\end{figure}
+			
+			PPMCC is a measure of the linear correlation between two variables X and Y, giving a value between +1 and −1 inclusive, where 1 is total positive correlation, 0 is no correlation, and −1 is total negative correlation [69]. In our case, a PPMCC value of 0.467 was obtained (using Minitab [64]) which signifies a moderate to strong positive correlation. Therefore, it is reasonable to conclude the increase in CHR from the default to hybrid scheme is consistent with an increase in calendar usage among the test subjects.
+			
 %		increase in CHR and calendar usage
 %		default CHR and number of unique applications
 
@@ -1573,7 +1583,10 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 
 	\item \textbf{[68]} ``Schlotzhauer, Sandra, Elementary Statistics Using JMP (SAS Press) (1 ed.)''
 	\\\emph{Cary, NC: SAS Institute. pp. 166–423}, March 2007. Last Accessed: October 30, 2015.
-							
+
+	\item \textbf{[69]} ``Stigler, Stephen M.~, Francis Galton's Account of the Invention of Correlation''
+	\\\emph{ Statistical Science 4 (2): 73–79.}, April 1989. Last Accessed: October 30, 2015.
+					
 \end{referencelist}
 
 
