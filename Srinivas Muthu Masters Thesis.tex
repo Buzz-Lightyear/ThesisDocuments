@@ -1161,20 +1161,38 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			Let us analyze the data from each scheme. Since the absolute number of cache hits and cache misses vary depending on frequency of smart-phone usage, the only relevant metrics are the CHR(s) for each scheme. We'll examine the CHR(s) in percentages for each caching scheme.
 			
 			\subsection{Context Scheme}
-				The maximum CHR recorded by any volunteer for this scheme was 37.38\%. However, this is not representative of the average case. The mean CHR for the context scheme was 18.47\% with a standard deviation of 7.67\% and a variance of 58.75\%. The minimum recorded CHR was 5.92\% suggesting that in the worst case, roughly only 1 in 16 application requests resulted in a cache hit. The following scatter plot (Refer Figure 5-4) illustrates this distribution.
+				The maximum CHR recorded by any volunteer for this scheme was 37.39\%. However, this is not representative of the average case. The mean CHR for the context scheme was 18.47\% with a standard deviation of 7.67\% and a variance of 58.75. The minimum recorded CHR was 5.92\% suggesting that in the worst case, roughly only 1 in 16 application requests resulted in a cache hit. The median CHR was 17.35\%. The following scatter plot (Refer Figure 5-4) illustrates this distribution.
 				
 				\begin{figure}[h]
 					\centering
 					\includegraphics[width = 130mm]{images/contextScheme.png}
-					\caption[Distribution of CHR for Context Scheme]{This scatter plot illustrates the distribution for the CHR(s) in the context scheme, among the 20 volunteers. It is worth noting that 25\% of the volunteers had a CHR of 14.05\% or less i.e. the Q1 value is 14.05\%. Similarly, 75\% of the volunteers had a CHR of 20.68\% or below indicating the third quartile value or Q3 is 20.68\%. On a side note, this scatter plot was generated using Minitab, a statistical software package [64].}
+					\caption[Distribution of CHR for Context Scheme]{This scatter plot illustrates the distribution for the CHR(s) in the context scheme, among the 20 volunteers. It is worth noting that 25\% of the volunteers had a CHR of 14.05\% or less i.e. the Q1 value is 14.05\%. Similarly, 75\% of the volunteers had a CHR of 20.68\% or below indicating that the third quartile value or Q3 is 20.68\%. On a side note, this scatter plot was generated using Minitab, a statistical software package [64].}
 				\end{figure}
 				
 				The average CHR was 18.47\% i.e. roughly 4 in 5 application requests resulted in a cache miss. While it's better than nothing, it remains to be seen whether the default scheme or the default-context hybrid scheme can put up better numbers.	
 			
 			\subsection{Default Scheme}
-			
-			\subsection{Default-Context Hybrid Scheme}	 
-%			3 schemes - average for each scheme, charts for each - why context alone is bad and expected - increase in hybrid - looks good but is it significant? - potentially correlation between calendar usage and increase in ratio - other correlations
+				The maximum CHR recorded by any volunteer for this scheme was 93.19\%. However, this is not representative of the average case. The mean CHR for the default scheme was 79.17\% with a standard deviation of 13.87\% and a variance of 192.37. The minimum recorded CHR was 46.52\% suggesting that in the worst case, less than 1 in 2 application requests resulted in a cache hit. The median CHR was 84.04\%. The following scatter plot (Refer Figure 5-4) illustrates this distribution.
+				
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width = 130mm]{images/defaultScheme.png}
+					\caption[Distribution of CHR for Default Scheme]{This scatter plot illustrates the distribution for the CHR(s) in the default scheme, among the 20 volunteers. It is worth noting that 25\% of the volunteers had a CHR of 70.28\% or less i.e. the Q1 value is 70.28\%. Similarly, 75\% of the volunteers had a CHR of 89.34\% or below indicating that the third quartile value or Q3 is 89.34\%. This scatter plot was generated using Minitab as well [64].}
+				\end{figure}
+				
+				The average CHR was 79.17\% i.e. roughly 4 in 5 application requests resulted in a cache hit. To put that in perspective, it is more than 4 times the average CHR of the context scheme. Let's see if the hybrid scheme can improve these numbers.
+				
+			\subsection{Default-Context Hybrid Scheme}
+				The maximum CHR recorded by any volunteer for this scheme was 95.62\%. However, this is not representative of the average case. The mean CHR for the hybrid scheme was 83.50\% with a standard deviation of 12.39\% and a variance of 153.49. The minimum recorded CHR was 53.48\% suggesting that in the worst case, less than 1 in 2 application requests resulted in a cache miss. The median CHR was 88.48\%. The following scatter plot (Refer Figure 5-4) illustrates this distribution.
+				
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width = 130mm]{images/hybridScheme.png}
+					\caption[Distribution of CHR for Hybrid Scheme]{This scatter plot illustrates the distribution for the CHR(s) in the hybrid scheme, among the 20 volunteers. It is worth noting that 25\% of the volunteers had a CHR of 73.97\% or less i.e. the Q1 value is 73.97\%. Similarly, 75\% of the volunteers had a CHR of 92.73\% or below indicating that the third quartile value or Q3 is 92.73\%. This scatter plot was generated using Minitab as well [64].}
+				\end{figure}
+				
+				The average CHR was 83.50\% i.e. roughly more than 4 in 5 application requests resulted in a cache hit. It is worth noting that the hybrid scheme's average CHR is 4.33\% more than that of the default scheme, hinting at an improvement in efficiency. In the next section, we'll examine if this increase in CHR is statistically significant, by performing a paired t test [60]. 
+
 		\section{Significance Testing}	
 %		paired t test - rejecting the null hypothesis - whether results are significant
 		
