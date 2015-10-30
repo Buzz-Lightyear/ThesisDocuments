@@ -1109,17 +1109,45 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 \chapter{Data Analysis and Results}
 
 		\section{Introduction}
-%			chapter 3 - challenges in collecting the desired data - previous chapter - exp setup and design - this chapter we'll analyze the data collected for each scheme and compare efficiencies. first demographic data to get an idea about volunteers, then cache metrics data, significance testing to see if increase is significant, points of weaknesses
+			In Chapter 3, we examined some of the challenges in collecting the data we needed and in the previous chapter, we analyzed {\em ContextAnalyzer}'s design and how the experiment was setup. In this chapter, we'll inspect the data we collected from each volunteer and compare the cache hit ratios of each caching scheme (Default, Context \& Default-Context Hybrid). The following section elaborates on the volunteer demographic and the subsequent sections analyze the cache data. Finally, we verify whether our results are statistically significant using a Paired T test [60] and examine the points of weaknesses of this thesis.
 			
 		\section{Demographic Data}
-%			\begin{itemize}
-%				\item Number of Installed Applications
-%				\item Number of Unique Applications Requested (Clicked)
-%				\item Number of Calendar Entries During the Course of the Experiment
-%				\item Phone Model
-%				\item Android OS Version
-%			\end{itemize} 
-%			average for each, charts, point about OS Version
+			Our experiment comprised of twenty volunteers, all of whom were male college students between the ages of nineteen and twenty three. The most common APMD used by the volunteers was the Nexus 5 [61] and SM-G900T (Samsung Galaxy S5) [62] was the least common one. Every volunteer satisfied the Android OS version prerequisite as they all ran Android 5.1 (LOLLIPOP\_MR1) [63]. There were three other metrics  collected from the volunteers that can be classified as demographic data:
+			
+			\begin{itemize}
+				\item Number of Installed Applications (Measured at start of the experiment)
+				\item Number of Unique Applications Clicked (During the course of the experiment)
+				\item Number of Calendar Entries (During the course of the experiment)
+			\end{itemize} 
+			
+			\subsection{Total Installed Applications}
+				The minimum number of installed applications among the volunteers, was 120. The maximum number of applications installed by any volunteer was 374. The average number of installed applications was 295. The following chart (Refer Figure 5-1) illustrates this distribution.
+				
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width = 130mm]{images/totalApps.png}
+					\caption[Distribution of Total Installed Applications]{This chart illustrates the distribution for the number of installed applications (measured at the start of the experiment), among the 20 volunteers.}
+				\end{figure}
+				
+			\subsection{Unique Applications Clicked}
+				The minimum number of unique applications that were clicked among the volunteers, during the course of the experiment, was 34. The maximum number of unique applications requested by any volunteer was 56. The average number of unique applications requested was roughly 46. The following chart (Refer Figure 5-2) illustrates this distribution.
+				
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width = 130mm]{images/uniqueApps.png}
+					\caption[Distribution of Unique Applications Requested]{This chart illustrates the distribution for the number of unique applications requested during the course of the experiment, among the 20 volunteers.}
+				\end{figure}
+				
+			\subsection{Calendar Entries}
+				The minimum number of calendar entries among the volunteers, was 11. The maximum number of entries entered in the calendar by any volunteer was 43. The average number of calendar entries was roughly 25. The following chart (Refer Figure 5-3) illustrates this distribution.
+				
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width = 130mm]{images/calendarEntries.png}
+					\caption[Distribution of Number of Calendar Entries]{This chart illustrates the distribution for the number of calendar entries during the course of the experiment, among the 20 volunteers.}
+				\end{figure}		
+			
+			So far, we've analyzed the distribution for the number of installed applications, the number of unique applications clicked and the total number of calendar entries during the course of the experiment. In the next section, we'll examine whether there's a correlation between these metrics and the efficiency of certain caching schemes.
 		\section{Experiment Results}
 %			3 schemes - average for each scheme, charts for each - why context alone is bad and expected - increase in hybrid - looks good but is it significant? - potentially correlation between calendar usage and increase in ratio - other correlations
 		\section{Significance Testing}	
@@ -1442,8 +1470,23 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 											
 	\item \textbf{[59]} ``Android Open Source Project''
 	\\\emph{https://source.android.com/}, October 2015. 
-	Online; Last Accessed: October 28, 2015.
-																				
+	Online; Last Accessed: October 29, 2015.
+
+	\item \textbf{[60]} ``Mathematics Learning Support Center''
+	\\\emph{http://www.statstutor.ac.uk/resources/uploaded/paired-t-test.pdf}, October 2015. 
+	Online; Last Accessed: October 29, 2015.
+
+	\item \textbf{[61]} ``Nexus 5X | Google''
+	\\\emph{https://www.google.com/nexus/5x/}, October 2015. 
+	Online; Last Accessed: October 29, 2015.
+
+	\item \textbf{[62]} ``Samsung Galaxy S5''
+	\\\emph{http://www.samsung.com/us/support/owners/product/SM-G900TZKATMB}, October 2015. 
+	Online; Last Accessed: October 29, 2015.
+																		
+	\item \textbf{[63]} ``Android 5.1 API(s) | Android Developer''
+	\\\emph{https://developer.android.com/about/versions/android-5.1.html}, October 2015. 
+	Online; Last Accessed: October 29, 2015.																							
 \end{referencelist}
 
 
