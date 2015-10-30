@@ -1148,10 +1148,40 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\end{figure}		
 			
 			So far, we've analyzed the distribution for the number of installed applications, the number of unique applications clicked and the total number of calendar entries during the course of the experiment. In the next section, we'll examine whether there's a correlation between these metrics and the efficiency of certain caching schemes.
+			
 		\section{Experiment Results}
+			The data collected by the {\em ContextAnalyzer} application provides the metrics to measure the efficiencies of three caching schemes (Refer Section 4.4):
+			
+			\begin{itemize}
+				\item Context Scheme
+				\item Default Scheme
+				\item Default-Context Hybrid Scheme
+			\end{itemize}
+			
+			Let us analyze the data from each scheme. Since the absolute number of cache hits and cache misses vary depending on frequency of smart-phone usage, the only relevant metrics are the CHR(s) for each scheme. We'll examine the CHR(s) in percentages for each caching scheme.
+			
+			\subsection{Context Scheme}
+				The maximum CHR recorded by any volunteer for this scheme was 37.38\%. However, this is not representative of the average case. The mean CHR for the context scheme was 18.47\% with a standard deviation of 7.67\% and a variance of 58.75\%. The minimum recorded CHR was 5.92\% suggesting that in the worst case, roughly only 1 in 16 application requests resulted in a cache hit. The following scatter plot (Refer Figure 5-4) illustrates this distribution.
+				
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width = 130mm]{images/contextScheme.png}
+					\caption[Distribution of CHR for Context Scheme]{This scatter plot illustrates the distribution for the CHR(s) in the context scheme, among the 20 volunteers. It is worth noting that 25\% of the volunteers had a CHR of 14.05\% or less i.e. the Q1 value is 14.05\%. Similarly, 75\% of the volunteers had a CHR of 20.68\% or below indicating the third quartile value or Q3 is 20.68\%. On a side note, this scatter plot was generated using Minitab, a statistical software package [64].}
+				\end{figure}
+				
+				The average CHR was 18.47\% i.e. roughly 4 in 5 application requests resulted in a cache miss. While it's better than nothing, it remains to be seen whether the default scheme or the default-context hybrid scheme can put up better numbers.	
+			
+			\subsection{Default Scheme}
+			
+			\subsection{Default-Context Hybrid Scheme}	 
 %			3 schemes - average for each scheme, charts for each - why context alone is bad and expected - increase in hybrid - looks good but is it significant? - potentially correlation between calendar usage and increase in ratio - other correlations
 		\section{Significance Testing}	
 %		paired t test - rejecting the null hypothesis - whether results are significant
+		
+		\section{Correlation with Demographic Data}
+%		increase in CHR and calendar usage
+%		default CHR and number of unique applications
+
 		\section{Points of Weakness}
 			While the data demonstrates that incorporating context analysis improves the efficiency of the default caching scheme, there are certain factors that could affect the validity of this thesis:
 			
@@ -1486,7 +1516,12 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 																		
 	\item \textbf{[63]} ``Android 5.1 API(s) | Android Developer''
 	\\\emph{https://developer.android.com/about/versions/android-5.1.html}, October 2015. 
-	Online; Last Accessed: October 29, 2015.																							
+	Online; Last Accessed: October 29, 2015.	
+
+	\item \textbf{[64]} ``Minitab''
+	\\\emph{https://www.minitab.com/en-us/}, October 2015. 
+	Online; Last Accessed: October 29, 2015.				
+																				
 \end{referencelist}
 
 

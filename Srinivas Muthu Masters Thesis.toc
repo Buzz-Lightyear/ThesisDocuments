@@ -1,11 +1,11 @@
 \contentsline {chapter}{Abstract}{iii}
 \contentsline {chapter}{Acknowledgments}{v}
 \contentsline {chapter}{Contents}{vi}
-\contentsline {chapter}{List of Tables}{ix}
-\contentsline {chapter}{List of Figures}{x}
-\contentsline {chapter}{List of Abbreviations}{xi}
-\contentsline {chapter}{List of Symbols}{xii}
-\contentsline {chapter}{Preface}{xiii}
+\contentsline {chapter}{List of Tables}{x}
+\contentsline {chapter}{List of Figures}{xi}
+\contentsline {chapter}{List of Abbreviations}{xii}
+\contentsline {chapter}{List of Symbols}{xiii}
+\contentsline {chapter}{Preface}{xiv}
 \contentsline {chapter}{\numberline {1}Introduction}{1}
 \contentsline {section}{\numberline {1.1}Problem}{1}
 \contentsline {section}{\numberline {1.2}Proposed Solution}{2}
@@ -61,8 +61,12 @@
 \contentsline {subsection}{\numberline {5.2.2}Unique Applications Clicked}{50}
 \contentsline {subsection}{\numberline {5.2.3}Calendar Entries}{51}
 \contentsline {section}{\numberline {5.3}Experiment Results}{52}
-\contentsline {section}{\numberline {5.4}Significance Testing}{52}
-\contentsline {section}{\numberline {5.5}Points of Weakness}{52}
-\contentsline {chapter}{\numberline {6}Conclusion}{54}
-\contentsline {chapter}{\numberline {7}Future Work}{55}
-\contentsline {chapter}{References}{56}
+\contentsline {subsection}{\numberline {5.3.1}Context Scheme}{52}
+\contentsline {subsection}{\numberline {5.3.2}Default Scheme}{54}
+\contentsline {subsection}{\numberline {5.3.3}Default-Context Hybrid Scheme}{54}
+\contentsline {section}{\numberline {5.4}Significance Testing}{54}
+\contentsline {section}{\numberline {5.5}Correlation with Demographic Data}{54}
+\contentsline {section}{\numberline {5.6}Points of Weakness}{54}
+\contentsline {chapter}{\numberline {6}Conclusion}{56}
+\contentsline {chapter}{\numberline {7}Future Work}{57}
+\contentsline {chapter}{References}{58}
