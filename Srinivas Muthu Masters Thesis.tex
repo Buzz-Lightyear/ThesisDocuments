@@ -425,7 +425,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			Chapter 4 elaborates on why volunteers require API level 21 and above, and Android mandates that the user authorize all permissions for third-party applications to access their data, during installation.
 			
 	\section{Checking Applications in RAM}
-		Every Android smart-phone user is capable of checking the processes that currently reside in physical memory. The Application Manager which is part of the Settings application shows a list of running processes and cached background processes. Additionally, it breaks down the composition of RAM usage by the System applications and user installed applications. 
+		Every Android smart-phone user is capable of checking the processes that currently reside in physical memory. The Application Manager which is part of the Settings application shows a list of running processes and cached background processes. Additionally, it breaks down the composition of RAM usage (Figure 1-1) by the System applications and user installed applications. 
 		
 		\begin{figure}[h]
 			\centering
@@ -491,7 +491,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		 They focused their efforts on the pieces of context that could be inferred automatically from sensors in a physical environment and produced Context Toolkit [20], a conceptual framework that supported the rapid development of context-aware applications. It is important to keep in mind that at the time this paper was published, the notion of what we refer to as a smart-phone was non-existent. This is evident from the fact that most APMD (Android Powered Mobile Device)(s) have built-in sensors that measure motion, orientation, and various environmental conditions. These sensors are capable of providing raw data with high precision and accuracy, and are useful in monitoring three-dimensional device movement or positioning, or changes in the ambient environment near a device [21]. These conditions make APMD(s) very suitable for utilizing contextual information and translating that potential into a better user experience. We utilize this feature of APMD(s) to propose ways to improve user experience by incorporating contextual information in managing the physical memory of the APMD.		
 			
 	\section{Context Patterns in Application Usage}
-		Several works have attempted to collect user behavior data and they've accomplished this in unique ways. Hannu Verkasalo, in his 2007 paper titled {\em Contextual Patterns in Mobile Service Usage} analyzes how mobile services are used in different contexts [18]. Usage contexts were divided into {\em home, office} and {\em on the move}. A specialized algorithm tracked user's location patterns over a period of time to determine whether the user was at home or at work. Furthermore, changes in location data revealed whether the user was in transit between home and work. There was a correlation between the mobile services requested by the user and the user's physical location, which enabled the algorithm to understand the user's context quite well (refer Figure 2-1). It was also observed that certain services were requested more during the weekends as opposed to certain others being requested more during the weekdays i.e. days with office hours.  
+		Several works have attempted to collect user behavior data and they've accomplished this in unique ways. Hannu Verkasalo, in his 2007 paper titled {\em Contextual Patterns in Mobile Service Usage} analyzes how mobile services are used in different contexts [18]. Usage contexts were divided into {\em home, office} and {\em on the move}. A specialized algorithm tracked user's location patterns over a period of time to determine whether the user was at home or at work. Furthermore, changes in location data revealed whether the user was in transit between home and work. There was a correlation between the mobile services requested by the user and the user's physical location, which enabled the algorithm to understand the user's context quite well (Figure 2-1). It was also observed that certain services were requested more during the weekends as opposed to certain others being requested more during the weekdays i.e. days with office hours.  
 		
 		\begin{figure}[!ht]
 			\centering
@@ -501,7 +501,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		\end{figure}
 	
 	\section{Context Phone}
-		Mika Raento, Antti Oulasvirta, Renaud Petit, and Hannu Toivonen, in their paper titled {\em ContextPhone: A Prototyping Platform for Context-Aware Mobile Applications} proposed that mobile phones are well suited for context aware computing due to an intimate relationship between the user and the phone [19]. Their primary goal was to provide context as a resource and in order to accomplish that, developed a {\em ContextPhone} which comprised of four components (Refer Figure 2-2):
+		Mika Raento, Antti Oulasvirta, Renaud Petit, and Hannu Toivonen, in their paper titled {\em ContextPhone: A Prototyping Platform for Context-Aware Mobile Applications} proposed that mobile phones are well suited for context aware computing due to an intimate relationship between the user and the phone [19]. Their primary goal was to provide context as a resource and in order to accomplish that, developed a {\em ContextPhone} which comprised of four components (Figure 2-2):
 		
 		\begin{itemize}
 			\item Sensors that acquire contextual data (such as location data from GPS)
@@ -521,7 +521,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		It is important to observe that this paper came out in 2005, two years before the first version of Android was even launched. Yet, their fundamental point of focus is still relevant in how we can use context as a powerful resource. Their point about the necessity of customizable applications that are needed for context information to be relevant perfectly applies to this thesis. The Android OS which is open sourced as AOSP (Android Open Source Project) is as customizable as it can get when it comes to modifying mobile components and by extension the user experience with APMD(Android Powered Mobile Device)(s). To be specific, it facilitates ways to gather cache related information such as the list of processes currently residing in memory, the current foreground application and whether the caching mechanism per se is up for modification to list a few. It would be impossible to collect and/or modify such information on any other mobile OS (such as Apple's iOS).
 		
 	\section{Using Context Information for Authentication}
-		Dey et al. established a framework for collecting contextual data and Verkasalo and Raento et al. have shown how user behavior can be analyzed through sensors and other modules that gather contextual information. Shi et al.'s paper titled {\em Implicit Authentication through Learning User Behavior} demonstrates a similar approach in collecting behavioral data of the user but differ in how they put that information to use. They have devised a model to implicitly authenticate smart-phone users based on their behavioral patterns. The user's usage patterns are collected (for e.g. how many calls a user makes a day, how many times user's location changes (Refer Figure 2-3) etc.) and this information is used in building a user model [22].  
+		Dey et al. established a framework for collecting contextual data and Verkasalo and Raento et al. have shown how user behavior can be analyzed through sensors and other modules that gather contextual information. Shi et al.'s paper titled {\em Implicit Authentication through Learning User Behavior} demonstrates a similar approach in collecting behavioral data of the user but differ in how they put that information to use. They have devised a model to implicitly authenticate smart-phone users based on their behavioral patterns. The user's usage patterns are collected (for e.g. how many calls a user makes a day, how many times user's location changes (Figure 2-3) etc.) and this information is used in building a user model [22].  
 		
 		\begin{figure}[!ht]
 			\centering
@@ -541,7 +541,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	\section{What are the desired metrics?}
 		
 		\subsection{Hits, Misses, Hit Ratio \& Latency}
-			Alan Jay Smith defines Cache as a high speed buffer that holds items in current use [23]. In our context, Android holds application components (such as processes) as CBP (Cached Background Process)(s) in memory. As previously discussed, CBP(s) do not take up processor time, they are merely cached for quick application startup should the user request that particular application. A cache hit is a state in which data requested for processing by a component or application is found in the cache memory. It is a faster means of delivering data to the processor, as the cache already contains the requested data [24]. When applied to our scenario, a cache hit would represent a situation wherein the user requests (clicks) an application that currently resides in memory, either as an active process (including services) or as a CBP (Refer Figure 3-1).  
+			Alan Jay Smith defines Cache as a high speed buffer that holds items in current use [23]. In our context, Android holds application components (such as processes) as CBP (Cached Background Process)(s) in memory. As previously discussed, CBP(s) do not take up processor time, they are merely cached for quick application startup should the user request that particular application. A cache hit is a state in which data requested for processing by a component or application is found in the cache memory. It is a faster means of delivering data to the processor, as the cache already contains the requested data [24]. When applied to our scenario, a cache hit would represent a situation wherein the user requests (clicks) an application that currently resides in memory, either as an active process (including services) or as a CBP (Figure 3-1).  
 			
 			\begin{figure}[!ht]
 				\centering
@@ -550,7 +550,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				{Given this snapshot of the RAM, if the user clicks on the Messenger application (active process) or Clock application (CBP), it would result in a Cache Hit}
 			\end{figure}
 			
-			A cache miss is a state where the data requested for processing, by a component or application is not found in the cache memory [25]. When applied to our scenario, a cache miss would represent a situation wherein the user requests (clicks) an application that currently does not reside in memory, either as an active process (including services) or as a CBP (Refer Figure 3-2).
+			A cache miss is a state where the data requested for processing, by a component or application is not found in the cache memory [25]. When applied to our scenario, a cache miss would represent a situation wherein the user requests (clicks) an application that currently does not reside in memory, either as an active process (including services) or as a CBP (Figure 3-2).
 			
 			\begin{figure}[!ht]
 				\centering
@@ -584,7 +584,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				The most efficient caching scheme would always have the requested item in cache. In our case, the ideal scheme would be one that ensures that every application the user requests, resides in memory. This optimal result is referred to as Belady's optimal algorithm [26] or the clairvoyant algorithm. Since it is generally impossible to predict the exact behavior of the user, this is not implementable in practice. The practical minimum can be calculated only after experimentation, and one can compare the effectiveness of the actually chosen caching scheme against Belady's as a benchmark.
 			
 			\subsubsection{Recency of Usage}
-				This caching scheme primarily relies on recency of application usage and this is the default scheme Android currently uses. Android caches application components in memory as CBP(s) and associates each with a time-stamp. If the memory gets too full, it starts removing the least recently used CBP(s) first and depending on how direly low the memory is, it may not stop killing processes until even the active foreground application (the one user is interacting with) is removed [15], although this situation is extremely rare in practice and only results in the case of malfunctioning applications that leak memory. The Settings application can give the user clues about which CBP(s) were recently used. Clicking on an application that is currently not in memory results in that application being cached as a CBP near the top of the list. This suggests that the CBP(s) displayed by the Settings application are roughly sorted by their time-stamp from most recently used to least recently used (Refer Figure 3-3). 
+				This caching scheme primarily relies on recency of application usage and this is the default scheme Android currently uses. Android caches application components in memory as CBP(s) and associates each with a time-stamp. If the memory gets too full, it starts removing the least recently used CBP(s) first and depending on how direly low the memory is, it may not stop killing processes until even the active foreground application (the one user is interacting with) is removed [15], although this situation is extremely rare in practice and only results in the case of malfunctioning applications that leak memory. The Settings application can give the user clues about which CBP(s) were recently used. Clicking on an application that is currently not in memory results in that application being cached as a CBP near the top of the list. This suggests that the CBP(s) displayed by the Settings application are roughly sorted by their time-stamp from most recently used to least recently used (Figure 3-3). 
 				
 				\begin{figure}[!ht]
 					\centering
@@ -610,7 +610,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\end{itemize}
 								
 				\paragraph{Pro-actively Adding CBP(s)}
-					In order for the proposed Default-Context Hybrid (henceforth referred to as Hybrid) caching scheme to work, there must be provision for the Android OS to pro-actively cache application components in memory as CBP(s). Presuming that the context-analyzer module does its job and suggests a list of applications the user might use in the near future, there must a mechanism for Android to utilize that information and pro-actively cache these applications in RAM as CBP(s). This mechanism can be verified at the user level through a small experiment. As previously mentioned, the Settings application provides a visual interface for the list of active processes and services running in memory and the CBP(s) that reside in memory at any moment in time. As part of the experiment, each and every CBP was forcefully removed from the cache (there is provision to do this at the user level (Refer Figure 3-4)). 
+					In order for the proposed Default-Context Hybrid (henceforth referred to as Hybrid) caching scheme to work, there must be provision for the Android OS to pro-actively cache application components in memory as CBP(s). Presuming that the context-analyzer module does its job and suggests a list of applications the user might use in the near future, there must a mechanism for Android to utilize that information and pro-actively cache these applications in RAM as CBP(s). This mechanism can be verified at the user level through a small experiment. As previously mentioned, the Settings application provides a visual interface for the list of active processes and services running in memory and the CBP(s) that reside in memory at any moment in time. As part of the experiment, each and every CBP was forcefully removed from the cache (there is provision to do this at the user level (Figure 3-4)). 
 						
 					\begin{figure}[!ht]
 						\centering
@@ -619,7 +619,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 						{Pressing the {\em STOP} button removes the CBP from memory}
 					\end{figure}					
 					
-					Once each CBP was removed, the phone was untouched for three minutes. After three minutes, when the Settings application was launched to look at the list of CBP(s), it wasn't empty. Instead, there were several CBP(s), some of which were previously removed and some of which were'nt in the list to begin with (Refer Figure 3-5). 
+					Once each CBP was removed, the phone was untouched for three minutes. After three minutes, when the Settings application was launched to look at the list of CBP(s), it wasn't empty. Instead, there were several CBP(s), some of which were previously removed and some of which were'nt in the list to begin with (Figure 3-5). 
 					
 					\begin{figure}[!ht]
 						\centering
@@ -724,7 +724,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 %				\item '-c': It displays the CPU
 %			\end{itemize}
 %			
-			With the help of {\em libsuperuser} library which provides a convenient framework to run shell commands [40] and the {\em AndroidProcess} library which provides a framework to parse the process-related shell outputs [41], the following algorithm (Refer Algorithm 1) was written to obtain a list of processes residing in memory (active processes and CBP(s)). It is worth noting that this list corresponds to the list of processes displayed by the Settings application (Refer Figure 3-1) as part of the running applications and CBP screens, and that the Settings application has system privileges that third party Android applications don't.\\ 
+			With the help of {\em libsuperuser} library which provides a convenient framework to run shell commands [40] and the {\em AndroidProcess} library which provides a framework to parse the process-related shell outputs [41], the following algorithm (Algorithm 1) was written to obtain a list of processes residing in memory (active processes and CBP(s)). It is worth noting that this list corresponds to the list of processes displayed by the Settings application (Figure 3-1) as part of the running applications and CBP screens, and that the Settings application has system privileges that third party Android applications don't.\\ 
 			
 			\begin{algorithm}[H]
 				\SetAlgoLined
@@ -758,7 +758,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\end{algorithm}			
 			
 		\subsection{Obtaining the Foreground Application}
-			In order to update the CHR metric, we need the ability to detect new cache hits and cache misses. A new cache hit/miss occurs when there are new application requests i.e. changes in the foreground application. Before we analyze how to detect change in the foreground application, we first need a way to obtain the current foreground application. Had we approached this problem at the system level, we could've made use of system level privileges such as listening to a new screen-touch by the user and detecting which application was  launched but this is not possible from a third party user-level application. Fortunately, there is a workaround to detecting the foreground application at the user level. We obtain every process currently running in memory and through a process of elimination, obtain the foreground application. To elaborate, the foreground application has certain unique properties in its process name, UID (Unique Identifier) and other fields, that can be exploited to eliminate processes that are not associated with the current foreground application. The following   algorithm (Refer Algorithm 2) illustrates this process.
+			In order to update the CHR metric, we need the ability to detect new cache hits and cache misses. A new cache hit/miss occurs when there are new application requests i.e. changes in the foreground application. Before we analyze how to detect change in the foreground application, we first need a way to obtain the current foreground application. Had we approached this problem at the system level, we could've made use of system level privileges such as listening to a new screen-touch by the user and detecting which application was  launched but this is not possible from a third party user-level application. Fortunately, there is a workaround to detecting the foreground application at the user level. We obtain every process currently running in memory and through a process of elimination, obtain the foreground application. To elaborate, the foreground application has certain unique properties in its process name, UID (Unique Identifier) and other fields, that can be exploited to eliminate processes that are not associated with the current foreground application. The following   algorithm (Algorithm 2) illustrates this process.
 			
 			\begin{algorithm}[H]
 				\SetAlgoLined
@@ -801,7 +801,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			If {\em cmdline} contains {\em com.android.systemui} or if {\em uid} lies between 1000 and 1038, it's a system application and is thus eliminated from consideration. The crucial attribute of the foreground application is that it has the lowest OOM score of all applications. When the Android OS is running too low on memory, it is the job of the Linux OOM killer [44] to sacrifice one or more processes in order to free up memory for the system when all else fails. A low OOM score indicates that the process is less likely to be killed and that it is lower on the OOM killer's radar. It quite intuitive that the process with the lowest OOM score would be the foreground process as it is of paramount importance not to remove the process, the end-user is interacting with, unless it's the very last resort. This unique property of the foreground process enables us to distinguish it from the rest of the pool. 
 			
 		\subsection{Updating the Statistics}
-			 So far, we've established ways to collect the list of processes in memory and the foreground application. The next step is to figure out a way to update the metrics as and when the user requests new applications. The rate at which the end-user toggles between applications varies from person to person. It also depends on the level of usage. For instance, there are times when the end-user is actively using their APMD and others when the APMD is idle or is switched off. Therefore it's hard to predict when there could be a potential change in the foreground application. There is no inherent mechanism for user-level applications to detect third party application launches (That privilege is reserved for system level processes). Therefore, our solution comprises of starting a service [8] that retrieves the current foreground process (Refer Algorithm 2) and the current list of processes residing in memory (Refer Algorithm 1) every second. If there is a change detected in the foreground process (compared to the last second), then the cache metrics are updated. The time interval of one second is chosen as it deemed to be reasonably accommodative of the average time it takes an end-user to switch from one application to another. This is further discussed in the Points of Weakness section. The design of the service and the corresponding application is discussed in sections 4.4 and 4.5. The following algorithm (Refer Algorithm 3) illustrates the process of updating the cache metrics.\\     
+			 So far, we've established ways to collect the list of processes in memory and the foreground application. The next step is to figure out a way to update the metrics as and when the user requests new applications. The rate at which the end-user toggles between applications varies from person to person. It also depends on the level of usage. For instance, there are times when the end-user is actively using their APMD and others when the APMD is idle or is switched off. Therefore it's hard to predict when there could be a potential change in the foreground application. There is no inherent mechanism for user-level applications to detect third party application launches (That privilege is reserved for system level processes). Therefore, our solution comprises of starting a service [8] that retrieves the current foreground process (Algorithm 2) and the current list of processes residing in memory (Algorithm 1) every second. If there is a change detected in the foreground process (compared to the last second), then the cache metrics are updated. The time interval of one second is chosen as it deemed to be reasonably accommodative of the average time it takes an end-user to switch from one application to another. This is further discussed in the Points of Weakness section. The design of the service and the corresponding application is discussed in sections 4.4 and 4.5. The following algorithm (Algorithm 3) illustrates the process of updating the cache metrics.\\     
 			 
 		 	\begin{algorithm}[H]
 		 		\SetAlgoLined
@@ -822,7 +822,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		 	\end{algorithm}
 
 		\subsection{Backing Up the Data}
-			Previously, we discussed the mechanism by which the background service updates the cache metrics. The other aspect of this issue is storing this data. Before we inspect how to store the data, let's discuss the necessity for such a provision. Our background service is designed to run throughout the duration of the experiment and retrieve the foreground application and the list of processes in memory every second. This results in it's OOM score increasing i.e. it's likelihood of getting killed by the Linux OOM killer [44] which would result in a loss of data. It is worth noting that the OOM killer selects the {\em best} process to kill which is decided by the combination of how long a process has been running and how much memory would be released if the process is killed. Even though our process scores poorly on the time duration aspect, it takes up relatively low memory compared to some of the other common background processes (Refer Figure 3-6).
+			Previously, we discussed the mechanism by which the background service updates the cache metrics. The other aspect of this issue is storing this data. Before we inspect how to store the data, let's discuss the necessity for such a provision. Our background service is designed to run throughout the duration of the experiment and retrieve the foreground application and the list of processes in memory every second. This results in it's OOM score increasing i.e. it's likelihood of getting killed by the Linux OOM killer [44] which would result in a loss of data. It is worth noting that the OOM killer selects the {\em best} process to kill which is decided by the combination of how long a process has been running and how much memory would be released if the process is killed. Even though our process scores poorly on the time duration aspect, it takes up relatively low memory compared to some of the other common background processes (Figure 3-6).
 
 			\begin{figure}[h]
 				\centering
@@ -840,7 +840,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\item Network Connection - It is used to store data over the Internet.
 			\end{itemize}
 			
-			For our scenario, Internal Storage is the best fit as it keeps the data private to the application and since the data is quite primitive (cache hits and misses), we do not need SQLite databases or network connections. The data is written to a file every minute. That way, we don't have to constantly perform I/O operations from the service and in the worst case scenario, fifty nine seconds of Cache data would be lost which is relatively a small amount of time. Algorithm 3 can be tweaked to incorporate the file write operation (Refer Algorithm 4).
+			For our scenario, Internal Storage is the best fit as it keeps the data private to the application and since the data is quite primitive (cache hits and misses), we do not need SQLite databases or network connections. The data is written to a file every minute. That way, we don't have to constantly perform I/O operations from the service and in the worst case scenario, fifty nine seconds of Cache data would be lost which is relatively a small amount of time. Algorithm 3 can be tweaked to incorporate the file write operation (Algorithm 4).
 			
 			\begin{algorithm}[H]
 				\SetAlgoLined
@@ -860,7 +860,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\end{algorithm}
 			
 		\subsection{Reading the User's Calendar}
-			To compute the CHR of the Hybrid scheme, we need the ability to obtain the list of events from the user's calendar and the ability to parse that information to come up with a list of suggested applications. We'll discuss the parsing aspect in the next segment and focus on finding a way to read the user's calendar. The solution to this problem is quite simple, Google provides a public API (Application Programming Interface) [46] to obtain access to the user's calendar information, including the list of events. This operation does'nt have to be carried out with the same frequency as reading the list of processes in memory or obtaining the foreground application. In our solution, we query the calendar every four hours (for events occurring in that four hour period) and feed the data (events list) into a module that parses the information and produces a suggested list of applications (Refer Algorithm 5). 
+			To compute the CHR of the Hybrid scheme, we need the ability to obtain the list of events from the user's calendar and the ability to parse that information to come up with a list of suggested applications. We'll discuss the parsing aspect in the next segment and focus on finding a way to read the user's calendar. The solution to this problem is quite simple, Google provides a public API (Application Programming Interface) [46] to obtain access to the user's calendar information, including the list of events. This operation does'nt have to be carried out with the same frequency as reading the list of processes in memory or obtaining the foreground application. In our solution, we query the calendar every four hours (for events occurring in that four hour period) and feed the data (events list) into a module that parses the information and produces a suggested list of applications (Algorithm 5). 
 			
 			\begin{algorithm}[H]
 				\SetAlgoLined
@@ -930,7 +930,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\item The volunteer must be willing to install a third party application on their APMD.
 		\end{itemize}
 		
-		The algorithm that obtains the list of processes currently residing in memory (Refer Section 3.3.2) and the algorithm that retrieves the current foreground application (Refer Section 3.3.3) do not apply to Android OS versions below 5.0, hence the necessity for APMD(s) with OS versions that are Lollipop and above.
+		The algorithm that obtains the list of processes currently residing in memory (Section 3.3.2) and the algorithm that retrieves the current foreground application (Section 3.3.3) do not apply to Android OS versions below 5.0, hence the necessity for APMD(s) with OS versions that are Lollipop and above.
 		
 		\subsection{Addressing Privacy Concerns}
 			Since the research volunteers had to install a third party application ({\em ContextAnalyzer}), it was crucial to address any privacy concerns that arose. In order to gain the trust of the volunteers, we adopted a policy of full transparency and took the following measures:
@@ -1026,7 +1026,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\item Calendar Parser
 		\end{itemize}
 		
-		The main activity is the heart of the application. It is responsible for launching the application and creating a background service. The background service retrieves the list of processes in memory and the current foreground application. The background service is bound to the activity i.e. it's life-cycle is tied to that of the activity's [52]. It is for this reason that the volunteers are instructed not to forcefully close {\em ContextAnalyzer} for the duration of the experiment as that would destroy the service along with the activity and all metric collection would stop. The process manager module contains a {\em Process} data structure that encapsulates a running process and all of its attributes (name, user identifier, process identifier to list a few). It also contains the algorithm that fetches the list of processes residing in memory. The background service launches a separate thread that invokes this algorithm every second, to compute the cache metrics and update the user interface. It also has the additional task of obtaining the calendar list from the calendar parser. The calendar parser gets the list of calendar events from the calendar reader and produces the calendar list (that the service consumes). The calendar reader queries the user's calendar API and obtains the list of events for the next four hours. The following class diagram (Refer Figure 4-4) illustrates {\em ContextAnalyzer}'s design.
+		The main activity is the heart of the application. It is responsible for launching the application and creating a background service. The background service retrieves the list of processes in memory and the current foreground application. The background service is bound to the activity i.e. it's life-cycle is tied to that of the activity's [52]. It is for this reason that the volunteers are instructed not to forcefully close {\em ContextAnalyzer} for the duration of the experiment as that would destroy the service along with the activity and all metric collection would stop. The process manager module contains a {\em Process} data structure that encapsulates a running process and all of its attributes (name, user identifier, process identifier to list a few). It also contains the algorithm that fetches the list of processes residing in memory. The background service launches a separate thread that invokes this algorithm every second, to compute the cache metrics and update the user interface. It also has the additional task of obtaining the calendar list from the calendar parser. The calendar parser gets the list of calendar events from the calendar reader and produces the calendar list (that the service consumes). The calendar reader queries the user's calendar API and obtains the list of events for the next four hours. The following class diagram (Figure 4-4) illustrates {\em ContextAnalyzer}'s design.
 	
 		\begin{figure}[h]
 			\centering
@@ -1052,7 +1052,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\end{itemize} 
 			
 			\subsection{Total Installed Applications}
-				The minimum number of installed applications among the volunteers, was 120. The maximum number of applications installed by any volunteer was 374. The average number of installed applications was 295. The following chart (Refer Figure 5-1) illustrates this distribution.
+				The minimum number of installed applications among the volunteers, was 120. The maximum number of applications installed by any volunteer was 374. The average number of installed applications was 295. The following chart (Figure 5-1) illustrates this distribution.
 				
 				\begin{figure}[h]
 					\centering
@@ -1061,7 +1061,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\end{figure}
 				
 			\subsection{Unique Applications Clicked}
-				The minimum number of unique applications that were clicked among the volunteers, during the course of the experiment, was 34. The maximum number of unique applications requested by any volunteer was 56. The average number of unique applications requested was roughly 46. The following chart (Refer Figure 5-2) illustrates this distribution.
+				The minimum number of unique applications that were clicked among the volunteers, during the course of the experiment, was 34. The maximum number of unique applications requested by any volunteer was 56. The average number of unique applications requested was roughly 46. The following chart (Figure 5-2) illustrates this distribution.
 				
 				\begin{figure}[h]
 					\centering
@@ -1070,7 +1070,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\end{figure}
 				
 			\subsection{Calendar Entries}
-				The minimum number of calendar entries among the volunteers, was 11. The maximum number of entries entered in the calendar by any volunteer was 43. The average number of calendar entries was roughly 25. The following chart (Refer Figure 5-3) illustrates this distribution.
+				The minimum number of calendar entries among the volunteers, was 11. The maximum number of entries entered in the calendar by any volunteer was 43. The average number of calendar entries was roughly 25. The following chart (Figure 5-3) illustrates this distribution.
 				
 				\begin{figure}[h]
 					\centering
@@ -1081,7 +1081,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			So far, we've analyzed the distribution for the number of installed applications, the number of unique applications clicked and the total number of calendar entries during the course of the experiment. In the next section, we'll examine whether there's a correlation between these metrics and the efficiency of certain caching schemes.
 			
 		\section{Experiment Results}
-			The data collected by the {\em ContextAnalyzer} application provides the metrics to measure the efficiencies of three caching schemes (Refer Section 4.4):
+			The data collected by the {\em ContextAnalyzer} application provides the metrics to measure the efficiencies of three caching schemes (Section 4.4):
 			
 			\begin{itemize}
 				\item Context Scheme
@@ -1092,7 +1092,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			Let us analyze the data from each scheme. Since the absolute number of cache hits and cache misses vary depending on frequency of smart-phone usage, the only relevant metrics are the CHR(s) for each scheme. We'll examine the CHR(s) in percentages for each caching scheme.
 			
 			\subsection{Context Scheme}
-				The maximum CHR recorded by any volunteer for this scheme was 37.39\%. However, this is not representative of the average case. The mean CHR for the context scheme was 18.47\% with a standard deviation of 7.67\% and a variance of 58.75. The minimum recorded CHR was 5.92\% suggesting that in the worst case, roughly only 1 in 16 application requests resulted in a cache hit. The median CHR was 17.35\%. The following box plot (Refer Figure 5-4) illustrates this distribution.
+				The maximum CHR recorded by any volunteer for this scheme was 37.39\%. However, this is not representative of the average case. The mean CHR for the context scheme was 18.47\% with a standard deviation of 7.67\% and a variance of 58.75. The minimum recorded CHR was 5.92\% suggesting that in the worst case, roughly only 1 in 16 application requests resulted in a cache hit. The median CHR was 17.35\%. The following box plot (Figure 5-4) illustrates this distribution.
 				
 				\begin{figure}[h]
 					\centering
@@ -1103,7 +1103,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				The average CHR was 18.47\% i.e. roughly 4 in 5 application requests resulted in a cache miss. While it's better than nothing, it remains to be seen whether the default scheme or the default-context hybrid scheme can put up better numbers.	
 			
 			\subsection{Default Scheme}
-				The maximum CHR recorded by any volunteer for this scheme was 93.19\%. However, this is not representative of the average case. The mean CHR for the default scheme was 79.17\% with a standard deviation of 13.87\% and a variance of 192.37. The minimum recorded CHR was 46.52\% suggesting that in the worst case, less than 1 in 2 application requests resulted in a cache hit. The median CHR was 84.04\%. The following box plot (Refer Figure 5-4) illustrates this distribution.
+				The maximum CHR recorded by any volunteer for this scheme was 93.19\%. However, this is not representative of the average case. The mean CHR for the default scheme was 79.17\% with a standard deviation of 13.87\% and a variance of 192.37. The minimum recorded CHR was 46.52\% suggesting that in the worst case, less than 1 in 2 application requests resulted in a cache hit. The median CHR was 84.04\%. The following box plot (Figure 5-4) illustrates this distribution.
 				
 				\begin{figure}[h]
 					\centering
@@ -1114,7 +1114,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				The average CHR was 79.17\% i.e. roughly 4 in 5 application requests resulted in a cache hit. To put that in perspective, it is more than 4 times the average CHR of the context scheme. Let's see if the hybrid scheme can improve these numbers.
 				
 			\subsection{Default-Context Hybrid Scheme}
-				The maximum CHR recorded by any volunteer for this scheme was 95.62\%. However, this is not representative of the average case. The mean CHR for the hybrid scheme was 83.50\% with a standard deviation of 12.39\% and a variance of 153.49. The minimum recorded CHR was 53.48\% suggesting that in the worst case, less than 1 in 2 application requests resulted in a cache miss. The median CHR was 88.48\%. The following box plot (Refer Figure 5-4) illustrates this distribution.
+				The maximum CHR recorded by any volunteer for this scheme was 95.62\%. However, this is not representative of the average case. The mean CHR for the hybrid scheme was 83.50\% with a standard deviation of 12.39\% and a variance of 153.49. The minimum recorded CHR was 53.48\% suggesting that in the worst case, less than 1 in 2 application requests resulted in a cache miss. The median CHR was 88.48\%. The following box plot (Figure 5-4) illustrates this distribution.
 				
 				\begin{figure}[h]
 					\centering
@@ -1125,7 +1125,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				The average CHR was 83.50\% i.e. roughly more than 4 in 5 application requests resulted in a cache hit. It is worth noting that the hybrid scheme's average CHR is 4.33\% more than that of the default scheme, hinting at an improvement in efficiency. In the next section, we'll examine if this increase in CHR is statistically significant, by performing a paired t test [60]. 
 
 		\section{Significance Testing}
-			In any experiment or observation that involves drawing a sample from a population, there is always the possibility that an observed effect could have occurred due to sampling error alone [65][66]. In order to prove that the increase in CHR for the hybrid scheme is statistically significant, we performed a paired t test using every (hybrid CHR, default CHR) pair collected over the duration of the experiment (Refer Figures 5-7, 5-8).
+			In any experiment or observation that involves drawing a sample from a population, there is always the possibility that an observed effect could have occurred due to sampling error alone [65][66]. In order to prove that the increase in CHR for the hybrid scheme is statistically significant, we performed a paired t test using every (hybrid CHR, default CHR) pair collected over the duration of the experiment (Figures 5-7, 5-8).
 			
 			\begin{figure}[h]
 				\centering
@@ -1158,7 +1158,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		\section{Correlation with Demographic Data}
 			
 			\subsection{Calendar Usage}
-				Intuitively, we'd expect the increase in CHR to be higher when the calendar usage is higher. Let us examine if such a correlation exists is the data we collected. We compute the PPMCC (Pearson product-moment correlation coefficient) [69] for the increase in CHR and the number of calendar entries for each volunteer (Refer Figure 5-10). 
+				Intuitively, we'd expect the increase in CHR to be higher when the calendar usage is higher. Let us examine if such a correlation exists is the data we collected. We compute the PPMCC (Pearson product-moment correlation coefficient) [69] for the increase in CHR and the number of calendar entries for each volunteer (Figure 5-10). 
 				
 				\begin{figure}[h]
 					\centering
@@ -1184,7 +1184,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			
 			\subsection{Number of Unique Applications Requested}
 				
-				Let us examine if there is a relationship between the number of unique applications a user requests over the course of the experiment, and an increase in the cache hit ratio. We compute the PPMCC [69] for the increase in CHR and the number of unique applications requested for each volunteer (Refer Figure 5-10). 
+				Let us examine if there is a relationship between the number of unique applications a user requests over the course of the experiment, and an increase in the cache hit ratio. We compute the PPMCC [69] for the increase in CHR and the number of unique applications requested for each volunteer (Figure 5-10). 
 				
 				\begin{figure}[h]
 					\centering
