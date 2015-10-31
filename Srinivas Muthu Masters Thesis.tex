@@ -278,16 +278,15 @@ I'd like to thank all my friends and family for supporting me throughout my time
 \begin{listofabbreviations}
 
  \abbreviation{RAM}{Random Access Memory}
- \abbreviation{LRU}{Least Recently Used}
  \abbreviation{CHR}{Cache Hit Ratio}
  \abbreviation{OS}{Operating System}
  \abbreviation{AOSP}{Android Open Source Project}
  \abbreviation{APK}{Android Package} 
  \abbreviation{APMD}{Android Powered Mobile Device}
- \abbreviation{CBP}{Cached Background Processes} 
+ \abbreviation{CBP}{Cached Background Process} 
  \abbreviation{OEM}{Original Equipment Manufacturer}
  \abbreviation{ADB}{Android Debug Bridge}
- \abbreviation{UID}{unique Identifier}
+ \abbreviation{UID}{Unique Identifier}
  \abbreviation{OOM}{Out Of Memory}
  \abbreviation{API}{Application Programming Interface} 
  \abbreviation{USA}{United States of America} 
@@ -415,14 +414,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\item Each volunteer authorized the application to access their calendar.
 			\end{itemize}
 			
-			There are plenty of ways to obtain contextual information but reading the calendar is beneficial for two reasons:
-			
-			\begin{itemize}
-				\item Android provides a public interface to read the user's calendar with their permission [30]. Therefore it's quite simple to obtain this information.
-				\item The probability that the event listed in the calendar actually occurring is quite high. This is due to the fact that the user personally entered the event which beats models that predict user behavior.  
-			\end{itemize}
-			
-			Chapter 4 elaborates on why volunteers require API level 21 and above, and Android mandates that the user authorize all permissions for third-party applications to access their data, during installation.
+			Chapter 4 elaborates on why volunteers require API level 21 and above. Android mandates that the user authorize all permissions for third-party applications to access their data, during installation.
 			
 	\section{Checking Applications in RAM}
 		Every Android smart-phone user is capable of checking the processes that currently reside in physical memory. The Application Manager which is part of the Settings application shows a list of running processes and cached background processes. Additionally, it breaks down the composition of RAM usage (Figure 1-1) by the System applications and user installed applications. 
@@ -479,7 +471,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 \chapter{Related Work}
 	
 	\section{Early Studies in Context-Aware Computing}
-		Dey, Abowd and Salber, in their 2001 paper titled {\em A conceptual framework and a toolkit for supporting the rapid prototyping of context-aware applications} laid out the foundation and in many ways a standardized framework for building context-aware applications. When this paper was published, mobile phones were becoming mainstream devices and were no longer confined to the hands of the wealthy. By definition, more people were mobile and the devices they carried with them had the potential to utilize contextual information gathered from the surroundings, in ways that desktops could'nt do due to their stationary nature. They defined context as any information that characterizes a situation related to the interaction between humans, applications and the surrounding environment. They opined that the state of research in context-awareness was inadequate for three main reasons:
+		Dey, Abowd and Salber, in their 2001 paper titled {\em A conceptual framework and a toolkit for supporting the rapid prototyping of context-aware applications} laid out the foundation and in many ways a standardized framework for building context-aware applications. When this paper was published, mobile phones were becoming mainstream devices and were no longer confined to the hands of a few. By definition, more people were mobile and the devices they carried with them had the potential to utilize contextual information gathered from the surroundings, in ways that desktops could'nt do due to their stationary nature. Dey et al. defined context as any information that characterizes a situation related to the interaction between humans, applications and the surrounding environment. They opined that the state of research in context-awareness was inadequate for three main reasons:
 		
 		\begin{itemize}
 			\item The notion of context was ill-defined.
@@ -487,7 +479,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\item No tools were available to jump-start the development of context-aware applications.
 		\end{itemize}
 		
-		 They focused their efforts on the pieces of context that could be inferred automatically from sensors in a physical environment and produced Context Toolkit [6], a conceptual framework that supported the rapid development of context-aware applications. It is important to keep in mind that at the time this paper was published, the notion of what we refer to as a smart-phone was non-existent. This is evident from the fact that most APMD (Android Powered Mobile Device)(s) have built-in sensors that measure motion, orientation, and various environmental conditions. These sensors are capable of providing raw data with high precision and accuracy, and are useful in monitoring three-dimensional device movement or positioning, or changes in the ambient environment near a device [7]. These conditions make APMD(s) very suitable for utilizing contextual information and translating that potential into a better user experience. We utilize this feature of APMD(s) to propose ways to improve user experience by incorporating contextual information in managing the physical memory of the APMD.		
+		 They focused their efforts on the pieces of context that could be inferred automatically from sensors in a physical environment and produced Context Toolkit [6], a conceptual framework that supported the rapid development of context-aware applications. It is important to keep in mind that at the time this paper was published, the notion of what we refer to as a smart-phone was non-existent. This is evident from the fact that most APMD (Android Powered Mobile Device)(s) have built-in sensors that measure motion, orientation, and various environmental conditions. These sensors are capable of providing raw data with high precision and accuracy, and are useful in monitoring three-dimensional device movement or positioning, or changes in the ambient environment near a device [7]. These conditions make APMD(s) very suitable for utilizing contextual information and translating that potential into a better user experience. We utilize this feature of APMD(s) to propose ways to improve user experience by incorporating contextual information in managing its physical.		
 			
 	\section{Context Patterns in Application Usage}
 		Several works have attempted to collect user behavior data and they've accomplished this in unique ways. Hannu Verkasalo, in his 2007 paper titled {\em Contextual Patterns in Mobile Service Usage} analyzes how mobile services are used in different contexts [4]. Usage contexts were divided into {\em home, office} and {\em on the move}. A specialized algorithm tracked user's location patterns over a period of time to determine whether the user was at home or at work. Furthermore, changes in location data revealed whether the user was in transit between home and work. There was a correlation between the mobile services requested by the user and the user's physical location, which enabled the algorithm to understand the user's context quite well (Figure 2-1). It was also observed that certain services were requested more during the weekends as opposed to certain others being requested more during the weekdays i.e. days with office hours.  
@@ -517,10 +509,10 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			{The ContextPhone platform; Four interconnected components — sensors, system services, communication services, and customizable applications — facilitate communication with the outside world.}
 		\end{figure}
 		
-		It is important to observe that this paper came out in 2005, two years before the first version of Android was even launched. Yet, their fundamental point of focus is still relevant in how we can use context as a powerful resource. Their point about the necessity of customizable applications that are needed for context information to be relevant perfectly applies to this thesis. The Android OS which is open sourced as AOSP (Android Open Source Project) is as customizable as it can get when it comes to modifying mobile components and by extension the user experience with APMD(Android Powered Mobile Device)(s). To be specific, it facilitates ways to gather cache related information such as the list of processes currently residing in memory, the current foreground application and whether the caching mechanism per se is up for modification to list a few. It would be impossible to collect and/or modify such information on any other mobile OS (such as Apple's iOS).
+		It is important to observe that this paper came out in 2005, two years before the first version of Android was even launched. Yet, their fundamental point of focus is still relevant in how we can use context as a powerful resource. Their point about the necessity of customizable applications that are needed for context information to be relevant perfectly applies to this thesis. The Android OS which is open sourced as AOSP (Android Open Source Project) is as customizable as it can get when it comes to modifying mobile components and by extension the user experience with APMD(s). To be specific, it facilitates ways to gather information needed to compute the efficiency of the cache such as the list of processes currently residing in memory and the current foreground application among others. We could also modify the caching mechanism per se and build our own custom distribution of the Android OS. It would be impossible to collect and/or modify such information on any other mobile OS (such as Apple's iOS).
 		
 	\section{Using Context Information for Authentication}
-		Dey et al. established a framework for collecting contextual data and Verkasalo and Raento et al. have shown how user behavior can be analyzed through sensors and other modules that gather contextual information. Shi et al.'s paper titled {\em Implicit Authentication through Learning User Behavior} demonstrates a similar approach in collecting behavioral data of the user but differ in how they put that information to use. They have devised a model to implicitly authenticate smart-phone users based on their behavioral patterns. The user's usage patterns are collected (for e.g. how many calls a user makes a day, how many times user's location changes (Figure 2-3) etc.) and this information is used in building a user model [8].  
+		Dey et al. established a framework for collecting contextual data and Verkasalo and Raento et al. have shown how user behavior can be analyzed through sensors and other modules that gather contextual information. Shi et al.'s paper titled {\em Implicit Authentication through Learning User Behavior} demonstrates a similar approach in collecting behavioral data of the user but differs in how it puts that information to use. They have devised a model to implicitly authenticate smart-phone users based on their behavioral patterns. The user's usage patterns are collected (for e.g. how many calls a user makes a day, how many times user's location changes (Figure 2-3) etc.) and this information is used in building a user model [8].  
 		
 		\begin{figure}[!ht]
 			\centering
@@ -530,7 +522,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		\end{figure}		
 		Once the user model is built and the profile completed, the algorithm can determine the likelihood of a random user of the phone not being the owner of the phone (the one whose user model was profiled). 
 		
-		As demonstrated by Shi et al., there are numerous ways contextual information can come in handy. In our case, we propose a user-centric caching scheme for caching application components in memory, demonstrate its superior efficiency and user experience, by looking into the user's calendar for contextual information.  			
+		As demonstrated by Shi et al., there are numerous ways contextual information can come in handy. In our case, we propose a default-context hybrid caching scheme for caching application components in memory, that operates by looking into the user's calendar for contextual information.  			
 	
 \chapter{Challenges in Collecting the Metrics}
 	
@@ -546,7 +538,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\centering
 				\includegraphics[width = 90mm]{images/runningApps.png}
 				\caption[Running Apps and CBP(s) - Cache Hit]
-				{Given this snapshot of the RAM, if the user clicks on the Messenger application (active process) or Clock application (CBP), it would result in a Cache Hit}
+				{Given this snapshot of the RAM, if the user clicks on say, the Messenger application (active process) or the Clock application (CBP), it would result in a Cache Hit}
 			\end{figure}
 			
 			A cache miss is a state where the data requested for processing, by a component or application is not found in the cache memory [11]. When applied to our scenario, a cache miss would represent a situation wherein the user requests (clicks) an application that currently does not reside in memory, either as an active process (including services) or as a CBP (Figure 3-2).
@@ -572,9 +564,9 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\item CHR
 			\end{itemize}
 			
-			The latency of a cache describes how long after requesting a desired item, the cache can return that item (in the case of a cache hit). In our scenario, processes are cached in RAM. Therefore, even if the number of processes cached in memory increases, there will hardly be any difference in the time it takes to fetch a reque-sted item (application component) as they all reside in RAM which by definition supports random access. Latency is more of a factor in caches that are located further away from physical memory (such as L1 and L2 caches).
+			The latency of a cache describes how long after requesting a desired item, the cache can return that item (in the case of a cache hit). In our scenario, processes are cached in RAM. Therefore, even if the number of processes cached in memory increases, there will hardly be any difference in the time it takes to fetch a requested item (application component) as they all reside in RAM which by definition supports random access. Latency is more of a factor in caches that are located further away from physical memory (such as L1 and L2 caches).
 			
-			The CHR of a cache describes how often a searched-for item is actually found in the cache. The higher the CHR, the better the cache is. When applied to our context, a high CHR results is more application components being fetched from memory, rather than disk which in turn results in quicker application startup times. This improvent in startup speed results in an enhanced user experience.   
+			The CHR of a cache describes how often a searched-for item is actually found in the cache. The higher the CHR, the better the cache is. When applied to our context, a high CHR results is more application components being fetched from memory, rather than disk which in turn results in quicker application startup times. This improvement in startup speed results in an enhanced user experience.   
 		
 		\subsection{Caching Schemes Under Consideration}
 			Now that we've determined the fundamental metrics we need, let's analyze the various caching schemes under consideration.
@@ -627,32 +619,10 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 						{The leftmost image shows the snapshot of the CBP(s) before forceful deletion. After each and every CBP was removed manually, the screen displayed is shown in the middle image. The image farthest to the right shows the repopulated list of CBP(s), 3 minutes after the middle image was taken. This demonstrates Android's ability to utilize free RAM space and pro-actively cache CBP(s)}
 					\end{figure}					
 					
-					This indicates that Android pro-actively caches applications that were'nt in memory to begin with, as CBP(s). This is also the reason why task killer applications fell out of favor [17]. This demonstrates that not only does Android provide a mechanism to pro-actively cache applications in memory, it already does so. The applications suggested by the Hybrid scheme can be introduced into the memory as CBP(s) in the same way. This is discussed in Chapter 7.
+					This indicates that Android pro-actively caches applications that were'nt in memory to begin with, as CBP(s). This is also the reason why task killer applications fell out of favor [17]. This demonstrates that not only does Android provide a mechanism to pro-actively cache applications in memory, it already does so. The applications suggested by the Hybrid scheme can be introduced into the memory as CBP(s) in the same way. This is discussed in Chapter 8.
 
 				\paragraph{Prioritizing Applications in Hybrid Scheme}	
-					The Hybrid scheme would involve storing as CBP(s), both default application components cached by Android's recency-based scheme and the application components of the list of applications obtained from analyzing the user's calendar. So the question now becomes, who gets kicked out when memory is running low? Since the applications inferred from user's contextual information do not have a recency associated with them, the overall list of CBP(s) cannot be prioritized based on recency of usage. A simple solution is to prioritize the CBP(s) obtained from the list of suggested applications over the default ones i.e. all the default CBP(s) are removed from memory before the CBP(s) cached as a result of context inference. There are two advantages to this approach:
-					
-					\begin{itemize}
-						
-						\item Only few applications are suggested by the context module.
-						
-							\begin{itemize}
-								\item For instance, say the user has a Calendar entry that reads {\em Call Mom}. There will be two or at most three applications suggested by the context-module that would be potentially useful to the user in the context of calling his/her mother. This makes it more convenient to target CBP(s) cached by the default recency-based scheme in case of low memory.
-							\end{itemize}
-							
-						\item The probability of user requesting an application related to the Calendar event is quite high.
-						
-							\begin{itemize}
-								
-								\item This is due to the fact that a recorded event in a user's Calendar is highly likely to occur and the applications needed in this context have a higher chance of being utilized as opposed to CBP(s) cached by the recency of usage.
-								
-								\item This is explored further in Chapter 7 where we discuss the likelihood of an application being used in conjunction with a Calendar event.
-								
-							\end{itemize}
-								
-					\end{itemize}  
-					
-					Alternatively, the CBP(s) with the least memory footprint can be prioritized i.e. the most memory-heavy CBP(s) are removed first. While this approach releases memory quickly, it does'nt take into account the likelihood of application usage in the immediate future.
+					The Hybrid scheme would involve storing as CBP(s), both default application components cached by Android's recency-based scheme and the application components of the list of applications obtained from analyzing the user's calendar. So the question now becomes, who gets kicked out when memory is running low? Since the applications inferred from user's contextual information do not have a recency associated with them, the overall list of CBP(s) cannot be prioritized based on recency of usage. A simple solution is to prioritize the CBP(s) obtained from the list of suggested applications over the default ones i.e. all the default CBP(s) are removed from memory before the CBP(s) cached as a result of context inference. Alternatively, the CBP(s) with the least memory footprint can be prioritized i.e. the most memory-heavy CBP(s) are removed first. While this approach releases memory quickly, it does'nt take into account the likelihood of application usage in the immediate future.
 					
 		\subsection{Supplementary Data}
 			We've talked about the fundamental metrics involved in measuring the efficiency of any caching scheme, namely cache hits, cache misses and CHR. We explored potential candidates for serving as the caching scheme in managing the list of CBP(s) cached in memory. There are other subtle measurements that are'nt as significant as the fundamental metrics but are important nonetheless as they shed light on certain attributes of the experiment. They are listed below:
@@ -859,7 +829,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\end{algorithm}
 			
 		\subsection{Reading the User's Calendar}
-			To compute the CHR of the Hybrid scheme, we need the ability to obtain the list of events from the user's calendar and the ability to parse that information to come up with a list of suggested applications. We'll discuss the parsing aspect in the next segment and focus on finding a way to read the user's calendar. The solution to this problem is quite simple, Google provides a public API (Application Programming Interface) [30] to obtain access to the user's calendar information, including the list of events. This operation does'nt have to be carried out with the same frequency as reading the list of processes in memory or obtaining the foreground application. In our solution, we query the calendar every four hours (for events occurring in that four hour period) and feed the data (events list) into a module that parses the information and produces a suggested list of applications (Algorithm 5). 
+			To compute the CHR of the Hybrid scheme, we need the ability to obtain the list of events from the user's calendar and the ability to parse that information to come up with a list of suggested applications. We'll discuss the parsing aspect in the next segment and focus on finding a way to read the user's calendar. The solution to this problem is quite simple, Google provides a public API [30] to obtain access to the user's calendar information, including the list of events. This operation does'nt have to be carried out with the same frequency as reading the list of processes in memory or obtaining the foreground application. In our solution, we query the calendar every four hours (for events occurring in that four hour period) and feed the data (events list) into a module that parses the information and produces a suggested list of applications (Algorithm 5). 
 			
 			\begin{algorithm}[H]
 				\SetAlgoLined
@@ -1025,7 +995,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\item Calendar Parser
 		\end{itemize}
 		
-		The main activity is the heart of the application. It is responsible for launching the application and creating a background service. The background service retrieves the list of processes in memory and the current foreground application. The background service is bound to the activity i.e. it's life-cycle is tied to that of the activity's [36]. It is for this reason that the volunteers are instructed not to forcefully close {\em ContextAnalyzer} for the duration of the experiment as that would destroy the service along with the activity and all metric collection would stop. The process manager module contains a {\em Process} data structure that encapsulates a running process and all of its attributes (name, user identifier, process identifier to list a few). It also contains the algorithm that fetches the list of processes residing in memory. The background service launches a separate thread that invokes this algorithm every second, to compute the cache metrics and update the user interface. It also has the additional task of obtaining the calendar list from the calendar parser. The calendar parser gets the list of calendar events from the calendar reader and produces the calendar list (that the service consumes). The calendar reader queries the user's calendar API and obtains the list of events for the next four hours. The following class diagram (Figure 4-4) illustrates {\em ContextAnalyzer}'s design.
+		The main activity is the heart of the application. It is responsible for launching the application and creating a background service. The background service retrieves the list of processes in memory and the current foreground application. The background service is bound to the activity i.e. it's life-cycle is tied to that of the activity's [36]. It is for this reason that the volunteers are instructed not to forcefully close {\em ContextAnalyzer} for the duration of the experiment as that would destroy the service along with the activity and all metric collection would stop. The process manager module contains a {\em Process} data structure that encapsulates a running process and all of its attributes (name, user identifier, process identifier to list a few). It also contains the algorithm that fetches the list of processes residing in memory. The background service launches a separate thread that invokes this algorithm every second, to compute the cache metrics and update the UI. It also has the additional task of obtaining the calendar list from the calendar parser. The calendar parser gets the list of calendar events from the calendar reader and produces the calendar list (that the service consumes). The calendar reader queries the user's calendar API and obtains the list of events for the next four hours. The following class diagram (Figure 4-4) illustrates {\em ContextAnalyzer}'s design.
 	
 		\begin{figure}[h]
 			\centering
