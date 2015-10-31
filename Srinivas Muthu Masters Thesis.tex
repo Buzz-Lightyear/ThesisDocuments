@@ -436,8 +436,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		\end{figure}	
 
 	\section{Organization of Thesis}
-		Several works in the past have focused on context-aware applications and ways to observe user behavior patterns. We'll explore some these works and how this contextual data was put to use in Chapter 2. In Chapter 3, we'll take a look at some of the challenges in collecting cache metrics like detecting the applications in memory, detecting when the user clicks a new application, whether to approach the problem at the user level or the system level, to list a few. Chapter 4 elaborates on the setup of the experiment and analyzes the design of the application used to collect these metrics. We dive into the data in Chapter 5 and summarize the results. We also investigate how certain factors could explain the variation in data. 
-		We conclude this thesis with Chapter 6 and Chapter 7 talks about scope for future work and explores some of the possibilities of directly adding to this thesis.  
+		Several works in the past have focused on context-aware applications and ways to observe user behavior patterns. We'll explore some these works and how this contextual data was put to use in Chapter 2. In Chapter 3, we'll take a look at some of the challenges in collecting cache metrics such as detecting the applications in memory, detecting when the user clicks a new application, whether to approach the problem at the user level or the system level, to list a few. Chapter 4 elaborates on the setup of the experiment and analyzes the design of the application used to collect these metrics. We dive into the data in Chapter 5 and summarize the results. We also investigate how certain supplementary factors could explain the distribution of data. In Chapter 6, we discuss some of the shortcomings of this thesis and conclude the thesis with Chapter 7. Finally, chapter 8 talks about scope for future work and explores some of the possibilities of directly adding to this thesis.  
 
 
 %				How to Refer to a table, look below:
@@ -496,7 +495,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		\begin{figure}[!ht]
 			\centering
 			\includegraphics[width = 90mm]{images/appsByTime.png}
-			\caption[Mobile Services Requested At Various Times Of Day]
+			\caption[Mobile Services Requested at Various Times of the Day]
 			{By classifying user context into three distinct entities namely {\em home, work} and {\em on the move}, the author managed to infer which services were requested more in a given context. For e.g. Voice services i.e. calling was predominantly requested while the user was at home. This type of information can be very useful.}
 		\end{figure}
 	
@@ -1212,7 +1211,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	While the data demonstrates that incorporating context analysis improves the efficiency of the default caching scheme, there are certain factors that could affect the validity of this thesis:
 	
 	\begin{itemize}
-		\item The volunteers were instructed to use their calendar applications. However real-world users may or may not use their calendar application.
+		\item The volunteers were instructed to use their calendar applications. However real-world users may or may not use their calendar application. However, if the users were aware of the benefits in using the calendar under a hybrid scheme, that may change.
 		\item The entries in the calendar may not be indicative of the application that the user might use during that calendar event. 
 		\item Not all applications can be mapped to keywords obtained from calendar entries. For instance, while {\em call} can de directly mapped to the Caller application, there are no keywords that come to mind for the Camera application.
 		\item Since the calendar is only queried every four hours, change in event descriptions within a four hour period are not captured by our application. However, this is merely a design decision and the frequency can be increased to account for this issue. 
