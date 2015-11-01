@@ -1,12 +1,12 @@
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1-1}{\ignorespaces Running Apps and Cached Background Processes}}{3}
+\contentsline {figure}{\numberline {1-1}{\ignorespaces Running Applications and Cached Background Processes}}{3}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2-1}{\ignorespaces Mobile Services Requested at Various Times of the Day}}{7}
 \contentsline {figure}{\numberline {2-2}{\ignorespaces Context Phone}}{8}
-\contentsline {figure}{\numberline {2-3}{\ignorespaces User's GPS Trace}}{9}
+\contentsline {figure}{\numberline {2-3}{\ignorespaces User's Location Trace}}{9}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3-1}{\ignorespaces Running Apps and CBP(s) - Cache Hit}}{12}
-\contentsline {figure}{\numberline {3-2}{\ignorespaces Running Apps and CBP(s) - Cache Miss}}{13}
+\contentsline {figure}{\numberline {3-1}{\ignorespaces Running Applications and CBP(s) - Cache Hit}}{12}
+\contentsline {figure}{\numberline {3-2}{\ignorespaces Running Applications and CBP(s) - Cache Miss}}{13}
 \contentsline {figure}{\numberline {3-3}{\ignorespaces Before \& After News Application Launch}}{15}
 \contentsline {figure}{\numberline {3-4}{\ignorespaces Remove CBP}}{18}
 \contentsline {figure}{\numberline {3-5}{\ignorespaces CBP(s) before and after manual removal}}{19}
