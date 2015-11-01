@@ -550,11 +550,12 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				{Given this snapshot of the RAM, if the user clicks on say, the Google Drive application (process not in memory), it would result in a Cache Miss}
 			\end{figure}		
 			
-			CHR (Cache Hit Ratio) is defined as the percentage of cache hits compared to the overall number of requests (total of cache hits and cache misses).
+			CHR (Cache Hit Ratio) is defined as the ratio of cache hits to the overall number of requests (total of cache hits and cache misses).
 			
 			\begin{eqnarray}
 				Overall Number Of Requests = Cache Hits + Cache Misses \label{Total Requests} \\
-				CHR = \frac{Cache Hits}{Overall Number Of Requests} * 100 \label{CHR}
+				CHR = \frac{Cache Hits}{Overall Number Of Requests} \label{CHR} \\
+				CHR'(In \%) = CHR * 100 
 			\end{eqnarray}
 			
 			There are two primary figures of merit of a cache [9]:
@@ -910,7 +911,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\item We did not automatically store the cache metrics in a server. Instead, we asked the volunteers to send us the data in order to convey the message that we were not collecting any private data that the volunteers were not aware of.
 			\end{itemize}
 			
-			Although the aforementioned points address the privacy issues, we realize that divulging the nature of the experiment has the potential to bias the volunteers in their APMD usage. We explore this aspect in detail in the Points of Weaknesses section. 
+			Although the aforementioned points address the privacy issues, we realize that divulging the nature of the experiment has the potential to bias the volunteers in their APMD usage. We explore this aspect in detail in Chapter 8. 
 	
 	\section{Process and Duration of Experiment}
 		A total of twenty volunteers signed up and installed the application. Each volunteer had the application running for a minimum of 7 days and a maximum of 12 days. A 7 day minimum was enforced to ensure that the monitoring period included both weekdays and weekends. This accounted for any difference in usage patterns among the volunteers during the weekends. The link to the APK (Android Package) file was posted online [40] and each volunteer downloaded and installed the application as a third-party application. In this context, the term third-party refers to the fact that the Android application was not downloaded from the Google Play store. The volunteers were instructed not to manually stop the application for the duration of the experiment [36].
@@ -925,7 +926,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\item The application is present in both lists. 
 		\end{itemize}  
 		
-		If the application is present in neither list, it results in an overall cache miss. To elaborate, an overall cache miss implies that neither the list of processes in memory (cached by the default recency-based caching scheme) nor the list of applications predicted by reading the calendar, contained the requested application. If the application was present only in memory list, it results in an overall cache hit and a suggested cache miss i.e. the Hybrid scheme would've still had a hit but it was not present in the list of applications suggested by the calendar list. If the application was present only in the calendar list, it results in an overall cache hit and a suggested-exclusive cache hit, implying that the hit is solely a result of the calendar list's suggestion. This metric is important as it reveals the significance of the list of applications suggested by the calendar list. We'll discuss this further in Chapter 5. Finally, if the application was present in both lists, it results in an overall cache hit and suggested non-exclusive cache hit, implying that the hit would've occurred regardless of whether the application was present in the calendar list or not. The following snapshot (Figure 4-3) illustrates {\em ContextAnalyzer}'s UI (User Interface).  
+		If the application is present in neither list, it results in an overall cache miss. To elaborate, an overall cache miss implies that neither the list of processes in memory (cached by the default recency-based caching scheme) nor the list of applications predicted by reading the calendar, contained the requested application. If the application was present only in memory list, it results in an overall cache hit and a suggested cache miss i.e. the Hybrid scheme would've still had a hit but it was not present in the list of applications suggested by the calendar list. If the application was present only in the calendar list, it results in an overall cache hit and a suggested-exclusive cache hit, implying that the hit is solely a result of the calendar list's suggestion. This metric is important as it reveals the significance of the list of applications suggested exclusively by the calendar list. Finally, if the application was present in both lists, it results in an overall cache hit and suggested non-exclusive cache hit, implying that the hit would've occurred regardless of whether the application was present in the calendar list or not. The following snapshot (Figure 4-1) illustrates {\em ContextAnalyzer}'s UI (User Interface).  
 		
 		\begin{figure}[h]
 			\centering
@@ -954,7 +955,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		\end{equation}
 		
 		\begin{equation}			
-			Pure Prediction CHR = \frac{Total Suggested Hits}{Suggested Misses}
+			Pure Prediction CHR = \frac{Total Suggested Hits}{Total Suggested Hits + Suggested Misses}
 		\end{equation}
 		
 		The total hits and misses for the default scheme can be derived from the data that {\em ContextAnalyzer} directly collects. Since it collects the overall cache hits (that includes default cache hits) and the suggested-exclusive cache hits, the default cache hits can be obtained by computing their difference:
@@ -982,7 +983,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		The CHR for the default scheme can be computed using the following equation:
 		
 		\begin{equation}
-			Default Cache Hit Ratio = \frac{Default Cache Hits}{Default Cache Misses}
+			Default Cache Hit Ratio = \frac{Default Cache Hits}{Default Cache Hits + Default Cache Misses}
 		\end{equation}
 		
 		We've established that the application collects sufficient data to compute all the necessary metrics for the three caching schemes. Let's inspect the design of this application. {\em ContextAnalyzer} comprises of the following modules:
@@ -995,7 +996,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 			\item Calendar Parser
 		\end{itemize}
 		
-		The main activity is the heart of the application. It is responsible for launching the application and creating a background service. The background service retrieves the list of processes in memory and the current foreground application. The background service is bound to the activity i.e. it's life-cycle is tied to that of the activity's [36]. It is for this reason that the volunteers are instructed not to forcefully close {\em ContextAnalyzer} for the duration of the experiment as that would destroy the service along with the activity and all metric collection would stop. The process manager module contains a {\em Process} data structure that encapsulates a running process and all of its attributes (name, user identifier, process identifier to list a few). It also contains the algorithm that fetches the list of processes residing in memory. The background service launches a separate thread that invokes this algorithm every second, to compute the cache metrics and update the UI. It also has the additional task of obtaining the calendar list from the calendar parser. The calendar parser gets the list of calendar events from the calendar reader and produces the calendar list (that the service consumes). The calendar reader queries the user's calendar API and obtains the list of events for the next four hours. The following class diagram (Figure 4-4) illustrates {\em ContextAnalyzer}'s design.
+		The main activity is the heart of the application. It is responsible for launching the application and creating a background service. The background service retrieves the list of processes in memory and the current foreground application. The background service is bound to the activity i.e. it's life-cycle is tied to that of the activity's [36]. It is for this reason that the volunteers are instructed not to forcefully close {\em ContextAnalyzer} for the duration of the experiment as that would destroy the service along with the activity and all metric collection would stop. The process manager module contains a {\em Process} data structure that encapsulates a running process and all of its attributes (name, user identifier, process identifier to list a few). It also contains the algorithm that fetches the list of processes residing in memory. The background service launches a separate thread that invokes this algorithm every second, to compute the cache metrics and update the UI. It also has the additional task of obtaining the calendar list from the calendar parser. The calendar parser gets the list of calendar events from the calendar reader and produces the calendar list (that the service consumes). The calendar reader queries the user's calendar API and obtains the list of events for the next four hours. The following class diagram (Figure 4-2) illustrates {\em ContextAnalyzer}'s design.
 	
 		\begin{figure}[h]
 			\centering
