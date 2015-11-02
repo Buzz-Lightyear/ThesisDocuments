@@ -393,7 +393,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 \chapter{Introduction}
 	
 	\section{Problem}
-		With the advent of increased amounts of RAM (Random Access memory) available in Android smartphones, there is a case to be made that this additional memory availability can be put to better use. By default, every Android application runs in its own Linux process [34]. When a smartphone that runs on Android is active, the RAM contains all the active processes [3] and services [2]. In addition, it also contains cached background processes. These processes are kept in memory so that in the event the user clicks any of the corresponding applications, they can be loaded onto the screen quickly, thereby enhancing the user experience. Consequently, it is in Android's best interests to maximize the chances of the user requesting one of these applications. Currently, Android uses recency of usage to determine which applications get cached. To elaborate, the most recently used applications are cached as cached background processes. Therefore, the problem at hand is determining whether there is a better caching scheme and whether contextual information can be influential in such a scheme.
+		 By default, every Android application runs in its own Linux process [34]. When a smartphone that runs on Android is active, the RAM contains all the active processes [3] and services [2]. In addition, it also contains cached background processes. These processes are kept in memory so that in the event the user clicks any of the corresponding applications, they can be loaded onto the screen quickly, thereby enhancing the user experience. Consequently, it is in Android's best interests to maximize the chances of the user requesting one of these applications. Currently, Android uses recency of usage to determine which applications get cached. To elaborate, the most recently used applications are cached as cached background processes. Therefore, the problem at hand is determining whether there is a better caching scheme, and whether contextual information can be influential in such a scheme.
 		
 	\section{Proposed Solution}		
 		We postulate that incorporating context information can lead to a better caching scheme. In our case, we utilize context by looking into the user's calendar to try and predict which applications the user is likely to use in the near future. This leads to three possible caching schemes:
@@ -496,7 +496,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		
 		\begin{itemize}
 			\item Sensors that acquire contextual data (such as location data from GPS)
-			\item Communication services (such as SMS, MMS to list a few)
+			\item Communication Services (such as SMS, MMS to list a few)
 			\item Customizable Applications (that can replace existing applications)
 			\item System Services (such as background services for error logging)
 		\end{itemize}
@@ -524,7 +524,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		
 		As demonstrated by Shi et al., there are numerous ways contextual information can come in handy. In our case, we propose a default-context hybrid caching scheme for caching application components in memory, that operates by looking into the user's calendar for contextual information.  			
 	
-\chapter{Challenges in Collecting the Metrics}
+\chapter{Metrics of Interest}
 	
 	\section{Introduction}
 		Now that we have laid the foundation for using contextual information to influence which processes Android caches in memory, we need to establish the metrics that need to be collected in order to measure the efficiency of the existing caching scheme and the proposed caching scheme. The following section addresses the metrics we need.
@@ -890,7 +890,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 \chapter{Experiment Setup and Application Design}
 	
 	\section{Introduction}
-		In the previous chapter, we examined the metrics we needed to analyze the best caching scheme for caching application components in memory as CBP(s). We looked into some of the common caching schemes and analyzed some of the challenges in collecting the metrics needed to determine if contextual information can help better the CHR of the Hybrid approach. To analyze the efficiencies of the default recency-based approach and the Hybrid approaches, an Android application namely {\em ContextAnalyzer} was developed to collect the desired cache metrics. It was installed in the APMD(s) of research volunteers. We will dissect {\em ContextAnalyzer}'s design in Section 4.4.  
+		In the previous chapter, we examined the metrics we needed to analyze the best caching scheme for caching application components in memory as CBP(s). We looked into some of the common caching schemes and analyzed some of the challenges in collecting the metrics needed to determine if contextual information can help better the CHR of the Hybrid approach. To analyze the efficiencies of the default recency-based approach and the Hybrid approaches, an Android application, namely {\em ContextAnalyzer}, was developed to collect the desired cache metrics. It was installed in the APMD(s) of research volunteers. We will dissect {\em ContextAnalyzer}'s design in Section 4.4.  
 		
 	\section{Eligibility for Volunteers}
 		The following criteria had to be met to qualify as a research volunteer:
@@ -989,14 +989,14 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		We have established that the application collects sufficient data to compute all the necessary metrics for the three caching schemes. Let us inspect the design of this application. {\em ContextAnalyzer} comprises of the following modules:
 		
 		\begin{itemize}
-			\item Main Activity [1]
-			\item Background Service [2]
+			\item The main Activity [1]
+			\item A background Service [2]
 			\item Process Manager
 			\item Calendar Reader
 			\item Calendar Parser
 		\end{itemize}
 		
-		The main activity is the heart of the application. It is responsible for launching the application and creating a background service. The background service retrieves the list of processes in memory and the current foreground application. The background service is bound to the activity i.e. it is life-cycle is tied to that of the activity's [36]. It is for this reason that the volunteers are instructed not to forcefully close {\em ContextAnalyzer} for the duration of the experiment as that would destroy the service along with the activity and all metric collection would stop. The process manager module contains a {\em Process} data structure that encapsulates a running process and all of its attributes (name, user identifier, process identifier to list a few). It also contains the algorithm that fetches the list of processes residing in memory. The background service launches a separate thread that invokes this algorithm every second, to compute the cache metrics and update the UI. It also has the additional task of obtaining the calendar list from the calendar parser. The calendar parser gets the list of calendar events from the calendar reader and produces the calendar list (that the service consumes). The calendar reader queries the user's calendar API and obtains the list of events for the next four hours. The following class diagram (Figure 4-2) illustrates {\em ContextAnalyzer}'s design.
+		The main Activity is the heart of the application. It is responsible for launching the application and creating a background service. The background service retrieves the list of processes in memory and the current foreground application. The background service is bound to the Activity i.e. it is life-cycle is tied to that of the Activity's [36]. It is for this reason that the volunteers are instructed not to forcefully close {\em ContextAnalyzer} for the duration of the experiment as that would destroy the service along with the Activity and all metric collection would stop. The Process Manager module contains a {\em Process} data structure that encapsulates a running process and all of its attributes (name, user identifier, process identifier to list a few). It also contains the algorithm that fetches the list of processes residing in memory. The background service launches a separate thread that invokes this algorithm every second, to compute the cache metrics and update the UI. It also has the additional task of obtaining the calendar list from the Calendar Parser. The Calendar Parser gets the list of calendar events from the Calendar Reader and produces the calendar list (that the service consumes). The Calendar Reader queries the user's Calendar API and obtains the list of events for the next four hours. The following class diagram (Figure 4-2) illustrates {\em ContextAnalyzer}'s design.
 	
 		\begin{figure}[h]
 			\centering
@@ -1010,10 +1010,10 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 \chapter{Data Analysis and Results}
 
 		\section{Introduction}
-			In Chapter 3, we examined some of the challenges in collecting the data we needed and in the previous chapter, we analyzed {\em ContextAnalyzer}'s design and how the experiment was setup. In this chapter, we will inspect the data we collected from each volunteer and compare the cache hit ratios of each caching scheme (Default, Context \& Default-Context Hybrid). The following section elaborates on the volunteer demographic and the subsequent sections analyze the cache data. Finally, we verify whether our results are statistically significant using a Paired T test [44] and examine the points of weaknesses of this thesis.
+			In Chapter 3, we examined some of the challenges in collecting the data we needed and in the previous chapter, we analyzed {\em ContextAnalyzer}'s design and how the experiment was setup. In this chapter, we will inspect the data we collected from each volunteer and compare the cache hit ratios of each caching scheme (Default, Context \& Default-Context Hybrid). The following section elaborates on the volunteer demographic and the subsequent sections analyze the cache data. Finally, we verify whether our results are statistically significant using a Paired T test [44] and examine the points of weaknesses of this experiment.
 			
 		\section{Demographic Data}
-			Our experiment comprised of twenty volunteers, all of whom were male college students between the ages of nineteen and twenty three. The most common APMD used by the volunteers was the Nexus 5 [45] and SM-G900T (Samsung Galaxy S5) [46] was the least common one. Every volunteer satisfied the Android OS version prerequisite as they all ran Android 5.1 (LOLLIPOP\_MR1) [47]. There were three other metrics  collected from the volunteers that can be classified as demographic data:
+			Our experiment comprised twenty volunteers, all of whom were male college students between the ages of nineteen and twenty three. The most common APMD used by the volunteers was the Nexus 5 [45] and SM-G900T (Samsung Galaxy S5) [46] was the least common one. Every volunteer satisfied the Android OS version prerequisite as they all ran Android 5.1 (LOLLIPOP\_MR1) [47]. There were three other metrics  collected from the volunteers that can be classified as demographic data:
 			
 			\begin{itemize}
 				\item Number of Installed Applications (Measured at start of the experiment)
@@ -1031,7 +1031,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\end{figure}
 				
 			\subsection{Unique Applications Clicked}
-				The minimum number of unique applications that were clicked among the volunteers, during the course of the experiment was 34. The maximum number of unique applications requested by any volunteer was 56. The average number of unique applications requested was roughly 46. The following chart (Figure 5-2) illustrates this distribution.
+				The maximum number of unique applications requested by any volunteer was 56, with an average of roughly 46. The following chart (Figure 5-2) illustrates this distribution. We'll examine the effects of this distribution, and see if there are any correlations with an increase in CHR, later in the chapter.
 				
 				\begin{figure}[h]
 					\centering
@@ -1040,7 +1040,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\end{figure}
 				
 			\subsection{Calendar Entries}
-				The minimum number of calendar entries among the volunteers was 11. The maximum number of entries entered in the calendar by any volunteer was 43. The average number of calendar entries was roughly 25. The following chart (Figure 5-3) illustrates this distribution.
+				The minimum number of calendar entries among the volunteers was 11. The maximum number of entries entered in the calendar by any volunteer was 43. The average number of calendar entries was roughly 25. The following chart (Figure 5-3) illustrates this distribution. We'll analyze the implications of this distribution in Section 5.5. 
 				
 				\begin{figure}[h]
 					\centering
@@ -1115,7 +1115,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\item Significance Level
 			\end{itemize}
 			
-			The null hypothesis refers to a general statement or a default position that there is no relationship between two measured phenomena [51]. In our case, the null hypothesis would state that there is no difference in the means between the CHR(s) of the default and the hybrid schemes. Our objective is to perform a paired t test and determine the validity of the null hypothesis and by extension the statistical significance of our data. Significance level is the probability of rejecting the null hypothesis given that it is true [52]. By convention, the significance level is set to 0.05 (5\%), implying that it is acceptable to have a 5\% probability of incorrectly rejecting the null hypothesis. The {\em p-value} is defined as the probability of obtaining a result equal to or more statistically extreme than what was actually observed, assuming that the null hypothesis is true [53]. Therefore, if the paired t test produces a p-value less than the significance level i.e. the probability of obtaining more extreme results is less than the probability of incorrectly rejecting the null hypothesis, then the results are statistically significant and the null hypothesis can be rejected. The results of the paired t test are shown in Figure 5-9.
+			The null hypothesis refers to a general statement or a default position that there is no relationship between two measured phenomena [51]. In our case, the null hypothesis would state that there is no difference in the means between the CHR(s) of the default and the hybrid schemes. Our objective is to perform a paired t test and determine the validity of the null hypothesis, and by extension, the statistical significance of our data. Significance level is the probability of rejecting the null hypothesis given that it is true [52]. By convention, the significance level is set to 0.05 (5\%), implying that it is acceptable to have a 5\% probability of incorrectly rejecting the null hypothesis. The {\em p-value} is defined as the probability of obtaining a result equal to or more statistically extreme than what was actually observed, assuming that the null hypothesis is true [53]. Therefore, if the paired t test produces a p-value less than the significance level i.e. the probability of obtaining more extreme results is less than the probability of incorrectly rejecting the null hypothesis, then the results are statistically significant and the null hypothesis can be rejected. The results of the paired t test are shown in Figure 5-9.
 			
 			\begin{figure}[h]
 				\centering
@@ -1128,7 +1128,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		\section{Correlation with Demographic Data}
 			
 			\subsection{Calendar Usage}
-				Intuitively, we would expect the increase in CHR to be higher when the calendar usage is higher. Let us examine if such a correlation exists is the data we collected. We compute the PPMCC (Pearson Product Moment Correlation Coefficient) [53] for the increase in CHR and the number of calendar entries for each volunteer (Figure 5-10). 
+			 Let us examine if there is a correlation between an increase in CHR and the extent of calendar usage. We compute the PPMCC (Pearson Product Moment Correlation Coefficient) [53] for the increase in CHR and the number of calendar entries for each volunteer (Figure 5-10). 
 				
 				\begin{figure}[h]
 					\centering
@@ -1182,11 +1182,11 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 	While the data demonstrates that incorporating context analysis improves the efficiency of the default caching scheme, there are certain factors that could affect the validity of this thesis:
 	
 	\begin{itemize}
+		\item The experiment comprised only twenty volunteers which is a relatively low sample size.
 		\item The volunteers were instructed to use their calendar applications but real-world users may or may not use their calendar application. However, if the users were aware of the benefits in using the calendar under a hybrid scheme, that may change.
 		\item The entries in the calendar may not be indicative of the application that the user might use during that calendar event. 
 		\item Not all applications can be mapped to keywords obtained from calendar entries. For instance, while {\em call} can be directly mapped to the Caller application, there are no keywords that come to mind for the Camera application.
 		\item Since the calendar is only queried every four hours, change in event descriptions within a four hour period are not captured by our application. However, this is merely a design decision and the frequency can be increased to account for this issue. 
-		\item If no events were found in the calendar for a four hour period, then the list of suggested applications is set to a default list derived from the most popular Android applications in USA (Section 3.3.7). A significant amount of the cache hits for the hybrid scheme could have occurred as a result of the requested application being found in this default list rather than the applications truly inferred from calendar events.
 		\item If the volunteer requests two applications within a span of a second (highly unlikely but theoretically possible), then our application would only count the cache hit/miss from the second request as the thread only checks for a new foreground application every second.
 		\item The lack of diversity in our volunteer demographic could have influenced the data. Given that all research volunteers were male college students, the rate of smartphone usage was quite high. It would have been conducive to gather volunteers of all ages and gender.
 		\item Due to our policy of full transparency, the volunteers were aware of the type of data being collected. Even though there was no inherent motivation for any of the volunteers to intentionally skew the cache metrics, theoretically they had the ability to do so. 

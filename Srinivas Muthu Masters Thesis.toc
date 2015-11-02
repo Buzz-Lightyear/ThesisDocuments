@@ -7,16 +7,16 @@
 \contentsline {chapter}{Preface}{xiii}
 \contentsline {chapter}{\numberline {1}Introduction}{1}
 \contentsline {section}{\numberline {1.1}Problem}{1}
-\contentsline {section}{\numberline {1.2}Proposed Solution}{2}
+\contentsline {section}{\numberline {1.2}Proposed Solution}{1}
 \contentsline {subsection}{\numberline {1.2.1}Assumptions}{2}
 \contentsline {section}{\numberline {1.3}Checking Applications in RAM}{3}
-\contentsline {section}{\numberline {1.4}Organization of Thesis}{4}
+\contentsline {section}{\numberline {1.4}Organization of Thesis}{3}
 \contentsline {chapter}{\numberline {2}Related Work}{5}
 \contentsline {section}{\numberline {2.1}Early Studies in Context-Aware Computing}{5}
 \contentsline {section}{\numberline {2.2}Context Patterns in Application Usage}{6}
 \contentsline {section}{\numberline {2.3}Context Phone}{7}
 \contentsline {section}{\numberline {2.4}Using Context Information for Authentication}{9}
-\contentsline {chapter}{\numberline {3}Challenges in Collecting the Metrics}{11}
+\contentsline {chapter}{\numberline {3}Metrics of Interest}{11}
 \contentsline {section}{\numberline {3.1}Introduction}{11}
 \contentsline {section}{\numberline {3.2}What are the desired metrics?}{11}
 \contentsline {subsection}{\numberline {3.2.1}Hits, Misses, Hit Ratio \& Latency}{11}
