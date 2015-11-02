@@ -591,7 +591,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				This caching scheme relies on the frequency of application usage as opposed to the recency of application usage. To elaborate, the most frequently used applications would be cached as CBP(s) in memory. This could be a really good alternative to the default recency-based scheme, given the tendency of most smartphone users to stick with the same set of popular applications and use them in rotation [15]. Under these circumstances, the frequency of a select few applications would be really high and would always be cached in memory as they are requested often. Frequency based caching scheme is sometimes combined with a recency-based caching scheme to form a frequency-recency hybrid [14].
 				 
 			\subsubsection{Random}
-				Much like the name suggests this caching scheme would randomly select an application and cache it in memory as a CBP. This scheme does not require keeping any information about the access history. For its simplicity, it has been used in ARM processors [16]. When applied to our scenario, it does not seem like a viable option, mainly because there is not a benefit in randomly caching applications in memory.
+				Much like the name suggests this caching scheme would randomly select an application and cache it in memory as a CBP. This scheme does not require keeping any information about the access history. For its simplicity, it has been used in ARM processors [16]. When applied to our scenario, it does not seem like a viable option, mainly because there is no benefit in randomly caching applications in memory.
 				 
 			\subsubsection{Default-Context Hybrid}
 				So far we have analyzed the standard caching schemes that focus on caching items that were either accessed recently, frequently or in other ways that analyze past behavior. Our approach combines the applications that Android caches through a recency of usage scheme, with a separate context-analyzer module that reads the user's calendar and predicts which applications the user is likely to use. When the user requests an application, the combined set of applications (default applications based on recency and the list of predicted applications) is used as the base to compute whether a cache hit or a cache miss occurred. We will analyze in detail how each module functions but before that we need to examine two things:
@@ -602,7 +602,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\end{itemize}
 								
 				\paragraph{Pro-actively Adding CBP(s)}
-					In order for the proposed Default-Context Hybrid (henceforth referred to as Hybrid) caching scheme to work, there must be provision for the Android OS to pro-actively cache application components in memory as CBP(s). Presuming that the context-analyzer module does its job and suggests a list of applications the user might use in the near future, there must a mechanism for Android to utilize that information and pro-actively cache these applications in RAM as CBP(s). This mechanism can be verified at the user level through a small experiment. As previously mentioned, the Settings application provides a visual interface for the list of active processes and services running in memory and the CBP(s) that reside in memory at any moment in time. As part of the experiment, each and every CBP was forcefully removed from the cache (there is provision to do this at the user level (Figure 3-4)). 
+					In order for the proposed Default-Context Hybrid (henceforth referred to as Hybrid) caching scheme to work, there must be a provision for the Android OS to pro-actively cache application components in memory as CBP(s). Presuming that the context-analyzer module does its job and suggests a list of applications the user might use in the near future, there must be a mechanism for Android to utilize that information and pro-actively cache these applications in RAM as CBP(s). This mechanism can be verified at the user level through a small experiment. As previously mentioned, the Settings application provides a visual interface for the list of active processes and services running in memory and the CBP(s) that reside in memory at any moment in time. As part of the experiment, each and every CBP was forcefully removed from the cache (there is provision to do this at the user level (Figure 3-4)). 
 						
 					\begin{figure}[!ht]
 						\centering
@@ -810,7 +810,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 				\item Network Connection - It is used to store data over the Internet.
 			\end{itemize}
 			
-			For our scenario, Internal Storage is the best fit as it keeps the data private to the application and since the data is quite primitive (cache hits and misses), we do not need SQLite databases or network connections. The data is written to a file every minute. That way, we do not have to constantly perform I/O operations from the service and in the worst case scenario, fifty nine seconds of Cache data would be lost which is relatively a small amount of time. Algorithm 3 can be tweaked to incorporate the file write operation (Algorithm 4).
+			For our scenario, Internal Storage is the best fit as it keeps the data private to the application and since the data is quite primitive (cache hits and misses), we do not need SQLite databases or network connections. The data is written to a file every minute. That way, we do not have to constantly perform I/O operations from the service and in the worst case scenario (the application is stopped), fifty nine seconds of Cache data would be lost, which is relatively a small amount of time. Algorithm 3 can be tweaked to incorporate the file write operation (Algorithm 4).
 			
 			\begin{algorithm}[H]
 				\SetAlgoLined
@@ -885,7 +885,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 					
 			\end{itemize}
 
-			Finally, if there are no events in the user's calendar for the four hour period, then the list of suggested applications is populated with a maximum of ten default applications. These default applications are derived from the ten most popular Android applications in USA (United States of America) [31]. Out of these ten applications, every application that the user has installed in their APMD will be added to the default list (resulting in a maximum of ten default applications).
+			Finally, if there are no events in the user's calendar for the four hour period, then the list of suggested applications is populated with a maximum of ten default applications. These default applications are derived from the ten most popular Android applications in USA (United States of America) [31]. Out of these ten applications, every application that the user has installed in their APMD will be added to the default list (resulting in a maximum of ten).
 
 \chapter{Experiment Setup and Application Design}
 	
