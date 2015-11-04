@@ -945,7 +945,7 @@ This thesis is original, unpublished, independent work by the author, Srinivas M
 		Since it collects the overall cache hits and overall cache misses, it is quite straightforward to see how it would compute the CHR of the Hybrid scheme.
 		
 		\begin{equation}
-			Hybrid CHR = \frac{Overall Hits}{Overall Misses}
+			Hybrid CHR = \frac{Overall Hits}{Overall Hits + Overall Misses}
 		\end{equation}
 		
 		The total hits for the pure prediction approach can be obtained by summing the suggested-exclusive hits and the suggested non-exclusive hits as their total comprises of all the hits that resulted due to the calendar list. The application also collects the suggested misses, therefore the CHR for the pure prediction approach can be easily obtained.
